@@ -1,0 +1,5756 @@
+[
+  {
+    "id": "day-001",
+    "day": 1,
+    "title": "Tự tin trong cuộc họp",
+    "phraseIds": [
+      "p001",
+      "p002",
+      "p003",
+      "p004",
+      "p005"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "reflex",
+    "reviewRequired": false,
+    "reviewPhraseIds": [],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-002",
+    "day": 2,
+    "title": "Nghe rõ và hỏi lại",
+    "phraseIds": [
+      "p006",
+      "p007",
+      "p008",
+      "p009",
+      "p010"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "reflex",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p001",
+      "p002",
+      "p003",
+      "p004",
+      "p005"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-003",
+    "day": 3,
+    "title": "Góp ý thiết kế",
+    "phraseIds": [
+      "p011",
+      "p012",
+      "p013",
+      "p014",
+      "p015"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "design",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p006",
+      "p007",
+      "p008",
+      "p009",
+      "p010"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-004",
+    "day": 4,
+    "title": "Làm rõ yêu cầu BA",
+    "phraseIds": [
+      "p016",
+      "p017",
+      "p018",
+      "p019",
+      "p020"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "business",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p011",
+      "p012",
+      "p013",
+      "p014",
+      "p015"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-005",
+    "day": 5,
+    "title": "Thống nhất trong team",
+    "phraseIds": [
+      "p021",
+      "p022",
+      "p023",
+      "p024",
+      "p025"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "meeting",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p016",
+      "p017",
+      "p018",
+      "p019",
+      "p020"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-006",
+    "day": 6,
+    "title": "Phạm vi công việc",
+    "phraseIds": [
+      "p026",
+      "p027",
+      "p028",
+      "p029",
+      "p030"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "leadership",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p021",
+      "p022",
+      "p023",
+      "p024",
+      "p025"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-007",
+    "day": 7,
+    "title": "Sắp xếp ưu tiên",
+    "phraseIds": [
+      "p031",
+      "p032",
+      "p033",
+      "p034",
+      "p035"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "leadership",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p026",
+      "p027",
+      "p028",
+      "p029",
+      "p030"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-008",
+    "day": 8,
+    "title": "Tiến độ và deadline",
+    "phraseIds": [
+      "p036",
+      "p037",
+      "p038",
+      "p039",
+      "p040"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "engineering",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p031",
+      "p032",
+      "p033",
+      "p034",
+      "p035"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-009",
+    "day": 9,
+    "title": "Báo cáo vướng mắc",
+    "phraseIds": [
+      "p041",
+      "p042",
+      "p043",
+      "p044",
+      "p045"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "engineering",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p036",
+      "p037",
+      "p038",
+      "p039",
+      "p040"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-010",
+    "day": 10,
+    "title": "Chốt quyết định",
+    "phraseIds": [
+      "p046",
+      "p047",
+      "p048",
+      "p049",
+      "p050"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "leadership",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p041",
+      "p042",
+      "p043",
+      "p044",
+      "p045"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-011",
+    "day": 11,
+    "title": "Đánh giá trải nghiệm",
+    "phraseIds": [
+      "p051",
+      "p052",
+      "p053",
+      "p054",
+      "p055"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "design",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p046",
+      "p047",
+      "p048",
+      "p049",
+      "p050"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-012",
+    "day": 12,
+    "title": "Dữ liệu và chỉ số",
+    "phraseIds": [
+      "p056",
+      "p057",
+      "p058",
+      "p059",
+      "p060"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "design",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p051",
+      "p052",
+      "p053",
+      "p054",
+      "p055"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-013",
+    "day": 13,
+    "title": "Bàn giao cho Developer",
+    "phraseIds": [
+      "p061",
+      "p062",
+      "p063",
+      "p064",
+      "p065"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "engineering",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p056",
+      "p057",
+      "p058",
+      "p059",
+      "p060"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-014",
+    "day": 14,
+    "title": "Điều phối cuộc họp",
+    "phraseIds": [
+      "p066",
+      "p067",
+      "p068",
+      "p069",
+      "p070"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "meeting",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p061",
+      "p062",
+      "p063",
+      "p064",
+      "p065"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-015",
+    "day": 15,
+    "title": "Theo dõi sau họp",
+    "phraseIds": [
+      "p071",
+      "p072",
+      "p073",
+      "p074",
+      "p075"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "meeting",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p066",
+      "p067",
+      "p068",
+      "p069",
+      "p070"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-016",
+    "day": 16,
+    "title": "Bất đồng chuyên nghiệp",
+    "phraseIds": [
+      "p076",
+      "p077",
+      "p078",
+      "p079",
+      "p080"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "meeting",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p071",
+      "p072",
+      "p073",
+      "p074",
+      "p075"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-017",
+    "day": 17,
+    "title": "Phối hợp liên phòng ban",
+    "phraseIds": [
+      "p081",
+      "p082",
+      "p083",
+      "p084",
+      "p085"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "business",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p076",
+      "p077",
+      "p078",
+      "p079",
+      "p080"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-018",
+    "day": 18,
+    "title": "Nghiên cứu người dùng",
+    "phraseIds": [
+      "p086",
+      "p087",
+      "p088",
+      "p089",
+      "p090"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "design",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p081",
+      "p082",
+      "p083",
+      "p084",
+      "p085"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-019",
+    "day": 19,
+    "title": "Demo và prototype",
+    "phraseIds": [
+      "p091",
+      "p092",
+      "p093",
+      "p094",
+      "p095"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "design",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p086",
+      "p087",
+      "p088",
+      "p089",
+      "p090"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-020",
+    "day": 20,
+    "title": "Giải thích giải pháp UX",
+    "phraseIds": [
+      "p096",
+      "p097",
+      "p098",
+      "p099",
+      "p100"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "design",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p091",
+      "p092",
+      "p093",
+      "p094",
+      "p095"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-021",
+    "day": 21,
+    "title": "Chiến lược sản phẩm",
+    "phraseIds": [
+      "p101",
+      "p102",
+      "p103",
+      "p104",
+      "p105"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "design",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p096",
+      "p097",
+      "p098",
+      "p099",
+      "p100"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-022",
+    "day": 22,
+    "title": "Đánh đổi và rủi ro",
+    "phraseIds": [
+      "p106",
+      "p107",
+      "p108",
+      "p109",
+      "p110"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "leadership",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p101",
+      "p102",
+      "p103",
+      "p104",
+      "p105"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-023",
+    "day": 23,
+    "title": "Thuyết trình rõ ràng",
+    "phraseIds": [
+      "p111",
+      "p112",
+      "p113",
+      "p114",
+      "p115"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "meeting",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p106",
+      "p107",
+      "p108",
+      "p109",
+      "p110"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-024",
+    "day": 24,
+    "title": "Kiểm tra và QA",
+    "phraseIds": [
+      "p116",
+      "p117",
+      "p118",
+      "p119",
+      "p120"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "engineering",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p111",
+      "p112",
+      "p113",
+      "p114",
+      "p115"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-025",
+    "day": 25,
+    "title": "Cập nhật công việc",
+    "phraseIds": [
+      "p121",
+      "p122",
+      "p123",
+      "p124",
+      "p125"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "engineering",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p116",
+      "p117",
+      "p118",
+      "p119",
+      "p120"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-026",
+    "day": 26,
+    "title": "Quản lý thay đổi",
+    "phraseIds": [
+      "p126",
+      "p127",
+      "p128",
+      "p129",
+      "p130"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "engineering",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p121",
+      "p122",
+      "p123",
+      "p124",
+      "p125"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-027",
+    "day": 27,
+    "title": "Trao đổi với quản lý",
+    "phraseIds": [
+      "p131",
+      "p132",
+      "p133",
+      "p134",
+      "p135"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "leadership",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p126",
+      "p127",
+      "p128",
+      "p129",
+      "p130"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-028",
+    "day": 28,
+    "title": "Giao tiếp với người dùng nghiệp vụ",
+    "phraseIds": [
+      "p136",
+      "p137",
+      "p138",
+      "p139",
+      "p140"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "business",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p131",
+      "p132",
+      "p133",
+      "p134",
+      "p135"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-029",
+    "day": 29,
+    "title": "Tổng kết và cải tiến",
+    "phraseIds": [
+      "p141",
+      "p142",
+      "p143",
+      "p144",
+      "p145"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "leadership",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p136",
+      "p137",
+      "p138",
+      "p139",
+      "p140"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-030",
+    "day": 30,
+    "title": "Phản xạ hội thoại tự nhiên",
+    "phraseIds": [
+      "p146",
+      "p147",
+      "p148",
+      "p149",
+      "p150"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "reflex",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p141",
+      "p142",
+      "p143",
+      "p144",
+      "p145"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-031",
+    "day": 31,
+    "title": "5 câu dùng ngay · Ngày 031",
+    "phraseIds": [
+      "p151",
+      "p152",
+      "p153",
+      "p154",
+      "p155"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p146",
+      "p147",
+      "p148",
+      "p149",
+      "p150"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-032",
+    "day": 32,
+    "title": "5 câu dùng ngay · Ngày 032",
+    "phraseIds": [
+      "p156",
+      "p157",
+      "p158",
+      "p159",
+      "p160"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p151",
+      "p152",
+      "p153",
+      "p154",
+      "p155"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-033",
+    "day": 33,
+    "title": "5 câu dùng ngay · Ngày 033",
+    "phraseIds": [
+      "p161",
+      "p162",
+      "p163",
+      "p164",
+      "p165"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p156",
+      "p157",
+      "p158",
+      "p159",
+      "p160"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-034",
+    "day": 34,
+    "title": "5 câu dùng ngay · Ngày 034",
+    "phraseIds": [
+      "p166",
+      "p167",
+      "p168",
+      "p169",
+      "p170"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p161",
+      "p162",
+      "p163",
+      "p164",
+      "p165"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-035",
+    "day": 35,
+    "title": "5 câu dùng ngay · Ngày 035",
+    "phraseIds": [
+      "p171",
+      "p172",
+      "p173",
+      "p174",
+      "p175"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p166",
+      "p167",
+      "p168",
+      "p169",
+      "p170"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-036",
+    "day": 36,
+    "title": "5 câu dùng ngay · Ngày 036",
+    "phraseIds": [
+      "p176",
+      "p177",
+      "p178",
+      "p179",
+      "p180"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p171",
+      "p172",
+      "p173",
+      "p174",
+      "p175"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-037",
+    "day": 37,
+    "title": "5 câu dùng ngay · Ngày 037",
+    "phraseIds": [
+      "p181",
+      "p182",
+      "p183",
+      "p184",
+      "p185"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "design",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p176",
+      "p177",
+      "p178",
+      "p179",
+      "p180"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-038",
+    "day": 38,
+    "title": "5 câu dùng ngay · Ngày 038",
+    "phraseIds": [
+      "p186",
+      "p187",
+      "p188",
+      "p189",
+      "p190"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p181",
+      "p182",
+      "p183",
+      "p184",
+      "p185"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-039",
+    "day": 39,
+    "title": "5 câu dùng ngay · Ngày 039",
+    "phraseIds": [
+      "p191",
+      "p192",
+      "p193",
+      "p194",
+      "p195"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p186",
+      "p187",
+      "p188",
+      "p189",
+      "p190"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-040",
+    "day": 40,
+    "title": "5 câu dùng ngay · Ngày 040",
+    "phraseIds": [
+      "p196",
+      "p197",
+      "p198",
+      "p199",
+      "p200"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "business",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p191",
+      "p192",
+      "p193",
+      "p194",
+      "p195"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-041",
+    "day": 41,
+    "title": "5 câu dùng ngay · Ngày 041",
+    "phraseIds": [
+      "p201",
+      "p202",
+      "p203",
+      "p204",
+      "p205"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p196",
+      "p197",
+      "p198",
+      "p199",
+      "p200"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-042",
+    "day": 42,
+    "title": "5 câu dùng ngay · Ngày 042",
+    "phraseIds": [
+      "p206",
+      "p207",
+      "p208",
+      "p209",
+      "p210"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "meeting",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p201",
+      "p202",
+      "p203",
+      "p204",
+      "p205"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-043",
+    "day": 43,
+    "title": "5 câu dùng ngay · Ngày 043",
+    "phraseIds": [
+      "p211",
+      "p212",
+      "p213",
+      "p214",
+      "p215"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p206",
+      "p207",
+      "p208",
+      "p209",
+      "p210"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-044",
+    "day": 44,
+    "title": "5 câu dùng ngay · Ngày 044",
+    "phraseIds": [
+      "p216",
+      "p217",
+      "p218",
+      "p219",
+      "p220"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p211",
+      "p212",
+      "p213",
+      "p214",
+      "p215"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-045",
+    "day": 45,
+    "title": "5 câu dùng ngay · Ngày 045",
+    "phraseIds": [
+      "p221",
+      "p222",
+      "p223",
+      "p224",
+      "p225"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p216",
+      "p217",
+      "p218",
+      "p219",
+      "p220"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-046",
+    "day": 46,
+    "title": "5 câu dùng ngay · Ngày 046",
+    "phraseIds": [
+      "p226",
+      "p227",
+      "p228",
+      "p229",
+      "p230"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p221",
+      "p222",
+      "p223",
+      "p224",
+      "p225"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-047",
+    "day": 47,
+    "title": "5 câu dùng ngay · Ngày 047",
+    "phraseIds": [
+      "p231",
+      "p232",
+      "p233",
+      "p234",
+      "p235"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p226",
+      "p227",
+      "p228",
+      "p229",
+      "p230"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-048",
+    "day": 48,
+    "title": "5 câu dùng ngay · Ngày 048",
+    "phraseIds": [
+      "p236",
+      "p237",
+      "p238",
+      "p239",
+      "p240"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p231",
+      "p232",
+      "p233",
+      "p234",
+      "p235"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-049",
+    "day": 49,
+    "title": "5 câu dùng ngay · Ngày 049",
+    "phraseIds": [
+      "p241",
+      "p242",
+      "p243",
+      "p244",
+      "p245"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p236",
+      "p237",
+      "p238",
+      "p239",
+      "p240"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-050",
+    "day": 50,
+    "title": "5 câu dùng ngay · Ngày 050",
+    "phraseIds": [
+      "p246",
+      "p247",
+      "p248",
+      "p249",
+      "p250"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p241",
+      "p242",
+      "p243",
+      "p244",
+      "p245"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-051",
+    "day": 51,
+    "title": "5 câu dùng ngay · Ngày 051",
+    "phraseIds": [
+      "p251",
+      "p252",
+      "p253",
+      "p254",
+      "p255"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p246",
+      "p247",
+      "p248",
+      "p249",
+      "p250"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-052",
+    "day": 52,
+    "title": "5 câu dùng ngay · Ngày 052",
+    "phraseIds": [
+      "p256",
+      "p257",
+      "p258",
+      "p259",
+      "p260"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p251",
+      "p252",
+      "p253",
+      "p254",
+      "p255"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-053",
+    "day": 53,
+    "title": "5 câu dùng ngay · Ngày 053",
+    "phraseIds": [
+      "p261",
+      "p262",
+      "p263",
+      "p264",
+      "p265"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p256",
+      "p257",
+      "p258",
+      "p259",
+      "p260"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-054",
+    "day": 54,
+    "title": "5 câu dùng ngay · Ngày 054",
+    "phraseIds": [
+      "p266",
+      "p267",
+      "p268",
+      "p269",
+      "p270"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p261",
+      "p262",
+      "p263",
+      "p264",
+      "p265"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-055",
+    "day": 55,
+    "title": "5 câu dùng ngay · Ngày 055",
+    "phraseIds": [
+      "p271",
+      "p272",
+      "p273",
+      "p274",
+      "p275"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p266",
+      "p267",
+      "p268",
+      "p269",
+      "p270"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-056",
+    "day": 56,
+    "title": "5 câu dùng ngay · Ngày 056",
+    "phraseIds": [
+      "p276",
+      "p277",
+      "p278",
+      "p279",
+      "p280"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p271",
+      "p272",
+      "p273",
+      "p274",
+      "p275"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-057",
+    "day": 57,
+    "title": "5 câu dùng ngay · Ngày 057",
+    "phraseIds": [
+      "p281",
+      "p282",
+      "p283",
+      "p284",
+      "p285"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p276",
+      "p277",
+      "p278",
+      "p279",
+      "p280"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-058",
+    "day": 58,
+    "title": "5 câu dùng ngay · Ngày 058",
+    "phraseIds": [
+      "p286",
+      "p287",
+      "p288",
+      "p289",
+      "p290"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p281",
+      "p282",
+      "p283",
+      "p284",
+      "p285"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-059",
+    "day": 59,
+    "title": "5 câu dùng ngay · Ngày 059",
+    "phraseIds": [
+      "p291",
+      "p292",
+      "p293",
+      "p294",
+      "p295"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p286",
+      "p287",
+      "p288",
+      "p289",
+      "p290"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-060",
+    "day": 60,
+    "title": "5 câu dùng ngay · Ngày 060",
+    "phraseIds": [
+      "p296",
+      "p297",
+      "p298",
+      "p299",
+      "p300"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p291",
+      "p292",
+      "p293",
+      "p294",
+      "p295"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-061",
+    "day": 61,
+    "title": "5 câu dùng ngay · Ngày 061",
+    "phraseIds": [
+      "p301",
+      "p302",
+      "p303",
+      "p304",
+      "p305"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p296",
+      "p297",
+      "p298",
+      "p299",
+      "p300"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-062",
+    "day": 62,
+    "title": "5 câu dùng ngay · Ngày 062",
+    "phraseIds": [
+      "p306",
+      "p307",
+      "p308",
+      "p309",
+      "p310"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "reflex",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p301",
+      "p302",
+      "p303",
+      "p304",
+      "p305"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-063",
+    "day": 63,
+    "title": "5 câu dùng ngay · Ngày 063",
+    "phraseIds": [
+      "p311",
+      "p312",
+      "p313",
+      "p314",
+      "p315"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p306",
+      "p307",
+      "p308",
+      "p309",
+      "p310"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-064",
+    "day": 64,
+    "title": "5 câu dùng ngay · Ngày 064",
+    "phraseIds": [
+      "p316",
+      "p317",
+      "p318",
+      "p319",
+      "p320"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p311",
+      "p312",
+      "p313",
+      "p314",
+      "p315"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-065",
+    "day": 65,
+    "title": "5 câu dùng ngay · Ngày 065",
+    "phraseIds": [
+      "p321",
+      "p322",
+      "p323",
+      "p324",
+      "p325"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p316",
+      "p317",
+      "p318",
+      "p319",
+      "p320"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-066",
+    "day": 66,
+    "title": "5 câu dùng ngay · Ngày 066",
+    "phraseIds": [
+      "p326",
+      "p327",
+      "p328",
+      "p329",
+      "p330"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p321",
+      "p322",
+      "p323",
+      "p324",
+      "p325"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-067",
+    "day": 67,
+    "title": "5 câu dùng ngay · Ngày 067",
+    "phraseIds": [
+      "p331",
+      "p332",
+      "p333",
+      "p334",
+      "p335"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p326",
+      "p327",
+      "p328",
+      "p329",
+      "p330"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-068",
+    "day": 68,
+    "title": "5 câu dùng ngay · Ngày 068",
+    "phraseIds": [
+      "p336",
+      "p337",
+      "p338",
+      "p339",
+      "p340"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p331",
+      "p332",
+      "p333",
+      "p334",
+      "p335"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-069",
+    "day": 69,
+    "title": "5 câu dùng ngay · Ngày 069",
+    "phraseIds": [
+      "p341",
+      "p342",
+      "p343",
+      "p344",
+      "p345"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p336",
+      "p337",
+      "p338",
+      "p339",
+      "p340"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-070",
+    "day": 70,
+    "title": "5 câu dùng ngay · Ngày 070",
+    "phraseIds": [
+      "p346",
+      "p347",
+      "p348",
+      "p349",
+      "p350"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p341",
+      "p342",
+      "p343",
+      "p344",
+      "p345"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-071",
+    "day": 71,
+    "title": "5 câu dùng ngay · Ngày 071",
+    "phraseIds": [
+      "p351",
+      "p352",
+      "p353",
+      "p354",
+      "p355"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p346",
+      "p347",
+      "p348",
+      "p349",
+      "p350"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-072",
+    "day": 72,
+    "title": "5 câu dùng ngay · Ngày 072",
+    "phraseIds": [
+      "p356",
+      "p357",
+      "p358",
+      "p359",
+      "p360"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p351",
+      "p352",
+      "p353",
+      "p354",
+      "p355"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-073",
+    "day": 73,
+    "title": "5 câu dùng ngay · Ngày 073",
+    "phraseIds": [
+      "p361",
+      "p362",
+      "p363",
+      "p364",
+      "p365"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p356",
+      "p357",
+      "p358",
+      "p359",
+      "p360"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-074",
+    "day": 74,
+    "title": "5 câu dùng ngay · Ngày 074",
+    "phraseIds": [
+      "p366",
+      "p367",
+      "p368",
+      "p369",
+      "p370"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p361",
+      "p362",
+      "p363",
+      "p364",
+      "p365"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-075",
+    "day": 75,
+    "title": "5 câu dùng ngay · Ngày 075",
+    "phraseIds": [
+      "p371",
+      "p372",
+      "p373",
+      "p374",
+      "p375"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p366",
+      "p367",
+      "p368",
+      "p369",
+      "p370"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-076",
+    "day": 76,
+    "title": "5 câu dùng ngay · Ngày 076",
+    "phraseIds": [
+      "p376",
+      "p377",
+      "p378",
+      "p379",
+      "p380"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p371",
+      "p372",
+      "p373",
+      "p374",
+      "p375"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-077",
+    "day": 77,
+    "title": "5 câu dùng ngay · Ngày 077",
+    "phraseIds": [
+      "p381",
+      "p382",
+      "p383",
+      "p384",
+      "p385"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p376",
+      "p377",
+      "p378",
+      "p379",
+      "p380"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-078",
+    "day": 78,
+    "title": "5 câu dùng ngay · Ngày 078",
+    "phraseIds": [
+      "p386",
+      "p387",
+      "p388",
+      "p389",
+      "p390"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p381",
+      "p382",
+      "p383",
+      "p384",
+      "p385"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-079",
+    "day": 79,
+    "title": "5 câu dùng ngay · Ngày 079",
+    "phraseIds": [
+      "p391",
+      "p392",
+      "p393",
+      "p394",
+      "p395"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "design",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p386",
+      "p387",
+      "p388",
+      "p389",
+      "p390"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-080",
+    "day": 80,
+    "title": "5 câu dùng ngay · Ngày 080",
+    "phraseIds": [
+      "p396",
+      "p397",
+      "p398",
+      "p399",
+      "p400"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p391",
+      "p392",
+      "p393",
+      "p394",
+      "p395"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-081",
+    "day": 81,
+    "title": "5 câu dùng ngay · Ngày 081",
+    "phraseIds": [
+      "p401",
+      "p402",
+      "p403",
+      "p404",
+      "p405"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p396",
+      "p397",
+      "p398",
+      "p399",
+      "p400"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-082",
+    "day": 82,
+    "title": "5 câu dùng ngay · Ngày 082",
+    "phraseIds": [
+      "p406",
+      "p407",
+      "p408",
+      "p409",
+      "p410"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "business",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p401",
+      "p402",
+      "p403",
+      "p404",
+      "p405"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-083",
+    "day": 83,
+    "title": "5 câu dùng ngay · Ngày 083",
+    "phraseIds": [
+      "p411",
+      "p412",
+      "p413",
+      "p414",
+      "p415"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p406",
+      "p407",
+      "p408",
+      "p409",
+      "p410"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-084",
+    "day": 84,
+    "title": "5 câu dùng ngay · Ngày 084",
+    "phraseIds": [
+      "p416",
+      "p417",
+      "p418",
+      "p419",
+      "p420"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "meeting",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p411",
+      "p412",
+      "p413",
+      "p414",
+      "p415"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-085",
+    "day": 85,
+    "title": "5 câu dùng ngay · Ngày 085",
+    "phraseIds": [
+      "p421",
+      "p422",
+      "p423",
+      "p424",
+      "p425"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p416",
+      "p417",
+      "p418",
+      "p419",
+      "p420"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-086",
+    "day": 86,
+    "title": "5 câu dùng ngay · Ngày 086",
+    "phraseIds": [
+      "p426",
+      "p427",
+      "p428",
+      "p429",
+      "p430"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p421",
+      "p422",
+      "p423",
+      "p424",
+      "p425"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-087",
+    "day": 87,
+    "title": "5 câu dùng ngay · Ngày 087",
+    "phraseIds": [
+      "p431",
+      "p432",
+      "p433",
+      "p434",
+      "p435"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p426",
+      "p427",
+      "p428",
+      "p429",
+      "p430"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-088",
+    "day": 88,
+    "title": "5 câu dùng ngay · Ngày 088",
+    "phraseIds": [
+      "p436",
+      "p437",
+      "p438",
+      "p439",
+      "p440"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p431",
+      "p432",
+      "p433",
+      "p434",
+      "p435"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-089",
+    "day": 89,
+    "title": "5 câu dùng ngay · Ngày 089",
+    "phraseIds": [
+      "p441",
+      "p442",
+      "p443",
+      "p444",
+      "p445"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p436",
+      "p437",
+      "p438",
+      "p439",
+      "p440"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-090",
+    "day": 90,
+    "title": "5 câu dùng ngay · Ngày 090",
+    "phraseIds": [
+      "p446",
+      "p447",
+      "p448",
+      "p449",
+      "p450"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p441",
+      "p442",
+      "p443",
+      "p444",
+      "p445"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-091",
+    "day": 91,
+    "title": "5 câu dùng ngay · Ngày 091",
+    "phraseIds": [
+      "p451",
+      "p452",
+      "p453",
+      "p454",
+      "p455"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p446",
+      "p447",
+      "p448",
+      "p449",
+      "p450"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-092",
+    "day": 92,
+    "title": "5 câu dùng ngay · Ngày 092",
+    "phraseIds": [
+      "p456",
+      "p457",
+      "p458",
+      "p459",
+      "p460"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p451",
+      "p452",
+      "p453",
+      "p454",
+      "p455"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-093",
+    "day": 93,
+    "title": "5 câu dùng ngay · Ngày 093",
+    "phraseIds": [
+      "p461",
+      "p462",
+      "p463",
+      "p464",
+      "p465"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p456",
+      "p457",
+      "p458",
+      "p459",
+      "p460"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-094",
+    "day": 94,
+    "title": "5 câu dùng ngay · Ngày 094",
+    "phraseIds": [
+      "p466",
+      "p467",
+      "p468",
+      "p469",
+      "p470"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p461",
+      "p462",
+      "p463",
+      "p464",
+      "p465"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-095",
+    "day": 95,
+    "title": "5 câu dùng ngay · Ngày 095",
+    "phraseIds": [
+      "p471",
+      "p472",
+      "p473",
+      "p474",
+      "p475"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p466",
+      "p467",
+      "p468",
+      "p469",
+      "p470"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-096",
+    "day": 96,
+    "title": "5 câu dùng ngay · Ngày 096",
+    "phraseIds": [
+      "p476",
+      "p477",
+      "p478",
+      "p479",
+      "p480"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p471",
+      "p472",
+      "p473",
+      "p474",
+      "p475"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-097",
+    "day": 97,
+    "title": "5 câu dùng ngay · Ngày 097",
+    "phraseIds": [
+      "p481",
+      "p482",
+      "p483",
+      "p484",
+      "p485"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p476",
+      "p477",
+      "p478",
+      "p479",
+      "p480"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-098",
+    "day": 98,
+    "title": "5 câu dùng ngay · Ngày 098",
+    "phraseIds": [
+      "p486",
+      "p487",
+      "p488",
+      "p489",
+      "p490"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p481",
+      "p482",
+      "p483",
+      "p484",
+      "p485"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-099",
+    "day": 99,
+    "title": "5 câu dùng ngay · Ngày 099",
+    "phraseIds": [
+      "p491",
+      "p492",
+      "p493",
+      "p494",
+      "p495"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p486",
+      "p487",
+      "p488",
+      "p489",
+      "p490"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-100",
+    "day": 100,
+    "title": "5 câu dùng ngay · Ngày 100",
+    "phraseIds": [
+      "p496",
+      "p497",
+      "p498",
+      "p499",
+      "p500"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p491",
+      "p492",
+      "p493",
+      "p494",
+      "p495"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-101",
+    "day": 101,
+    "title": "5 câu dùng ngay · Ngày 101",
+    "phraseIds": [
+      "p501",
+      "p502",
+      "p503",
+      "p504",
+      "p505"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p496",
+      "p497",
+      "p498",
+      "p499",
+      "p500"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-102",
+    "day": 102,
+    "title": "5 câu dùng ngay · Ngày 102",
+    "phraseIds": [
+      "p506",
+      "p507",
+      "p508",
+      "p509",
+      "p510"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p501",
+      "p502",
+      "p503",
+      "p504",
+      "p505"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-103",
+    "day": 103,
+    "title": "5 câu dùng ngay · Ngày 103",
+    "phraseIds": [
+      "p511",
+      "p512",
+      "p513",
+      "p514",
+      "p515"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p506",
+      "p507",
+      "p508",
+      "p509",
+      "p510"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-104",
+    "day": 104,
+    "title": "5 câu dùng ngay · Ngày 104",
+    "phraseIds": [
+      "p516",
+      "p517",
+      "p518",
+      "p519",
+      "p520"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "reflex",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p511",
+      "p512",
+      "p513",
+      "p514",
+      "p515"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-105",
+    "day": 105,
+    "title": "5 câu dùng ngay · Ngày 105",
+    "phraseIds": [
+      "p521",
+      "p522",
+      "p523",
+      "p524",
+      "p525"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p516",
+      "p517",
+      "p518",
+      "p519",
+      "p520"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-106",
+    "day": 106,
+    "title": "5 câu dùng ngay · Ngày 106",
+    "phraseIds": [
+      "p526",
+      "p527",
+      "p528",
+      "p529",
+      "p530"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p521",
+      "p522",
+      "p523",
+      "p524",
+      "p525"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-107",
+    "day": 107,
+    "title": "5 câu dùng ngay · Ngày 107",
+    "phraseIds": [
+      "p531",
+      "p532",
+      "p533",
+      "p534",
+      "p535"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p526",
+      "p527",
+      "p528",
+      "p529",
+      "p530"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-108",
+    "day": 108,
+    "title": "5 câu dùng ngay · Ngày 108",
+    "phraseIds": [
+      "p536",
+      "p537",
+      "p538",
+      "p539",
+      "p540"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p531",
+      "p532",
+      "p533",
+      "p534",
+      "p535"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-109",
+    "day": 109,
+    "title": "5 câu dùng ngay · Ngày 109",
+    "phraseIds": [
+      "p541",
+      "p542",
+      "p543",
+      "p544",
+      "p545"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p536",
+      "p537",
+      "p538",
+      "p539",
+      "p540"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-110",
+    "day": 110,
+    "title": "5 câu dùng ngay · Ngày 110",
+    "phraseIds": [
+      "p546",
+      "p547",
+      "p548",
+      "p549",
+      "p550"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p541",
+      "p542",
+      "p543",
+      "p544",
+      "p545"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-111",
+    "day": 111,
+    "title": "5 câu dùng ngay · Ngày 111",
+    "phraseIds": [
+      "p551",
+      "p552",
+      "p553",
+      "p554",
+      "p555"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p546",
+      "p547",
+      "p548",
+      "p549",
+      "p550"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-112",
+    "day": 112,
+    "title": "5 câu dùng ngay · Ngày 112",
+    "phraseIds": [
+      "p556",
+      "p557",
+      "p558",
+      "p559",
+      "p560"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p551",
+      "p552",
+      "p553",
+      "p554",
+      "p555"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-113",
+    "day": 113,
+    "title": "5 câu dùng ngay · Ngày 113",
+    "phraseIds": [
+      "p561",
+      "p562",
+      "p563",
+      "p564",
+      "p565"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p556",
+      "p557",
+      "p558",
+      "p559",
+      "p560"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-114",
+    "day": 114,
+    "title": "5 câu dùng ngay · Ngày 114",
+    "phraseIds": [
+      "p566",
+      "p567",
+      "p568",
+      "p569",
+      "p570"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p561",
+      "p562",
+      "p563",
+      "p564",
+      "p565"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-115",
+    "day": 115,
+    "title": "5 câu dùng ngay · Ngày 115",
+    "phraseIds": [
+      "p571",
+      "p572",
+      "p573",
+      "p574",
+      "p575"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p566",
+      "p567",
+      "p568",
+      "p569",
+      "p570"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-116",
+    "day": 116,
+    "title": "5 câu dùng ngay · Ngày 116",
+    "phraseIds": [
+      "p576",
+      "p577",
+      "p578",
+      "p579",
+      "p580"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p571",
+      "p572",
+      "p573",
+      "p574",
+      "p575"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-117",
+    "day": 117,
+    "title": "5 câu dùng ngay · Ngày 117",
+    "phraseIds": [
+      "p581",
+      "p582",
+      "p583",
+      "p584",
+      "p585"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p576",
+      "p577",
+      "p578",
+      "p579",
+      "p580"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-118",
+    "day": 118,
+    "title": "5 câu dùng ngay · Ngày 118",
+    "phraseIds": [
+      "p586",
+      "p587",
+      "p588",
+      "p589",
+      "p590"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p581",
+      "p582",
+      "p583",
+      "p584",
+      "p585"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-119",
+    "day": 119,
+    "title": "5 câu dùng ngay · Ngày 119",
+    "phraseIds": [
+      "p591",
+      "p592",
+      "p593",
+      "p594",
+      "p595"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p586",
+      "p587",
+      "p588",
+      "p589",
+      "p590"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-120",
+    "day": 120,
+    "title": "5 câu dùng ngay · Ngày 120",
+    "phraseIds": [
+      "p596",
+      "p597",
+      "p598",
+      "p599",
+      "p600"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p591",
+      "p592",
+      "p593",
+      "p594",
+      "p595"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-121",
+    "day": 121,
+    "title": "5 câu dùng ngay · Ngày 121",
+    "phraseIds": [
+      "p601",
+      "p602",
+      "p603",
+      "p604",
+      "p605"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "design",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p596",
+      "p597",
+      "p598",
+      "p599",
+      "p600"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-122",
+    "day": 122,
+    "title": "5 câu dùng ngay · Ngày 122",
+    "phraseIds": [
+      "p606",
+      "p607",
+      "p608",
+      "p609",
+      "p610"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p601",
+      "p602",
+      "p603",
+      "p604",
+      "p605"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-123",
+    "day": 123,
+    "title": "5 câu dùng ngay · Ngày 123",
+    "phraseIds": [
+      "p611",
+      "p612",
+      "p613",
+      "p614",
+      "p615"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p606",
+      "p607",
+      "p608",
+      "p609",
+      "p610"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-124",
+    "day": 124,
+    "title": "5 câu dùng ngay · Ngày 124",
+    "phraseIds": [
+      "p616",
+      "p617",
+      "p618",
+      "p619",
+      "p620"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "business",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p611",
+      "p612",
+      "p613",
+      "p614",
+      "p615"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-125",
+    "day": 125,
+    "title": "5 câu dùng ngay · Ngày 125",
+    "phraseIds": [
+      "p621",
+      "p622",
+      "p623",
+      "p624",
+      "p625"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p616",
+      "p617",
+      "p618",
+      "p619",
+      "p620"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-126",
+    "day": 126,
+    "title": "5 câu dùng ngay · Ngày 126",
+    "phraseIds": [
+      "p626",
+      "p627",
+      "p628",
+      "p629",
+      "p630"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "meeting",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p621",
+      "p622",
+      "p623",
+      "p624",
+      "p625"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-127",
+    "day": 127,
+    "title": "5 câu dùng ngay · Ngày 127",
+    "phraseIds": [
+      "p631",
+      "p632",
+      "p633",
+      "p634",
+      "p635"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p626",
+      "p627",
+      "p628",
+      "p629",
+      "p630"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-128",
+    "day": 128,
+    "title": "5 câu dùng ngay · Ngày 128",
+    "phraseIds": [
+      "p636",
+      "p637",
+      "p638",
+      "p639",
+      "p640"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p631",
+      "p632",
+      "p633",
+      "p634",
+      "p635"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-129",
+    "day": 129,
+    "title": "5 câu dùng ngay · Ngày 129",
+    "phraseIds": [
+      "p641",
+      "p642",
+      "p643",
+      "p644",
+      "p645"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p636",
+      "p637",
+      "p638",
+      "p639",
+      "p640"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-130",
+    "day": 130,
+    "title": "5 câu dùng ngay · Ngày 130",
+    "phraseIds": [
+      "p646",
+      "p647",
+      "p648",
+      "p649",
+      "p650"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p641",
+      "p642",
+      "p643",
+      "p644",
+      "p645"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-131",
+    "day": 131,
+    "title": "5 câu dùng ngay · Ngày 131",
+    "phraseIds": [
+      "p651",
+      "p652",
+      "p653",
+      "p654",
+      "p655"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p646",
+      "p647",
+      "p648",
+      "p649",
+      "p650"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-132",
+    "day": 132,
+    "title": "5 câu dùng ngay · Ngày 132",
+    "phraseIds": [
+      "p656",
+      "p657",
+      "p658",
+      "p659",
+      "p660"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p651",
+      "p652",
+      "p653",
+      "p654",
+      "p655"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-133",
+    "day": 133,
+    "title": "5 câu dùng ngay · Ngày 133",
+    "phraseIds": [
+      "p661",
+      "p662",
+      "p663",
+      "p664",
+      "p665"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p656",
+      "p657",
+      "p658",
+      "p659",
+      "p660"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-134",
+    "day": 134,
+    "title": "5 câu dùng ngay · Ngày 134",
+    "phraseIds": [
+      "p666",
+      "p667",
+      "p668",
+      "p669",
+      "p670"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p661",
+      "p662",
+      "p663",
+      "p664",
+      "p665"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-135",
+    "day": 135,
+    "title": "5 câu dùng ngay · Ngày 135",
+    "phraseIds": [
+      "p671",
+      "p672",
+      "p673",
+      "p674",
+      "p675"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p666",
+      "p667",
+      "p668",
+      "p669",
+      "p670"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-136",
+    "day": 136,
+    "title": "5 câu dùng ngay · Ngày 136",
+    "phraseIds": [
+      "p676",
+      "p677",
+      "p678",
+      "p679",
+      "p680"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p671",
+      "p672",
+      "p673",
+      "p674",
+      "p675"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-137",
+    "day": 137,
+    "title": "5 câu dùng ngay · Ngày 137",
+    "phraseIds": [
+      "p681",
+      "p682",
+      "p683",
+      "p684",
+      "p685"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p676",
+      "p677",
+      "p678",
+      "p679",
+      "p680"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-138",
+    "day": 138,
+    "title": "5 câu dùng ngay · Ngày 138",
+    "phraseIds": [
+      "p686",
+      "p687",
+      "p688",
+      "p689",
+      "p690"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p681",
+      "p682",
+      "p683",
+      "p684",
+      "p685"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-139",
+    "day": 139,
+    "title": "5 câu dùng ngay · Ngày 139",
+    "phraseIds": [
+      "p691",
+      "p692",
+      "p693",
+      "p694",
+      "p695"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p686",
+      "p687",
+      "p688",
+      "p689",
+      "p690"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-140",
+    "day": 140,
+    "title": "5 câu dùng ngay · Ngày 140",
+    "phraseIds": [
+      "p696",
+      "p697",
+      "p698",
+      "p699",
+      "p700"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p691",
+      "p692",
+      "p693",
+      "p694",
+      "p695"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-141",
+    "day": 141,
+    "title": "5 câu dùng ngay · Ngày 141",
+    "phraseIds": [
+      "p701",
+      "p702",
+      "p703",
+      "p704",
+      "p705"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p696",
+      "p697",
+      "p698",
+      "p699",
+      "p700"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-142",
+    "day": 142,
+    "title": "5 câu dùng ngay · Ngày 142",
+    "phraseIds": [
+      "p706",
+      "p707",
+      "p708",
+      "p709",
+      "p710"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p701",
+      "p702",
+      "p703",
+      "p704",
+      "p705"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-143",
+    "day": 143,
+    "title": "5 câu dùng ngay · Ngày 143",
+    "phraseIds": [
+      "p711",
+      "p712",
+      "p713",
+      "p714",
+      "p715"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p706",
+      "p707",
+      "p708",
+      "p709",
+      "p710"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-144",
+    "day": 144,
+    "title": "5 câu dùng ngay · Ngày 144",
+    "phraseIds": [
+      "p716",
+      "p717",
+      "p718",
+      "p719",
+      "p720"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p711",
+      "p712",
+      "p713",
+      "p714",
+      "p715"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-145",
+    "day": 145,
+    "title": "5 câu dùng ngay · Ngày 145",
+    "phraseIds": [
+      "p721",
+      "p722",
+      "p723",
+      "p724",
+      "p725"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p716",
+      "p717",
+      "p718",
+      "p719",
+      "p720"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-146",
+    "day": 146,
+    "title": "5 câu dùng ngay · Ngày 146",
+    "phraseIds": [
+      "p726",
+      "p727",
+      "p728",
+      "p729",
+      "p730"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "reflex",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p721",
+      "p722",
+      "p723",
+      "p724",
+      "p725"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-147",
+    "day": 147,
+    "title": "5 câu dùng ngay · Ngày 147",
+    "phraseIds": [
+      "p731",
+      "p732",
+      "p733",
+      "p734",
+      "p735"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p726",
+      "p727",
+      "p728",
+      "p729",
+      "p730"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-148",
+    "day": 148,
+    "title": "5 câu dùng ngay · Ngày 148",
+    "phraseIds": [
+      "p736",
+      "p737",
+      "p738",
+      "p739",
+      "p740"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p731",
+      "p732",
+      "p733",
+      "p734",
+      "p735"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-149",
+    "day": 149,
+    "title": "5 câu dùng ngay · Ngày 149",
+    "phraseIds": [
+      "p741",
+      "p742",
+      "p743",
+      "p744",
+      "p745"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p736",
+      "p737",
+      "p738",
+      "p739",
+      "p740"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-150",
+    "day": 150,
+    "title": "5 câu dùng ngay · Ngày 150",
+    "phraseIds": [
+      "p746",
+      "p747",
+      "p748",
+      "p749",
+      "p750"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p741",
+      "p742",
+      "p743",
+      "p744",
+      "p745"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-151",
+    "day": 151,
+    "title": "5 câu dùng ngay · Ngày 151",
+    "phraseIds": [
+      "p751",
+      "p752",
+      "p753",
+      "p754",
+      "p755"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p746",
+      "p747",
+      "p748",
+      "p749",
+      "p750"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-152",
+    "day": 152,
+    "title": "5 câu dùng ngay · Ngày 152",
+    "phraseIds": [
+      "p756",
+      "p757",
+      "p758",
+      "p759",
+      "p760"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p751",
+      "p752",
+      "p753",
+      "p754",
+      "p755"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-153",
+    "day": 153,
+    "title": "5 câu dùng ngay · Ngày 153",
+    "phraseIds": [
+      "p761",
+      "p762",
+      "p763",
+      "p764",
+      "p765"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p756",
+      "p757",
+      "p758",
+      "p759",
+      "p760"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-154",
+    "day": 154,
+    "title": "5 câu dùng ngay · Ngày 154",
+    "phraseIds": [
+      "p766",
+      "p767",
+      "p768",
+      "p769",
+      "p770"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p761",
+      "p762",
+      "p763",
+      "p764",
+      "p765"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-155",
+    "day": 155,
+    "title": "5 câu dùng ngay · Ngày 155",
+    "phraseIds": [
+      "p771",
+      "p772",
+      "p773",
+      "p774",
+      "p775"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p766",
+      "p767",
+      "p768",
+      "p769",
+      "p770"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-156",
+    "day": 156,
+    "title": "5 câu dùng ngay · Ngày 156",
+    "phraseIds": [
+      "p776",
+      "p777",
+      "p778",
+      "p779",
+      "p780"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p771",
+      "p772",
+      "p773",
+      "p774",
+      "p775"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-157",
+    "day": 157,
+    "title": "5 câu dùng ngay · Ngày 157",
+    "phraseIds": [
+      "p781",
+      "p782",
+      "p783",
+      "p784",
+      "p785"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p776",
+      "p777",
+      "p778",
+      "p779",
+      "p780"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-158",
+    "day": 158,
+    "title": "5 câu dùng ngay · Ngày 158",
+    "phraseIds": [
+      "p786",
+      "p787",
+      "p788",
+      "p789",
+      "p790"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p781",
+      "p782",
+      "p783",
+      "p784",
+      "p785"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-159",
+    "day": 159,
+    "title": "5 câu dùng ngay · Ngày 159",
+    "phraseIds": [
+      "p791",
+      "p792",
+      "p793",
+      "p794",
+      "p795"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p786",
+      "p787",
+      "p788",
+      "p789",
+      "p790"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-160",
+    "day": 160,
+    "title": "5 câu dùng ngay · Ngày 160",
+    "phraseIds": [
+      "p796",
+      "p797",
+      "p798",
+      "p799",
+      "p800"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p791",
+      "p792",
+      "p793",
+      "p794",
+      "p795"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-161",
+    "day": 161,
+    "title": "5 câu dùng ngay · Ngày 161",
+    "phraseIds": [
+      "p801",
+      "p802",
+      "p803",
+      "p804",
+      "p805"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p796",
+      "p797",
+      "p798",
+      "p799",
+      "p800"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-162",
+    "day": 162,
+    "title": "5 câu dùng ngay · Ngày 162",
+    "phraseIds": [
+      "p806",
+      "p807",
+      "p808",
+      "p809",
+      "p810"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p801",
+      "p802",
+      "p803",
+      "p804",
+      "p805"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-163",
+    "day": 163,
+    "title": "5 câu dùng ngay · Ngày 163",
+    "phraseIds": [
+      "p811",
+      "p812",
+      "p813",
+      "p814",
+      "p815"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "design",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p806",
+      "p807",
+      "p808",
+      "p809",
+      "p810"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-164",
+    "day": 164,
+    "title": "5 câu dùng ngay · Ngày 164",
+    "phraseIds": [
+      "p816",
+      "p817",
+      "p818",
+      "p819",
+      "p820"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p811",
+      "p812",
+      "p813",
+      "p814",
+      "p815"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-165",
+    "day": 165,
+    "title": "5 câu dùng ngay · Ngày 165",
+    "phraseIds": [
+      "p821",
+      "p822",
+      "p823",
+      "p824",
+      "p825"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p816",
+      "p817",
+      "p818",
+      "p819",
+      "p820"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-166",
+    "day": 166,
+    "title": "5 câu dùng ngay · Ngày 166",
+    "phraseIds": [
+      "p826",
+      "p827",
+      "p828",
+      "p829",
+      "p830"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "business",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p821",
+      "p822",
+      "p823",
+      "p824",
+      "p825"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-167",
+    "day": 167,
+    "title": "5 câu dùng ngay · Ngày 167",
+    "phraseIds": [
+      "p831",
+      "p832",
+      "p833",
+      "p834",
+      "p835"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p826",
+      "p827",
+      "p828",
+      "p829",
+      "p830"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-168",
+    "day": 168,
+    "title": "5 câu dùng ngay · Ngày 168",
+    "phraseIds": [
+      "p836",
+      "p837",
+      "p838",
+      "p839",
+      "p840"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "meeting",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p831",
+      "p832",
+      "p833",
+      "p834",
+      "p835"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-169",
+    "day": 169,
+    "title": "5 câu dùng ngay · Ngày 169",
+    "phraseIds": [
+      "p841",
+      "p842",
+      "p843",
+      "p844",
+      "p845"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p836",
+      "p837",
+      "p838",
+      "p839",
+      "p840"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-170",
+    "day": 170,
+    "title": "5 câu dùng ngay · Ngày 170",
+    "phraseIds": [
+      "p846",
+      "p847",
+      "p848",
+      "p849",
+      "p850"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p841",
+      "p842",
+      "p843",
+      "p844",
+      "p845"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-171",
+    "day": 171,
+    "title": "5 câu dùng ngay · Ngày 171",
+    "phraseIds": [
+      "p851",
+      "p852",
+      "p853",
+      "p854",
+      "p855"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p846",
+      "p847",
+      "p848",
+      "p849",
+      "p850"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-172",
+    "day": 172,
+    "title": "5 câu dùng ngay · Ngày 172",
+    "phraseIds": [
+      "p856",
+      "p857",
+      "p858",
+      "p859",
+      "p860"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p851",
+      "p852",
+      "p853",
+      "p854",
+      "p855"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-173",
+    "day": 173,
+    "title": "5 câu dùng ngay · Ngày 173",
+    "phraseIds": [
+      "p861",
+      "p862",
+      "p863",
+      "p864",
+      "p865"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p856",
+      "p857",
+      "p858",
+      "p859",
+      "p860"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-174",
+    "day": 174,
+    "title": "5 câu dùng ngay · Ngày 174",
+    "phraseIds": [
+      "p866",
+      "p867",
+      "p868",
+      "p869",
+      "p870"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p861",
+      "p862",
+      "p863",
+      "p864",
+      "p865"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-175",
+    "day": 175,
+    "title": "5 câu dùng ngay · Ngày 175",
+    "phraseIds": [
+      "p871",
+      "p872",
+      "p873",
+      "p874",
+      "p875"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p866",
+      "p867",
+      "p868",
+      "p869",
+      "p870"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-176",
+    "day": 176,
+    "title": "5 câu dùng ngay · Ngày 176",
+    "phraseIds": [
+      "p876",
+      "p877",
+      "p878",
+      "p879",
+      "p880"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p871",
+      "p872",
+      "p873",
+      "p874",
+      "p875"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-177",
+    "day": 177,
+    "title": "5 câu dùng ngay · Ngày 177",
+    "phraseIds": [
+      "p881",
+      "p882",
+      "p883",
+      "p884",
+      "p885"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p876",
+      "p877",
+      "p878",
+      "p879",
+      "p880"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-178",
+    "day": 178,
+    "title": "5 câu dùng ngay · Ngày 178",
+    "phraseIds": [
+      "p886",
+      "p887",
+      "p888",
+      "p889",
+      "p890"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p881",
+      "p882",
+      "p883",
+      "p884",
+      "p885"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-179",
+    "day": 179,
+    "title": "5 câu dùng ngay · Ngày 179",
+    "phraseIds": [
+      "p891",
+      "p892",
+      "p893",
+      "p894",
+      "p895"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p886",
+      "p887",
+      "p888",
+      "p889",
+      "p890"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-180",
+    "day": 180,
+    "title": "5 câu dùng ngay · Ngày 180",
+    "phraseIds": [
+      "p896",
+      "p897",
+      "p898",
+      "p899",
+      "p900"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p891",
+      "p892",
+      "p893",
+      "p894",
+      "p895"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-181",
+    "day": 181,
+    "title": "5 câu dùng ngay · Ngày 181",
+    "phraseIds": [
+      "p901",
+      "p902",
+      "p903",
+      "p904",
+      "p905"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p896",
+      "p897",
+      "p898",
+      "p899",
+      "p900"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-182",
+    "day": 182,
+    "title": "5 câu dùng ngay · Ngày 182",
+    "phraseIds": [
+      "p906",
+      "p907",
+      "p908",
+      "p909",
+      "p910"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p901",
+      "p902",
+      "p903",
+      "p904",
+      "p905"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-183",
+    "day": 183,
+    "title": "5 câu dùng ngay · Ngày 183",
+    "phraseIds": [
+      "p911",
+      "p912",
+      "p913",
+      "p914",
+      "p915"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p906",
+      "p907",
+      "p908",
+      "p909",
+      "p910"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-184",
+    "day": 184,
+    "title": "5 câu dùng ngay · Ngày 184",
+    "phraseIds": [
+      "p916",
+      "p917",
+      "p918",
+      "p919",
+      "p920"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p911",
+      "p912",
+      "p913",
+      "p914",
+      "p915"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-185",
+    "day": 185,
+    "title": "5 câu dùng ngay · Ngày 185",
+    "phraseIds": [
+      "p921",
+      "p922",
+      "p923",
+      "p924",
+      "p925"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p916",
+      "p917",
+      "p918",
+      "p919",
+      "p920"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-186",
+    "day": 186,
+    "title": "5 câu dùng ngay · Ngày 186",
+    "phraseIds": [
+      "p926",
+      "p927",
+      "p928",
+      "p929",
+      "p930"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p921",
+      "p922",
+      "p923",
+      "p924",
+      "p925"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-187",
+    "day": 187,
+    "title": "5 câu dùng ngay · Ngày 187",
+    "phraseIds": [
+      "p931",
+      "p932",
+      "p933",
+      "p934",
+      "p935"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p926",
+      "p927",
+      "p928",
+      "p929",
+      "p930"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-188",
+    "day": 188,
+    "title": "5 câu dùng ngay · Ngày 188",
+    "phraseIds": [
+      "p936",
+      "p937",
+      "p938",
+      "p939",
+      "p940"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "reflex",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p931",
+      "p932",
+      "p933",
+      "p934",
+      "p935"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-189",
+    "day": 189,
+    "title": "5 câu dùng ngay · Ngày 189",
+    "phraseIds": [
+      "p941",
+      "p942",
+      "p943",
+      "p944",
+      "p945"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p936",
+      "p937",
+      "p938",
+      "p939",
+      "p940"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-190",
+    "day": 190,
+    "title": "5 câu dùng ngay · Ngày 190",
+    "phraseIds": [
+      "p946",
+      "p947",
+      "p948",
+      "p949",
+      "p950"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p941",
+      "p942",
+      "p943",
+      "p944",
+      "p945"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-191",
+    "day": 191,
+    "title": "5 câu dùng ngay · Ngày 191",
+    "phraseIds": [
+      "p951",
+      "p952",
+      "p953",
+      "p954",
+      "p955"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p946",
+      "p947",
+      "p948",
+      "p949",
+      "p950"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-192",
+    "day": 192,
+    "title": "5 câu dùng ngay · Ngày 192",
+    "phraseIds": [
+      "p956",
+      "p957",
+      "p958",
+      "p959",
+      "p960"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p951",
+      "p952",
+      "p953",
+      "p954",
+      "p955"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-193",
+    "day": 193,
+    "title": "5 câu dùng ngay · Ngày 193",
+    "phraseIds": [
+      "p961",
+      "p962",
+      "p963",
+      "p964",
+      "p965"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p956",
+      "p957",
+      "p958",
+      "p959",
+      "p960"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-194",
+    "day": 194,
+    "title": "5 câu dùng ngay · Ngày 194",
+    "phraseIds": [
+      "p966",
+      "p967",
+      "p968",
+      "p969",
+      "p970"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p961",
+      "p962",
+      "p963",
+      "p964",
+      "p965"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-195",
+    "day": 195,
+    "title": "5 câu dùng ngay · Ngày 195",
+    "phraseIds": [
+      "p971",
+      "p972",
+      "p973",
+      "p974",
+      "p975"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p966",
+      "p967",
+      "p968",
+      "p969",
+      "p970"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-196",
+    "day": 196,
+    "title": "5 câu dùng ngay · Ngày 196",
+    "phraseIds": [
+      "p976",
+      "p977",
+      "p978",
+      "p979",
+      "p980"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p971",
+      "p972",
+      "p973",
+      "p974",
+      "p975"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-197",
+    "day": 197,
+    "title": "5 câu dùng ngay · Ngày 197",
+    "phraseIds": [
+      "p981",
+      "p982",
+      "p983",
+      "p984",
+      "p985"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p976",
+      "p977",
+      "p978",
+      "p979",
+      "p980"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-198",
+    "day": 198,
+    "title": "5 câu dùng ngay · Ngày 198",
+    "phraseIds": [
+      "p986",
+      "p987",
+      "p988",
+      "p989",
+      "p990"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p981",
+      "p982",
+      "p983",
+      "p984",
+      "p985"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-199",
+    "day": 199,
+    "title": "5 câu dùng ngay · Ngày 199",
+    "phraseIds": [
+      "p991",
+      "p992",
+      "p993",
+      "p994",
+      "p995"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p986",
+      "p987",
+      "p988",
+      "p989",
+      "p990"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-200",
+    "day": 200,
+    "title": "5 câu dùng ngay · Ngày 200",
+    "phraseIds": [
+      "p996",
+      "p997",
+      "p998",
+      "p999",
+      "p1000"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p991",
+      "p992",
+      "p993",
+      "p994",
+      "p995"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-201",
+    "day": 201,
+    "title": "5 câu dùng ngay · Ngày 201",
+    "phraseIds": [
+      "p1001",
+      "p1002",
+      "p1003",
+      "p1004",
+      "p1005"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p996",
+      "p997",
+      "p998",
+      "p999",
+      "p1000"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-202",
+    "day": 202,
+    "title": "5 câu dùng ngay · Ngày 202",
+    "phraseIds": [
+      "p1006",
+      "p1007",
+      "p1008",
+      "p1009",
+      "p1010"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p1001",
+      "p1002",
+      "p1003",
+      "p1004",
+      "p1005"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-203",
+    "day": 203,
+    "title": "5 câu dùng ngay · Ngày 203",
+    "phraseIds": [
+      "p1011",
+      "p1012",
+      "p1013",
+      "p1014",
+      "p1015"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p1006",
+      "p1007",
+      "p1008",
+      "p1009",
+      "p1010"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-204",
+    "day": 204,
+    "title": "5 câu dùng ngay · Ngày 204",
+    "phraseIds": [
+      "p1016",
+      "p1017",
+      "p1018",
+      "p1019",
+      "p1020"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p1011",
+      "p1012",
+      "p1013",
+      "p1014",
+      "p1015"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-205",
+    "day": 205,
+    "title": "5 câu dùng ngay · Ngày 205",
+    "phraseIds": [
+      "p1021",
+      "p1022",
+      "p1023",
+      "p1024",
+      "p1025"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "design",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p1016",
+      "p1017",
+      "p1018",
+      "p1019",
+      "p1020"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-206",
+    "day": 206,
+    "title": "5 câu dùng ngay · Ngày 206",
+    "phraseIds": [
+      "p1026",
+      "p1027",
+      "p1028",
+      "p1029",
+      "p1030"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p1021",
+      "p1022",
+      "p1023",
+      "p1024",
+      "p1025"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-207",
+    "day": 207,
+    "title": "5 câu dùng ngay · Ngày 207",
+    "phraseIds": [
+      "p1031",
+      "p1032",
+      "p1033",
+      "p1034",
+      "p1035"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p1026",
+      "p1027",
+      "p1028",
+      "p1029",
+      "p1030"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-208",
+    "day": 208,
+    "title": "5 câu dùng ngay · Ngày 208",
+    "phraseIds": [
+      "p1036",
+      "p1037",
+      "p1038",
+      "p1039",
+      "p1040"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "business",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p1031",
+      "p1032",
+      "p1033",
+      "p1034",
+      "p1035"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-209",
+    "day": 209,
+    "title": "5 câu dùng ngay · Ngày 209",
+    "phraseIds": [
+      "p1041",
+      "p1042",
+      "p1043",
+      "p1044",
+      "p1045"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p1036",
+      "p1037",
+      "p1038",
+      "p1039",
+      "p1040"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-210",
+    "day": 210,
+    "title": "5 câu dùng ngay · Ngày 210",
+    "phraseIds": [
+      "p1046",
+      "p1047",
+      "p1048",
+      "p1049",
+      "p1050"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "meeting",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p1041",
+      "p1042",
+      "p1043",
+      "p1044",
+      "p1045"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-211",
+    "day": 211,
+    "title": "5 câu dùng ngay · Ngày 211",
+    "phraseIds": [
+      "p1051",
+      "p1052",
+      "p1053",
+      "p1054",
+      "p1055"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p1046",
+      "p1047",
+      "p1048",
+      "p1049",
+      "p1050"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-212",
+    "day": 212,
+    "title": "5 câu dùng ngay · Ngày 212",
+    "phraseIds": [
+      "p1056",
+      "p1057",
+      "p1058",
+      "p1059",
+      "p1060"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p1051",
+      "p1052",
+      "p1053",
+      "p1054",
+      "p1055"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-213",
+    "day": 213,
+    "title": "5 câu dùng ngay · Ngày 213",
+    "phraseIds": [
+      "p1061",
+      "p1062",
+      "p1063",
+      "p1064",
+      "p1065"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p1056",
+      "p1057",
+      "p1058",
+      "p1059",
+      "p1060"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-214",
+    "day": 214,
+    "title": "5 câu dùng ngay · Ngày 214",
+    "phraseIds": [
+      "p1066",
+      "p1067",
+      "p1068",
+      "p1069",
+      "p1070"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p1061",
+      "p1062",
+      "p1063",
+      "p1064",
+      "p1065"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-215",
+    "day": 215,
+    "title": "5 câu dùng ngay · Ngày 215",
+    "phraseIds": [
+      "p1071",
+      "p1072",
+      "p1073",
+      "p1074",
+      "p1075"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p1066",
+      "p1067",
+      "p1068",
+      "p1069",
+      "p1070"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-216",
+    "day": 216,
+    "title": "5 câu dùng ngay · Ngày 216",
+    "phraseIds": [
+      "p1076",
+      "p1077",
+      "p1078",
+      "p1079",
+      "p1080"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p1071",
+      "p1072",
+      "p1073",
+      "p1074",
+      "p1075"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-217",
+    "day": 217,
+    "title": "5 câu dùng ngay · Ngày 217",
+    "phraseIds": [
+      "p1081",
+      "p1082",
+      "p1083",
+      "p1084",
+      "p1085"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p1076",
+      "p1077",
+      "p1078",
+      "p1079",
+      "p1080"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-218",
+    "day": 218,
+    "title": "5 câu dùng ngay · Ngày 218",
+    "phraseIds": [
+      "p1086",
+      "p1087",
+      "p1088",
+      "p1089",
+      "p1090"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p1081",
+      "p1082",
+      "p1083",
+      "p1084",
+      "p1085"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-219",
+    "day": 219,
+    "title": "5 câu dùng ngay · Ngày 219",
+    "phraseIds": [
+      "p1091",
+      "p1092",
+      "p1093",
+      "p1094",
+      "p1095"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p1086",
+      "p1087",
+      "p1088",
+      "p1089",
+      "p1090"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-220",
+    "day": 220,
+    "title": "5 câu dùng ngay · Ngày 220",
+    "phraseIds": [
+      "p1096",
+      "p1097",
+      "p1098",
+      "p1099",
+      "p1100"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p1091",
+      "p1092",
+      "p1093",
+      "p1094",
+      "p1095"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-221",
+    "day": 221,
+    "title": "5 câu dùng ngay · Ngày 221",
+    "phraseIds": [
+      "p1101",
+      "p1102",
+      "p1103",
+      "p1104",
+      "p1105"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p1096",
+      "p1097",
+      "p1098",
+      "p1099",
+      "p1100"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-222",
+    "day": 222,
+    "title": "5 câu dùng ngay · Ngày 222",
+    "phraseIds": [
+      "p1106",
+      "p1107",
+      "p1108",
+      "p1109",
+      "p1110"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p1101",
+      "p1102",
+      "p1103",
+      "p1104",
+      "p1105"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-223",
+    "day": 223,
+    "title": "5 câu dùng ngay · Ngày 223",
+    "phraseIds": [
+      "p1111",
+      "p1112",
+      "p1113",
+      "p1114",
+      "p1115"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p1106",
+      "p1107",
+      "p1108",
+      "p1109",
+      "p1110"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-224",
+    "day": 224,
+    "title": "5 câu dùng ngay · Ngày 224",
+    "phraseIds": [
+      "p1116",
+      "p1117",
+      "p1118",
+      "p1119",
+      "p1120"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p1111",
+      "p1112",
+      "p1113",
+      "p1114",
+      "p1115"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-225",
+    "day": 225,
+    "title": "5 câu dùng ngay · Ngày 225",
+    "phraseIds": [
+      "p1121",
+      "p1122",
+      "p1123",
+      "p1124",
+      "p1125"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p1116",
+      "p1117",
+      "p1118",
+      "p1119",
+      "p1120"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-226",
+    "day": 226,
+    "title": "5 câu dùng ngay · Ngày 226",
+    "phraseIds": [
+      "p1126",
+      "p1127",
+      "p1128",
+      "p1129",
+      "p1130"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p1121",
+      "p1122",
+      "p1123",
+      "p1124",
+      "p1125"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-227",
+    "day": 227,
+    "title": "5 câu dùng ngay · Ngày 227",
+    "phraseIds": [
+      "p1131",
+      "p1132",
+      "p1133",
+      "p1134",
+      "p1135"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p1126",
+      "p1127",
+      "p1128",
+      "p1129",
+      "p1130"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-228",
+    "day": 228,
+    "title": "5 câu dùng ngay · Ngày 228",
+    "phraseIds": [
+      "p1136",
+      "p1137",
+      "p1138",
+      "p1139",
+      "p1140"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p1131",
+      "p1132",
+      "p1133",
+      "p1134",
+      "p1135"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-229",
+    "day": 229,
+    "title": "5 câu dùng ngay · Ngày 229",
+    "phraseIds": [
+      "p1141",
+      "p1142",
+      "p1143",
+      "p1144",
+      "p1145"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p1136",
+      "p1137",
+      "p1138",
+      "p1139",
+      "p1140"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-230",
+    "day": 230,
+    "title": "5 câu dùng ngay · Ngày 230",
+    "phraseIds": [
+      "p1146",
+      "p1147",
+      "p1148",
+      "p1149",
+      "p1150"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "reflex",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p1141",
+      "p1142",
+      "p1143",
+      "p1144",
+      "p1145"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-231",
+    "day": 231,
+    "title": "5 câu dùng ngay · Ngày 231",
+    "phraseIds": [
+      "p1151",
+      "p1152",
+      "p1153",
+      "p1154",
+      "p1155"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p1146",
+      "p1147",
+      "p1148",
+      "p1149",
+      "p1150"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-232",
+    "day": 232,
+    "title": "5 câu dùng ngay · Ngày 232",
+    "phraseIds": [
+      "p1156",
+      "p1157",
+      "p1158",
+      "p1159",
+      "p1160"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p1151",
+      "p1152",
+      "p1153",
+      "p1154",
+      "p1155"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-233",
+    "day": 233,
+    "title": "5 câu dùng ngay · Ngày 233",
+    "phraseIds": [
+      "p1161",
+      "p1162",
+      "p1163",
+      "p1164",
+      "p1165"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p1156",
+      "p1157",
+      "p1158",
+      "p1159",
+      "p1160"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-234",
+    "day": 234,
+    "title": "5 câu dùng ngay · Ngày 234",
+    "phraseIds": [
+      "p1166",
+      "p1167",
+      "p1168",
+      "p1169",
+      "p1170"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p1161",
+      "p1162",
+      "p1163",
+      "p1164",
+      "p1165"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-235",
+    "day": 235,
+    "title": "5 câu dùng ngay · Ngày 235",
+    "phraseIds": [
+      "p1171",
+      "p1172",
+      "p1173",
+      "p1174",
+      "p1175"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p1166",
+      "p1167",
+      "p1168",
+      "p1169",
+      "p1170"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-236",
+    "day": 236,
+    "title": "5 câu dùng ngay · Ngày 236",
+    "phraseIds": [
+      "p1176",
+      "p1177",
+      "p1178",
+      "p1179",
+      "p1180"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p1171",
+      "p1172",
+      "p1173",
+      "p1174",
+      "p1175"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-237",
+    "day": 237,
+    "title": "5 câu dùng ngay · Ngày 237",
+    "phraseIds": [
+      "p1181",
+      "p1182",
+      "p1183",
+      "p1184",
+      "p1185"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p1176",
+      "p1177",
+      "p1178",
+      "p1179",
+      "p1180"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-238",
+    "day": 238,
+    "title": "5 câu dùng ngay · Ngày 238",
+    "phraseIds": [
+      "p1186",
+      "p1187",
+      "p1188",
+      "p1189",
+      "p1190"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p1181",
+      "p1182",
+      "p1183",
+      "p1184",
+      "p1185"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-239",
+    "day": 239,
+    "title": "5 câu dùng ngay · Ngày 239",
+    "phraseIds": [
+      "p1191",
+      "p1192",
+      "p1193",
+      "p1194",
+      "p1195"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p1186",
+      "p1187",
+      "p1188",
+      "p1189",
+      "p1190"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-240",
+    "day": 240,
+    "title": "5 câu dùng ngay · Ngày 240",
+    "phraseIds": [
+      "p1196",
+      "p1197",
+      "p1198",
+      "p1199",
+      "p1200"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p1191",
+      "p1192",
+      "p1193",
+      "p1194",
+      "p1195"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  }
+]

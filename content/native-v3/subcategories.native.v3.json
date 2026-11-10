@@ -1,0 +1,562 @@
+[
+  {
+    "id": "legacy-day-01",
+    "categoryId": "reflex",
+    "name": "Tự tin trong cuộc họp",
+    "description": "Khi thấy một rủi ro trong đề xuất.",
+    "count": 5,
+    "isLegacy": true
+  },
+  {
+    "id": "legacy-day-02",
+    "categoryId": "reflex",
+    "name": "Nghe rõ và hỏi lại",
+    "description": "Khi người nói quá nhanh.",
+    "count": 5,
+    "isLegacy": true
+  },
+  {
+    "id": "legacy-day-03",
+    "categoryId": "design",
+    "name": "Góp ý thiết kế",
+    "description": "Khi review user flow.",
+    "count": 5,
+    "isLegacy": true
+  },
+  {
+    "id": "legacy-day-04",
+    "categoryId": "business",
+    "name": "Làm rõ yêu cầu BA",
+    "description": "Khi BA gửi yêu cầu có điểm chưa rõ.",
+    "count": 5,
+    "isLegacy": true
+  },
+  {
+    "id": "legacy-day-05",
+    "categoryId": "meeting",
+    "name": "Thống nhất trong team",
+    "description": "Khi chốt hướng giải pháp.",
+    "count": 5,
+    "isLegacy": true
+  },
+  {
+    "id": "legacy-day-06",
+    "categoryId": "leadership",
+    "name": "Phạm vi công việc",
+    "description": "Khi xuất hiện yêu cầu mới.",
+    "count": 5,
+    "isLegacy": true
+  },
+  {
+    "id": "legacy-day-07",
+    "categoryId": "leadership",
+    "name": "Sắp xếp ưu tiên",
+    "description": "Khi có nhiều đầu việc.",
+    "count": 5,
+    "isLegacy": true
+  },
+  {
+    "id": "legacy-day-08",
+    "categoryId": "engineering",
+    "name": "Tiến độ và deadline",
+    "description": "Khi thống nhất kế hoạch.",
+    "count": 5,
+    "isLegacy": true
+  },
+  {
+    "id": "legacy-day-09",
+    "categoryId": "engineering",
+    "name": "Báo cáo vướng mắc",
+    "description": "Khi báo blocker.",
+    "count": 5,
+    "isLegacy": true
+  },
+  {
+    "id": "legacy-day-10",
+    "categoryId": "leadership",
+    "name": "Chốt quyết định",
+    "description": "Khi trình bày phương án.",
+    "count": 5,
+    "isLegacy": true
+  },
+  {
+    "id": "legacy-day-11",
+    "categoryId": "design",
+    "name": "Đánh giá trải nghiệm",
+    "description": "Khi kiểm tra khả năng tự hiểu UI.",
+    "count": 5,
+    "isLegacy": true
+  },
+  {
+    "id": "legacy-day-12",
+    "categoryId": "design",
+    "name": "Dữ liệu và chỉ số",
+    "description": "Khi cần cơ sở ra quyết định.",
+    "count": 5,
+    "isLegacy": true
+  },
+  {
+    "id": "legacy-day-13",
+    "categoryId": "engineering",
+    "name": "Bàn giao cho Developer",
+    "description": "Khi gần hoàn tất UI.",
+    "count": 5,
+    "isLegacy": true
+  },
+  {
+    "id": "legacy-day-14",
+    "categoryId": "meeting",
+    "name": "Điều phối cuộc họp",
+    "description": "Khi mở đầu cuộc họp.",
+    "count": 5,
+    "isLegacy": true
+  },
+  {
+    "id": "legacy-day-15",
+    "categoryId": "meeting",
+    "name": "Theo dõi sau họp",
+    "description": "Khi hẹn cập nhật.",
+    "count": 5,
+    "isLegacy": true
+  },
+  {
+    "id": "legacy-day-16",
+    "categoryId": "meeting",
+    "name": "Bất đồng chuyên nghiệp",
+    "description": "Khi muốn phản biện lịch sự.",
+    "count": 5,
+    "isLegacy": true
+  },
+  {
+    "id": "legacy-day-17",
+    "categoryId": "business",
+    "name": "Phối hợp liên phòng ban",
+    "description": "Khi quyết định liên quan nhiều nhóm.",
+    "count": 5,
+    "isLegacy": true
+  },
+  {
+    "id": "legacy-day-18",
+    "categoryId": "design",
+    "name": "Nghiên cứu người dùng",
+    "description": "Khi khám phá vấn đề.",
+    "count": 5,
+    "isLegacy": true
+  },
+  {
+    "id": "legacy-day-19",
+    "categoryId": "design",
+    "name": "Demo và prototype",
+    "description": "Khi bắt đầu demo thiết kế.",
+    "count": 5,
+    "isLegacy": true
+  },
+  {
+    "id": "legacy-day-20",
+    "categoryId": "design",
+    "name": "Giải thích giải pháp UX",
+    "description": "Khi bảo vệ quyết định thiết kế.",
+    "count": 5,
+    "isLegacy": true
+  },
+  {
+    "id": "legacy-day-21",
+    "categoryId": "design",
+    "name": "Chiến lược sản phẩm",
+    "description": "Khi đánh giá tính năng mới.",
+    "count": 5,
+    "isLegacy": true
+  },
+  {
+    "id": "legacy-day-22",
+    "categoryId": "leadership",
+    "name": "Đánh đổi và rủi ro",
+    "description": "Khi gần thời điểm release.",
+    "count": 5,
+    "isLegacy": true
+  },
+  {
+    "id": "legacy-day-23",
+    "categoryId": "meeting",
+    "name": "Thuyết trình rõ ràng",
+    "description": "Khi mở đầu phần trình bày.",
+    "count": 5,
+    "isLegacy": true
+  },
+  {
+    "id": "legacy-day-24",
+    "categoryId": "engineering",
+    "name": "Kiểm tra và QA",
+    "description": "Khi kiểm tra trước release.",
+    "count": 5,
+    "isLegacy": true
+  },
+  {
+    "id": "legacy-day-25",
+    "categoryId": "engineering",
+    "name": "Cập nhật công việc",
+    "description": "Khi nói daily standup.",
+    "count": 5,
+    "isLegacy": true
+  },
+  {
+    "id": "legacy-day-26",
+    "categoryId": "engineering",
+    "name": "Quản lý thay đổi",
+    "description": "Khi business đưa thêm tính năng.",
+    "count": 5,
+    "isLegacy": true
+  },
+  {
+    "id": "legacy-day-27",
+    "categoryId": "leadership",
+    "name": "Trao đổi với quản lý",
+    "description": "Khi blocker vượt quyền xử lý.",
+    "count": 5,
+    "isLegacy": true
+  },
+  {
+    "id": "legacy-day-28",
+    "categoryId": "business",
+    "name": "Giao tiếp với người dùng nghiệp vụ",
+    "description": "Khi phỏng vấn người dùng nghiệp vụ.",
+    "count": 5,
+    "isLegacy": true
+  },
+  {
+    "id": "legacy-day-29",
+    "categoryId": "leadership",
+    "name": "Tổng kết và cải tiến",
+    "description": "Khi họp retrospective.",
+    "count": 5,
+    "isLegacy": true
+  },
+  {
+    "id": "legacy-day-30",
+    "categoryId": "reflex",
+    "name": "Phản xạ hội thoại tự nhiên",
+    "description": "Khi muốn chuyển sang quan điểm của mình.",
+    "count": 5,
+    "isLegacy": true
+  },
+  {
+    "id": "casual-check-in",
+    "categoryId": "everyday",
+    "name": "Small talk đầu ngày",
+    "description": "Khi gặp đồng nghiệp trước giờ làm hoặc đầu cuộc họp.",
+    "count": 40,
+    "isLegacy": false
+  },
+  {
+    "id": "ask-for-clarification",
+    "categoryId": "reflex",
+    "name": "Hỏi lại khi chưa rõ",
+    "description": "Khi người nói trình bày nhanh hoặc yêu cầu chưa đủ rõ.",
+    "count": 40,
+    "isLegacy": false
+  },
+  {
+    "id": "start-meeting",
+    "categoryId": "meeting",
+    "name": "Bắt đầu và dẫn dắt cuộc họp",
+    "description": "Khi chủ trì cuộc họp hoặc chuyển sang nội dung chính.",
+    "count": 35,
+    "isLegacy": false
+  },
+  {
+    "id": "usability-review",
+    "categoryId": "design",
+    "name": "Review trải nghiệm người dùng",
+    "description": "Khi góp ý UI dựa trên sự rõ ràng, thao tác và hiệu quả.",
+    "count": 35,
+    "isLegacy": false
+  },
+  {
+    "id": "business-rules",
+    "categoryId": "business",
+    "name": "Làm rõ quy tắc nghiệp vụ",
+    "description": "Khi BA trình bày điều kiện, policy, role và tiêu chí xử lý.",
+    "count": 20,
+    "isLegacy": false
+  },
+  {
+    "id": "dev-handoff",
+    "categoryId": "engineering",
+    "name": "Handoff sang developer",
+    "description": "Khi bàn giao hành vi UI và phối hợp FE/BE.",
+    "count": 35,
+    "isLegacy": false
+  },
+  {
+    "id": "priority-tradeoffs",
+    "categoryId": "leadership",
+    "name": "Ưu tiên và đánh đổi",
+    "description": "Khi cần quyết định nên xử lý việc gì trước mà không nói vòng vo.",
+    "count": 20,
+    "isLegacy": false
+  },
+  {
+    "id": "office-help",
+    "categoryId": "everyday",
+    "name": "Nhờ giúp đỡ tự nhiên",
+    "description": "Khi cần hỏi thông tin hoặc nhờ đồng nghiệp một việc nhỏ.",
+    "count": 40,
+    "isLegacy": false
+  },
+  {
+    "id": "casual-conversation",
+    "categoryId": "everyday",
+    "name": "Hội thoại đời sống tự nhiên",
+    "description": "Khi trò chuyện ngắn mà không muốn phải dịch từng từ.",
+    "count": 40,
+    "isLegacy": false
+  },
+  {
+    "id": "food-ordering",
+    "categoryId": "everyday",
+    "name": "Gọi món tại quán",
+    "description": "Khi đặt đồ ăn trực tiếp hoặc mang đi.",
+    "count": 25,
+    "isLegacy": false
+  },
+  {
+    "id": "cafe-drinks",
+    "categoryId": "everyday",
+    "name": "Đồ uống và quán cà phê",
+    "description": "Khi mua đồ uống, đổi size hoặc đặt mang đi.",
+    "count": 25,
+    "isLegacy": false
+  },
+  {
+    "id": "invite-feedback",
+    "categoryId": "meeting",
+    "name": "Mời phản hồi trong cuộc họp",
+    "description": "Khi cần thu thập ý kiến thay vì tự quyết định.",
+    "count": 35,
+    "isLegacy": false
+  },
+  {
+    "id": "interaction-states",
+    "categoryId": "design",
+    "name": "Tương tác và trạng thái UI",
+    "description": "Khi giải thích hành vi component trong prototype.",
+    "count": 35,
+    "isLegacy": false
+  },
+  {
+    "id": "missed-information",
+    "categoryId": "reflex",
+    "name": "Nghe thiếu chi tiết",
+    "description": "Khi nghe được đại ý nhưng bỏ lỡ thông tin cụ thể.",
+    "count": 35,
+    "isLegacy": false
+  },
+  {
+    "id": "restaurant-seating",
+    "categoryId": "everyday",
+    "name": "Đặt bàn và chọn chỗ",
+    "description": "Khi muốn xin bàn hoặc đổi chỗ ngồi.",
+    "count": 25,
+    "isLegacy": false
+  },
+  {
+    "id": "qa-triage",
+    "categoryId": "engineering",
+    "name": "QA, debug và xử lý lỗi",
+    "description": "Khi cùng QA tái hiện lỗi và xác nhận bản sửa.",
+    "count": 30,
+    "isLegacy": false
+  },
+  {
+    "id": "grocery-shopping",
+    "categoryId": "everyday",
+    "name": "Mua đồ ở siêu thị",
+    "description": "Khi tìm sản phẩm hoặc hỏi còn hàng.",
+    "count": 20,
+    "isLegacy": false
+  },
+  {
+    "id": "edge-cases",
+    "categoryId": "business",
+    "name": "Xử lý tình huống ngoại lệ",
+    "description": "Khi cần xác định trạng thái và hành vi ở các case không đi theo happy path.",
+    "count": 25,
+    "isLegacy": false
+  },
+  {
+    "id": "clothes-shopping",
+    "categoryId": "everyday",
+    "name": "Mua và đổi quần áo",
+    "description": "Khi thử đồ, hỏi size và đổi hàng.",
+    "count": 20,
+    "isLegacy": false
+  },
+  {
+    "id": "payments-receipts",
+    "categoryId": "everyday",
+    "name": "Thanh toán và hóa đơn",
+    "description": "Khi cần thanh toán hoặc hỏi về một khoản phí.",
+    "count": 20,
+    "isLegacy": false
+  },
+  {
+    "id": "action-and-closure",
+    "categoryId": "meeting",
+    "name": "Chốt hành động sau họp",
+    "description": "Khi cần rõ ai làm gì, khi nào xong và ai xác nhận.",
+    "count": 25,
+    "isLegacy": false
+  },
+  {
+    "id": "design-system",
+    "categoryId": "design",
+    "name": "Design System trong thực tế",
+    "description": "Khi đảm bảo component, token và states không bị lệch chuẩn.",
+    "count": 25,
+    "isLegacy": false
+  },
+  {
+    "id": "asking-directions",
+    "categoryId": "everyday",
+    "name": "Hỏi đường và tìm địa điểm",
+    "description": "Khi đi đến chỗ lạ hoặc hỏi phương tiện.",
+    "count": 25,
+    "isLegacy": false
+  },
+  {
+    "id": "buy-time",
+    "categoryId": "reflex",
+    "name": "Xin thời gian suy nghĩ",
+    "description": "Khi bị hỏi bất ngờ và cần tránh trả lời vội.",
+    "count": 35,
+    "isLegacy": false
+  },
+  {
+    "id": "ride-hailing",
+    "categoryId": "everyday",
+    "name": "Đi taxi và gọi xe",
+    "description": "Khi hướng dẫn tài xế điểm đón, điểm trả.",
+    "count": 20,
+    "isLegacy": false
+  },
+  {
+    "id": "release-and-deployment",
+    "categoryId": "engineering",
+    "name": "Release, production và tiến độ",
+    "description": "Khi trao đổi về triển khai và kiểm soát rủi ro trước phát hành.",
+    "count": 30,
+    "isLegacy": false
+  },
+  {
+    "id": "hotel-stays",
+    "categoryId": "everyday",
+    "name": "Lưu trú và khách sạn",
+    "description": "Khi có yêu cầu ở khách sạn hoặc nơi lưu trú.",
+    "count": 20,
+    "isLegacy": false
+  },
+  {
+    "id": "making-plans",
+    "categoryId": "everyday",
+    "name": "Rủ rê và hẹn gặp",
+    "description": "Khi rủ bạn bè, đồng nghiệp gặp gỡ ngoài giờ.",
+    "count": 25,
+    "isLegacy": false
+  },
+  {
+    "id": "pushback",
+    "categoryId": "meeting",
+    "name": "Phản biện lịch sự",
+    "description": "Khi không đồng ý nhưng muốn giữ cuộc trao đổi tích cực.",
+    "count": 25,
+    "isLegacy": false
+  },
+  {
+    "id": "family-check-ins",
+    "categoryId": "everyday",
+    "name": "Gia đình và thăm hỏi",
+    "description": "Khi hỏi thăm gia đình, bạn bè và người thân.",
+    "count": 20,
+    "isLegacy": false
+  },
+  {
+    "id": "research-strategy",
+    "categoryId": "design",
+    "name": "Nghiên cứu và chiến lược UX",
+    "description": "Khi giải thích quyết định dựa trên dữ liệu và hành vi người dùng.",
+    "count": 20,
+    "isLegacy": false
+  },
+  {
+    "id": "operational-workflow",
+    "categoryId": "business",
+    "name": "Quy trình vận hành thực tế",
+    "description": "Khi phỏng vấn người dùng nghiệp vụ hoặc mapping quy trình hiện tại.",
+    "count": 15,
+    "isLegacy": false
+  },
+  {
+    "id": "pharmacy-symptoms",
+    "categoryId": "everyday",
+    "name": "Triệu chứng và nhà thuốc",
+    "description": "Khi nói về triệu chứng thông thường hoặc hỏi nhà thuốc.",
+    "count": 20,
+    "isLegacy": false
+  },
+  {
+    "id": "lead-with-clarity",
+    "categoryId": "leadership",
+    "name": "Lãnh đạo bằng sự rõ ràng",
+    "description": "Khi dẫn dắt team, trao đổi với quản lý và thuyết phục stakeholder.",
+    "count": 15,
+    "isLegacy": false
+  },
+  {
+    "id": "device-problems",
+    "categoryId": "everyday",
+    "name": "Sự cố thiết bị hằng ngày",
+    "description": "Khi gặp lỗi điện thoại, Wi-Fi, máy in hoặc phần mềm.",
+    "count": 20,
+    "isLegacy": false
+  },
+  {
+    "id": "appointments-times",
+    "categoryId": "everyday",
+    "name": "Hẹn lịch và đổi lịch",
+    "description": "Khi xác nhận, hoãn hoặc đổi một cuộc hẹn.",
+    "count": 25,
+    "isLegacy": false
+  },
+  {
+    "id": "opinions-reactions",
+    "categoryId": "everyday",
+    "name": "Cảm nhận và phản hồi tự nhiên",
+    "description": "Khi hỏi nhận xét, chia sẻ cảm xúc hoặc giới thiệu thứ đã trải nghiệm.",
+    "count": 20,
+    "isLegacy": false
+  },
+  {
+    "id": "deliveries-tracking",
+    "categoryId": "everyday",
+    "name": "Giao hàng và đơn mua sắm",
+    "description": "Khi nhận hàng bị trễ, cần tìm gói hàng hoặc đổi địa điểm nhận.",
+    "count": 25,
+    "isLegacy": false
+  },
+  {
+    "id": "urgent-assistance",
+    "categoryId": "everyday",
+    "name": "Nhờ trợ giúp khi cần gấp",
+    "description": "Khi cần nhờ người khác tìm hoặc liên hệ dịch vụ hỗ trợ.",
+    "count": 25,
+    "isLegacy": false
+  },
+  {
+    "id": "stakeholder-validation",
+    "categoryId": "business",
+    "name": "Xác nhận với BA và Biz User",
+    "description": "Khi cần business sign-off và bảo đảm UI khớp nghiệp vụ.",
+    "count": 15,
+    "isLegacy": false
+  }
+]

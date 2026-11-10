@@ -1,0 +1,58 @@
+[
+  {
+    "id": "everyday",
+    "name": "Đời sống hằng ngày",
+    "count": 500,
+    "description": "Ăn uống, mua sắm, đi lại, gia đình, sức khỏe, hẹn lịch và cảm nhận",
+    "icon": "coffee",
+    "priority": 1
+  },
+  {
+    "id": "reflex",
+    "name": "Nghe hiểu & phản xạ",
+    "count": 125,
+    "description": "Hỏi lại, xác nhận, xin thời gian suy nghĩ khi không nghe kịp",
+    "icon": "ear",
+    "priority": 2
+  },
+  {
+    "id": "meeting",
+    "name": "Họp & làm việc nhóm",
+    "count": 145,
+    "description": "Mở đầu, phản biện, chốt, cập nhật và follow-up",
+    "icon": "users",
+    "priority": 3
+  },
+  {
+    "id": "design",
+    "name": "UI/UX & Product",
+    "count": 150,
+    "description": "Review, prototype, design system và nghiên cứu",
+    "icon": "pen-tool",
+    "priority": 4
+  },
+  {
+    "id": "business",
+    "name": "BA & Business Rules",
+    "count": 90,
+    "description": "Yêu cầu, logic, edge case và vận hành",
+    "icon": "clipboard-list",
+    "priority": 5
+  },
+  {
+    "id": "engineering",
+    "name": "Developer, QA & Release",
+    "count": 125,
+    "description": "Handoff, kiểm thử, lỗi và phát hành",
+    "icon": "code",
+    "priority": 6
+  },
+  {
+    "id": "leadership",
+    "name": "Leadership & Decisions",
+    "count": 65,
+    "description": "Ưu tiên, trade-off và quyết định",
+    "icon": "target",
+    "priority": 7
+  }
+]

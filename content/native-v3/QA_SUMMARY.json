@@ -1,0 +1,36 @@
+{
+  "total": 1200,
+  "legacyCount": 150,
+  "newCount": 1050,
+  "everydayCount": 500,
+  "reflexCount": 125,
+  "countsByCategory": {
+    "reflex": 125,
+    "design": 150,
+    "business": 90,
+    "meeting": 145,
+    "leadership": 65,
+    "engineering": 125,
+    "everyday": 500
+  },
+  "subcategories": 70,
+  "lessons": 240,
+  "patternFamiliesNew": 210,
+  "extraEverydayFamilies": 76,
+  "duplicatesEnglishExact": 0,
+  "legacyTextPreserved": true,
+  "automaticFlags": [],
+  "editorialLimitations": [
+    "Native conversational editorial pass by AI, not independently verified by a native speaker.",
+    "Templates were semantically grouped and spot-checked; a full per-line human copy-edit remains advisable before production.",
+    "Audio is not included. Device speechSynthesis is not a native-speaker voice recording."
+  ],
+  "qaAcceptance": [
+    "1200 records and 240 lessons",
+    "5 phrases/lesson",
+    "stable IDs p001-p150",
+    "nonempty translations, tips, contexts",
+    "no exact English duplicates",
+    "each new pattern has 5 spaced variations"
+  ]
+}
