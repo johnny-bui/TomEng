@@ -119,7 +119,7 @@
     const phrase = dailyPhrase();
     return `
       <aside class="rail">
-        <button class="brand-mark" data-page="home" aria-label="TomEng"><img src="icons/logo-tomeng.png" alt=""></button>
+        <button class="brand-mark" data-page="home" aria-label="TomEng"><img src="logo-tomeng.png" alt=""></button>
         <nav class="rail-nav" aria-label="Điều hướng chính">
           ${navButton('home','home','Trang chủ')}${navButton('library','book','Sổ tay')}${navButton('grammar','spark','Mẹo nhanh')}${navButton('practice','play','Luyện tập')}${navButton('saved','bookmark','Đã lưu')}${navButton('progress','chart','Tiến độ')}
         </nav>
