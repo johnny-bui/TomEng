@@ -61,7 +61,8 @@
   function lessonForNew() { return META.lessons.find((lesson) => !store.completions[lesson.id]) || null; }
   function mostRecentCompleted() { return store.lastCompletedLessonId ? lessonById.get(store.lastCompletedLessonId) : [...META.lessons].reverse().find((l)=>store.completions[l.id]) || null; }
   function ensureSession() {
-    if (store.activeSession) return store.activeSession;
+    if (store.activeSession && lessonById.has(store.activeSession.lessonId) && !store.completions[store.activeSession.lessonId]) return store.activeSession;
+    if (store.activeSession) store.activeSession=null;
     const lesson = lessonForNew();
     if (!lesson) return null;
     const prev = mostRecentCompleted();

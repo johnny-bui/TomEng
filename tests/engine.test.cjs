@@ -78,6 +78,10 @@ assert.equal(migratedState.completions['day-002'],undefined);
 assert.ok(migrated.storage.has('tomeng_migration_backup_v3'));
 assert.equal(migratedState.streak,0);
 
+const skipped=boot({'tomeng_reflex_v3':JSON.stringify({schemaVersion:3,saved:[],learned:[],completions:{'day-001':{lessonId:'day-001',day:1,date:'2025-01-01'}},lastCompletedLessonId:'day-001'})});
+assert.equal(skipped.app.getState().activeSession.phase,'review','skipping calendar days must not bypass the previous-lesson review');
+assert.equal(skipped.app.getState().activeSession.reviewLessonId,'day-001');
+
 // Rescue Mode returns three real records and caps the optional due queue at twelve.
 fresh.click({page:'rescue'});
 assert.equal((fresh.html().match(/class="rescue-card"/g)||[]).length,3);

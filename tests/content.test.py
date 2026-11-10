@@ -37,6 +37,7 @@ assert all(sum(p['categoryId'] == c['id'] for p in phrases) == c['count'] == c['
 with (CONTENT/'phrases.v2.csv').open(encoding='utf-8-sig',newline='') as f:
     rows=list(csv.DictReader(f))
 assert len(rows)==1200 and rows[0]['en']==phrases[0]['en'] and rows[-1]['id']==phrases[-1]['id']
+assert all(all(str(p.get(key,'')) == row[key] for key in row) for p,row in zip(phrases,rows))
 js=(ROOT/'data.js').read_text(encoding='utf-8')
 assert 'window.SPEAK5_PHRASES =' in js and '\ufffd' not in js
 browser_phrases=json.loads(js.split('=',1)[1].rstrip(';\n'))
