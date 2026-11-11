@@ -19,9 +19,12 @@
   <div id="app" class="app-shell"></div>
   <div id="modal-root"></div>
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="legacy-v2-fingerprints.js"></script>
   <script src="data.js"></script>
   <script src="meta.js"></script>
+  <script src="legacy-lesson-plan-v3.js"></script>
+  <script src="legacy-lesson-plan-v3_1.js"></script>
   <script src="app.js"></script>
-  <script>if('serviceWorker' in navigator && location.protocol.startsWith('http')) navigator.serviceWorker.register('./sw.js').catch(()=>{});</script>
+  <script>if('serviceWorker' in navigator && location.protocol.startsWith('http')) { navigator.serviceWorker.addEventListener('controllerchange',()=>location.reload(),{once:true}); navigator.serviceWorker.register('./sw.js?v=10-native',{updateViaCache:'none'}).catch(()=>{}); }</script>
 </body>
 </html>

@@ -1,0 +1,3152 @@
+[
+  {
+    "id": "pat001",
+    "categoryId": "everyday",
+    "subCategoryId": "casual-check-in",
+    "pattern": "How was …?",
+    "variantCount": 5,
+    "memoryTip": "“How was…?” hỏi một chuyện đã diễn ra; nối tiếp bằng một câu hỏi nhẹ.",
+    "phraseIds": [
+      "p151",
+      "p361",
+      "p571",
+      "p781",
+      "p991"
+    ]
+  },
+  {
+    "id": "pat002",
+    "categoryId": "reflex",
+    "subCategoryId": "ask-for-clarification",
+    "pattern": "Could you clarify …?",
+    "variantCount": 5,
+    "memoryTip": "Khi chưa rõ, mở bằng “Could you…?” để hỏi lại lịch sự; chỉ thay điều cần làm rõ.",
+    "phraseIds": [
+      "p152",
+      "p362",
+      "p572",
+      "p782",
+      "p992"
+    ]
+  },
+  {
+    "id": "pat003",
+    "categoryId": "meeting",
+    "subCategoryId": "start-meeting",
+    "pattern": "Let's start with ….",
+    "variantCount": 5,
+    "memoryTip": "“Let’s…” kéo cả nhóm vào một hành động. Nói câu chính trước, sau đó mới giải thích.",
+    "phraseIds": [
+      "p153",
+      "p363",
+      "p573",
+      "p783",
+      "p993"
+    ]
+  },
+  {
+    "id": "pat004",
+    "categoryId": "design",
+    "subCategoryId": "usability-review",
+    "pattern": "I think we can simplify ….",
+    "variantCount": 5,
+    "memoryTip": "Đổi nhận xét cảm tính thành câu nói rõ tác động lên người dùng và tác vụ.",
+    "phraseIds": [
+      "p154",
+      "p364",
+      "p574",
+      "p784",
+      "p994"
+    ]
+  },
+  {
+    "id": "pat005",
+    "categoryId": "business",
+    "subCategoryId": "business-rules",
+    "pattern": "Is … mandatory or optional?",
+    "variantCount": 5,
+    "memoryTip": "Hỏi rule trước khi thiết kế: bắt buộc không, ai áp dụng, ngoại lệ nào?",
+    "phraseIds": [
+      "p155",
+      "p365",
+      "p575",
+      "p785",
+      "p995"
+    ]
+  },
+  {
+    "id": "pat006",
+    "categoryId": "engineering",
+    "subCategoryId": "dev-handoff",
+    "pattern": "I've documented … in Figma.",
+    "variantCount": 5,
+    "memoryTip": "Bàn giao nói rõ component, behavior, state và nơi kiểm tra spec.",
+    "phraseIds": [
+      "p156",
+      "p366",
+      "p576",
+      "p786",
+      "p996"
+    ]
+  },
+  {
+    "id": "pat007",
+    "categoryId": "leadership",
+    "subCategoryId": "priority-tradeoffs",
+    "pattern": "We need to prioritize ….",
+    "variantCount": 5,
+    "memoryTip": "Ưu tiên: nói impact, effort và deadline bằng câu ngắn thay vì phân tích dài.",
+    "phraseIds": [
+      "p157",
+      "p367",
+      "p577",
+      "p787",
+      "p997"
+    ]
+  },
+  {
+    "id": "pat008",
+    "categoryId": "everyday",
+    "subCategoryId": "office-help",
+    "pattern": "Can I ask you something about …?",
+    "variantCount": 5,
+    "memoryTip": "“Could you help me with…?” = nhờ giúp đỡ tự nhiên; nói cảm ơn khi được hỗ trợ.",
+    "phraseIds": [
+      "p158",
+      "p368",
+      "p578",
+      "p788",
+      "p998"
+    ]
+  },
+  {
+    "id": "pat009",
+    "categoryId": "everyday",
+    "subCategoryId": "casual-conversation",
+    "pattern": "How's the weather looking today?",
+    "variantCount": 5,
+    "memoryTip": "Small talk: mở bằng một câu ngắn rồi hỏi thêm một chi tiết cụ thể.",
+    "phraseIds": [
+      "p159",
+      "p369",
+      "p579",
+      "p789",
+      "p999"
+    ]
+  },
+  {
+    "id": "pat010",
+    "categoryId": "everyday",
+    "subCategoryId": "food-ordering",
+    "pattern": "Could I get …, please?",
+    "variantCount": 5,
+    "memoryTip": "Nhớ “I’ll have…” để gọi món nhanh; “to go” nghĩa là mang đi. Thử nói lại với một ví dụ của mình.",
+    "phraseIds": [
+      "p160",
+      "p370",
+      "p580",
+      "p790",
+      "p1000"
+    ]
+  },
+  {
+    "id": "pat011",
+    "categoryId": "everyday",
+    "subCategoryId": "cafe-drinks",
+    "pattern": "Can I get …, please?",
+    "variantCount": 5,
+    "memoryTip": "“Can I get…” là cách gọi đồ rất phổ biến; “I’ll go with…” là chốt chọn món. Thử nói lại với một ví dụ của mình.",
+    "phraseIds": [
+      "p161",
+      "p371",
+      "p581",
+      "p791",
+      "p1001"
+    ]
+  },
+  {
+    "id": "pat012",
+    "categoryId": "meeting",
+    "subCategoryId": "invite-feedback",
+    "pattern": "What do you think about …?",
+    "variantCount": 5,
+    "memoryTip": "“What do you think…?” = mời góp ý; tránh hỏi quá dài khi cần phản hồi nhanh.",
+    "phraseIds": [
+      "p162",
+      "p372",
+      "p582",
+      "p792",
+      "p1002"
+    ]
+  },
+  {
+    "id": "pat013",
+    "categoryId": "design",
+    "subCategoryId": "interaction-states",
+    "pattern": "Let's keep … consistent across screens.",
+    "variantCount": 5,
+    "memoryTip": "Khi nói về UI, nhớ ghép thành phần + trạng thái/hành vi cụ thể.",
+    "phraseIds": [
+      "p163",
+      "p373",
+      "p583",
+      "p793",
+      "p1003"
+    ]
+  },
+  {
+    "id": "pat014",
+    "categoryId": "reflex",
+    "subCategoryId": "missed-information",
+    "pattern": "I didn't catch ….",
+    "variantCount": 5,
+    "memoryTip": "Đừng đoán phần nghe thiếu. Dùng “I didn’t catch…” hoặc “Could you repeat…?” để hỏi đúng chi tiết.",
+    "phraseIds": [
+      "p164",
+      "p374",
+      "p584",
+      "p794",
+      "p1004"
+    ]
+  },
+  {
+    "id": "pat015",
+    "categoryId": "everyday",
+    "subCategoryId": "restaurant-seating",
+    "pattern": "Do you have a table for two?",
+    "variantCount": 5,
+    "memoryTip": "“Do you have … available?” dùng để hỏi còn chỗ; “if possible” giúp yêu cầu mềm hơn. Thử nói lại với một ví dụ của mình.",
+    "phraseIds": [
+      "p165",
+      "p375",
+      "p585",
+      "p795",
+      "p1005"
+    ]
+  },
+  {
+    "id": "pat016",
+    "categoryId": "engineering",
+    "subCategoryId": "qa-triage",
+    "pattern": "Can you reproduce … on your device?",
+    "variantCount": 5,
+    "memoryTip": "Lỗi cần nói rõ hiện tượng + thiết bị + cách tái hiện, tránh câu quá chung.",
+    "phraseIds": [
+      "p166",
+      "p376",
+      "p586",
+      "p796",
+      "p1006"
+    ]
+  },
+  {
+    "id": "pat017",
+    "categoryId": "everyday",
+    "subCategoryId": "grocery-shopping",
+    "pattern": "Where can I find …?",
+    "variantCount": 5,
+    "memoryTip": "“In stock” = còn hàng; “out of” = hết hàng; chỉ cần thay tên đồ cần mua. Thử nói lại với một ví dụ của mình.",
+    "phraseIds": [
+      "p167",
+      "p377",
+      "p587",
+      "p797",
+      "p1007"
+    ]
+  },
+  {
+    "id": "pat018",
+    "categoryId": "business",
+    "subCategoryId": "edge-cases",
+    "pattern": "What happens if …?",
+    "variantCount": 5,
+    "memoryTip": "“What happens if…?” = công thức đơn giản nhất để hỏi tình huống ngoại lệ.",
+    "phraseIds": [
+      "p168",
+      "p378",
+      "p588",
+      "p798",
+      "p1008"
+    ]
+  },
+  {
+    "id": "pat019",
+    "categoryId": "everyday",
+    "subCategoryId": "clothes-shopping",
+    "pattern": "Can I try on …?",
+    "variantCount": 5,
+    "memoryTip": "“Try on” = mặc/thử; “exchange” = đổi hàng; “another size” = size khác. Thử nói lại với một ví dụ của mình.",
+    "phraseIds": [
+      "p169",
+      "p379",
+      "p589",
+      "p799",
+      "p1009"
+    ]
+  },
+  {
+    "id": "pat020",
+    "categoryId": "everyday",
+    "subCategoryId": "payments-receipts",
+    "pattern": "Can I pay … by card?",
+    "variantCount": 5,
+    "memoryTip": "“By card” = bằng thẻ; “receipt” = biên lai; “deposit” = khoản đặt cọc. Thử nói lại với một ví dụ của mình.",
+    "phraseIds": [
+      "p170",
+      "p380",
+      "p590",
+      "p800",
+      "p1010"
+    ]
+  },
+  {
+    "id": "pat021",
+    "categoryId": "meeting",
+    "subCategoryId": "action-and-closure",
+    "pattern": "Can we confirm … before we close?",
+    "variantCount": 5,
+    "memoryTip": "Cuối họp nhớ nói rõ việc cần làm + người phụ trách + thời hạn.",
+    "phraseIds": [
+      "p171",
+      "p381",
+      "p591",
+      "p801",
+      "p1011"
+    ]
+  },
+  {
+    "id": "pat022",
+    "categoryId": "design",
+    "subCategoryId": "design-system",
+    "pattern": "Can we reuse … from the design system?",
+    "variantCount": 5,
+    "memoryTip": "Dùng câu ngắn với “reuse”, “consistent”, “variant” thay vì giải thích kỹ thuật dài.",
+    "phraseIds": [
+      "p172",
+      "p382",
+      "p592",
+      "p802",
+      "p1012"
+    ]
+  },
+  {
+    "id": "pat023",
+    "categoryId": "everyday",
+    "subCategoryId": "asking-directions",
+    "pattern": "How do I get to …?",
+    "variantCount": 5,
+    "memoryTip": "“How do I get to…?” = hỏi đường chuẩn và ngắn nhất; “from here” = từ đây. Thử nói lại với một ví dụ của mình.",
+    "phraseIds": [
+      "p173",
+      "p383",
+      "p593",
+      "p803",
+      "p1013"
+    ]
+  },
+  {
+    "id": "pat024",
+    "categoryId": "reflex",
+    "subCategoryId": "buy-time",
+    "pattern": "Let me think about … for a second.",
+    "variantCount": 5,
+    "memoryTip": "“Let me…” giúp xin vài giây suy nghĩ mà không im lặng; hẹn phản hồi cụ thể khi chưa chắc.",
+    "phraseIds": [
+      "p174",
+      "p384",
+      "p594",
+      "p804",
+      "p1014"
+    ]
+  },
+  {
+    "id": "pat025",
+    "categoryId": "everyday",
+    "subCategoryId": "ride-hailing",
+    "pattern": "Could you drop me off …?",
+    "variantCount": 5,
+    "memoryTip": "“Pick me up” = đón; “drop me off” = cho xuống xe. Nhớ cả khối. Thử nói lại với một ví dụ của mình.",
+    "phraseIds": [
+      "p175",
+      "p385",
+      "p595",
+      "p805",
+      "p1015"
+    ]
+  },
+  {
+    "id": "pat026",
+    "categoryId": "engineering",
+    "subCategoryId": "release-and-deployment",
+    "pattern": "Are we ready for …?",
+    "variantCount": 5,
+    "memoryTip": "Dùng “ready / blocking / risk / release” để trao đổi tình trạng triển khai.",
+    "phraseIds": [
+      "p176",
+      "p386",
+      "p596",
+      "p806",
+      "p1016"
+    ]
+  },
+  {
+    "id": "pat027",
+    "categoryId": "everyday",
+    "subCategoryId": "hotel-stays",
+    "pattern": "Could I request …?",
+    "variantCount": 5,
+    "memoryTip": "“Extra charge” = phụ phí; “late checkout” = trả phòng muộn. Thử nói lại với một ví dụ của mình.",
+    "phraseIds": [
+      "p177",
+      "p387",
+      "p597",
+      "p807",
+      "p1017"
+    ]
+  },
+  {
+    "id": "pat028",
+    "categoryId": "everyday",
+    "subCategoryId": "making-plans",
+    "pattern": "Are you up for …?",
+    "variantCount": 5,
+    "memoryTip": "“Up for…” = có hứng không; “How about…” = đề xuất nhẹ; “skip” = bỏ qua. Thử nói lại với một ví dụ của mình.",
+    "phraseIds": [
+      "p178",
+      "p388",
+      "p598",
+      "p808",
+      "p1018"
+    ]
+  },
+  {
+    "id": "pat029",
+    "categoryId": "meeting",
+    "subCategoryId": "pushback",
+    "pattern": "I'm not fully convinced by … yet.",
+    "variantCount": 5,
+    "memoryTip": "Phản biện nhẹ bằng “I see…” / “I’m not fully convinced…” trước khi nêu rủi ro.",
+    "phraseIds": [
+      "p179",
+      "p389",
+      "p599",
+      "p809",
+      "p1019"
+    ]
+  },
+  {
+    "id": "pat030",
+    "categoryId": "everyday",
+    "subCategoryId": "family-check-ins",
+    "pattern": "How are … doing?",
+    "variantCount": 5,
+    "memoryTip": "“Check in with” = hỏi thăm tình hình, không phải làm thủ tục check-in. Thử nói lại với một ví dụ của mình.",
+    "phraseIds": [
+      "p180",
+      "p390",
+      "p600",
+      "p810",
+      "p1020"
+    ]
+  },
+  {
+    "id": "pat031",
+    "categoryId": "design",
+    "subCategoryId": "research-strategy",
+    "pattern": "Let's take a closer look at ….",
+    "variantCount": 5,
+    "memoryTip": "Đặt câu hỏi về hành vi/dữ liệu, rồi đề xuất bước kiểm chứng cụ thể.",
+    "phraseIds": [
+      "p181",
+      "p391",
+      "p601",
+      "p811",
+      "p1021"
+    ]
+  },
+  {
+    "id": "pat032",
+    "categoryId": "business",
+    "subCategoryId": "operational-workflow",
+    "pattern": "How do users handle … today?",
+    "variantCount": 5,
+    "memoryTip": "Hỏi người dùng hiện làm thế nào rồi mới đề xuất thay đổi hệ thống.",
+    "phraseIds": [
+      "p182",
+      "p392",
+      "p602",
+      "p812",
+      "p1022"
+    ]
+  },
+  {
+    "id": "pat033",
+    "categoryId": "reflex",
+    "subCategoryId": "ask-for-clarification",
+    "pattern": "Can you explain … again?",
+    "variantCount": 5,
+    "memoryTip": "Khi chưa rõ, mở bằng “Could you…?” để hỏi lại lịch sự; chỉ thay điều cần làm rõ.",
+    "phraseIds": [
+      "p183",
+      "p393",
+      "p603",
+      "p813",
+      "p1023"
+    ]
+  },
+  {
+    "id": "pat034",
+    "categoryId": "everyday",
+    "subCategoryId": "pharmacy-symptoms",
+    "pattern": "I've got ….",
+    "variantCount": 5,
+    "memoryTip": "“I’ve got…” trong hội thoại = mình bị/có; “anything for…” = có gì giúp giảm không. Thử nói lại với một ví dụ của mình.",
+    "phraseIds": [
+      "p184",
+      "p394",
+      "p604",
+      "p814",
+      "p1024"
+    ]
+  },
+  {
+    "id": "pat035",
+    "categoryId": "leadership",
+    "subCategoryId": "lead-with-clarity",
+    "pattern": "I want to be transparent about ….",
+    "variantCount": 5,
+    "memoryTip": "Nêu quyết định, người chịu trách nhiệm và bước tiếp theo trong một hơi.",
+    "phraseIds": [
+      "p185",
+      "p395",
+      "p605",
+      "p815",
+      "p1025"
+    ]
+  },
+  {
+    "id": "pat036",
+    "categoryId": "everyday",
+    "subCategoryId": "device-problems",
+    "pattern": "I'm having trouble with ….",
+    "variantCount": 5,
+    "memoryTip": "“Having trouble with…” = đang gặp trục trặc; không cần giải thích lỗi quá dài. Thử nói lại với một ví dụ của mình.",
+    "phraseIds": [
+      "p186",
+      "p396",
+      "p606",
+      "p816",
+      "p1026"
+    ]
+  },
+  {
+    "id": "pat037",
+    "categoryId": "engineering",
+    "subCategoryId": "dev-handoff",
+    "pattern": "Could you check … before implementing?",
+    "variantCount": 5,
+    "memoryTip": "Bàn giao nói rõ component, behavior, state và nơi kiểm tra spec.",
+    "phraseIds": [
+      "p187",
+      "p397",
+      "p607",
+      "p817",
+      "p1027"
+    ]
+  },
+  {
+    "id": "pat038",
+    "categoryId": "everyday",
+    "subCategoryId": "appointments-times",
+    "pattern": "Could I reschedule …?",
+    "variantCount": 5,
+    "memoryTip": "“Reschedule” = đổi lịch; “move … to Friday” = dời sang thứ Sáu. Thử nói lại với một ví dụ của mình.",
+    "phraseIds": [
+      "p188",
+      "p398",
+      "p608",
+      "p818",
+      "p1028"
+    ]
+  },
+  {
+    "id": "pat039",
+    "categoryId": "meeting",
+    "subCategoryId": "start-meeting",
+    "pattern": "I'd like to walk everyone through ….",
+    "variantCount": 5,
+    "memoryTip": "“Let’s…” kéo cả nhóm vào một hành động. Nói câu chính trước, sau đó mới giải thích.",
+    "phraseIds": [
+      "p189",
+      "p399",
+      "p609",
+      "p819",
+      "p1029"
+    ]
+  },
+  {
+    "id": "pat040",
+    "categoryId": "everyday",
+    "subCategoryId": "opinions-reactions",
+    "pattern": "What did you think of …?",
+    "variantCount": 5,
+    "memoryTip": "“What did you think of…?” hỏi cảm nhận tự nhiên; “I’d recommend…” = mình sẽ giới thiệu. Thử nói lại với một ví dụ của mình.",
+    "phraseIds": [
+      "p190",
+      "p400",
+      "p610",
+      "p820",
+      "p1030"
+    ]
+  },
+  {
+    "id": "pat041",
+    "categoryId": "design",
+    "subCategoryId": "usability-review",
+    "pattern": "Users may struggle with ….",
+    "variantCount": 5,
+    "memoryTip": "Đổi nhận xét cảm tính thành câu nói rõ tác động lên người dùng và tác vụ.",
+    "phraseIds": [
+      "p191",
+      "p401",
+      "p611",
+      "p821",
+      "p1031"
+    ]
+  },
+  {
+    "id": "pat042",
+    "categoryId": "everyday",
+    "subCategoryId": "deliveries-tracking",
+    "pattern": "Can you check the status of …?",
+    "variantCount": 5,
+    "memoryTip": "“Haven’t received … yet” = chưa nhận được; “front desk” = quầy lễ tân. Thử nói lại với một ví dụ của mình.",
+    "phraseIds": [
+      "p192",
+      "p402",
+      "p612",
+      "p822",
+      "p1032"
+    ]
+  },
+  {
+    "id": "pat043",
+    "categoryId": "reflex",
+    "subCategoryId": "missed-information",
+    "pattern": "Could you repeat …?",
+    "variantCount": 5,
+    "memoryTip": "Đừng đoán phần nghe thiếu. Dùng “I didn’t catch…” hoặc “Could you repeat…?” để hỏi đúng chi tiết.",
+    "phraseIds": [
+      "p193",
+      "p403",
+      "p613",
+      "p823",
+      "p1033"
+    ]
+  },
+  {
+    "id": "pat044",
+    "categoryId": "everyday",
+    "subCategoryId": "urgent-assistance",
+    "pattern": "Could you help me find …?",
+    "variantCount": 5,
+    "memoryTip": "“I urgently need…” = tôi cần gấp; “Could you help me…?” = nhờ giúp lịch sự. Thử nói lại với một ví dụ của mình.",
+    "phraseIds": [
+      "p194",
+      "p404",
+      "p614",
+      "p824",
+      "p1034"
+    ]
+  },
+  {
+    "id": "pat045",
+    "categoryId": "everyday",
+    "subCategoryId": "casual-check-in",
+    "pattern": "I'd love to hear about ….",
+    "variantCount": 5,
+    "memoryTip": "“How was…?” hỏi một chuyện đã diễn ra; nối tiếp bằng một câu hỏi nhẹ.",
+    "phraseIds": [
+      "p195",
+      "p405",
+      "p615",
+      "p825",
+      "p1035"
+    ]
+  },
+  {
+    "id": "pat046",
+    "categoryId": "business",
+    "subCategoryId": "stakeholder-validation",
+    "pattern": "Has the business team signed off on …?",
+    "variantCount": 5,
+    "memoryTip": "“Can we validate…?” = xin kiểm chứng; phân biệt điều đã chốt và điều còn giả định.",
+    "phraseIds": [
+      "p196",
+      "p406",
+      "p616",
+      "p826",
+      "p1036"
+    ]
+  },
+  {
+    "id": "pat047",
+    "categoryId": "meeting",
+    "subCategoryId": "invite-feedback",
+    "pattern": "Does anyone have feedback on …?",
+    "variantCount": 5,
+    "memoryTip": "“What do you think…?” = mời góp ý; tránh hỏi quá dài khi cần phản hồi nhanh.",
+    "phraseIds": [
+      "p197",
+      "p407",
+      "p617",
+      "p827",
+      "p1037"
+    ]
+  },
+  {
+    "id": "pat048",
+    "categoryId": "everyday",
+    "subCategoryId": "office-help",
+    "pattern": "Do you know anything about …?",
+    "variantCount": 5,
+    "memoryTip": "“Could you help me with…?” = nhờ giúp đỡ tự nhiên; nói cảm ơn khi được hỗ trợ.",
+    "phraseIds": [
+      "p198",
+      "p408",
+      "p618",
+      "p828",
+      "p1038"
+    ]
+  },
+  {
+    "id": "pat049",
+    "categoryId": "engineering",
+    "subCategoryId": "qa-triage",
+    "pattern": "Is … happening in production?",
+    "variantCount": 5,
+    "memoryTip": "Lỗi cần nói rõ hiện tượng + thiết bị + cách tái hiện, tránh câu quá chung.",
+    "phraseIds": [
+      "p199",
+      "p409",
+      "p619",
+      "p829",
+      "p1039"
+    ]
+  },
+  {
+    "id": "pat050",
+    "categoryId": "design",
+    "subCategoryId": "interaction-states",
+    "pattern": "I want … to respond immediately.",
+    "variantCount": 5,
+    "memoryTip": "Khi nói về UI, nhớ ghép thành phần + trạng thái/hành vi cụ thể.",
+    "phraseIds": [
+      "p200",
+      "p410",
+      "p620",
+      "p830",
+      "p1040"
+    ]
+  },
+  {
+    "id": "pat051",
+    "categoryId": "everyday",
+    "subCategoryId": "casual-conversation",
+    "pattern": "I was just thinking about the weather this weekend.",
+    "variantCount": 5,
+    "memoryTip": "Small talk: mở bằng một câu ngắn rồi hỏi thêm một chi tiết cụ thể.",
+    "phraseIds": [
+      "p201",
+      "p411",
+      "p621",
+      "p831",
+      "p1041"
+    ]
+  },
+  {
+    "id": "pat052",
+    "categoryId": "reflex",
+    "subCategoryId": "buy-time",
+    "pattern": "I need a little more time to check ….",
+    "variantCount": 5,
+    "memoryTip": "“Let me…” giúp xin vài giây suy nghĩ mà không im lặng; hẹn phản hồi cụ thể khi chưa chắc.",
+    "phraseIds": [
+      "p202",
+      "p412",
+      "p622",
+      "p832",
+      "p1042"
+    ]
+  },
+  {
+    "id": "pat053",
+    "categoryId": "everyday",
+    "subCategoryId": "food-ordering",
+    "pattern": "I'll have …, please.",
+    "variantCount": 5,
+    "memoryTip": "Nhớ “I’ll have…” để gọi món nhanh; “to go” nghĩa là mang đi. Thử nói lại với một ví dụ của mình.",
+    "phraseIds": [
+      "p203",
+      "p413",
+      "p623",
+      "p833",
+      "p1043"
+    ]
+  },
+  {
+    "id": "pat054",
+    "categoryId": "everyday",
+    "subCategoryId": "cafe-drinks",
+    "pattern": "Could I have … to go?",
+    "variantCount": 5,
+    "memoryTip": "“Can I get…” là cách gọi đồ rất phổ biến; “I’ll go with…” là chốt chọn món. Thử nói lại với một ví dụ của mình.",
+    "phraseIds": [
+      "p204",
+      "p414",
+      "p624",
+      "p834",
+      "p1044"
+    ]
+  },
+  {
+    "id": "pat055",
+    "categoryId": "everyday",
+    "subCategoryId": "restaurant-seating",
+    "pattern": "Could we get …, please?",
+    "variantCount": 5,
+    "memoryTip": "“Do you have … available?” dùng để hỏi còn chỗ; “if possible” giúp yêu cầu mềm hơn. Thử nói lại với một ví dụ của mình.",
+    "phraseIds": [
+      "p205",
+      "p415",
+      "p625",
+      "p835",
+      "p1045"
+    ]
+  },
+  {
+    "id": "pat056",
+    "categoryId": "meeting",
+    "subCategoryId": "action-and-closure",
+    "pattern": "Let's write down ….",
+    "variantCount": 5,
+    "memoryTip": "Cuối họp nhớ nói rõ việc cần làm + người phụ trách + thời hạn.",
+    "phraseIds": [
+      "p206",
+      "p416",
+      "p626",
+      "p836",
+      "p1046"
+    ]
+  },
+  {
+    "id": "pat057",
+    "categoryId": "everyday",
+    "subCategoryId": "grocery-shopping",
+    "pattern": "Are you out of …?",
+    "variantCount": 5,
+    "memoryTip": "“In stock” = còn hàng; “out of” = hết hàng; chỉ cần thay tên đồ cần mua. Thử nói lại với một ví dụ của mình.",
+    "phraseIds": [
+      "p207",
+      "p417",
+      "p627",
+      "p837",
+      "p1047"
+    ]
+  },
+  {
+    "id": "pat058",
+    "categoryId": "design",
+    "subCategoryId": "design-system",
+    "pattern": "Let's check whether … follows the standard.",
+    "variantCount": 5,
+    "memoryTip": "Dùng câu ngắn với “reuse”, “consistent”, “variant” thay vì giải thích kỹ thuật dài.",
+    "phraseIds": [
+      "p208",
+      "p418",
+      "p628",
+      "p838",
+      "p1048"
+    ]
+  },
+  {
+    "id": "pat059",
+    "categoryId": "engineering",
+    "subCategoryId": "release-and-deployment",
+    "pattern": "What's blocking … right now?",
+    "variantCount": 5,
+    "memoryTip": "Dùng “ready / blocking / risk / release” để trao đổi tình trạng triển khai.",
+    "phraseIds": [
+      "p209",
+      "p419",
+      "p629",
+      "p839",
+      "p1049"
+    ]
+  },
+  {
+    "id": "pat060",
+    "categoryId": "business",
+    "subCategoryId": "business-rules",
+    "pattern": "Who is responsible for defining …?",
+    "variantCount": 5,
+    "memoryTip": "Hỏi rule trước khi thiết kế: bắt buộc không, ai áp dụng, ngoại lệ nào?",
+    "phraseIds": [
+      "p210",
+      "p420",
+      "p630",
+      "p840",
+      "p1050"
+    ]
+  },
+  {
+    "id": "pat061",
+    "categoryId": "everyday",
+    "subCategoryId": "clothes-shopping",
+    "pattern": "Do you have … in another size?",
+    "variantCount": 5,
+    "memoryTip": "“Try on” = mặc/thử; “exchange” = đổi hàng; “another size” = size khác. Thử nói lại với một ví dụ của mình.",
+    "phraseIds": [
+      "p211",
+      "p421",
+      "p631",
+      "p841",
+      "p1051"
+    ]
+  },
+  {
+    "id": "pat062",
+    "categoryId": "reflex",
+    "subCategoryId": "ask-for-clarification",
+    "pattern": "I want to make sure I understand ….",
+    "variantCount": 5,
+    "memoryTip": "Khi chưa rõ, mở bằng “Could you…?” để hỏi lại lịch sự; chỉ thay điều cần làm rõ.",
+    "phraseIds": [
+      "p212",
+      "p422",
+      "p632",
+      "p842",
+      "p1052"
+    ]
+  },
+  {
+    "id": "pat063",
+    "categoryId": "everyday",
+    "subCategoryId": "payments-receipts",
+    "pattern": "Could I get a receipt for …?",
+    "variantCount": 5,
+    "memoryTip": "“By card” = bằng thẻ; “receipt” = biên lai; “deposit” = khoản đặt cọc. Thử nói lại với một ví dụ của mình.",
+    "phraseIds": [
+      "p213",
+      "p423",
+      "p633",
+      "p843",
+      "p1053"
+    ]
+  },
+  {
+    "id": "pat064",
+    "categoryId": "leadership",
+    "subCategoryId": "priority-tradeoffs",
+    "pattern": "What happens if we delay fixing the biggest issue?",
+    "variantCount": 5,
+    "memoryTip": "Ưu tiên: nói impact, effort và deadline bằng câu ngắn thay vì phân tích dài.",
+    "phraseIds": [
+      "p214",
+      "p424",
+      "p634",
+      "p844",
+      "p1054"
+    ]
+  },
+  {
+    "id": "pat065",
+    "categoryId": "everyday",
+    "subCategoryId": "asking-directions",
+    "pattern": "Is … far from here?",
+    "variantCount": 5,
+    "memoryTip": "“How do I get to…?” = hỏi đường chuẩn và ngắn nhất; “from here” = từ đây. Thử nói lại với một ví dụ của mình.",
+    "phraseIds": [
+      "p215",
+      "p425",
+      "p635",
+      "p845",
+      "p1055"
+    ]
+  },
+  {
+    "id": "pat066",
+    "categoryId": "meeting",
+    "subCategoryId": "pushback",
+    "pattern": "I see a potential problem with ….",
+    "variantCount": 5,
+    "memoryTip": "Phản biện nhẹ bằng “I see…” / “I’m not fully convinced…” trước khi nêu rủi ro.",
+    "phraseIds": [
+      "p216",
+      "p426",
+      "p636",
+      "p846",
+      "p1056"
+    ]
+  },
+  {
+    "id": "pat067",
+    "categoryId": "everyday",
+    "subCategoryId": "ride-hailing",
+    "pattern": "Could you pick me up …?",
+    "variantCount": 5,
+    "memoryTip": "“Pick me up” = đón; “drop me off” = cho xuống xe. Nhớ cả khối. Thử nói lại với một ví dụ của mình.",
+    "phraseIds": [
+      "p217",
+      "p427",
+      "p637",
+      "p847",
+      "p1057"
+    ]
+  },
+  {
+    "id": "pat068",
+    "categoryId": "design",
+    "subCategoryId": "research-strategy",
+    "pattern": "We need better evidence about ….",
+    "variantCount": 5,
+    "memoryTip": "Đặt câu hỏi về hành vi/dữ liệu, rồi đề xuất bước kiểm chứng cụ thể.",
+    "phraseIds": [
+      "p218",
+      "p428",
+      "p638",
+      "p848",
+      "p1058"
+    ]
+  },
+  {
+    "id": "pat069",
+    "categoryId": "everyday",
+    "subCategoryId": "hotel-stays",
+    "pattern": "Is there an extra charge for …?",
+    "variantCount": 5,
+    "memoryTip": "“Extra charge” = phụ phí; “late checkout” = trả phòng muộn. Thử nói lại với một ví dụ của mình.",
+    "phraseIds": [
+      "p219",
+      "p429",
+      "p639",
+      "p849",
+      "p1059"
+    ]
+  },
+  {
+    "id": "pat070",
+    "categoryId": "engineering",
+    "subCategoryId": "dev-handoff",
+    "pattern": "We need to align on … with the FE team.",
+    "variantCount": 5,
+    "memoryTip": "Bàn giao nói rõ component, behavior, state và nơi kiểm tra spec.",
+    "phraseIds": [
+      "p220",
+      "p430",
+      "p640",
+      "p850",
+      "p1060"
+    ]
+  },
+  {
+    "id": "pat071",
+    "categoryId": "reflex",
+    "subCategoryId": "missed-information",
+    "pattern": "Sorry, I missed ….",
+    "variantCount": 5,
+    "memoryTip": "Đừng đoán phần nghe thiếu. Dùng “I didn’t catch…” hoặc “Could you repeat…?” để hỏi đúng chi tiết.",
+    "phraseIds": [
+      "p221",
+      "p431",
+      "p641",
+      "p851",
+      "p1061"
+    ]
+  },
+  {
+    "id": "pat072",
+    "categoryId": "everyday",
+    "subCategoryId": "making-plans",
+    "pattern": "How about …?",
+    "variantCount": 5,
+    "memoryTip": "“Up for…” = có hứng không; “How about…” = đề xuất nhẹ; “skip” = bỏ qua. Thử nói lại với một ví dụ của mình.",
+    "phraseIds": [
+      "p222",
+      "p432",
+      "p642",
+      "p852",
+      "p1062"
+    ]
+  },
+  {
+    "id": "pat073",
+    "categoryId": "everyday",
+    "subCategoryId": "family-check-ins",
+    "pattern": "Are … coming over this weekend?",
+    "variantCount": 5,
+    "memoryTip": "“Check in with” = hỏi thăm tình hình, không phải làm thủ tục check-in. Thử nói lại với một ví dụ của mình.",
+    "phraseIds": [
+      "p223",
+      "p433",
+      "p643",
+      "p853",
+      "p1063"
+    ]
+  },
+  {
+    "id": "pat074",
+    "categoryId": "meeting",
+    "subCategoryId": "start-meeting",
+    "pattern": "Can we put … first?",
+    "variantCount": 5,
+    "memoryTip": "“Let’s…” kéo cả nhóm vào một hành động. Nói câu chính trước, sau đó mới giải thích.",
+    "phraseIds": [
+      "p224",
+      "p434",
+      "p644",
+      "p854",
+      "p1064"
+    ]
+  },
+  {
+    "id": "pat075",
+    "categoryId": "business",
+    "subCategoryId": "edge-cases",
+    "pattern": "How should the system respond if …?",
+    "variantCount": 5,
+    "memoryTip": "“What happens if…?” = công thức đơn giản nhất để hỏi tình huống ngoại lệ.",
+    "phraseIds": [
+      "p225",
+      "p435",
+      "p645",
+      "p855",
+      "p1065"
+    ]
+  },
+  {
+    "id": "pat076",
+    "categoryId": "everyday",
+    "subCategoryId": "pharmacy-symptoms",
+    "pattern": "Do you have anything for …?",
+    "variantCount": 5,
+    "memoryTip": "“I’ve got…” trong hội thoại = mình bị/có; “anything for…” = có gì giúp giảm không. Thử nói lại với một ví dụ của mình.",
+    "phraseIds": [
+      "p226",
+      "p436",
+      "p646",
+      "p856",
+      "p1066"
+    ]
+  },
+  {
+    "id": "pat077",
+    "categoryId": "design",
+    "subCategoryId": "usability-review",
+    "pattern": "Can we make … easier to understand?",
+    "variantCount": 5,
+    "memoryTip": "Đổi nhận xét cảm tính thành câu nói rõ tác động lên người dùng và tác vụ.",
+    "phraseIds": [
+      "p227",
+      "p437",
+      "p647",
+      "p857",
+      "p1067"
+    ]
+  },
+  {
+    "id": "pat078",
+    "categoryId": "everyday",
+    "subCategoryId": "device-problems",
+    "pattern": "Could you help me fix …?",
+    "variantCount": 5,
+    "memoryTip": "“Having trouble with…” = đang gặp trục trặc; không cần giải thích lỗi quá dài. Thử nói lại với một ví dụ của mình.",
+    "phraseIds": [
+      "p228",
+      "p438",
+      "p648",
+      "p858",
+      "p1068"
+    ]
+  },
+  {
+    "id": "pat079",
+    "categoryId": "everyday",
+    "subCategoryId": "appointments-times",
+    "pattern": "Can I confirm the time for …?",
+    "variantCount": 5,
+    "memoryTip": "“Reschedule” = đổi lịch; “move … to Friday” = dời sang thứ Sáu. Thử nói lại với một ví dụ của mình.",
+    "phraseIds": [
+      "p229",
+      "p439",
+      "p649",
+      "p859",
+      "p1069"
+    ]
+  },
+  {
+    "id": "pat080",
+    "categoryId": "reflex",
+    "subCategoryId": "buy-time",
+    "pattern": "I don't have enough context on … yet.",
+    "variantCount": 5,
+    "memoryTip": "“Let me…” giúp xin vài giây suy nghĩ mà không im lặng; hẹn phản hồi cụ thể khi chưa chắc.",
+    "phraseIds": [
+      "p230",
+      "p440",
+      "p650",
+      "p860",
+      "p1070"
+    ]
+  },
+  {
+    "id": "pat081",
+    "categoryId": "engineering",
+    "subCategoryId": "qa-triage",
+    "pattern": "Do we know what causes …?",
+    "variantCount": 5,
+    "memoryTip": "Lỗi cần nói rõ hiện tượng + thiết bị + cách tái hiện, tránh câu quá chung.",
+    "phraseIds": [
+      "p231",
+      "p441",
+      "p651",
+      "p861",
+      "p1071"
+    ]
+  },
+  {
+    "id": "pat082",
+    "categoryId": "everyday",
+    "subCategoryId": "opinions-reactions",
+    "pattern": "I really enjoyed ….",
+    "variantCount": 5,
+    "memoryTip": "“What did you think of…?” hỏi cảm nhận tự nhiên; “I’d recommend…” = mình sẽ giới thiệu. Thử nói lại với một ví dụ của mình.",
+    "phraseIds": [
+      "p232",
+      "p442",
+      "p652",
+      "p862",
+      "p1072"
+    ]
+  },
+  {
+    "id": "pat083",
+    "categoryId": "meeting",
+    "subCategoryId": "invite-feedback",
+    "pattern": "I'd love to hear your thoughts on ….",
+    "variantCount": 5,
+    "memoryTip": "“What do you think…?” = mời góp ý; tránh hỏi quá dài khi cần phản hồi nhanh.",
+    "phraseIds": [
+      "p233",
+      "p443",
+      "p653",
+      "p863",
+      "p1073"
+    ]
+  },
+  {
+    "id": "pat084",
+    "categoryId": "everyday",
+    "subCategoryId": "deliveries-tracking",
+    "pattern": "I haven't received … yet.",
+    "variantCount": 5,
+    "memoryTip": "“Haven’t received … yet” = chưa nhận được; “front desk” = quầy lễ tân. Thử nói lại với một ví dụ của mình.",
+    "phraseIds": [
+      "p234",
+      "p444",
+      "p654",
+      "p864",
+      "p1074"
+    ]
+  },
+  {
+    "id": "pat085",
+    "categoryId": "everyday",
+    "subCategoryId": "urgent-assistance",
+    "pattern": "I urgently need ….",
+    "variantCount": 5,
+    "memoryTip": "“I urgently need…” = tôi cần gấp; “Could you help me…?” = nhờ giúp lịch sự. Thử nói lại với một ví dụ của mình.",
+    "phraseIds": [
+      "p235",
+      "p445",
+      "p655",
+      "p865",
+      "p1075"
+    ]
+  },
+  {
+    "id": "pat086",
+    "categoryId": "design",
+    "subCategoryId": "interaction-states",
+    "pattern": "Can we show a loading state for …?",
+    "variantCount": 5,
+    "memoryTip": "Khi nói về UI, nhớ ghép thành phần + trạng thái/hành vi cụ thể.",
+    "phraseIds": [
+      "p236",
+      "p446",
+      "p656",
+      "p866",
+      "p1076"
+    ]
+  },
+  {
+    "id": "pat087",
+    "categoryId": "everyday",
+    "subCategoryId": "casual-check-in",
+    "pattern": "Hope … went well.",
+    "variantCount": 5,
+    "memoryTip": "“How was…?” hỏi một chuyện đã diễn ra; nối tiếp bằng một câu hỏi nhẹ.",
+    "phraseIds": [
+      "p237",
+      "p447",
+      "p657",
+      "p867",
+      "p1077"
+    ]
+  },
+  {
+    "id": "pat088",
+    "categoryId": "business",
+    "subCategoryId": "operational-workflow",
+    "pattern": "Can you demonstrate … with a real case?",
+    "variantCount": 5,
+    "memoryTip": "Hỏi người dùng hiện làm thế nào rồi mới đề xuất thay đổi hệ thống.",
+    "phraseIds": [
+      "p238",
+      "p448",
+      "p658",
+      "p868",
+      "p1078"
+    ]
+  },
+  {
+    "id": "pat089",
+    "categoryId": "reflex",
+    "subCategoryId": "ask-for-clarification",
+    "pattern": "Could you share more details about …?",
+    "variantCount": 5,
+    "memoryTip": "Khi chưa rõ, mở bằng “Could you…?” để hỏi lại lịch sự; chỉ thay điều cần làm rõ.",
+    "phraseIds": [
+      "p239",
+      "p449",
+      "p659",
+      "p869",
+      "p1079"
+    ]
+  },
+  {
+    "id": "pat090",
+    "categoryId": "everyday",
+    "subCategoryId": "office-help",
+    "pattern": "Could you help me with …?",
+    "variantCount": 5,
+    "memoryTip": "“Could you help me with…?” = nhờ giúp đỡ tự nhiên; nói cảm ơn khi được hỗ trợ.",
+    "phraseIds": [
+      "p240",
+      "p450",
+      "p660",
+      "p870",
+      "p1080"
+    ]
+  },
+  {
+    "id": "pat091",
+    "categoryId": "meeting",
+    "subCategoryId": "action-and-closure",
+    "pattern": "We should be clear about ….",
+    "variantCount": 5,
+    "memoryTip": "Cuối họp nhớ nói rõ việc cần làm + người phụ trách + thời hạn.",
+    "phraseIds": [
+      "p241",
+      "p451",
+      "p661",
+      "p871",
+      "p1081"
+    ]
+  },
+  {
+    "id": "pat092",
+    "categoryId": "everyday",
+    "subCategoryId": "casual-conversation",
+    "pattern": "Looks like the weather might change, right?",
+    "variantCount": 5,
+    "memoryTip": "Small talk: mở bằng một câu ngắn rồi hỏi thêm một chi tiết cụ thể.",
+    "phraseIds": [
+      "p242",
+      "p452",
+      "p662",
+      "p872",
+      "p1082"
+    ]
+  },
+  {
+    "id": "pat093",
+    "categoryId": "engineering",
+    "subCategoryId": "release-and-deployment",
+    "pattern": "Could we confirm the owner of …?",
+    "variantCount": 5,
+    "memoryTip": "Dùng “ready / blocking / risk / release” để trao đổi tình trạng triển khai.",
+    "phraseIds": [
+      "p243",
+      "p453",
+      "p663",
+      "p873",
+      "p1083"
+    ]
+  },
+  {
+    "id": "pat094",
+    "categoryId": "leadership",
+    "subCategoryId": "lead-with-clarity",
+    "pattern": "Let's make sure everyone understands ….",
+    "variantCount": 5,
+    "memoryTip": "Nêu quyết định, người chịu trách nhiệm và bước tiếp theo trong một hơi.",
+    "phraseIds": [
+      "p244",
+      "p454",
+      "p664",
+      "p874",
+      "p1084"
+    ]
+  },
+  {
+    "id": "pat095",
+    "categoryId": "everyday",
+    "subCategoryId": "food-ordering",
+    "pattern": "Do you have …?",
+    "variantCount": 5,
+    "memoryTip": "Nhớ “I’ll have…” để gọi món nhanh; “to go” nghĩa là mang đi. Thử nói lại với một ví dụ của mình.",
+    "phraseIds": [
+      "p245",
+      "p455",
+      "p665",
+      "p875",
+      "p1085"
+    ]
+  },
+  {
+    "id": "pat096",
+    "categoryId": "design",
+    "subCategoryId": "design-system",
+    "pattern": "I noticed a mismatch in ….",
+    "variantCount": 5,
+    "memoryTip": "Dùng câu ngắn với “reuse”, “consistent”, “variant” thay vì giải thích kỹ thuật dài.",
+    "phraseIds": [
+      "p246",
+      "p456",
+      "p666",
+      "p876",
+      "p1086"
+    ]
+  },
+  {
+    "id": "pat097",
+    "categoryId": "everyday",
+    "subCategoryId": "cafe-drinks",
+    "pattern": "Do you have … in a large size?",
+    "variantCount": 5,
+    "memoryTip": "“Can I get…” là cách gọi đồ rất phổ biến; “I’ll go with…” là chốt chọn món. Thử nói lại với một ví dụ của mình.",
+    "phraseIds": [
+      "p247",
+      "p457",
+      "p667",
+      "p877",
+      "p1087"
+    ]
+  },
+  {
+    "id": "pat098",
+    "categoryId": "everyday",
+    "subCategoryId": "restaurant-seating",
+    "pattern": "We'd prefer …, if possible.",
+    "variantCount": 5,
+    "memoryTip": "“Do you have … available?” dùng để hỏi còn chỗ; “if possible” giúp yêu cầu mềm hơn. Thử nói lại với một ví dụ của mình.",
+    "phraseIds": [
+      "p248",
+      "p458",
+      "p668",
+      "p878",
+      "p1088"
+    ]
+  },
+  {
+    "id": "pat099",
+    "categoryId": "reflex",
+    "subCategoryId": "missed-information",
+    "pattern": "I want to write down ….",
+    "variantCount": 5,
+    "memoryTip": "Đừng đoán phần nghe thiếu. Dùng “I didn’t catch…” hoặc “Could you repeat…?” để hỏi đúng chi tiết.",
+    "phraseIds": [
+      "p249",
+      "p459",
+      "p669",
+      "p879",
+      "p1089"
+    ]
+  },
+  {
+    "id": "pat100",
+    "categoryId": "meeting",
+    "subCategoryId": "pushback",
+    "pattern": "Can we challenge the need for …?",
+    "variantCount": 5,
+    "memoryTip": "Phản biện nhẹ bằng “I see…” / “I’m not fully convinced…” trước khi nêu rủi ro.",
+    "phraseIds": [
+      "p250",
+      "p460",
+      "p670",
+      "p880",
+      "p1090"
+    ]
+  },
+  {
+    "id": "pat101",
+    "categoryId": "everyday",
+    "subCategoryId": "grocery-shopping",
+    "pattern": "Do you have … in stock?",
+    "variantCount": 5,
+    "memoryTip": "“In stock” = còn hàng; “out of” = hết hàng; chỉ cần thay tên đồ cần mua. Thử nói lại với một ví dụ của mình.",
+    "phraseIds": [
+      "p251",
+      "p461",
+      "p671",
+      "p881",
+      "p1091"
+    ]
+  },
+  {
+    "id": "pat102",
+    "categoryId": "business",
+    "subCategoryId": "stakeholder-validation",
+    "pattern": "Can we validate … with a real user?",
+    "variantCount": 5,
+    "memoryTip": "“Can we validate…?” = xin kiểm chứng; phân biệt điều đã chốt và điều còn giả định.",
+    "phraseIds": [
+      "p252",
+      "p462",
+      "p672",
+      "p882",
+      "p1092"
+    ]
+  },
+  {
+    "id": "pat103",
+    "categoryId": "everyday",
+    "subCategoryId": "clothes-shopping",
+    "pattern": "Could I see … in a different color?",
+    "variantCount": 5,
+    "memoryTip": "“Try on” = mặc/thử; “exchange” = đổi hàng; “another size” = size khác. Thử nói lại với một ví dụ của mình.",
+    "phraseIds": [
+      "p253",
+      "p463",
+      "p673",
+      "p883",
+      "p1093"
+    ]
+  },
+  {
+    "id": "pat104",
+    "categoryId": "engineering",
+    "subCategoryId": "dev-handoff",
+    "pattern": "Let me explain the expected behavior of ….",
+    "variantCount": 5,
+    "memoryTip": "Bàn giao nói rõ component, behavior, state và nơi kiểm tra spec.",
+    "phraseIds": [
+      "p254",
+      "p464",
+      "p674",
+      "p884",
+      "p1094"
+    ]
+  },
+  {
+    "id": "pat105",
+    "categoryId": "design",
+    "subCategoryId": "research-strategy",
+    "pattern": "What have we learned from …?",
+    "variantCount": 5,
+    "memoryTip": "Đặt câu hỏi về hành vi/dữ liệu, rồi đề xuất bước kiểm chứng cụ thể.",
+    "phraseIds": [
+      "p255",
+      "p465",
+      "p675",
+      "p885",
+      "p1095"
+    ]
+  },
+  {
+    "id": "pat106",
+    "categoryId": "everyday",
+    "subCategoryId": "payments-receipts",
+    "pattern": "I think I was charged twice for ….",
+    "variantCount": 5,
+    "memoryTip": "“I was charged twice” báo bị tính tiền hai lần; đưa hóa đơn để nhân viên kiểm tra.",
+    "phraseIds": [
+      "p256",
+      "p466",
+      "p676",
+      "p886",
+      "p1096"
+    ]
+  },
+  {
+    "id": "pat107",
+    "categoryId": "everyday",
+    "subCategoryId": "asking-directions",
+    "pattern": "What's the fastest way to …?",
+    "variantCount": 5,
+    "memoryTip": "“How do I get to…?” = hỏi đường chuẩn và ngắn nhất; “from here” = từ đây. Thử nói lại với một ví dụ của mình.",
+    "phraseIds": [
+      "p257",
+      "p467",
+      "p677",
+      "p887",
+      "p1097"
+    ]
+  },
+  {
+    "id": "pat108",
+    "categoryId": "everyday",
+    "subCategoryId": "ride-hailing",
+    "pattern": "I'll wait ….",
+    "variantCount": 5,
+    "memoryTip": "“Pick me up” = đón; “drop me off” = cho xuống xe. Nhớ cả khối. Thử nói lại với một ví dụ của mình.",
+    "phraseIds": [
+      "p258",
+      "p468",
+      "p678",
+      "p888",
+      "p1098"
+    ]
+  },
+  {
+    "id": "pat109",
+    "categoryId": "reflex",
+    "subCategoryId": "buy-time",
+    "pattern": "I can get back to you about … after this call.",
+    "variantCount": 5,
+    "memoryTip": "“Let me…” giúp xin vài giây suy nghĩ mà không im lặng; hẹn phản hồi cụ thể khi chưa chắc.",
+    "phraseIds": [
+      "p259",
+      "p469",
+      "p679",
+      "p889",
+      "p1099"
+    ]
+  },
+  {
+    "id": "pat110",
+    "categoryId": "meeting",
+    "subCategoryId": "start-meeting",
+    "pattern": "I'll quickly introduce ….",
+    "variantCount": 5,
+    "memoryTip": "“Let’s…” kéo cả nhóm vào một hành động. Nói câu chính trước, sau đó mới giải thích.",
+    "phraseIds": [
+      "p260",
+      "p470",
+      "p680",
+      "p890",
+      "p1100"
+    ]
+  },
+  {
+    "id": "pat111",
+    "categoryId": "everyday",
+    "subCategoryId": "hotel-stays",
+    "pattern": "Is it possible to get …?",
+    "variantCount": 5,
+    "memoryTip": "“Extra charge” = phụ phí; “late checkout” = trả phòng muộn. Thử nói lại với một ví dụ của mình.",
+    "phraseIds": [
+      "p261",
+      "p471",
+      "p681",
+      "p891",
+      "p1101"
+    ]
+  },
+  {
+    "id": "pat112",
+    "categoryId": "everyday",
+    "subCategoryId": "making-plans",
+    "pattern": "Do you have time for …?",
+    "variantCount": 5,
+    "memoryTip": "“Up for…” = có hứng không; “How about…” = đề xuất nhẹ; “skip” = bỏ qua. Thử nói lại với một ví dụ của mình.",
+    "phraseIds": [
+      "p262",
+      "p472",
+      "p682",
+      "p892",
+      "p1102"
+    ]
+  },
+  {
+    "id": "pat113",
+    "categoryId": "design",
+    "subCategoryId": "usability-review",
+    "pattern": "I don't think … is clear enough.",
+    "variantCount": 5,
+    "memoryTip": "Đổi nhận xét cảm tính thành câu nói rõ tác động lên người dùng và tác vụ.",
+    "phraseIds": [
+      "p263",
+      "p473",
+      "p683",
+      "p893",
+      "p1103"
+    ]
+  },
+  {
+    "id": "pat114",
+    "categoryId": "engineering",
+    "subCategoryId": "qa-triage",
+    "pattern": "Let's capture a screen recording of ….",
+    "variantCount": 5,
+    "memoryTip": "Lỗi cần nói rõ hiện tượng + thiết bị + cách tái hiện, tránh câu quá chung.",
+    "phraseIds": [
+      "p264",
+      "p474",
+      "p684",
+      "p894",
+      "p1104"
+    ]
+  },
+  {
+    "id": "pat115",
+    "categoryId": "everyday",
+    "subCategoryId": "family-check-ins",
+    "pattern": "Have you checked in with …?",
+    "variantCount": 5,
+    "memoryTip": "“Check in with” = hỏi thăm tình hình, không phải làm thủ tục check-in. Thử nói lại với một ví dụ của mình.",
+    "phraseIds": [
+      "p265",
+      "p475",
+      "p685",
+      "p895",
+      "p1105"
+    ]
+  },
+  {
+    "id": "pat116",
+    "categoryId": "business",
+    "subCategoryId": "business-rules",
+    "pattern": "Can you walk me through …?",
+    "variantCount": 5,
+    "memoryTip": "Hỏi rule trước khi thiết kế: bắt buộc không, ai áp dụng, ngoại lệ nào?",
+    "phraseIds": [
+      "p266",
+      "p476",
+      "p686",
+      "p896",
+      "p1106"
+    ]
+  },
+  {
+    "id": "pat117",
+    "categoryId": "everyday",
+    "subCategoryId": "pharmacy-symptoms",
+    "pattern": "How long does … usually last?",
+    "variantCount": 5,
+    "memoryTip": "“I’ve got…” trong hội thoại = mình bị/có; “anything for…” = có gì giúp giảm không. Thử nói lại với một ví dụ của mình.",
+    "phraseIds": [
+      "p267",
+      "p477",
+      "p687",
+      "p897",
+      "p1107"
+    ]
+  },
+  {
+    "id": "pat118",
+    "categoryId": "meeting",
+    "subCategoryId": "invite-feedback",
+    "pattern": "Is there anything we're missing in …?",
+    "variantCount": 5,
+    "memoryTip": "“What do you think…?” = mời góp ý; tránh hỏi quá dài khi cần phản hồi nhanh.",
+    "phraseIds": [
+      "p268",
+      "p478",
+      "p688",
+      "p898",
+      "p1108"
+    ]
+  },
+  {
+    "id": "pat119",
+    "categoryId": "reflex",
+    "subCategoryId": "ask-for-clarification",
+    "pattern": "What exactly do you mean by …?",
+    "variantCount": 5,
+    "memoryTip": "Khi chưa rõ, mở bằng “Could you…?” để hỏi lại lịch sự; chỉ thay điều cần làm rõ.",
+    "phraseIds": [
+      "p269",
+      "p479",
+      "p689",
+      "p899",
+      "p1109"
+    ]
+  },
+  {
+    "id": "pat120",
+    "categoryId": "everyday",
+    "subCategoryId": "device-problems",
+    "pattern": "Is there an issue with …?",
+    "variantCount": 5,
+    "memoryTip": "“Having trouble with…” = đang gặp trục trặc; không cần giải thích lỗi quá dài. Thử nói lại với một ví dụ của mình.",
+    "phraseIds": [
+      "p270",
+      "p480",
+      "p690",
+      "p900",
+      "p1110"
+    ]
+  },
+  {
+    "id": "pat121",
+    "categoryId": "everyday",
+    "subCategoryId": "appointments-times",
+    "pattern": "Is it possible to move … to Friday?",
+    "variantCount": 5,
+    "memoryTip": "“Reschedule” = đổi lịch; “move … to Friday” = dời sang thứ Sáu. Thử nói lại với một ví dụ của mình.",
+    "phraseIds": [
+      "p271",
+      "p481",
+      "p691",
+      "p901",
+      "p1111"
+    ]
+  },
+  {
+    "id": "pat122",
+    "categoryId": "design",
+    "subCategoryId": "interaction-states",
+    "pattern": "We need to define the error state for ….",
+    "variantCount": 5,
+    "memoryTip": "Khi nói về UI, nhớ ghép thành phần + trạng thái/hành vi cụ thể.",
+    "phraseIds": [
+      "p272",
+      "p482",
+      "p692",
+      "p902",
+      "p1112"
+    ]
+  },
+  {
+    "id": "pat123",
+    "categoryId": "everyday",
+    "subCategoryId": "opinions-reactions",
+    "pattern": "I'm not sure how I feel about ….",
+    "variantCount": 5,
+    "memoryTip": "“What did you think of…?” hỏi cảm nhận tự nhiên; “I’d recommend…” = mình sẽ giới thiệu. Thử nói lại với một ví dụ của mình.",
+    "phraseIds": [
+      "p273",
+      "p483",
+      "p693",
+      "p903",
+      "p1113"
+    ]
+  },
+  {
+    "id": "pat124",
+    "categoryId": "leadership",
+    "subCategoryId": "priority-tradeoffs",
+    "pattern": "Let's be realistic about ….",
+    "variantCount": 5,
+    "memoryTip": "Ưu tiên: nói impact, effort và deadline bằng câu ngắn thay vì phân tích dài.",
+    "phraseIds": [
+      "p274",
+      "p484",
+      "p694",
+      "p904",
+      "p1114"
+    ]
+  },
+  {
+    "id": "pat125",
+    "categoryId": "engineering",
+    "subCategoryId": "release-and-deployment",
+    "pattern": "I need an update on … today.",
+    "variantCount": 5,
+    "memoryTip": "Dùng “ready / blocking / risk / release” để trao đổi tình trạng triển khai.",
+    "phraseIds": [
+      "p275",
+      "p485",
+      "p695",
+      "p905",
+      "p1115"
+    ]
+  },
+  {
+    "id": "pat126",
+    "categoryId": "everyday",
+    "subCategoryId": "deliveries-tracking",
+    "pattern": "When should I expect …?",
+    "variantCount": 5,
+    "memoryTip": "“Haven’t received … yet” = chưa nhận được; “front desk” = quầy lễ tân. Thử nói lại với một ví dụ của mình.",
+    "phraseIds": [
+      "p276",
+      "p486",
+      "p696",
+      "p906",
+      "p1116"
+    ]
+  },
+  {
+    "id": "pat127",
+    "categoryId": "meeting",
+    "subCategoryId": "action-and-closure",
+    "pattern": "I'll include … in the meeting notes.",
+    "variantCount": 5,
+    "memoryTip": "Cuối họp nhớ nói rõ việc cần làm + người phụ trách + thời hạn.",
+    "phraseIds": [
+      "p277",
+      "p487",
+      "p697",
+      "p907",
+      "p1117"
+    ]
+  },
+  {
+    "id": "pat128",
+    "categoryId": "everyday",
+    "subCategoryId": "urgent-assistance",
+    "pattern": "Can you call … for me?",
+    "variantCount": 5,
+    "memoryTip": "“I urgently need…” = tôi cần gấp; “Could you help me…?” = nhờ giúp lịch sự. Thử nói lại với một ví dụ của mình.",
+    "phraseIds": [
+      "p278",
+      "p488",
+      "p698",
+      "p908",
+      "p1118"
+    ]
+  },
+  {
+    "id": "pat129",
+    "categoryId": "reflex",
+    "subCategoryId": "missed-information",
+    "pattern": "Sorry, I couldn't hear … clearly.",
+    "variantCount": 5,
+    "memoryTip": "Đừng đoán phần nghe thiếu. Dùng “I didn’t catch…” hoặc “Could you repeat…?” để hỏi đúng chi tiết.",
+    "phraseIds": [
+      "p279",
+      "p489",
+      "p699",
+      "p909",
+      "p1119"
+    ]
+  },
+  {
+    "id": "pat130",
+    "categoryId": "everyday",
+    "subCategoryId": "casual-check-in",
+    "pattern": "Did you enjoy …?",
+    "variantCount": 5,
+    "memoryTip": "“How was…?” hỏi một chuyện đã diễn ra; nối tiếp bằng một câu hỏi nhẹ.",
+    "phraseIds": [
+      "p280",
+      "p490",
+      "p700",
+      "p910",
+      "p1120"
+    ]
+  },
+  {
+    "id": "pat131",
+    "categoryId": "business",
+    "subCategoryId": "edge-cases",
+    "pattern": "Do we have a fallback when …?",
+    "variantCount": 5,
+    "memoryTip": "“What happens if…?” = công thức đơn giản nhất để hỏi tình huống ngoại lệ.",
+    "phraseIds": [
+      "p281",
+      "p491",
+      "p701",
+      "p911",
+      "p1121"
+    ]
+  },
+  {
+    "id": "pat132",
+    "categoryId": "design",
+    "subCategoryId": "design-system",
+    "pattern": "We should define variants for ….",
+    "variantCount": 5,
+    "memoryTip": "Dùng câu ngắn với “reuse”, “consistent”, “variant” thay vì giải thích kỹ thuật dài.",
+    "phraseIds": [
+      "p282",
+      "p492",
+      "p702",
+      "p912",
+      "p1122"
+    ]
+  },
+  {
+    "id": "pat133",
+    "categoryId": "everyday",
+    "subCategoryId": "office-help",
+    "pattern": "I'm having a little trouble with ….",
+    "variantCount": 5,
+    "memoryTip": "“Could you help me with…?” = nhờ giúp đỡ tự nhiên; nói cảm ơn khi được hỗ trợ.",
+    "phraseIds": [
+      "p283",
+      "p493",
+      "p703",
+      "p913",
+      "p1123"
+    ]
+  },
+  {
+    "id": "pat134",
+    "categoryId": "everyday",
+    "subCategoryId": "casual-conversation",
+    "pattern": "Looks like it might rain later.",
+    "variantCount": 5,
+    "memoryTip": "Small talk: mở bằng một câu ngắn rồi hỏi thêm một chi tiết cụ thể.",
+    "phraseIds": [
+      "p284",
+      "p494",
+      "p704",
+      "p914",
+      "p1124"
+    ]
+  },
+  {
+    "id": "pat135",
+    "categoryId": "meeting",
+    "subCategoryId": "pushback",
+    "pattern": "I understand the idea behind ….",
+    "variantCount": 5,
+    "memoryTip": "Phản biện nhẹ bằng “I see…” / “I’m not fully convinced…” trước khi nêu rủi ro.",
+    "phraseIds": [
+      "p285",
+      "p495",
+      "p705",
+      "p915",
+      "p1125"
+    ]
+  },
+  {
+    "id": "pat136",
+    "categoryId": "everyday",
+    "subCategoryId": "food-ordering",
+    "pattern": "Could I get … to go?",
+    "variantCount": 5,
+    "memoryTip": "Nhớ “I’ll have…” để gọi món nhanh; “to go” nghĩa là mang đi. Thử nói lại với một ví dụ của mình.",
+    "phraseIds": [
+      "p286",
+      "p496",
+      "p706",
+      "p916",
+      "p1126"
+    ]
+  },
+  {
+    "id": "pat137",
+    "categoryId": "engineering",
+    "subCategoryId": "dev-handoff",
+    "pattern": "Is … technically feasible?",
+    "variantCount": 5,
+    "memoryTip": "Bàn giao nói rõ component, behavior, state và nơi kiểm tra spec.",
+    "phraseIds": [
+      "p287",
+      "p497",
+      "p707",
+      "p917",
+      "p1127"
+    ]
+  },
+  {
+    "id": "pat138",
+    "categoryId": "reflex",
+    "subCategoryId": "buy-time",
+    "pattern": "Can I take a moment to think through …?",
+    "variantCount": 5,
+    "memoryTip": "“Can I take a moment…?” xin vài giây suy nghĩ mà vẫn giữ mạch trò chuyện.",
+    "phraseIds": [
+      "p288",
+      "p498",
+      "p708",
+      "p918",
+      "p1128"
+    ]
+  },
+  {
+    "id": "pat139",
+    "categoryId": "everyday",
+    "subCategoryId": "cafe-drinks",
+    "pattern": "I'll go with ….",
+    "variantCount": 5,
+    "memoryTip": "“Can I get…” là cách gọi đồ rất phổ biến; “I’ll go with…” là chốt chọn món. Thử nói lại với một ví dụ của mình.",
+    "phraseIds": [
+      "p289",
+      "p499",
+      "p709",
+      "p919",
+      "p1129"
+    ]
+  },
+  {
+    "id": "pat140",
+    "categoryId": "everyday",
+    "subCategoryId": "restaurant-seating",
+    "pattern": "Could we switch to …?",
+    "variantCount": 5,
+    "memoryTip": "“Do you have … available?” dùng để hỏi còn chỗ; “if possible” giúp yêu cầu mềm hơn. Thử nói lại với một ví dụ của mình.",
+    "phraseIds": [
+      "p290",
+      "p500",
+      "p710",
+      "p920",
+      "p1130"
+    ]
+  },
+  {
+    "id": "pat141",
+    "categoryId": "design",
+    "subCategoryId": "research-strategy",
+    "pattern": "I don't want to make assumptions about ….",
+    "variantCount": 5,
+    "memoryTip": "Đặt câu hỏi về hành vi/dữ liệu, rồi đề xuất bước kiểm chứng cụ thể.",
+    "phraseIds": [
+      "p291",
+      "p501",
+      "p711",
+      "p921",
+      "p1131"
+    ]
+  },
+  {
+    "id": "pat142",
+    "categoryId": "everyday",
+    "subCategoryId": "grocery-shopping",
+    "pattern": "Is there a discount on …?",
+    "variantCount": 5,
+    "memoryTip": "“In stock” = còn hàng; “out of” = hết hàng; chỉ cần thay tên đồ cần mua. Thử nói lại với một ví dụ của mình.",
+    "phraseIds": [
+      "p292",
+      "p502",
+      "p712",
+      "p922",
+      "p1132"
+    ]
+  },
+  {
+    "id": "pat143",
+    "categoryId": "meeting",
+    "subCategoryId": "start-meeting",
+    "pattern": "We should leave enough time for ….",
+    "variantCount": 5,
+    "memoryTip": "“Let’s…” kéo cả nhóm vào một hành động. Nói câu chính trước, sau đó mới giải thích.",
+    "phraseIds": [
+      "p293",
+      "p503",
+      "p713",
+      "p923",
+      "p1133"
+    ]
+  },
+  {
+    "id": "pat144",
+    "categoryId": "business",
+    "subCategoryId": "operational-workflow",
+    "pattern": "What slows users down when creating a new case?",
+    "variantCount": 5,
+    "memoryTip": "Hỏi người dùng hiện làm thế nào rồi mới đề xuất thay đổi hệ thống.",
+    "phraseIds": [
+      "p294",
+      "p504",
+      "p714",
+      "p924",
+      "p1134"
+    ]
+  },
+  {
+    "id": "pat145",
+    "categoryId": "everyday",
+    "subCategoryId": "clothes-shopping",
+    "pattern": "Can I exchange …?",
+    "variantCount": 5,
+    "memoryTip": "“Try on” = mặc/thử; “exchange” = đổi hàng; “another size” = size khác. Thử nói lại với một ví dụ của mình.",
+    "phraseIds": [
+      "p295",
+      "p505",
+      "p715",
+      "p925",
+      "p1135"
+    ]
+  },
+  {
+    "id": "pat146",
+    "categoryId": "everyday",
+    "subCategoryId": "payments-receipts",
+    "pattern": "Do I have to pay … today?",
+    "variantCount": 5,
+    "memoryTip": "“By card” = bằng thẻ; “receipt” = biên lai; “deposit” = khoản đặt cọc. Thử nói lại với một ví dụ của mình.",
+    "phraseIds": [
+      "p296",
+      "p506",
+      "p716",
+      "p926",
+      "p1136"
+    ]
+  },
+  {
+    "id": "pat147",
+    "categoryId": "reflex",
+    "subCategoryId": "ask-for-clarification",
+    "pattern": "I might have misunderstood ….",
+    "variantCount": 5,
+    "memoryTip": "Khi chưa rõ, mở bằng “Could you…?” để hỏi lại lịch sự; chỉ thay điều cần làm rõ.",
+    "phraseIds": [
+      "p297",
+      "p507",
+      "p717",
+      "p927",
+      "p1137"
+    ]
+  },
+  {
+    "id": "pat148",
+    "categoryId": "engineering",
+    "subCategoryId": "qa-triage",
+    "pattern": "I need the exact steps that trigger ….",
+    "variantCount": 5,
+    "memoryTip": "Lỗi cần nói rõ hiện tượng + thiết bị + cách tái hiện, tránh câu quá chung.",
+    "phraseIds": [
+      "p298",
+      "p508",
+      "p718",
+      "p928",
+      "p1138"
+    ]
+  },
+  {
+    "id": "pat149",
+    "categoryId": "everyday",
+    "subCategoryId": "asking-directions",
+    "pattern": "Can you show me where … is?",
+    "variantCount": 5,
+    "memoryTip": "“How do I get to…?” = hỏi đường chuẩn và ngắn nhất; “from here” = từ đây. Thử nói lại với một ví dụ của mình.",
+    "phraseIds": [
+      "p299",
+      "p509",
+      "p719",
+      "p929",
+      "p1139"
+    ]
+  },
+  {
+    "id": "pat150",
+    "categoryId": "design",
+    "subCategoryId": "usability-review",
+    "pattern": "We should test … with actual users.",
+    "variantCount": 5,
+    "memoryTip": "Đổi nhận xét cảm tính thành câu nói rõ tác động lên người dùng và tác vụ.",
+    "phraseIds": [
+      "p300",
+      "p510",
+      "p720",
+      "p930",
+      "p1140"
+    ]
+  },
+  {
+    "id": "pat151",
+    "categoryId": "everyday",
+    "subCategoryId": "ride-hailing",
+    "pattern": "Is it okay to stop …?",
+    "variantCount": 5,
+    "memoryTip": "“Pick me up” = đón; “drop me off” = cho xuống xe. Nhớ cả khối. Thử nói lại với một ví dụ của mình.",
+    "phraseIds": [
+      "p301",
+      "p511",
+      "p721",
+      "p931",
+      "p1141"
+    ]
+  },
+  {
+    "id": "pat152",
+    "categoryId": "meeting",
+    "subCategoryId": "invite-feedback",
+    "pattern": "Would you change anything about …?",
+    "variantCount": 5,
+    "memoryTip": "“What do you think…?” = mời góp ý; tránh hỏi quá dài khi cần phản hồi nhanh.",
+    "phraseIds": [
+      "p302",
+      "p512",
+      "p722",
+      "p932",
+      "p1142"
+    ]
+  },
+  {
+    "id": "pat153",
+    "categoryId": "everyday",
+    "subCategoryId": "hotel-stays",
+    "pattern": "Who should I ask about …?",
+    "variantCount": 5,
+    "memoryTip": "“Extra charge” = phụ phí; “late checkout” = trả phòng muộn. Thử nói lại với một ví dụ của mình.",
+    "phraseIds": [
+      "p303",
+      "p513",
+      "p723",
+      "p933",
+      "p1143"
+    ]
+  },
+  {
+    "id": "pat154",
+    "categoryId": "leadership",
+    "subCategoryId": "lead-with-clarity",
+    "pattern": "I'd like your input on ….",
+    "variantCount": 5,
+    "memoryTip": "Nêu quyết định, người chịu trách nhiệm và bước tiếp theo trong một hơi.",
+    "phraseIds": [
+      "p304",
+      "p514",
+      "p724",
+      "p934",
+      "p1144"
+    ]
+  },
+  {
+    "id": "pat155",
+    "categoryId": "everyday",
+    "subCategoryId": "making-plans",
+    "pattern": "Could we do coffee on Friday instead?",
+    "variantCount": 5,
+    "memoryTip": "“Up for…” = có hứng không; “How about…” = đề xuất nhẹ; “skip” = bỏ qua. Thử nói lại với một ví dụ của mình.",
+    "phraseIds": [
+      "p305",
+      "p515",
+      "p725",
+      "p935",
+      "p1145"
+    ]
+  },
+  {
+    "id": "pat156",
+    "categoryId": "reflex",
+    "subCategoryId": "missed-information",
+    "pattern": "Would you mind repeating …?",
+    "variantCount": 5,
+    "memoryTip": "Đừng đoán phần nghe thiếu. Dùng “I didn’t catch…” hoặc “Could you repeat…?” để hỏi đúng chi tiết.",
+    "phraseIds": [
+      "p306",
+      "p516",
+      "p726",
+      "p936",
+      "p1146"
+    ]
+  },
+  {
+    "id": "pat157",
+    "categoryId": "everyday",
+    "subCategoryId": "family-check-ins",
+    "pattern": "I hope … are doing well.",
+    "variantCount": 5,
+    "memoryTip": "“Check in with” = hỏi thăm tình hình, không phải làm thủ tục check-in. Thử nói lại với một ví dụ của mình.",
+    "phraseIds": [
+      "p307",
+      "p517",
+      "p727",
+      "p937",
+      "p1147"
+    ]
+  },
+  {
+    "id": "pat158",
+    "categoryId": "business",
+    "subCategoryId": "stakeholder-validation",
+    "pattern": "I need written confirmation of ….",
+    "variantCount": 5,
+    "memoryTip": "“Can we validate…?” = xin kiểm chứng; phân biệt điều đã chốt và điều còn giả định.",
+    "phraseIds": [
+      "p308",
+      "p518",
+      "p728",
+      "p938",
+      "p1148"
+    ]
+  },
+  {
+    "id": "pat159",
+    "categoryId": "engineering",
+    "subCategoryId": "release-and-deployment",
+    "pattern": "Let's assess the risk before ….",
+    "variantCount": 5,
+    "memoryTip": "Dùng “ready / blocking / risk / release” để trao đổi tình trạng triển khai.",
+    "phraseIds": [
+      "p309",
+      "p519",
+      "p729",
+      "p939",
+      "p1149"
+    ]
+  },
+  {
+    "id": "pat160",
+    "categoryId": "design",
+    "subCategoryId": "interaction-states",
+    "pattern": "I'll demonstrate how … behaves.",
+    "variantCount": 5,
+    "memoryTip": "Khi nói về UI, nhớ ghép thành phần + trạng thái/hành vi cụ thể.",
+    "phraseIds": [
+      "p310",
+      "p520",
+      "p730",
+      "p940",
+      "p1150"
+    ]
+  },
+  {
+    "id": "pat161",
+    "categoryId": "everyday",
+    "subCategoryId": "pharmacy-symptoms",
+    "pattern": "Should I see a doctor about …?",
+    "variantCount": 5,
+    "memoryTip": "“I’ve got…” trong hội thoại = mình bị/có; “anything for…” = có gì giúp giảm không. Thử nói lại với một ví dụ của mình.",
+    "phraseIds": [
+      "p311",
+      "p521",
+      "p731",
+      "p941",
+      "p1151"
+    ]
+  },
+  {
+    "id": "pat162",
+    "categoryId": "everyday",
+    "subCategoryId": "device-problems",
+    "pattern": "Do you know how to restart …?",
+    "variantCount": 5,
+    "memoryTip": "“Restart” là khởi động lại; tránh “reset” nếu không định xóa cài đặt.",
+    "phraseIds": [
+      "p312",
+      "p522",
+      "p732",
+      "p942",
+      "p1152"
+    ]
+  },
+  {
+    "id": "pat163",
+    "categoryId": "meeting",
+    "subCategoryId": "action-and-closure",
+    "pattern": "Let's follow up on … tomorrow.",
+    "variantCount": 5,
+    "memoryTip": "Cuối họp nhớ nói rõ việc cần làm + người phụ trách + thời hạn.",
+    "phraseIds": [
+      "p313",
+      "p523",
+      "p733",
+      "p943",
+      "p1153"
+    ]
+  },
+  {
+    "id": "pat164",
+    "categoryId": "everyday",
+    "subCategoryId": "appointments-times",
+    "pattern": "Do I need to prepare anything for …?",
+    "variantCount": 5,
+    "memoryTip": "“Reschedule” = đổi lịch; “move … to Friday” = dời sang thứ Sáu. Thử nói lại với một ví dụ của mình.",
+    "phraseIds": [
+      "p314",
+      "p524",
+      "p734",
+      "p944",
+      "p1154"
+    ]
+  },
+  {
+    "id": "pat165",
+    "categoryId": "everyday",
+    "subCategoryId": "opinions-reactions",
+    "pattern": "I'd definitely recommend ….",
+    "variantCount": 5,
+    "memoryTip": "“What did you think of…?” hỏi cảm nhận tự nhiên; “I’d recommend…” = mình sẽ giới thiệu. Thử nói lại với một ví dụ của mình.",
+    "phraseIds": [
+      "p315",
+      "p525",
+      "p735",
+      "p945",
+      "p1155"
+    ]
+  },
+  {
+    "id": "pat166",
+    "categoryId": "reflex",
+    "subCategoryId": "buy-time",
+    "pattern": "I'm still looking into ….",
+    "variantCount": 5,
+    "memoryTip": "“Let me…” giúp xin vài giây suy nghĩ mà không im lặng; hẹn phản hồi cụ thể khi chưa chắc.",
+    "phraseIds": [
+      "p316",
+      "p526",
+      "p736",
+      "p946",
+      "p1156"
+    ]
+  },
+  {
+    "id": "pat167",
+    "categoryId": "everyday",
+    "subCategoryId": "deliveries-tracking",
+    "pattern": "Could you leave … at the front desk?",
+    "variantCount": 5,
+    "memoryTip": "“Haven’t received … yet” = chưa nhận được; “front desk” = quầy lễ tân. Thử nói lại với một ví dụ của mình.",
+    "phraseIds": [
+      "p317",
+      "p527",
+      "p737",
+      "p947",
+      "p1157"
+    ]
+  },
+  {
+    "id": "pat168",
+    "categoryId": "design",
+    "subCategoryId": "design-system",
+    "pattern": "Are there existing rules for …?",
+    "variantCount": 5,
+    "memoryTip": "Dùng câu ngắn với “reuse”, “consistent”, “variant” thay vì giải thích kỹ thuật dài.",
+    "phraseIds": [
+      "p318",
+      "p528",
+      "p738",
+      "p948",
+      "p1158"
+    ]
+  },
+  {
+    "id": "pat169",
+    "categoryId": "engineering",
+    "subCategoryId": "dev-handoff",
+    "pattern": "Please flag any issues you find with ….",
+    "variantCount": 5,
+    "memoryTip": "Bàn giao nói rõ component, behavior, state và nơi kiểm tra spec.",
+    "phraseIds": [
+      "p319",
+      "p529",
+      "p739",
+      "p949",
+      "p1159"
+    ]
+  },
+  {
+    "id": "pat170",
+    "categoryId": "everyday",
+    "subCategoryId": "urgent-assistance",
+    "pattern": "Can you help me contact …?",
+    "variantCount": 5,
+    "memoryTip": "“I urgently need…” = tôi cần gấp; “Could you help me…?” = nhờ giúp lịch sự. Thử nói lại với một ví dụ của mình.",
+    "phraseIds": [
+      "p320",
+      "p530",
+      "p740",
+      "p950",
+      "p1160"
+    ]
+  },
+  {
+    "id": "pat171",
+    "categoryId": "meeting",
+    "subCategoryId": "pushback",
+    "pattern": "What if we reconsider …?",
+    "variantCount": 5,
+    "memoryTip": "Phản biện nhẹ bằng “I see…” / “I’m not fully convinced…” trước khi nêu rủi ro.",
+    "phraseIds": [
+      "p321",
+      "p531",
+      "p741",
+      "p951",
+      "p1161"
+    ]
+  },
+  {
+    "id": "pat172",
+    "categoryId": "everyday",
+    "subCategoryId": "casual-check-in",
+    "pattern": "Was there anything interesting about …?",
+    "variantCount": 5,
+    "memoryTip": "“How was…?” hỏi một chuyện đã diễn ra; nối tiếp bằng một câu hỏi nhẹ.",
+    "phraseIds": [
+      "p322",
+      "p532",
+      "p742",
+      "p952",
+      "p1162"
+    ]
+  },
+  {
+    "id": "pat173",
+    "categoryId": "business",
+    "subCategoryId": "business-rules",
+    "pattern": "I need to understand … before designing the flow.",
+    "variantCount": 5,
+    "memoryTip": "Hỏi rule trước khi thiết kế: bắt buộc không, ai áp dụng, ngoại lệ nào?",
+    "phraseIds": [
+      "p323",
+      "p533",
+      "p743",
+      "p953",
+      "p1163"
+    ]
+  },
+  {
+    "id": "pat174",
+    "categoryId": "everyday",
+    "subCategoryId": "office-help",
+    "pattern": "Where can I find information about …?",
+    "variantCount": 5,
+    "memoryTip": "“Could you help me with…?” = nhờ giúp đỡ tự nhiên; nói cảm ơn khi được hỗ trợ.",
+    "phraseIds": [
+      "p324",
+      "p534",
+      "p744",
+      "p954",
+      "p1164"
+    ]
+  },
+  {
+    "id": "pat175",
+    "categoryId": "reflex",
+    "subCategoryId": "ask-for-clarification",
+    "pattern": "Let's go over … one more time.",
+    "variantCount": 5,
+    "memoryTip": "Khi chưa rõ, mở bằng “Could you…?” để hỏi lại lịch sự; chỉ thay điều cần làm rõ.",
+    "phraseIds": [
+      "p325",
+      "p535",
+      "p745",
+      "p955",
+      "p1165"
+    ]
+  },
+  {
+    "id": "pat176",
+    "categoryId": "everyday",
+    "subCategoryId": "casual-conversation",
+    "pattern": "I haven't checked the weather today.",
+    "variantCount": 5,
+    "memoryTip": "Small talk: mở bằng một câu ngắn rồi hỏi thêm một chi tiết cụ thể.",
+    "phraseIds": [
+      "p326",
+      "p536",
+      "p746",
+      "p956",
+      "p1166"
+    ]
+  },
+  {
+    "id": "pat177",
+    "categoryId": "design",
+    "subCategoryId": "usability-review",
+    "pattern": "What problem does … solve?",
+    "variantCount": 5,
+    "memoryTip": "Đổi nhận xét cảm tính thành câu nói rõ tác động lên người dùng và tác vụ.",
+    "phraseIds": [
+      "p327",
+      "p537",
+      "p747",
+      "p957",
+      "p1167"
+    ]
+  },
+  {
+    "id": "pat178",
+    "categoryId": "everyday",
+    "subCategoryId": "food-ordering",
+    "pattern": "Could I add … to my order?",
+    "variantCount": 5,
+    "memoryTip": "Nhớ “I’ll have…” để gọi món nhanh; “to go” nghĩa là mang đi. Thử nói lại với một ví dụ của mình.",
+    "phraseIds": [
+      "p328",
+      "p538",
+      "p748",
+      "p958",
+      "p1168"
+    ]
+  },
+  {
+    "id": "pat179",
+    "categoryId": "meeting",
+    "subCategoryId": "start-meeting",
+    "pattern": "Is everyone ready to discuss …?",
+    "variantCount": 5,
+    "memoryTip": "“Let’s…” kéo cả nhóm vào một hành động. Nói câu chính trước, sau đó mới giải thích.",
+    "phraseIds": [
+      "p329",
+      "p539",
+      "p749",
+      "p959",
+      "p1169"
+    ]
+  },
+  {
+    "id": "pat180",
+    "categoryId": "everyday",
+    "subCategoryId": "cafe-drinks",
+    "pattern": "Is … sweetened?",
+    "variantCount": 5,
+    "memoryTip": "“Can I get…” là cách gọi đồ rất phổ biến; “I’ll go with…” là chốt chọn món. Thử nói lại với một ví dụ của mình.",
+    "phraseIds": [
+      "p330",
+      "p540",
+      "p750",
+      "p960",
+      "p1170"
+    ]
+  },
+  {
+    "id": "pat181",
+    "categoryId": "engineering",
+    "subCategoryId": "qa-triage",
+    "pattern": "Did the latest fix resolve …?",
+    "variantCount": 5,
+    "memoryTip": "Lỗi cần nói rõ hiện tượng + thiết bị + cách tái hiện, tránh câu quá chung.",
+    "phraseIds": [
+      "p331",
+      "p541",
+      "p751",
+      "p961",
+      "p1171"
+    ]
+  },
+  {
+    "id": "pat182",
+    "categoryId": "everyday",
+    "subCategoryId": "restaurant-seating",
+    "pattern": "How long is the wait for …?",
+    "variantCount": 5,
+    "memoryTip": "“Do you have … available?” dùng để hỏi còn chỗ; “if possible” giúp yêu cầu mềm hơn. Thử nói lại với một ví dụ của mình.",
+    "phraseIds": [
+      "p332",
+      "p542",
+      "p752",
+      "p962",
+      "p1172"
+    ]
+  },
+  {
+    "id": "pat183",
+    "categoryId": "leadership",
+    "subCategoryId": "priority-tradeoffs",
+    "pattern": "I want us to focus on … first.",
+    "variantCount": 5,
+    "memoryTip": "Ưu tiên: nói impact, effort và deadline bằng câu ngắn thay vì phân tích dài.",
+    "phraseIds": [
+      "p333",
+      "p543",
+      "p753",
+      "p963",
+      "p1173"
+    ]
+  },
+  {
+    "id": "pat184",
+    "categoryId": "everyday",
+    "subCategoryId": "asking-directions",
+    "pattern": "Does this bus go to …?",
+    "variantCount": 5,
+    "memoryTip": "“How do I get to…?” = hỏi đường chuẩn và ngắn nhất; “from here” = từ đây. Thử nói lại với một ví dụ của mình.",
+    "phraseIds": [
+      "p334",
+      "p544",
+      "p754",
+      "p964",
+      "p1174"
+    ]
+  },
+  {
+    "id": "pat185",
+    "categoryId": "reflex",
+    "subCategoryId": "missed-information",
+    "pattern": "Can you type … in the chat?",
+    "variantCount": 5,
+    "memoryTip": "Đừng đoán phần nghe thiếu. Dùng “I didn’t catch…” hoặc “Could you repeat…?” để hỏi đúng chi tiết.",
+    "phraseIds": [
+      "p335",
+      "p545",
+      "p755",
+      "p965",
+      "p1175"
+    ]
+  },
+  {
+    "id": "pat186",
+    "categoryId": "business",
+    "subCategoryId": "edge-cases",
+    "pattern": "Who gets notified when …?",
+    "variantCount": 5,
+    "memoryTip": "“What happens if…?” = công thức đơn giản nhất để hỏi tình huống ngoại lệ.",
+    "phraseIds": [
+      "p336",
+      "p546",
+      "p756",
+      "p966",
+      "p1176"
+    ]
+  },
+  {
+    "id": "pat187",
+    "categoryId": "design",
+    "subCategoryId": "interaction-states",
+    "pattern": "What happens to … on mobile?",
+    "variantCount": 5,
+    "memoryTip": "Khi nói về UI, nhớ ghép thành phần + trạng thái/hành vi cụ thể.",
+    "phraseIds": [
+      "p337",
+      "p547",
+      "p757",
+      "p967",
+      "p1177"
+    ]
+  },
+  {
+    "id": "pat188",
+    "categoryId": "everyday",
+    "subCategoryId": "making-plans",
+    "pattern": "I might have to skip ….",
+    "variantCount": 5,
+    "memoryTip": "“Up for…” = có hứng không; “How about…” = đề xuất nhẹ; “skip” = bỏ qua. Thử nói lại với một ví dụ của mình.",
+    "phraseIds": [
+      "p338",
+      "p548",
+      "p758",
+      "p968",
+      "p1178"
+    ]
+  },
+  {
+    "id": "pat189",
+    "categoryId": "meeting",
+    "subCategoryId": "invite-feedback",
+    "pattern": "Do we have any concerns about …?",
+    "variantCount": 5,
+    "memoryTip": "“What do you think…?” = mời góp ý; tránh hỏi quá dài khi cần phản hồi nhanh.",
+    "phraseIds": [
+      "p339",
+      "p549",
+      "p759",
+      "p969",
+      "p1179"
+    ]
+  },
+  {
+    "id": "pat190",
+    "categoryId": "everyday",
+    "subCategoryId": "appointments-times",
+    "pattern": "Could you remind me about …?",
+    "variantCount": 5,
+    "memoryTip": "“Reschedule” = đổi lịch; “move … to Friday” = dời sang thứ Sáu. Thử nói lại với một ví dụ của mình.",
+    "phraseIds": [
+      "p340",
+      "p550",
+      "p760",
+      "p970",
+      "p1180"
+    ]
+  },
+  {
+    "id": "pat191",
+    "categoryId": "everyday",
+    "subCategoryId": "deliveries-tracking",
+    "pattern": "Could you update me on …?",
+    "variantCount": 5,
+    "memoryTip": "“Haven’t received … yet” = chưa nhận được; “front desk” = quầy lễ tân. Thử nói lại với một ví dụ của mình.",
+    "phraseIds": [
+      "p341",
+      "p551",
+      "p761",
+      "p971",
+      "p1181"
+    ]
+  },
+  {
+    "id": "pat192",
+    "categoryId": "engineering",
+    "subCategoryId": "release-and-deployment",
+    "pattern": "I'd like a final review before ….",
+    "variantCount": 5,
+    "memoryTip": "Dùng “ready / blocking / risk / release” để trao đổi tình trạng triển khai.",
+    "phraseIds": [
+      "p342",
+      "p552",
+      "p762",
+      "p972",
+      "p1182"
+    ]
+  },
+  {
+    "id": "pat193",
+    "categoryId": "everyday",
+    "subCategoryId": "urgent-assistance",
+    "pattern": "I'm trying to find … right now.",
+    "variantCount": 5,
+    "memoryTip": "“I urgently need…” = tôi cần gấp; “Could you help me…?” = nhờ giúp lịch sự. Thử nói lại với một ví dụ của mình.",
+    "phraseIds": [
+      "p343",
+      "p553",
+      "p763",
+      "p973",
+      "p1183"
+    ]
+  },
+  {
+    "id": "pat194",
+    "categoryId": "reflex",
+    "subCategoryId": "buy-time",
+    "pattern": "I'll confirm … with the team.",
+    "variantCount": 5,
+    "memoryTip": "“Let me…” giúp xin vài giây suy nghĩ mà không im lặng; hẹn phản hồi cụ thể khi chưa chắc.",
+    "phraseIds": [
+      "p344",
+      "p554",
+      "p764",
+      "p974",
+      "p1184"
+    ]
+  },
+  {
+    "id": "pat195",
+    "categoryId": "everyday",
+    "subCategoryId": "casual-check-in",
+    "pattern": "Sounds like … kept you busy.",
+    "variantCount": 5,
+    "memoryTip": "“How was…?” hỏi một chuyện đã diễn ra; nối tiếp bằng một câu hỏi nhẹ.",
+    "phraseIds": [
+      "p345",
+      "p555",
+      "p765",
+      "p975",
+      "p1185"
+    ]
+  },
+  {
+    "id": "pat196",
+    "categoryId": "design",
+    "subCategoryId": "usability-review",
+    "pattern": "Let's review … from a first-time user's perspective.",
+    "variantCount": 5,
+    "memoryTip": "Đổi nhận xét cảm tính thành câu nói rõ tác động lên người dùng và tác vụ.",
+    "phraseIds": [
+      "p346",
+      "p556",
+      "p766",
+      "p976",
+      "p1186"
+    ]
+  },
+  {
+    "id": "pat197",
+    "categoryId": "meeting",
+    "subCategoryId": "start-meeting",
+    "pattern": "Let's keep the discussion focused on ….",
+    "variantCount": 5,
+    "memoryTip": "“Let’s…” kéo cả nhóm vào một hành động. Nói câu chính trước, sau đó mới giải thích.",
+    "phraseIds": [
+      "p347",
+      "p557",
+      "p767",
+      "p977",
+      "p1187"
+    ]
+  },
+  {
+    "id": "pat198",
+    "categoryId": "everyday",
+    "subCategoryId": "office-help",
+    "pattern": "Is there anything I should know about …?",
+    "variantCount": 5,
+    "memoryTip": "“Could you help me with…?” = nhờ giúp đỡ tự nhiên; nói cảm ơn khi được hỗ trợ.",
+    "phraseIds": [
+      "p348",
+      "p558",
+      "p768",
+      "p978",
+      "p1188"
+    ]
+  },
+  {
+    "id": "pat199",
+    "categoryId": "everyday",
+    "subCategoryId": "casual-conversation",
+    "pattern": "Let's see how the weather turns out.",
+    "variantCount": 5,
+    "memoryTip": "Small talk: mở bằng một câu ngắn rồi hỏi thêm một chi tiết cụ thể.",
+    "phraseIds": [
+      "p349",
+      "p559",
+      "p769",
+      "p979",
+      "p1189"
+    ]
+  },
+  {
+    "id": "pat200",
+    "categoryId": "business",
+    "subCategoryId": "edge-cases",
+    "pattern": "Should we block the action if …?",
+    "variantCount": 5,
+    "memoryTip": "“What happens if…?” = công thức đơn giản nhất để hỏi tình huống ngoại lệ.",
+    "phraseIds": [
+      "p350",
+      "p560",
+      "p770",
+      "p980",
+      "p1190"
+    ]
+  },
+  {
+    "id": "pat201",
+    "categoryId": "everyday",
+    "subCategoryId": "casual-check-in",
+    "pattern": "Tell me more about … when you have time.",
+    "variantCount": 5,
+    "memoryTip": "“How was…?” hỏi một chuyện đã diễn ra; nối tiếp bằng một câu hỏi nhẹ.",
+    "phraseIds": [
+      "p351",
+      "p561",
+      "p771",
+      "p981",
+      "p1191"
+    ]
+  },
+  {
+    "id": "pat202",
+    "categoryId": "engineering",
+    "subCategoryId": "dev-handoff",
+    "pattern": "I'll share an updated spec for ….",
+    "variantCount": 5,
+    "memoryTip": "Bàn giao nói rõ component, behavior, state và nơi kiểm tra spec.",
+    "phraseIds": [
+      "p352",
+      "p562",
+      "p772",
+      "p982",
+      "p1192"
+    ]
+  },
+  {
+    "id": "pat203",
+    "categoryId": "everyday",
+    "subCategoryId": "office-help",
+    "pattern": "Thanks for your help with ….",
+    "variantCount": 5,
+    "memoryTip": "“Could you help me with…?” = nhờ giúp đỡ tự nhiên; nói cảm ơn khi được hỗ trợ.",
+    "phraseIds": [
+      "p353",
+      "p563",
+      "p773",
+      "p983",
+      "p1193"
+    ]
+  },
+  {
+    "id": "pat204",
+    "categoryId": "reflex",
+    "subCategoryId": "ask-for-clarification",
+    "pattern": "Could you put … in simpler terms?",
+    "variantCount": 5,
+    "memoryTip": "Khi chưa rõ, mở bằng “Could you…?” để hỏi lại lịch sự; chỉ thay điều cần làm rõ.",
+    "phraseIds": [
+      "p354",
+      "p564",
+      "p774",
+      "p984",
+      "p1194"
+    ]
+  },
+  {
+    "id": "pat205",
+    "categoryId": "design",
+    "subCategoryId": "interaction-states",
+    "pattern": "The current behavior of … feels inconsistent.",
+    "variantCount": 5,
+    "memoryTip": "Khi nói về UI, nhớ ghép thành phần + trạng thái/hành vi cụ thể.",
+    "phraseIds": [
+      "p355",
+      "p565",
+      "p775",
+      "p985",
+      "p1195"
+    ]
+  },
+  {
+    "id": "pat206",
+    "categoryId": "meeting",
+    "subCategoryId": "invite-feedback",
+    "pattern": "Let's collect feedback on … before deciding.",
+    "variantCount": 5,
+    "memoryTip": "“What do you think…?” = mời góp ý; tránh hỏi quá dài khi cần phản hồi nhanh.",
+    "phraseIds": [
+      "p356",
+      "p566",
+      "p776",
+      "p986",
+      "p1196"
+    ]
+  },
+  {
+    "id": "pat207",
+    "categoryId": "everyday",
+    "subCategoryId": "casual-conversation",
+    "pattern": "I haven't checked the forecast yet.",
+    "variantCount": 5,
+    "memoryTip": "Small talk: mở bằng một câu ngắn rồi hỏi thêm một chi tiết cụ thể.",
+    "phraseIds": [
+      "p357",
+      "p567",
+      "p777",
+      "p987",
+      "p1197"
+    ]
+  },
+  {
+    "id": "pat208",
+    "categoryId": "everyday",
+    "subCategoryId": "casual-check-in",
+    "pattern": "I was going to ask you about ….",
+    "variantCount": 5,
+    "memoryTip": "“How was…?” hỏi một chuyện đã diễn ra; nối tiếp bằng một câu hỏi nhẹ.",
+    "phraseIds": [
+      "p358",
+      "p568",
+      "p778",
+      "p988",
+      "p1198"
+    ]
+  },
+  {
+    "id": "pat209",
+    "categoryId": "everyday",
+    "subCategoryId": "office-help",
+    "pattern": "I'll ask someone else about … if you're busy.",
+    "variantCount": 5,
+    "memoryTip": "“Could you help me with…?” = nhờ giúp đỡ tự nhiên; nói cảm ơn khi được hỗ trợ.",
+    "phraseIds": [
+      "p359",
+      "p569",
+      "p779",
+      "p989",
+      "p1199"
+    ]
+  },
+  {
+    "id": "pat210",
+    "categoryId": "everyday",
+    "subCategoryId": "casual-conversation",
+    "pattern": "Let me know if the weather clears up.",
+    "variantCount": 5,
+    "memoryTip": "Small talk: mở bằng một câu ngắn rồi hỏi thêm một chi tiết cụ thể.",
+    "phraseIds": [
+      "p360",
+      "p570",
+      "p780",
+      "p990",
+      "p1200"
+    ]
+  }
+]

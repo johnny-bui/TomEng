@@ -1,0 +1,26 @@
+name: TomEng quality
+
+on:
+  pull_request:
+  push:
+    branches: [main, feat/tomeng-native-v3]
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: Check JavaScript syntax
+        run: node --check app.js && node --check sw.js
+      - name: Test learning engine and migrations
+        run: node tests/engine.test.cjs
+      - name: Test PWA shell and cache migration assets
+        run: node tests/pwa.test.cjs
+      - name: Test phrase data
+        run: python3 tests/content.test.py

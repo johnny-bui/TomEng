@@ -1,0 +1,44 @@
+{
+  "total": 1200,
+  "legacyCount": 150,
+  "newCount": 1050,
+  "everydayCount": 500,
+  "reflexCount": 125,
+  "countsByCategory": {
+    "reflex": 125,
+    "design": 150,
+    "business": 90,
+    "meeting": 145,
+    "leadership": 65,
+    "engineering": 125,
+    "everyday": 500
+  },
+  "subcategories": 70,
+  "lessons": 240,
+  "patternFamiliesNew": 210,
+  "extraEverydayFamilies": 76,
+  "duplicatesEnglishExact": 0,
+  "legacyTextPreserved": true,
+  "automaticFlags": [],
+  "editorialLimitations": [
+    "Native conversational editorial pass by AI, not independently verified by a native speaker.",
+    "Audio is not included. Device speechSynthesis is not a native-speaker voice recording.",
+    "Follow-ups were AI-edited to provide five different continuation lines within each new pattern family; repeated lines still occur across related families and need independent semantic review."
+  ],
+  "qaAcceptance": [
+    "1200 records and 240 lessons",
+    "5 phrases/lesson",
+    "stable IDs p001-p150",
+    "nonempty translations, tips, contexts",
+    "no exact English duplicates",
+    "each new pattern has 5 spaced variations"
+  ],
+  "followUpsRevised": 1050,
+  "distinctFollowUpsPerNewPatternFamily": true,
+  "followUpCounts": {
+    "unique": 350,
+    "repeats": 850,
+    "maxOccurrences": 8,
+    "interpretation": "Repetition remains across phrase families within the same scenario topic; each five-phrase family now has five distinct follow-up lines. This is an automated diversity check, not human semantic approval."
+  }
+}

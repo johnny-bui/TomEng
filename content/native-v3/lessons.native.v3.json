@@ -1,0 +1,5756 @@
+[
+  {
+    "id": "day-001",
+    "day": 1,
+    "title": "Tự tin trong cuộc họp",
+    "phraseIds": [
+      "p001",
+      "p002",
+      "p003",
+      "p004",
+      "p005"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "reflex",
+    "reviewRequired": false,
+    "reviewPhraseIds": [],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-002",
+    "day": 2,
+    "title": "Nghe rõ và hỏi lại",
+    "phraseIds": [
+      "p006",
+      "p007",
+      "p008",
+      "p009",
+      "p010"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "reflex",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p001",
+      "p002",
+      "p003",
+      "p004",
+      "p005"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-003",
+    "day": 3,
+    "title": "Góp ý thiết kế",
+    "phraseIds": [
+      "p011",
+      "p012",
+      "p013",
+      "p014",
+      "p015"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "design",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p006",
+      "p007",
+      "p008",
+      "p009",
+      "p010"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-004",
+    "day": 4,
+    "title": "Làm rõ yêu cầu BA",
+    "phraseIds": [
+      "p016",
+      "p017",
+      "p018",
+      "p019",
+      "p020"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "business",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p011",
+      "p012",
+      "p013",
+      "p014",
+      "p015"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-005",
+    "day": 5,
+    "title": "Thống nhất trong team",
+    "phraseIds": [
+      "p021",
+      "p022",
+      "p023",
+      "p024",
+      "p025"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "meeting",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p016",
+      "p017",
+      "p018",
+      "p019",
+      "p020"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-006",
+    "day": 6,
+    "title": "Phạm vi công việc",
+    "phraseIds": [
+      "p026",
+      "p027",
+      "p028",
+      "p029",
+      "p030"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "leadership",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p021",
+      "p022",
+      "p023",
+      "p024",
+      "p025"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-007",
+    "day": 7,
+    "title": "Sắp xếp ưu tiên",
+    "phraseIds": [
+      "p031",
+      "p032",
+      "p033",
+      "p034",
+      "p035"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "leadership",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p026",
+      "p027",
+      "p028",
+      "p029",
+      "p030"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-008",
+    "day": 8,
+    "title": "Tiến độ và deadline",
+    "phraseIds": [
+      "p036",
+      "p037",
+      "p038",
+      "p039",
+      "p040"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "engineering",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p031",
+      "p032",
+      "p033",
+      "p034",
+      "p035"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-009",
+    "day": 9,
+    "title": "Báo cáo vướng mắc",
+    "phraseIds": [
+      "p041",
+      "p042",
+      "p043",
+      "p044",
+      "p045"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "engineering",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p036",
+      "p037",
+      "p038",
+      "p039",
+      "p040"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-010",
+    "day": 10,
+    "title": "Chốt quyết định",
+    "phraseIds": [
+      "p046",
+      "p047",
+      "p048",
+      "p049",
+      "p050"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "leadership",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p041",
+      "p042",
+      "p043",
+      "p044",
+      "p045"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-011",
+    "day": 11,
+    "title": "Đánh giá trải nghiệm",
+    "phraseIds": [
+      "p051",
+      "p052",
+      "p053",
+      "p054",
+      "p055"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "design",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p046",
+      "p047",
+      "p048",
+      "p049",
+      "p050"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-012",
+    "day": 12,
+    "title": "Dữ liệu và chỉ số",
+    "phraseIds": [
+      "p056",
+      "p057",
+      "p058",
+      "p059",
+      "p060"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "design",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p051",
+      "p052",
+      "p053",
+      "p054",
+      "p055"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-013",
+    "day": 13,
+    "title": "Bàn giao cho Developer",
+    "phraseIds": [
+      "p061",
+      "p062",
+      "p063",
+      "p064",
+      "p065"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "engineering",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p056",
+      "p057",
+      "p058",
+      "p059",
+      "p060"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-014",
+    "day": 14,
+    "title": "Điều phối cuộc họp",
+    "phraseIds": [
+      "p066",
+      "p067",
+      "p068",
+      "p069",
+      "p070"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "meeting",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p061",
+      "p062",
+      "p063",
+      "p064",
+      "p065"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-015",
+    "day": 15,
+    "title": "Theo dõi sau họp",
+    "phraseIds": [
+      "p071",
+      "p072",
+      "p073",
+      "p074",
+      "p075"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "meeting",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p066",
+      "p067",
+      "p068",
+      "p069",
+      "p070"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-016",
+    "day": 16,
+    "title": "Bất đồng chuyên nghiệp",
+    "phraseIds": [
+      "p076",
+      "p077",
+      "p078",
+      "p079",
+      "p080"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "meeting",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p071",
+      "p072",
+      "p073",
+      "p074",
+      "p075"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-017",
+    "day": 17,
+    "title": "Phối hợp liên phòng ban",
+    "phraseIds": [
+      "p081",
+      "p082",
+      "p083",
+      "p084",
+      "p085"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "business",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p076",
+      "p077",
+      "p078",
+      "p079",
+      "p080"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-018",
+    "day": 18,
+    "title": "Nghiên cứu người dùng",
+    "phraseIds": [
+      "p086",
+      "p087",
+      "p088",
+      "p089",
+      "p090"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "design",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p081",
+      "p082",
+      "p083",
+      "p084",
+      "p085"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-019",
+    "day": 19,
+    "title": "Demo và prototype",
+    "phraseIds": [
+      "p091",
+      "p092",
+      "p093",
+      "p094",
+      "p095"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "design",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p086",
+      "p087",
+      "p088",
+      "p089",
+      "p090"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-020",
+    "day": 20,
+    "title": "Giải thích giải pháp UX",
+    "phraseIds": [
+      "p096",
+      "p097",
+      "p098",
+      "p099",
+      "p100"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "design",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p091",
+      "p092",
+      "p093",
+      "p094",
+      "p095"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-021",
+    "day": 21,
+    "title": "Chiến lược sản phẩm",
+    "phraseIds": [
+      "p101",
+      "p102",
+      "p103",
+      "p104",
+      "p105"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "design",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p096",
+      "p097",
+      "p098",
+      "p099",
+      "p100"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-022",
+    "day": 22,
+    "title": "Đánh đổi và rủi ro",
+    "phraseIds": [
+      "p106",
+      "p107",
+      "p108",
+      "p109",
+      "p110"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "leadership",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p101",
+      "p102",
+      "p103",
+      "p104",
+      "p105"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-023",
+    "day": 23,
+    "title": "Thuyết trình rõ ràng",
+    "phraseIds": [
+      "p111",
+      "p112",
+      "p113",
+      "p114",
+      "p115"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "meeting",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p106",
+      "p107",
+      "p108",
+      "p109",
+      "p110"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-024",
+    "day": 24,
+    "title": "Kiểm tra và QA",
+    "phraseIds": [
+      "p116",
+      "p117",
+      "p118",
+      "p119",
+      "p120"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "engineering",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p111",
+      "p112",
+      "p113",
+      "p114",
+      "p115"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-025",
+    "day": 25,
+    "title": "Cập nhật công việc",
+    "phraseIds": [
+      "p121",
+      "p122",
+      "p123",
+      "p124",
+      "p125"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "engineering",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p116",
+      "p117",
+      "p118",
+      "p119",
+      "p120"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-026",
+    "day": 26,
+    "title": "Quản lý thay đổi",
+    "phraseIds": [
+      "p126",
+      "p127",
+      "p128",
+      "p129",
+      "p130"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "engineering",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p121",
+      "p122",
+      "p123",
+      "p124",
+      "p125"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-027",
+    "day": 27,
+    "title": "Trao đổi với quản lý",
+    "phraseIds": [
+      "p131",
+      "p132",
+      "p133",
+      "p134",
+      "p135"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "leadership",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p126",
+      "p127",
+      "p128",
+      "p129",
+      "p130"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-028",
+    "day": 28,
+    "title": "Giao tiếp với người dùng nghiệp vụ",
+    "phraseIds": [
+      "p136",
+      "p137",
+      "p138",
+      "p139",
+      "p140"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "business",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p131",
+      "p132",
+      "p133",
+      "p134",
+      "p135"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-029",
+    "day": 29,
+    "title": "Tổng kết và cải tiến",
+    "phraseIds": [
+      "p141",
+      "p142",
+      "p143",
+      "p144",
+      "p145"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "leadership",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p136",
+      "p137",
+      "p138",
+      "p139",
+      "p140"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-030",
+    "day": 30,
+    "title": "Phản xạ hội thoại tự nhiên",
+    "phraseIds": [
+      "p146",
+      "p147",
+      "p148",
+      "p149",
+      "p150"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "reflex",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p141",
+      "p142",
+      "p143",
+      "p144",
+      "p145"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-031",
+    "day": 31,
+    "title": "Small talk đầu ngày",
+    "phraseIds": [
+      "p151",
+      "p195",
+      "p237",
+      "p280",
+      "p322"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p146",
+      "p147",
+      "p148",
+      "p149",
+      "p150"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-032",
+    "day": 32,
+    "title": "Small talk đầu ngày",
+    "phraseIds": [
+      "p345",
+      "p351",
+      "p358",
+      "p361",
+      "p405"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p151",
+      "p195",
+      "p237",
+      "p280",
+      "p322"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-033",
+    "day": 33,
+    "title": "Small talk đầu ngày",
+    "phraseIds": [
+      "p447",
+      "p490",
+      "p532",
+      "p555",
+      "p561"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p345",
+      "p351",
+      "p358",
+      "p361",
+      "p405"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-034",
+    "day": 34,
+    "title": "Small talk đầu ngày",
+    "phraseIds": [
+      "p568",
+      "p571",
+      "p615",
+      "p657",
+      "p700"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p447",
+      "p490",
+      "p532",
+      "p555",
+      "p561"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-035",
+    "day": 35,
+    "title": "Small talk đầu ngày",
+    "phraseIds": [
+      "p742",
+      "p765",
+      "p771",
+      "p778",
+      "p781"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p568",
+      "p571",
+      "p615",
+      "p657",
+      "p700"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-036",
+    "day": 36,
+    "title": "Small talk đầu ngày",
+    "phraseIds": [
+      "p825",
+      "p867",
+      "p910",
+      "p952",
+      "p975"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p742",
+      "p765",
+      "p771",
+      "p778",
+      "p781"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-037",
+    "day": 37,
+    "title": "Small talk đầu ngày",
+    "phraseIds": [
+      "p981",
+      "p988",
+      "p991",
+      "p1035",
+      "p1077"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p825",
+      "p867",
+      "p910",
+      "p952",
+      "p975"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-038",
+    "day": 38,
+    "title": "Small talk đầu ngày",
+    "phraseIds": [
+      "p1120",
+      "p1162",
+      "p1185",
+      "p1191",
+      "p1198"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p981",
+      "p988",
+      "p991",
+      "p1035",
+      "p1077"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-039",
+    "day": 39,
+    "title": "Hỏi lại khi chưa rõ",
+    "phraseIds": [
+      "p152",
+      "p183",
+      "p212",
+      "p239",
+      "p269"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "reflex",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p1120",
+      "p1162",
+      "p1185",
+      "p1191",
+      "p1198"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-040",
+    "day": 40,
+    "title": "Hỏi lại khi chưa rõ",
+    "phraseIds": [
+      "p297",
+      "p325",
+      "p354",
+      "p362",
+      "p393"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "reflex",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p152",
+      "p183",
+      "p212",
+      "p239",
+      "p269"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-041",
+    "day": 41,
+    "title": "Hỏi lại khi chưa rõ",
+    "phraseIds": [
+      "p422",
+      "p449",
+      "p479",
+      "p507",
+      "p535"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "reflex",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p297",
+      "p325",
+      "p354",
+      "p362",
+      "p393"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-042",
+    "day": 42,
+    "title": "Hỏi lại khi chưa rõ",
+    "phraseIds": [
+      "p564",
+      "p572",
+      "p603",
+      "p632",
+      "p659"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "reflex",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p422",
+      "p449",
+      "p479",
+      "p507",
+      "p535"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-043",
+    "day": 43,
+    "title": "Hỏi lại khi chưa rõ",
+    "phraseIds": [
+      "p689",
+      "p717",
+      "p745",
+      "p774",
+      "p782"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "reflex",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p564",
+      "p572",
+      "p603",
+      "p632",
+      "p659"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-044",
+    "day": 44,
+    "title": "Hỏi lại khi chưa rõ",
+    "phraseIds": [
+      "p813",
+      "p842",
+      "p869",
+      "p899",
+      "p927"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "reflex",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p689",
+      "p717",
+      "p745",
+      "p774",
+      "p782"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-045",
+    "day": 45,
+    "title": "Hỏi lại khi chưa rõ",
+    "phraseIds": [
+      "p955",
+      "p984",
+      "p992",
+      "p1023",
+      "p1052"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "reflex",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p813",
+      "p842",
+      "p869",
+      "p899",
+      "p927"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-046",
+    "day": 46,
+    "title": "Hỏi lại khi chưa rõ",
+    "phraseIds": [
+      "p1079",
+      "p1109",
+      "p1137",
+      "p1165",
+      "p1194"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "reflex",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p955",
+      "p984",
+      "p992",
+      "p1023",
+      "p1052"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-047",
+    "day": 47,
+    "title": "Bắt đầu và dẫn dắt cuộc họp",
+    "phraseIds": [
+      "p153",
+      "p189",
+      "p224",
+      "p260",
+      "p293"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "meeting",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p1079",
+      "p1109",
+      "p1137",
+      "p1165",
+      "p1194"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-048",
+    "day": 48,
+    "title": "Bắt đầu và dẫn dắt cuộc họp",
+    "phraseIds": [
+      "p329",
+      "p347",
+      "p363",
+      "p399",
+      "p434"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "meeting",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p153",
+      "p189",
+      "p224",
+      "p260",
+      "p293"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-049",
+    "day": 49,
+    "title": "Bắt đầu và dẫn dắt cuộc họp",
+    "phraseIds": [
+      "p470",
+      "p503",
+      "p539",
+      "p557",
+      "p573"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "meeting",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p329",
+      "p347",
+      "p363",
+      "p399",
+      "p434"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-050",
+    "day": 50,
+    "title": "Bắt đầu và dẫn dắt cuộc họp",
+    "phraseIds": [
+      "p609",
+      "p644",
+      "p680",
+      "p713",
+      "p749"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "meeting",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p470",
+      "p503",
+      "p539",
+      "p557",
+      "p573"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-051",
+    "day": 51,
+    "title": "Bắt đầu và dẫn dắt cuộc họp",
+    "phraseIds": [
+      "p767",
+      "p783",
+      "p819",
+      "p854",
+      "p890"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "meeting",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p609",
+      "p644",
+      "p680",
+      "p713",
+      "p749"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-052",
+    "day": 52,
+    "title": "Bắt đầu và dẫn dắt cuộc họp",
+    "phraseIds": [
+      "p923",
+      "p959",
+      "p977",
+      "p993",
+      "p1029"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "meeting",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p767",
+      "p783",
+      "p819",
+      "p854",
+      "p890"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-053",
+    "day": 53,
+    "title": "Bắt đầu và dẫn dắt cuộc họp",
+    "phraseIds": [
+      "p1064",
+      "p1100",
+      "p1133",
+      "p1169",
+      "p1187"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "meeting",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p923",
+      "p959",
+      "p977",
+      "p993",
+      "p1029"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-054",
+    "day": 54,
+    "title": "Review trải nghiệm người dùng",
+    "phraseIds": [
+      "p154",
+      "p191",
+      "p227",
+      "p263",
+      "p300"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "design",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p1064",
+      "p1100",
+      "p1133",
+      "p1169",
+      "p1187"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-055",
+    "day": 55,
+    "title": "Review trải nghiệm người dùng",
+    "phraseIds": [
+      "p327",
+      "p346",
+      "p364",
+      "p401",
+      "p437"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "design",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p154",
+      "p191",
+      "p227",
+      "p263",
+      "p300"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-056",
+    "day": 56,
+    "title": "Review trải nghiệm người dùng",
+    "phraseIds": [
+      "p473",
+      "p510",
+      "p537",
+      "p556",
+      "p574"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "design",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p327",
+      "p346",
+      "p364",
+      "p401",
+      "p437"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-057",
+    "day": 57,
+    "title": "Review trải nghiệm người dùng",
+    "phraseIds": [
+      "p611",
+      "p647",
+      "p683",
+      "p720",
+      "p747"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "design",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p473",
+      "p510",
+      "p537",
+      "p556",
+      "p574"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-058",
+    "day": 58,
+    "title": "Review trải nghiệm người dùng",
+    "phraseIds": [
+      "p766",
+      "p784",
+      "p821",
+      "p857",
+      "p893"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "design",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p611",
+      "p647",
+      "p683",
+      "p720",
+      "p747"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-059",
+    "day": 59,
+    "title": "Review trải nghiệm người dùng",
+    "phraseIds": [
+      "p930",
+      "p957",
+      "p976",
+      "p994",
+      "p1031"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "design",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p766",
+      "p784",
+      "p821",
+      "p857",
+      "p893"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-060",
+    "day": 60,
+    "title": "Review trải nghiệm người dùng",
+    "phraseIds": [
+      "p1067",
+      "p1103",
+      "p1140",
+      "p1167",
+      "p1186"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "design",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p930",
+      "p957",
+      "p976",
+      "p994",
+      "p1031"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-061",
+    "day": 61,
+    "title": "Làm rõ quy tắc nghiệp vụ",
+    "phraseIds": [
+      "p155",
+      "p210",
+      "p266",
+      "p323",
+      "p365"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "business",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p1067",
+      "p1103",
+      "p1140",
+      "p1167",
+      "p1186"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-062",
+    "day": 62,
+    "title": "Làm rõ quy tắc nghiệp vụ",
+    "phraseIds": [
+      "p420",
+      "p476",
+      "p533",
+      "p575",
+      "p630"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "business",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p155",
+      "p210",
+      "p266",
+      "p323",
+      "p365"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-063",
+    "day": 63,
+    "title": "Làm rõ quy tắc nghiệp vụ",
+    "phraseIds": [
+      "p686",
+      "p743",
+      "p785",
+      "p840",
+      "p896"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "business",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p420",
+      "p476",
+      "p533",
+      "p575",
+      "p630"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-064",
+    "day": 64,
+    "title": "Làm rõ quy tắc nghiệp vụ",
+    "phraseIds": [
+      "p953",
+      "p995",
+      "p1050",
+      "p1106",
+      "p1163"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "business",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p686",
+      "p743",
+      "p785",
+      "p840",
+      "p896"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-065",
+    "day": 65,
+    "title": "Handoff sang developer",
+    "phraseIds": [
+      "p156",
+      "p187",
+      "p220",
+      "p254",
+      "p287"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "engineering",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p953",
+      "p995",
+      "p1050",
+      "p1106",
+      "p1163"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-066",
+    "day": 66,
+    "title": "Handoff sang developer",
+    "phraseIds": [
+      "p319",
+      "p352",
+      "p366",
+      "p397",
+      "p430"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "engineering",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p156",
+      "p187",
+      "p220",
+      "p254",
+      "p287"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-067",
+    "day": 67,
+    "title": "Handoff sang developer",
+    "phraseIds": [
+      "p464",
+      "p497",
+      "p529",
+      "p562",
+      "p576"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "engineering",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p319",
+      "p352",
+      "p366",
+      "p397",
+      "p430"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-068",
+    "day": 68,
+    "title": "Handoff sang developer",
+    "phraseIds": [
+      "p607",
+      "p640",
+      "p674",
+      "p707",
+      "p739"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "engineering",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p464",
+      "p497",
+      "p529",
+      "p562",
+      "p576"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-069",
+    "day": 69,
+    "title": "Handoff sang developer",
+    "phraseIds": [
+      "p772",
+      "p786",
+      "p817",
+      "p850",
+      "p884"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "engineering",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p607",
+      "p640",
+      "p674",
+      "p707",
+      "p739"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-070",
+    "day": 70,
+    "title": "Handoff sang developer",
+    "phraseIds": [
+      "p917",
+      "p949",
+      "p982",
+      "p996",
+      "p1027"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "engineering",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p772",
+      "p786",
+      "p817",
+      "p850",
+      "p884"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-071",
+    "day": 71,
+    "title": "Handoff sang developer",
+    "phraseIds": [
+      "p1060",
+      "p1094",
+      "p1127",
+      "p1159",
+      "p1192"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "engineering",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p917",
+      "p949",
+      "p982",
+      "p996",
+      "p1027"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-072",
+    "day": 72,
+    "title": "Ưu tiên và đánh đổi",
+    "phraseIds": [
+      "p157",
+      "p214",
+      "p274",
+      "p333",
+      "p367"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "leadership",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p1060",
+      "p1094",
+      "p1127",
+      "p1159",
+      "p1192"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-073",
+    "day": 73,
+    "title": "Ưu tiên và đánh đổi",
+    "phraseIds": [
+      "p424",
+      "p484",
+      "p543",
+      "p577",
+      "p634"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "leadership",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p157",
+      "p214",
+      "p274",
+      "p333",
+      "p367"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-074",
+    "day": 74,
+    "title": "Ưu tiên và đánh đổi",
+    "phraseIds": [
+      "p694",
+      "p753",
+      "p787",
+      "p844",
+      "p904"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "leadership",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p424",
+      "p484",
+      "p543",
+      "p577",
+      "p634"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-075",
+    "day": 75,
+    "title": "Ưu tiên và đánh đổi",
+    "phraseIds": [
+      "p963",
+      "p997",
+      "p1054",
+      "p1114",
+      "p1173"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "leadership",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p694",
+      "p753",
+      "p787",
+      "p844",
+      "p904"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-076",
+    "day": 76,
+    "title": "Nhờ giúp đỡ tự nhiên",
+    "phraseIds": [
+      "p158",
+      "p198",
+      "p240",
+      "p283",
+      "p324"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p963",
+      "p997",
+      "p1054",
+      "p1114",
+      "p1173"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-077",
+    "day": 77,
+    "title": "Nhờ giúp đỡ tự nhiên",
+    "phraseIds": [
+      "p348",
+      "p353",
+      "p359",
+      "p368",
+      "p408"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p158",
+      "p198",
+      "p240",
+      "p283",
+      "p324"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-078",
+    "day": 78,
+    "title": "Nhờ giúp đỡ tự nhiên",
+    "phraseIds": [
+      "p450",
+      "p493",
+      "p534",
+      "p558",
+      "p563"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p348",
+      "p353",
+      "p359",
+      "p368",
+      "p408"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-079",
+    "day": 79,
+    "title": "Nhờ giúp đỡ tự nhiên",
+    "phraseIds": [
+      "p569",
+      "p578",
+      "p618",
+      "p660",
+      "p703"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p450",
+      "p493",
+      "p534",
+      "p558",
+      "p563"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-080",
+    "day": 80,
+    "title": "Nhờ giúp đỡ tự nhiên",
+    "phraseIds": [
+      "p744",
+      "p768",
+      "p773",
+      "p779",
+      "p788"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p569",
+      "p578",
+      "p618",
+      "p660",
+      "p703"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-081",
+    "day": 81,
+    "title": "Nhờ giúp đỡ tự nhiên",
+    "phraseIds": [
+      "p828",
+      "p870",
+      "p913",
+      "p954",
+      "p978"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p744",
+      "p768",
+      "p773",
+      "p779",
+      "p788"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-082",
+    "day": 82,
+    "title": "Nhờ giúp đỡ tự nhiên",
+    "phraseIds": [
+      "p983",
+      "p989",
+      "p998",
+      "p1038",
+      "p1080"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p828",
+      "p870",
+      "p913",
+      "p954",
+      "p978"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-083",
+    "day": 83,
+    "title": "Nhờ giúp đỡ tự nhiên",
+    "phraseIds": [
+      "p1123",
+      "p1164",
+      "p1188",
+      "p1193",
+      "p1199"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p983",
+      "p989",
+      "p998",
+      "p1038",
+      "p1080"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-084",
+    "day": 84,
+    "title": "Hội thoại đời sống tự nhiên",
+    "phraseIds": [
+      "p159",
+      "p201",
+      "p242",
+      "p284",
+      "p326"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p1123",
+      "p1164",
+      "p1188",
+      "p1193",
+      "p1199"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-085",
+    "day": 85,
+    "title": "Hội thoại đời sống tự nhiên",
+    "phraseIds": [
+      "p349",
+      "p357",
+      "p360",
+      "p369",
+      "p411"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p159",
+      "p201",
+      "p242",
+      "p284",
+      "p326"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-086",
+    "day": 86,
+    "title": "Hội thoại đời sống tự nhiên",
+    "phraseIds": [
+      "p452",
+      "p494",
+      "p536",
+      "p559",
+      "p567"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p349",
+      "p357",
+      "p360",
+      "p369",
+      "p411"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-087",
+    "day": 87,
+    "title": "Hội thoại đời sống tự nhiên",
+    "phraseIds": [
+      "p570",
+      "p579",
+      "p621",
+      "p662",
+      "p704"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p452",
+      "p494",
+      "p536",
+      "p559",
+      "p567"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-088",
+    "day": 88,
+    "title": "Hội thoại đời sống tự nhiên",
+    "phraseIds": [
+      "p746",
+      "p769",
+      "p777",
+      "p780",
+      "p789"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p570",
+      "p579",
+      "p621",
+      "p662",
+      "p704"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-089",
+    "day": 89,
+    "title": "Hội thoại đời sống tự nhiên",
+    "phraseIds": [
+      "p831",
+      "p872",
+      "p914",
+      "p956",
+      "p979"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p746",
+      "p769",
+      "p777",
+      "p780",
+      "p789"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-090",
+    "day": 90,
+    "title": "Hội thoại đời sống tự nhiên",
+    "phraseIds": [
+      "p987",
+      "p990",
+      "p999",
+      "p1041",
+      "p1082"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p831",
+      "p872",
+      "p914",
+      "p956",
+      "p979"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-091",
+    "day": 91,
+    "title": "Hội thoại đời sống tự nhiên",
+    "phraseIds": [
+      "p1124",
+      "p1166",
+      "p1189",
+      "p1197",
+      "p1200"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p987",
+      "p990",
+      "p999",
+      "p1041",
+      "p1082"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-092",
+    "day": 92,
+    "title": "Gọi món tại quán",
+    "phraseIds": [
+      "p160",
+      "p203",
+      "p245",
+      "p286",
+      "p328"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p1124",
+      "p1166",
+      "p1189",
+      "p1197",
+      "p1200"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-093",
+    "day": 93,
+    "title": "Gọi món tại quán",
+    "phraseIds": [
+      "p370",
+      "p413",
+      "p455",
+      "p496",
+      "p538"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p160",
+      "p203",
+      "p245",
+      "p286",
+      "p328"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-094",
+    "day": 94,
+    "title": "Gọi món tại quán",
+    "phraseIds": [
+      "p580",
+      "p623",
+      "p665",
+      "p706",
+      "p748"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p370",
+      "p413",
+      "p455",
+      "p496",
+      "p538"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-095",
+    "day": 95,
+    "title": "Gọi món tại quán",
+    "phraseIds": [
+      "p790",
+      "p833",
+      "p875",
+      "p916",
+      "p958"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p580",
+      "p623",
+      "p665",
+      "p706",
+      "p748"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-096",
+    "day": 96,
+    "title": "Gọi món tại quán",
+    "phraseIds": [
+      "p1000",
+      "p1043",
+      "p1085",
+      "p1126",
+      "p1168"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p790",
+      "p833",
+      "p875",
+      "p916",
+      "p958"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-097",
+    "day": 97,
+    "title": "Đồ uống và quán cà phê",
+    "phraseIds": [
+      "p161",
+      "p204",
+      "p247",
+      "p289",
+      "p330"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p1000",
+      "p1043",
+      "p1085",
+      "p1126",
+      "p1168"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-098",
+    "day": 98,
+    "title": "Đồ uống và quán cà phê",
+    "phraseIds": [
+      "p371",
+      "p414",
+      "p457",
+      "p499",
+      "p540"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p161",
+      "p204",
+      "p247",
+      "p289",
+      "p330"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-099",
+    "day": 99,
+    "title": "Đồ uống và quán cà phê",
+    "phraseIds": [
+      "p581",
+      "p624",
+      "p667",
+      "p709",
+      "p750"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p371",
+      "p414",
+      "p457",
+      "p499",
+      "p540"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-100",
+    "day": 100,
+    "title": "Đồ uống và quán cà phê",
+    "phraseIds": [
+      "p791",
+      "p834",
+      "p877",
+      "p919",
+      "p960"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p581",
+      "p624",
+      "p667",
+      "p709",
+      "p750"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-101",
+    "day": 101,
+    "title": "Đồ uống và quán cà phê",
+    "phraseIds": [
+      "p1001",
+      "p1044",
+      "p1087",
+      "p1129",
+      "p1170"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p791",
+      "p834",
+      "p877",
+      "p919",
+      "p960"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-102",
+    "day": 102,
+    "title": "Mời phản hồi trong cuộc họp",
+    "phraseIds": [
+      "p162",
+      "p197",
+      "p233",
+      "p268",
+      "p302"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "meeting",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p1001",
+      "p1044",
+      "p1087",
+      "p1129",
+      "p1170"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-103",
+    "day": 103,
+    "title": "Mời phản hồi trong cuộc họp",
+    "phraseIds": [
+      "p339",
+      "p356",
+      "p372",
+      "p407",
+      "p443"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "meeting",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p162",
+      "p197",
+      "p233",
+      "p268",
+      "p302"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-104",
+    "day": 104,
+    "title": "Mời phản hồi trong cuộc họp",
+    "phraseIds": [
+      "p478",
+      "p512",
+      "p549",
+      "p566",
+      "p582"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "meeting",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p339",
+      "p356",
+      "p372",
+      "p407",
+      "p443"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-105",
+    "day": 105,
+    "title": "Mời phản hồi trong cuộc họp",
+    "phraseIds": [
+      "p617",
+      "p653",
+      "p688",
+      "p722",
+      "p759"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "meeting",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p478",
+      "p512",
+      "p549",
+      "p566",
+      "p582"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-106",
+    "day": 106,
+    "title": "Mời phản hồi trong cuộc họp",
+    "phraseIds": [
+      "p776",
+      "p792",
+      "p827",
+      "p863",
+      "p898"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "meeting",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p617",
+      "p653",
+      "p688",
+      "p722",
+      "p759"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-107",
+    "day": 107,
+    "title": "Mời phản hồi trong cuộc họp",
+    "phraseIds": [
+      "p932",
+      "p969",
+      "p986",
+      "p1002",
+      "p1037"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "meeting",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p776",
+      "p792",
+      "p827",
+      "p863",
+      "p898"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-108",
+    "day": 108,
+    "title": "Mời phản hồi trong cuộc họp",
+    "phraseIds": [
+      "p1073",
+      "p1108",
+      "p1142",
+      "p1179",
+      "p1196"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "meeting",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p932",
+      "p969",
+      "p986",
+      "p1002",
+      "p1037"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-109",
+    "day": 109,
+    "title": "Tương tác và trạng thái UI",
+    "phraseIds": [
+      "p163",
+      "p200",
+      "p236",
+      "p272",
+      "p310"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "design",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p1073",
+      "p1108",
+      "p1142",
+      "p1179",
+      "p1196"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-110",
+    "day": 110,
+    "title": "Tương tác và trạng thái UI",
+    "phraseIds": [
+      "p337",
+      "p355",
+      "p373",
+      "p410",
+      "p446"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "design",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p163",
+      "p200",
+      "p236",
+      "p272",
+      "p310"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-111",
+    "day": 111,
+    "title": "Tương tác và trạng thái UI",
+    "phraseIds": [
+      "p482",
+      "p520",
+      "p547",
+      "p565",
+      "p583"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "design",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p337",
+      "p355",
+      "p373",
+      "p410",
+      "p446"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-112",
+    "day": 112,
+    "title": "Tương tác và trạng thái UI",
+    "phraseIds": [
+      "p620",
+      "p656",
+      "p692",
+      "p730",
+      "p757"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "design",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p482",
+      "p520",
+      "p547",
+      "p565",
+      "p583"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-113",
+    "day": 113,
+    "title": "Tương tác và trạng thái UI",
+    "phraseIds": [
+      "p775",
+      "p793",
+      "p830",
+      "p866",
+      "p902"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "design",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p620",
+      "p656",
+      "p692",
+      "p730",
+      "p757"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-114",
+    "day": 114,
+    "title": "Tương tác và trạng thái UI",
+    "phraseIds": [
+      "p940",
+      "p967",
+      "p985",
+      "p1003",
+      "p1040"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "design",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p775",
+      "p793",
+      "p830",
+      "p866",
+      "p902"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-115",
+    "day": 115,
+    "title": "Tương tác và trạng thái UI",
+    "phraseIds": [
+      "p1076",
+      "p1112",
+      "p1150",
+      "p1177",
+      "p1195"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "design",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p940",
+      "p967",
+      "p985",
+      "p1003",
+      "p1040"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-116",
+    "day": 116,
+    "title": "Nghe thiếu chi tiết",
+    "phraseIds": [
+      "p164",
+      "p193",
+      "p221",
+      "p249",
+      "p279"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "reflex",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p1076",
+      "p1112",
+      "p1150",
+      "p1177",
+      "p1195"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-117",
+    "day": 117,
+    "title": "Nghe thiếu chi tiết",
+    "phraseIds": [
+      "p306",
+      "p335",
+      "p374",
+      "p403",
+      "p431"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "reflex",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p164",
+      "p193",
+      "p221",
+      "p249",
+      "p279"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-118",
+    "day": 118,
+    "title": "Nghe thiếu chi tiết",
+    "phraseIds": [
+      "p459",
+      "p489",
+      "p516",
+      "p545",
+      "p584"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "reflex",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p306",
+      "p335",
+      "p374",
+      "p403",
+      "p431"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-119",
+    "day": 119,
+    "title": "Nghe thiếu chi tiết",
+    "phraseIds": [
+      "p613",
+      "p641",
+      "p669",
+      "p699",
+      "p726"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "reflex",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p459",
+      "p489",
+      "p516",
+      "p545",
+      "p584"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-120",
+    "day": 120,
+    "title": "Nghe thiếu chi tiết",
+    "phraseIds": [
+      "p755",
+      "p794",
+      "p823",
+      "p851",
+      "p879"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "reflex",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p613",
+      "p641",
+      "p669",
+      "p699",
+      "p726"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-121",
+    "day": 121,
+    "title": "Nghe thiếu chi tiết",
+    "phraseIds": [
+      "p909",
+      "p936",
+      "p965",
+      "p1004",
+      "p1033"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "reflex",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p755",
+      "p794",
+      "p823",
+      "p851",
+      "p879"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-122",
+    "day": 122,
+    "title": "Nghe thiếu chi tiết",
+    "phraseIds": [
+      "p1061",
+      "p1089",
+      "p1119",
+      "p1146",
+      "p1175"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "reflex",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p909",
+      "p936",
+      "p965",
+      "p1004",
+      "p1033"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-123",
+    "day": 123,
+    "title": "Đặt bàn và chọn chỗ",
+    "phraseIds": [
+      "p165",
+      "p205",
+      "p248",
+      "p290",
+      "p332"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p1061",
+      "p1089",
+      "p1119",
+      "p1146",
+      "p1175"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-124",
+    "day": 124,
+    "title": "Đặt bàn và chọn chỗ",
+    "phraseIds": [
+      "p375",
+      "p415",
+      "p458",
+      "p500",
+      "p542"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p165",
+      "p205",
+      "p248",
+      "p290",
+      "p332"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-125",
+    "day": 125,
+    "title": "Đặt bàn và chọn chỗ",
+    "phraseIds": [
+      "p585",
+      "p625",
+      "p668",
+      "p710",
+      "p752"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p375",
+      "p415",
+      "p458",
+      "p500",
+      "p542"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-126",
+    "day": 126,
+    "title": "Đặt bàn và chọn chỗ",
+    "phraseIds": [
+      "p795",
+      "p835",
+      "p878",
+      "p920",
+      "p962"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p585",
+      "p625",
+      "p668",
+      "p710",
+      "p752"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-127",
+    "day": 127,
+    "title": "Đặt bàn và chọn chỗ",
+    "phraseIds": [
+      "p1005",
+      "p1045",
+      "p1088",
+      "p1130",
+      "p1172"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p795",
+      "p835",
+      "p878",
+      "p920",
+      "p962"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-128",
+    "day": 128,
+    "title": "QA, debug và xử lý lỗi",
+    "phraseIds": [
+      "p166",
+      "p199",
+      "p231",
+      "p264",
+      "p298"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "engineering",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p1005",
+      "p1045",
+      "p1088",
+      "p1130",
+      "p1172"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-129",
+    "day": 129,
+    "title": "QA, debug và xử lý lỗi",
+    "phraseIds": [
+      "p331",
+      "p376",
+      "p409",
+      "p441",
+      "p474"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "engineering",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p166",
+      "p199",
+      "p231",
+      "p264",
+      "p298"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-130",
+    "day": 130,
+    "title": "QA, debug và xử lý lỗi",
+    "phraseIds": [
+      "p508",
+      "p541",
+      "p586",
+      "p619",
+      "p651"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "engineering",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p331",
+      "p376",
+      "p409",
+      "p441",
+      "p474"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-131",
+    "day": 131,
+    "title": "QA, debug và xử lý lỗi",
+    "phraseIds": [
+      "p684",
+      "p718",
+      "p751",
+      "p796",
+      "p829"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "engineering",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p508",
+      "p541",
+      "p586",
+      "p619",
+      "p651"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-132",
+    "day": 132,
+    "title": "QA, debug và xử lý lỗi",
+    "phraseIds": [
+      "p861",
+      "p894",
+      "p928",
+      "p961",
+      "p1006"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "engineering",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p684",
+      "p718",
+      "p751",
+      "p796",
+      "p829"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-133",
+    "day": 133,
+    "title": "QA, debug và xử lý lỗi",
+    "phraseIds": [
+      "p1039",
+      "p1071",
+      "p1104",
+      "p1138",
+      "p1171"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "engineering",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p861",
+      "p894",
+      "p928",
+      "p961",
+      "p1006"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-134",
+    "day": 134,
+    "title": "Mua đồ ở siêu thị",
+    "phraseIds": [
+      "p167",
+      "p207",
+      "p251",
+      "p292",
+      "p377"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p1039",
+      "p1071",
+      "p1104",
+      "p1138",
+      "p1171"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-135",
+    "day": 135,
+    "title": "Mua đồ ở siêu thị",
+    "phraseIds": [
+      "p417",
+      "p461",
+      "p502",
+      "p587",
+      "p627"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p167",
+      "p207",
+      "p251",
+      "p292",
+      "p377"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-136",
+    "day": 136,
+    "title": "Mua đồ ở siêu thị",
+    "phraseIds": [
+      "p671",
+      "p712",
+      "p797",
+      "p837",
+      "p881"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p417",
+      "p461",
+      "p502",
+      "p587",
+      "p627"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-137",
+    "day": 137,
+    "title": "Mua đồ ở siêu thị",
+    "phraseIds": [
+      "p922",
+      "p1007",
+      "p1047",
+      "p1091",
+      "p1132"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p671",
+      "p712",
+      "p797",
+      "p837",
+      "p881"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-138",
+    "day": 138,
+    "title": "Xử lý tình huống ngoại lệ",
+    "phraseIds": [
+      "p168",
+      "p225",
+      "p281",
+      "p336",
+      "p350"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "business",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p922",
+      "p1007",
+      "p1047",
+      "p1091",
+      "p1132"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-139",
+    "day": 139,
+    "title": "Xử lý tình huống ngoại lệ",
+    "phraseIds": [
+      "p378",
+      "p435",
+      "p491",
+      "p546",
+      "p560"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "business",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p168",
+      "p225",
+      "p281",
+      "p336",
+      "p350"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-140",
+    "day": 140,
+    "title": "Xử lý tình huống ngoại lệ",
+    "phraseIds": [
+      "p588",
+      "p645",
+      "p701",
+      "p756",
+      "p770"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "business",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p378",
+      "p435",
+      "p491",
+      "p546",
+      "p560"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-141",
+    "day": 141,
+    "title": "Xử lý tình huống ngoại lệ",
+    "phraseIds": [
+      "p798",
+      "p855",
+      "p911",
+      "p966",
+      "p980"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "business",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p588",
+      "p645",
+      "p701",
+      "p756",
+      "p770"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-142",
+    "day": 142,
+    "title": "Xử lý tình huống ngoại lệ",
+    "phraseIds": [
+      "p1008",
+      "p1065",
+      "p1121",
+      "p1176",
+      "p1190"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "business",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p798",
+      "p855",
+      "p911",
+      "p966",
+      "p980"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-143",
+    "day": 143,
+    "title": "Mua và đổi quần áo",
+    "phraseIds": [
+      "p169",
+      "p211",
+      "p253",
+      "p295",
+      "p379"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p1008",
+      "p1065",
+      "p1121",
+      "p1176",
+      "p1190"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-144",
+    "day": 144,
+    "title": "Mua và đổi quần áo",
+    "phraseIds": [
+      "p421",
+      "p463",
+      "p505",
+      "p589",
+      "p631"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p169",
+      "p211",
+      "p253",
+      "p295",
+      "p379"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-145",
+    "day": 145,
+    "title": "Mua và đổi quần áo",
+    "phraseIds": [
+      "p673",
+      "p715",
+      "p799",
+      "p841",
+      "p883"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p421",
+      "p463",
+      "p505",
+      "p589",
+      "p631"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-146",
+    "day": 146,
+    "title": "Mua và đổi quần áo",
+    "phraseIds": [
+      "p925",
+      "p1009",
+      "p1051",
+      "p1093",
+      "p1135"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p673",
+      "p715",
+      "p799",
+      "p841",
+      "p883"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-147",
+    "day": 147,
+    "title": "Thanh toán và hóa đơn",
+    "phraseIds": [
+      "p170",
+      "p213",
+      "p256",
+      "p296",
+      "p380"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p925",
+      "p1009",
+      "p1051",
+      "p1093",
+      "p1135"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-148",
+    "day": 148,
+    "title": "Thanh toán và hóa đơn",
+    "phraseIds": [
+      "p423",
+      "p466",
+      "p506",
+      "p590",
+      "p633"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p170",
+      "p213",
+      "p256",
+      "p296",
+      "p380"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-149",
+    "day": 149,
+    "title": "Thanh toán và hóa đơn",
+    "phraseIds": [
+      "p676",
+      "p716",
+      "p800",
+      "p843",
+      "p886"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p423",
+      "p466",
+      "p506",
+      "p590",
+      "p633"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-150",
+    "day": 150,
+    "title": "Thanh toán và hóa đơn",
+    "phraseIds": [
+      "p926",
+      "p1010",
+      "p1053",
+      "p1096",
+      "p1136"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p676",
+      "p716",
+      "p800",
+      "p843",
+      "p886"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-151",
+    "day": 151,
+    "title": "Chốt hành động sau họp",
+    "phraseIds": [
+      "p171",
+      "p206",
+      "p241",
+      "p277",
+      "p313"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "meeting",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p926",
+      "p1010",
+      "p1053",
+      "p1096",
+      "p1136"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-152",
+    "day": 152,
+    "title": "Chốt hành động sau họp",
+    "phraseIds": [
+      "p381",
+      "p416",
+      "p451",
+      "p487",
+      "p523"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "meeting",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p171",
+      "p206",
+      "p241",
+      "p277",
+      "p313"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-153",
+    "day": 153,
+    "title": "Chốt hành động sau họp",
+    "phraseIds": [
+      "p591",
+      "p626",
+      "p661",
+      "p697",
+      "p733"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "meeting",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p381",
+      "p416",
+      "p451",
+      "p487",
+      "p523"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-154",
+    "day": 154,
+    "title": "Chốt hành động sau họp",
+    "phraseIds": [
+      "p801",
+      "p836",
+      "p871",
+      "p907",
+      "p943"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "meeting",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p591",
+      "p626",
+      "p661",
+      "p697",
+      "p733"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-155",
+    "day": 155,
+    "title": "Chốt hành động sau họp",
+    "phraseIds": [
+      "p1011",
+      "p1046",
+      "p1081",
+      "p1117",
+      "p1153"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "meeting",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p801",
+      "p836",
+      "p871",
+      "p907",
+      "p943"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-156",
+    "day": 156,
+    "title": "Design System trong thực tế",
+    "phraseIds": [
+      "p172",
+      "p208",
+      "p246",
+      "p282",
+      "p318"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "design",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p1011",
+      "p1046",
+      "p1081",
+      "p1117",
+      "p1153"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-157",
+    "day": 157,
+    "title": "Design System trong thực tế",
+    "phraseIds": [
+      "p382",
+      "p418",
+      "p456",
+      "p492",
+      "p528"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "design",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p172",
+      "p208",
+      "p246",
+      "p282",
+      "p318"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-158",
+    "day": 158,
+    "title": "Design System trong thực tế",
+    "phraseIds": [
+      "p592",
+      "p628",
+      "p666",
+      "p702",
+      "p738"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "design",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p382",
+      "p418",
+      "p456",
+      "p492",
+      "p528"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-159",
+    "day": 159,
+    "title": "Design System trong thực tế",
+    "phraseIds": [
+      "p802",
+      "p838",
+      "p876",
+      "p912",
+      "p948"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "design",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p592",
+      "p628",
+      "p666",
+      "p702",
+      "p738"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-160",
+    "day": 160,
+    "title": "Design System trong thực tế",
+    "phraseIds": [
+      "p1012",
+      "p1048",
+      "p1086",
+      "p1122",
+      "p1158"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "design",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p802",
+      "p838",
+      "p876",
+      "p912",
+      "p948"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-161",
+    "day": 161,
+    "title": "Hỏi đường và tìm địa điểm",
+    "phraseIds": [
+      "p173",
+      "p215",
+      "p257",
+      "p299",
+      "p334"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p1012",
+      "p1048",
+      "p1086",
+      "p1122",
+      "p1158"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-162",
+    "day": 162,
+    "title": "Hỏi đường và tìm địa điểm",
+    "phraseIds": [
+      "p383",
+      "p425",
+      "p467",
+      "p509",
+      "p544"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p173",
+      "p215",
+      "p257",
+      "p299",
+      "p334"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-163",
+    "day": 163,
+    "title": "Hỏi đường và tìm địa điểm",
+    "phraseIds": [
+      "p593",
+      "p635",
+      "p677",
+      "p719",
+      "p754"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p383",
+      "p425",
+      "p467",
+      "p509",
+      "p544"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-164",
+    "day": 164,
+    "title": "Hỏi đường và tìm địa điểm",
+    "phraseIds": [
+      "p803",
+      "p845",
+      "p887",
+      "p929",
+      "p964"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p593",
+      "p635",
+      "p677",
+      "p719",
+      "p754"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-165",
+    "day": 165,
+    "title": "Hỏi đường và tìm địa điểm",
+    "phraseIds": [
+      "p1013",
+      "p1055",
+      "p1097",
+      "p1139",
+      "p1174"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p803",
+      "p845",
+      "p887",
+      "p929",
+      "p964"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-166",
+    "day": 166,
+    "title": "Xin thời gian suy nghĩ",
+    "phraseIds": [
+      "p174",
+      "p202",
+      "p230",
+      "p259",
+      "p288"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "reflex",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p1013",
+      "p1055",
+      "p1097",
+      "p1139",
+      "p1174"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-167",
+    "day": 167,
+    "title": "Xin thời gian suy nghĩ",
+    "phraseIds": [
+      "p316",
+      "p344",
+      "p384",
+      "p412",
+      "p440"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "reflex",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p174",
+      "p202",
+      "p230",
+      "p259",
+      "p288"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-168",
+    "day": 168,
+    "title": "Xin thời gian suy nghĩ",
+    "phraseIds": [
+      "p469",
+      "p498",
+      "p526",
+      "p554",
+      "p594"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "reflex",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p316",
+      "p344",
+      "p384",
+      "p412",
+      "p440"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-169",
+    "day": 169,
+    "title": "Xin thời gian suy nghĩ",
+    "phraseIds": [
+      "p622",
+      "p650",
+      "p679",
+      "p708",
+      "p736"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "reflex",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p469",
+      "p498",
+      "p526",
+      "p554",
+      "p594"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-170",
+    "day": 170,
+    "title": "Xin thời gian suy nghĩ",
+    "phraseIds": [
+      "p764",
+      "p804",
+      "p832",
+      "p860",
+      "p889"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "reflex",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p622",
+      "p650",
+      "p679",
+      "p708",
+      "p736"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-171",
+    "day": 171,
+    "title": "Xin thời gian suy nghĩ",
+    "phraseIds": [
+      "p918",
+      "p946",
+      "p974",
+      "p1014",
+      "p1042"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "reflex",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p764",
+      "p804",
+      "p832",
+      "p860",
+      "p889"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-172",
+    "day": 172,
+    "title": "Xin thời gian suy nghĩ",
+    "phraseIds": [
+      "p1070",
+      "p1099",
+      "p1128",
+      "p1156",
+      "p1184"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "reflex",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p918",
+      "p946",
+      "p974",
+      "p1014",
+      "p1042"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-173",
+    "day": 173,
+    "title": "Đi taxi và gọi xe",
+    "phraseIds": [
+      "p175",
+      "p217",
+      "p258",
+      "p301",
+      "p385"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p1070",
+      "p1099",
+      "p1128",
+      "p1156",
+      "p1184"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-174",
+    "day": 174,
+    "title": "Đi taxi và gọi xe",
+    "phraseIds": [
+      "p427",
+      "p468",
+      "p511",
+      "p595",
+      "p637"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p175",
+      "p217",
+      "p258",
+      "p301",
+      "p385"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-175",
+    "day": 175,
+    "title": "Đi taxi và gọi xe",
+    "phraseIds": [
+      "p678",
+      "p721",
+      "p805",
+      "p847",
+      "p888"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p427",
+      "p468",
+      "p511",
+      "p595",
+      "p637"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-176",
+    "day": 176,
+    "title": "Đi taxi và gọi xe",
+    "phraseIds": [
+      "p931",
+      "p1015",
+      "p1057",
+      "p1098",
+      "p1141"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p678",
+      "p721",
+      "p805",
+      "p847",
+      "p888"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-177",
+    "day": 177,
+    "title": "Release, production và tiến độ",
+    "phraseIds": [
+      "p176",
+      "p209",
+      "p243",
+      "p275",
+      "p309"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "engineering",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p931",
+      "p1015",
+      "p1057",
+      "p1098",
+      "p1141"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-178",
+    "day": 178,
+    "title": "Release, production và tiến độ",
+    "phraseIds": [
+      "p342",
+      "p386",
+      "p419",
+      "p453",
+      "p485"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "engineering",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p176",
+      "p209",
+      "p243",
+      "p275",
+      "p309"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-179",
+    "day": 179,
+    "title": "Release, production và tiến độ",
+    "phraseIds": [
+      "p519",
+      "p552",
+      "p596",
+      "p629",
+      "p663"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "engineering",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p342",
+      "p386",
+      "p419",
+      "p453",
+      "p485"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-180",
+    "day": 180,
+    "title": "Release, production và tiến độ",
+    "phraseIds": [
+      "p695",
+      "p729",
+      "p762",
+      "p806",
+      "p839"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "engineering",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p519",
+      "p552",
+      "p596",
+      "p629",
+      "p663"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-181",
+    "day": 181,
+    "title": "Release, production và tiến độ",
+    "phraseIds": [
+      "p873",
+      "p905",
+      "p939",
+      "p972",
+      "p1016"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "engineering",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p695",
+      "p729",
+      "p762",
+      "p806",
+      "p839"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-182",
+    "day": 182,
+    "title": "Release, production và tiến độ",
+    "phraseIds": [
+      "p1049",
+      "p1083",
+      "p1115",
+      "p1149",
+      "p1182"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "engineering",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p873",
+      "p905",
+      "p939",
+      "p972",
+      "p1016"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-183",
+    "day": 183,
+    "title": "Lưu trú và khách sạn",
+    "phraseIds": [
+      "p177",
+      "p219",
+      "p261",
+      "p303",
+      "p387"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p1049",
+      "p1083",
+      "p1115",
+      "p1149",
+      "p1182"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-184",
+    "day": 184,
+    "title": "Lưu trú và khách sạn",
+    "phraseIds": [
+      "p429",
+      "p471",
+      "p513",
+      "p597",
+      "p639"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p177",
+      "p219",
+      "p261",
+      "p303",
+      "p387"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-185",
+    "day": 185,
+    "title": "Lưu trú và khách sạn",
+    "phraseIds": [
+      "p681",
+      "p723",
+      "p807",
+      "p849",
+      "p891"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p429",
+      "p471",
+      "p513",
+      "p597",
+      "p639"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-186",
+    "day": 186,
+    "title": "Lưu trú và khách sạn",
+    "phraseIds": [
+      "p933",
+      "p1017",
+      "p1059",
+      "p1101",
+      "p1143"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p681",
+      "p723",
+      "p807",
+      "p849",
+      "p891"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-187",
+    "day": 187,
+    "title": "Rủ rê và hẹn gặp",
+    "phraseIds": [
+      "p178",
+      "p222",
+      "p262",
+      "p305",
+      "p338"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p933",
+      "p1017",
+      "p1059",
+      "p1101",
+      "p1143"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-188",
+    "day": 188,
+    "title": "Rủ rê và hẹn gặp",
+    "phraseIds": [
+      "p388",
+      "p432",
+      "p472",
+      "p515",
+      "p548"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p178",
+      "p222",
+      "p262",
+      "p305",
+      "p338"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-189",
+    "day": 189,
+    "title": "Rủ rê và hẹn gặp",
+    "phraseIds": [
+      "p598",
+      "p642",
+      "p682",
+      "p725",
+      "p758"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p388",
+      "p432",
+      "p472",
+      "p515",
+      "p548"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-190",
+    "day": 190,
+    "title": "Rủ rê và hẹn gặp",
+    "phraseIds": [
+      "p808",
+      "p852",
+      "p892",
+      "p935",
+      "p968"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p598",
+      "p642",
+      "p682",
+      "p725",
+      "p758"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-191",
+    "day": 191,
+    "title": "Rủ rê và hẹn gặp",
+    "phraseIds": [
+      "p1018",
+      "p1062",
+      "p1102",
+      "p1145",
+      "p1178"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p808",
+      "p852",
+      "p892",
+      "p935",
+      "p968"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-192",
+    "day": 192,
+    "title": "Phản biện lịch sự",
+    "phraseIds": [
+      "p179",
+      "p216",
+      "p250",
+      "p285",
+      "p321"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "meeting",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p1018",
+      "p1062",
+      "p1102",
+      "p1145",
+      "p1178"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-193",
+    "day": 193,
+    "title": "Phản biện lịch sự",
+    "phraseIds": [
+      "p389",
+      "p426",
+      "p460",
+      "p495",
+      "p531"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "meeting",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p179",
+      "p216",
+      "p250",
+      "p285",
+      "p321"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-194",
+    "day": 194,
+    "title": "Phản biện lịch sự",
+    "phraseIds": [
+      "p599",
+      "p636",
+      "p670",
+      "p705",
+      "p741"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "meeting",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p389",
+      "p426",
+      "p460",
+      "p495",
+      "p531"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-195",
+    "day": 195,
+    "title": "Phản biện lịch sự",
+    "phraseIds": [
+      "p809",
+      "p846",
+      "p880",
+      "p915",
+      "p951"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "meeting",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p599",
+      "p636",
+      "p670",
+      "p705",
+      "p741"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-196",
+    "day": 196,
+    "title": "Phản biện lịch sự",
+    "phraseIds": [
+      "p1019",
+      "p1056",
+      "p1090",
+      "p1125",
+      "p1161"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "meeting",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p809",
+      "p846",
+      "p880",
+      "p915",
+      "p951"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-197",
+    "day": 197,
+    "title": "Gia đình và thăm hỏi",
+    "phraseIds": [
+      "p180",
+      "p223",
+      "p265",
+      "p307",
+      "p390"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p1019",
+      "p1056",
+      "p1090",
+      "p1125",
+      "p1161"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-198",
+    "day": 198,
+    "title": "Gia đình và thăm hỏi",
+    "phraseIds": [
+      "p433",
+      "p475",
+      "p517",
+      "p600",
+      "p643"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p180",
+      "p223",
+      "p265",
+      "p307",
+      "p390"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-199",
+    "day": 199,
+    "title": "Gia đình và thăm hỏi",
+    "phraseIds": [
+      "p685",
+      "p727",
+      "p810",
+      "p853",
+      "p895"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p433",
+      "p475",
+      "p517",
+      "p600",
+      "p643"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-200",
+    "day": 200,
+    "title": "Gia đình và thăm hỏi",
+    "phraseIds": [
+      "p937",
+      "p1020",
+      "p1063",
+      "p1105",
+      "p1147"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p685",
+      "p727",
+      "p810",
+      "p853",
+      "p895"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-201",
+    "day": 201,
+    "title": "Nghiên cứu và chiến lược UX",
+    "phraseIds": [
+      "p181",
+      "p218",
+      "p255",
+      "p291",
+      "p391"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "design",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p937",
+      "p1020",
+      "p1063",
+      "p1105",
+      "p1147"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-202",
+    "day": 202,
+    "title": "Nghiên cứu và chiến lược UX",
+    "phraseIds": [
+      "p428",
+      "p465",
+      "p501",
+      "p601",
+      "p638"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "design",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p181",
+      "p218",
+      "p255",
+      "p291",
+      "p391"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-203",
+    "day": 203,
+    "title": "Nghiên cứu và chiến lược UX",
+    "phraseIds": [
+      "p675",
+      "p711",
+      "p811",
+      "p848",
+      "p885"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "design",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p428",
+      "p465",
+      "p501",
+      "p601",
+      "p638"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-204",
+    "day": 204,
+    "title": "Nghiên cứu và chiến lược UX",
+    "phraseIds": [
+      "p921",
+      "p1021",
+      "p1058",
+      "p1095",
+      "p1131"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "design",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p675",
+      "p711",
+      "p811",
+      "p848",
+      "p885"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-205",
+    "day": 205,
+    "title": "Quy trình vận hành thực tế",
+    "phraseIds": [
+      "p182",
+      "p238",
+      "p294",
+      "p392",
+      "p448"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "business",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p921",
+      "p1021",
+      "p1058",
+      "p1095",
+      "p1131"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-206",
+    "day": 206,
+    "title": "Quy trình vận hành thực tế",
+    "phraseIds": [
+      "p504",
+      "p602",
+      "p658",
+      "p714",
+      "p812"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "business",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p182",
+      "p238",
+      "p294",
+      "p392",
+      "p448"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-207",
+    "day": 207,
+    "title": "Quy trình vận hành thực tế",
+    "phraseIds": [
+      "p868",
+      "p924",
+      "p1022",
+      "p1078",
+      "p1134"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "business",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p504",
+      "p602",
+      "p658",
+      "p714",
+      "p812"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-208",
+    "day": 208,
+    "title": "Triệu chứng và nhà thuốc",
+    "phraseIds": [
+      "p184",
+      "p226",
+      "p267",
+      "p311",
+      "p394"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p868",
+      "p924",
+      "p1022",
+      "p1078",
+      "p1134"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-209",
+    "day": 209,
+    "title": "Triệu chứng và nhà thuốc",
+    "phraseIds": [
+      "p436",
+      "p477",
+      "p521",
+      "p604",
+      "p646"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p184",
+      "p226",
+      "p267",
+      "p311",
+      "p394"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-210",
+    "day": 210,
+    "title": "Triệu chứng và nhà thuốc",
+    "phraseIds": [
+      "p687",
+      "p731",
+      "p814",
+      "p856",
+      "p897"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p436",
+      "p477",
+      "p521",
+      "p604",
+      "p646"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-211",
+    "day": 211,
+    "title": "Triệu chứng và nhà thuốc",
+    "phraseIds": [
+      "p941",
+      "p1024",
+      "p1066",
+      "p1107",
+      "p1151"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p687",
+      "p731",
+      "p814",
+      "p856",
+      "p897"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-212",
+    "day": 212,
+    "title": "Lãnh đạo bằng sự rõ ràng",
+    "phraseIds": [
+      "p185",
+      "p244",
+      "p304",
+      "p395",
+      "p454"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "leadership",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p941",
+      "p1024",
+      "p1066",
+      "p1107",
+      "p1151"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-213",
+    "day": 213,
+    "title": "Lãnh đạo bằng sự rõ ràng",
+    "phraseIds": [
+      "p514",
+      "p605",
+      "p664",
+      "p724",
+      "p815"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "leadership",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p185",
+      "p244",
+      "p304",
+      "p395",
+      "p454"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-214",
+    "day": 214,
+    "title": "Lãnh đạo bằng sự rõ ràng",
+    "phraseIds": [
+      "p874",
+      "p934",
+      "p1025",
+      "p1084",
+      "p1144"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "leadership",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p514",
+      "p605",
+      "p664",
+      "p724",
+      "p815"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-215",
+    "day": 215,
+    "title": "Sự cố thiết bị hằng ngày",
+    "phraseIds": [
+      "p186",
+      "p228",
+      "p270",
+      "p312",
+      "p396"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p874",
+      "p934",
+      "p1025",
+      "p1084",
+      "p1144"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-216",
+    "day": 216,
+    "title": "Sự cố thiết bị hằng ngày",
+    "phraseIds": [
+      "p438",
+      "p480",
+      "p522",
+      "p606",
+      "p648"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p186",
+      "p228",
+      "p270",
+      "p312",
+      "p396"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-217",
+    "day": 217,
+    "title": "Sự cố thiết bị hằng ngày",
+    "phraseIds": [
+      "p690",
+      "p732",
+      "p816",
+      "p858",
+      "p900"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p438",
+      "p480",
+      "p522",
+      "p606",
+      "p648"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-218",
+    "day": 218,
+    "title": "Sự cố thiết bị hằng ngày",
+    "phraseIds": [
+      "p942",
+      "p1026",
+      "p1068",
+      "p1110",
+      "p1152"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p690",
+      "p732",
+      "p816",
+      "p858",
+      "p900"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-219",
+    "day": 219,
+    "title": "Hẹn lịch và đổi lịch",
+    "phraseIds": [
+      "p188",
+      "p229",
+      "p271",
+      "p314",
+      "p340"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p942",
+      "p1026",
+      "p1068",
+      "p1110",
+      "p1152"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-220",
+    "day": 220,
+    "title": "Hẹn lịch và đổi lịch",
+    "phraseIds": [
+      "p398",
+      "p439",
+      "p481",
+      "p524",
+      "p550"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p188",
+      "p229",
+      "p271",
+      "p314",
+      "p340"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-221",
+    "day": 221,
+    "title": "Hẹn lịch và đổi lịch",
+    "phraseIds": [
+      "p608",
+      "p649",
+      "p691",
+      "p734",
+      "p760"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p398",
+      "p439",
+      "p481",
+      "p524",
+      "p550"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-222",
+    "day": 222,
+    "title": "Hẹn lịch và đổi lịch",
+    "phraseIds": [
+      "p818",
+      "p859",
+      "p901",
+      "p944",
+      "p970"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p608",
+      "p649",
+      "p691",
+      "p734",
+      "p760"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-223",
+    "day": 223,
+    "title": "Hẹn lịch và đổi lịch",
+    "phraseIds": [
+      "p1028",
+      "p1069",
+      "p1111",
+      "p1154",
+      "p1180"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p818",
+      "p859",
+      "p901",
+      "p944",
+      "p970"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-224",
+    "day": 224,
+    "title": "Cảm nhận và phản hồi tự nhiên",
+    "phraseIds": [
+      "p190",
+      "p232",
+      "p273",
+      "p315",
+      "p400"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p1028",
+      "p1069",
+      "p1111",
+      "p1154",
+      "p1180"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-225",
+    "day": 225,
+    "title": "Cảm nhận và phản hồi tự nhiên",
+    "phraseIds": [
+      "p442",
+      "p483",
+      "p525",
+      "p610",
+      "p652"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p190",
+      "p232",
+      "p273",
+      "p315",
+      "p400"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-226",
+    "day": 226,
+    "title": "Cảm nhận và phản hồi tự nhiên",
+    "phraseIds": [
+      "p693",
+      "p735",
+      "p820",
+      "p862",
+      "p903"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p442",
+      "p483",
+      "p525",
+      "p610",
+      "p652"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-227",
+    "day": 227,
+    "title": "Cảm nhận và phản hồi tự nhiên",
+    "phraseIds": [
+      "p945",
+      "p1030",
+      "p1072",
+      "p1113",
+      "p1155"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p693",
+      "p735",
+      "p820",
+      "p862",
+      "p903"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-228",
+    "day": 228,
+    "title": "Giao hàng và đơn mua sắm",
+    "phraseIds": [
+      "p192",
+      "p234",
+      "p276",
+      "p317",
+      "p341"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p945",
+      "p1030",
+      "p1072",
+      "p1113",
+      "p1155"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-229",
+    "day": 229,
+    "title": "Giao hàng và đơn mua sắm",
+    "phraseIds": [
+      "p402",
+      "p444",
+      "p486",
+      "p527",
+      "p551"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p192",
+      "p234",
+      "p276",
+      "p317",
+      "p341"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-230",
+    "day": 230,
+    "title": "Giao hàng và đơn mua sắm",
+    "phraseIds": [
+      "p612",
+      "p654",
+      "p696",
+      "p737",
+      "p761"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p402",
+      "p444",
+      "p486",
+      "p527",
+      "p551"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-231",
+    "day": 231,
+    "title": "Giao hàng và đơn mua sắm",
+    "phraseIds": [
+      "p822",
+      "p864",
+      "p906",
+      "p947",
+      "p971"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p612",
+      "p654",
+      "p696",
+      "p737",
+      "p761"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-232",
+    "day": 232,
+    "title": "Giao hàng và đơn mua sắm",
+    "phraseIds": [
+      "p1032",
+      "p1074",
+      "p1116",
+      "p1157",
+      "p1181"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p822",
+      "p864",
+      "p906",
+      "p947",
+      "p971"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-233",
+    "day": 233,
+    "title": "Nhờ trợ giúp khi cần gấp",
+    "phraseIds": [
+      "p194",
+      "p235",
+      "p278",
+      "p320",
+      "p343"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p1032",
+      "p1074",
+      "p1116",
+      "p1157",
+      "p1181"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-234",
+    "day": 234,
+    "title": "Nhờ trợ giúp khi cần gấp",
+    "phraseIds": [
+      "p404",
+      "p445",
+      "p488",
+      "p530",
+      "p553"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p194",
+      "p235",
+      "p278",
+      "p320",
+      "p343"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-235",
+    "day": 235,
+    "title": "Nhờ trợ giúp khi cần gấp",
+    "phraseIds": [
+      "p614",
+      "p655",
+      "p698",
+      "p740",
+      "p763"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p404",
+      "p445",
+      "p488",
+      "p530",
+      "p553"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-236",
+    "day": 236,
+    "title": "Nhờ trợ giúp khi cần gấp",
+    "phraseIds": [
+      "p824",
+      "p865",
+      "p908",
+      "p950",
+      "p973"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p614",
+      "p655",
+      "p698",
+      "p740",
+      "p763"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-237",
+    "day": 237,
+    "title": "Nhờ trợ giúp khi cần gấp",
+    "phraseIds": [
+      "p1034",
+      "p1075",
+      "p1118",
+      "p1160",
+      "p1183"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "everyday",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p824",
+      "p865",
+      "p908",
+      "p950",
+      "p973"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-238",
+    "day": 238,
+    "title": "Xác nhận với BA và Biz User",
+    "phraseIds": [
+      "p196",
+      "p252",
+      "p308",
+      "p406",
+      "p462"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "business",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p1034",
+      "p1075",
+      "p1118",
+      "p1160",
+      "p1183"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-239",
+    "day": 239,
+    "title": "Xác nhận với BA và Biz User",
+    "phraseIds": [
+      "p518",
+      "p616",
+      "p672",
+      "p728",
+      "p826"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "business",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p196",
+      "p252",
+      "p308",
+      "p406",
+      "p462"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  },
+  {
+    "id": "day-240",
+    "day": 240,
+    "title": "Xác nhận với BA và Biz User",
+    "phraseIds": [
+      "p882",
+      "p938",
+      "p1036",
+      "p1092",
+      "p1148"
+    ],
+    "newCount": 5,
+    "primaryCategoryId": "business",
+    "reviewRequired": true,
+    "reviewPhraseIds": [
+      "p518",
+      "p616",
+      "p672",
+      "p728",
+      "p826"
+    ],
+    "durationEstimateMinutes": 10,
+    "language": "en-US"
+  }
+]
