@@ -68,7 +68,7 @@
 - `python3 tests/content.test.py` — **PASS**: 1.200 phrase records, 150 legacy fields, payload/CSV.
 - `python3 content/native-v3/QA_CONTENT.py` — **PASS** cấu trúc; **không** xác nhận editorial/native naturalness.
 - `git diff --check` — **PASS**
-- GitHub Actions trên head mới — **PENDING**; sẽ cập nhật sau khi push.
+- GitHub Actions trên code head `a6aac07` — **PASS**: PR workflow và push workflow đều xanh ([PR run](https://github.com/johnny-bui/TomEng/actions/runs/42966506792), [push run](https://github.com/johnny-bui/TomEng/actions/runs/42966514533)).
 
 ## Kết luận
 
