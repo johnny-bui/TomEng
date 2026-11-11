@@ -36,3 +36,12 @@
 - Cần kiểm tra migration bằng bản sao lưu thực của người dùng trước khi merge; test hiện dùng fixture tổng hợp.
 
 PR nên giữ ở trạng thái **Draft**. Không merge cho đến khi hoàn tất QA giao diện/trình duyệt, migration dữ liệu thật và duyệt nội dung còn lại.
+
+## Audit update 2026-11-11
+
+- Sắp lại 1.050 câu mới theo 40 chủ đề chính; mỗi bài ngày 31–240 gom 5 câu cùng chủ đề, giữ nguyên ID phrase. Các bài 1–30 và 150 cụm đầu giữ nguyên. Bài ôn liên kết đúng 5 ID của ngày trước.
+- Sửa review screen để không có nút TTS đọc đáp án trước khi recall.
+- Chỉ tính `speakingPracticed` khi nhận được transcript không rỗng; lỗi quyền, lỗi nhận dạng và browser không hỗ trợ không tăng tiến độ.
+- Giảm bottom navigation mobile còn 4 mục chính.
+- GitHub Pages source đã trả về `main` theo yêu cầu chưa phát hành production trước khi đạt P0. PR #2 vẫn là Draft.
+- Chưa triển khai trong audit này: chọn track, Listening Drill/conversation 2–4 lượt, tối ưu bỏ qua phrase đã thành thạo theo due policy, test migration có completion lịch sử sau đổi thứ tự, browser/device matrix và offline/update test trên thiết bị thật. Các mục này còn mở, không được coi là PASS.

@@ -10,7 +10,8 @@ phrases, categories, subcategories, lessons, patterns = map(read, ('phrases', 'c
 legacy = json.loads((ROOT / 'tests' / 'fixtures' / 'legacy-v1.json').read_text(encoding='utf-8'))
 
 assert len(phrases) == 1200
-assert [p['id'] for p in phrases] == [f'p{i:03d}' for i in range(1, 1201)]
+assert set(p['id'] for p in phrases) == {f'p{i:03d}' for i in range(1, 1201)}
+assert [p['id'] for p in phrases[:150]] == [f'p{i:03d}' for i in range(1, 151)]
 assert len({re.sub(r'[^a-z0-9 ]', '', p['en'].lower()).strip() for p in phrases}) == 1200
 assert len(categories) == 7 and len(subcategories) == 70 and len(lessons) == 240 and len(patterns) == 210
 assert {c['id']: c['count'] for c in categories} == {'everyday':500,'reflex':125,'meeting':145,'design':150,'business':90,'engineering':125,'leadership':65}
@@ -20,6 +21,7 @@ required = ('id','day','en','vi','context','follow','pattern','memoryTip','categ
 assert all(all(str(p.get(key, '')).strip() for key in required) for p in phrases)
 assert all(p['day'] == i // 5 + 1 for i,p in enumerate(phrases))
 assert all(l['phraseIds'] == [p['id'] for p in phrases[(l['day']-1)*5:l['day']*5]] for l in lessons)
+assert all(len({next(p['topic'] for p in phrases if p['id']==pid) for pid in l['phraseIds']})==1 for l in lessons[30:])
 assert all(l['reviewPhraseIds'] == ([] if l['day'] == 1 else lessons[l['day']-2]['phraseIds']) for l in lessons)
 assert all(len(f['phraseIds']) == 5 and all(any(p['id']==pid and p['patternId']==f['id'] for p in phrases) for pid in f['phraseIds']) for f in patterns)
 assert all(sum(p['categoryId']==c['id'] for p in phrases)==c['count'] for c in categories)

@@ -6,7 +6,7 @@ p=load('phrases.native.v3.json');lessons=load('lessons.native.v3.json');cats=loa
 assert len(p)==1200 and len(lessons)==240 and len(cats)==7 and len(subs)==70 and len(patterns)==210
 assert len(set(x['en'].strip().casefold() for x in p))==1200
 assert len(set(x['id'] for x in p))==1200
-assert [x['id'] for x in p]==[f'p{i:03d}' for i in range(1,1201)]
+assert set(x['id'] for x in p)=={f'p{i:03d}' for i in range(1,1201)} and [x['id'] for x in p[:150]]==[f'p{i:03d}' for i in range(1,151)]
 assert all(len(ls['phraseIds'])==5 for ls in lessons)
 assert all(ls['phraseIds']==[x['id'] for x in p[i*5:(i+1)*5]] for i,ls in enumerate(lessons))
 assert all(ls['reviewPhraseIds']==([] if i==0 else lessons[i-1]['phraseIds']) for i,ls in enumerate(lessons))
