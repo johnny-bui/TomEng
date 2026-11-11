@@ -2,7 +2,7 @@
 
 **Ngày:** 2026-11-11
 **Branch:** `feat/tomeng-native-v3` · **PR:** [#2](https://github.com/johnny-bui/TomEng/pull/2) (**Draft**)
-**Audit được xử lý:** Independent Audit review `5854030770`
+**Audit được xử lý:** Follow-up verification review `5854201494` (các mục của review `5854030770` đã xử lý ở commit trước)
 **Phiên bản nội dung / schema:** `native-v3.2` / `5`
 **Quyết định:** Giữ Draft, không merge và không phát hành production. Chỉ các mục có bằng chứng tương ứng mới được đánh dấu PASS; thiết bị thật và biên tập viên độc lập vẫn chưa có trong môi trường này.
 
@@ -13,6 +13,8 @@
 | P0: import V2/V3/V3.1 backup nhầm ID do dùng fingerprint V2 | **PASS** | Import phân nhánh theo `schemaVersion` + `contentVersion`. V2 dùng fingerprint; V3/V3.1 giữ ID gốc và lesson plan nguồn; V3.2 restore theo schema/version hiện tại. Regression xác nhận `p151 → p152` chỉ cho V2, còn V3/V3.1/V3.2 giữ `p151`. |
 | P0: giữ dữ liệu import và tránh áp completion sang bài đã đổi nội dung | **PASS** | Fixtures bao gồm saved, learned, reviews, contentEdits, completions, archive, sessions, activeSession. Completion chỉ giữ khi 5 phrase ID khớp lesson hiện tại; completion cũ khác plan được archive cùng ID/snapshot nguồn. |
 | P0: backup trước import / import lỗi | **PASS** | Tạo snapshot rồi đọc lại xác nhận đã ghi trước khi thay store; lỗi ghi backup dừng import. Schema/version không hỗ trợ hoặc envelope/payload mâu thuẫn cũng bị từ chối trước khi mutate. |
+| Review 5854201494: import phải transactional khi ghi key đích thất bại | **PASS** | Ghi và đọc lại xác nhận key dữ liệu đích trước khi thay store trong bộ nhớ; lỗi ghi khôi phục raw value trước, giữ state hiện tại, không báo thành công. Test quota failure ở key đích. |
+| Review 5854201494: không migration nếu không lưu được backup trước | **PASS** | Cả migration lesson-plan V3.1 và migration legacy V1/V2 yêu cầu write+readback backup. Nếu thất bại, không ghi V3 store và app hiển thị trạng thái khóa an toàn; nếu ghi destination migration thất bại, rollback raw data cũ. Có test quota cho các đường này. |
 | P1: đổi track nhưng phải ôn bài hoàn thành gần nhất ở track khác | **PASS** | Test chuyển Everyday → Workplace, Workplace → Everyday và tuyến học trong từng track; reviewPhraseIds được lấy từ completion mới nhất toàn cục. |
 | P1: migration V3.1 đang ở phase review chọn sai plan theo điểm ID | **PASS** | Khi phase là `review`, migration ưu tiên plan theo contentVersion nguồn; fixture đang review 2/5 phrase xác nhận lesson, review lesson, index và done IDs giữ nguyên. |
 | QA report phản ánh phiên bản mới | **PASS** | Báo cáo này là V3.2 và phân biệt PASS / NOT TESTED, gồm giới hạn của test giả lập và thiết bị thật. |
@@ -27,8 +29,8 @@
 | Review 5 → Learn 5 → Recall 5, không lộ đáp án trước recall | **PASS** | `node tests/engine.test.cjs` kiểm tra chuyển phase, review gate và reveal/rating. |
 | SRS theo kết quả người học và giới hạn lượt ôn | **PASS** | Engine regression kiểm tra lịch 1/3/7/14/30 ngày, đánh giá nhớ và review cap. |
 | Ngày học, streak, bài đầu/cuối và 240 bài | **PASS** | Regression kiểm tra ngày địa phương, ngày nghỉ, lesson 31 và hoàn tất đến lesson 240. |
-| Local migration V1/V2/V3/V3.1 → V3.2, giữ active session | **PASS** | Synthetic fixtures kiểm tra phrase IDs, completion archive, review phase và session cũ; backup local được tạo trước migration. |
-| Import backup V2/V3/V3.1/V3.2 | **PASS** | `node tests/engine.test.cjs`; fixtures phiên bản riêng kiểm tra toàn bộ mảng/trường tiến độ và ID `p151`. |
+| Local migration V1/V2/V3/V3.1 → V3.2, giữ active session | **PASS** | Synthetic fixtures kiểm tra phrase IDs, completion archive, review phase và session cũ; backup local bắt buộc được tạo/đọc lại trước migration. Khi backup thất bại, nguồn cũ không đổi và app không mở luồng học với plan chưa migrate. |
+| Import backup V2/V3/V3.1/V3.2 | **PASS** | `node tests/engine.test.cjs`; fixtures phiên bản riêng kiểm tra mảng/trường tiến độ và ID `p151`. Import commit key đích trước khi gán store mới; quota failure giữ key và state cũ, snapshot được giữ lại. |
 | Khôi phục profile thật của người dùng và xác nhận mọi dữ liệu riêng | **NOT TESTED** | Không có file backup thật để nhập; chỉ fixture tổng hợp. |
 | Rollback trên trình duyệt / profile thật sau import | **NOT TESTED** | Test xác minh guard và snapshot khi import; chưa khôi phục một profile production thật. |
 
@@ -61,13 +63,13 @@
 - `node --check sw.js` — **PASS**
 - `node --check tests/engine.test.cjs` — **PASS**
 - `node --check tests/pwa.test.cjs` — **PASS**
-- `node tests/engine.test.cjs` — **PASS**: daily flow, cross-track review, import/migration fixtures, persistence, SRS, Listening/Speaking callbacks, 240 lessons.
+- `node tests/engine.test.cjs` — **PASS**: daily flow, cross-track review, transactional import destination failure, backup-required migration failure, migration destination rollback, persistence, SRS, Listening/Speaking callbacks, 240 lessons.
 - `node tests/pwa.test.cjs` — **PASS**: service-worker cache lifecycle và asset precache.
 - `python3 tests/content.test.py` — **PASS**: 1.200 phrase records, 150 legacy fields, payload/CSV.
 - `python3 content/native-v3/QA_CONTENT.py` — **PASS** cấu trúc; **không** xác nhận editorial/native naturalness.
 - `git diff --check` — **PASS**
-- GitHub Actions trên head `b96b274` — **PASS**: hai lần chạy `verify` đều xanh ([PR workflow](https://github.com/johnny-bui/TomEng/actions/runs/42963361493), [push workflow](https://github.com/johnny-bui/TomEng/actions/runs/42963367342)).
+- GitHub Actions trên head mới — **PENDING**; sẽ cập nhật sau khi push.
 
 ## Kết luận
 
-Các mục code có thể tái lập trong audit mới đã được sửa và có regression tests. PR vẫn **Draft**. Chưa đủ bằng chứng để đánh dấu hoàn tất toàn bộ audit: editorial review độc lập, import/rollback profile thật, browser/device QA (Android/iPhone), offline PWA, accessibility và benchmark vẫn **NOT TESTED**.
+Các lỗi dữ liệu nêu trong review `5854201494` đã có sửa và regression tests; QA môi trường hiện tại không thay thế thao tác với profile thật. PR vẫn **Draft**. Editorial review độc lập, import/rollback profile thật, browser/device QA (Android/iPhone), offline PWA, accessibility và benchmark vẫn **NOT TESTED**.
