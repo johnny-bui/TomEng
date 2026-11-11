@@ -31,6 +31,21 @@ assert all(sum(p['categoryId']==c['id'] for p in phrases)==c['count'] for c in c
 assert all(p['subCategoryId'] in {s['id'] for s in subcategories} for p in phrases)
 assert not any(bad in p['en'] for p in phrases for bad in ("I haven't had time to think about the weather", "I'd like to reduce friction in the main call-to-action", "Should we postpone the hotfix until the issue is fixed?"))
 
+# Regression examples from Independent Audit 5855223033.
+assert by_id['p737']['follow'] == 'Could you text me when it arrives?'
+assert by_id['p447']['en'] == "Glad your morning's off to a good start."
+assert by_id['p280']['en'] == 'I had a pretty quiet weekend. How about you?'
+assert by_id['p781']['en'] == "How's your new project going?"
+assert by_id['p357']['follow'] == "I'll check now and let you know."
+assert by_id['p405']['en'] == "What's been the best part of your morning so far?"
+assert by_id['p960']['follow'] == 'Could I get it with less sugar?'
+assert len({by_id[pid]['en'] for pid in lessons[30]['phraseIds']}) == 5
+with (CONTENT / 'FINAL_CONTENT_QA_V3_2.csv').open(encoding='utf-8', newline='') as stream:
+    audit=list(csv.DictReader(stream))
+assert len(audit)==1200 and len({row['id'] for row in audit})==1200
+assert sum(row['decision']=='FIXED' for row in audit)==165
+assert all(row['decision']=='EDITORIAL REVIEW PENDING' for row in audit if not row['suggested_revision'])
+
 with (CONTENT / 'phrases.native.v3.csv').open(encoding='utf-8', newline='') as stream:
     rows=list(csv.DictReader(stream))
 assert len(rows)==len(phrases)
