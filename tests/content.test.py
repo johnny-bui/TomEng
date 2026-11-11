@@ -24,6 +24,8 @@ assert all(l['phraseIds'] == [p['id'] for p in phrases[(l['day']-1)*5:l['day']*5
 assert all(len({next(p['topic'] for p in phrases if p['id']==pid) for pid in l['phraseIds']})==1 for l in lessons[30:])
 assert all(l['reviewPhraseIds'] == ([] if l['day'] == 1 else lessons[l['day']-2]['phraseIds']) for l in lessons)
 assert all(len(f['phraseIds']) == 5 and all(any(p['id']==pid and p['patternId']==f['id'] for p in phrases) for pid in f['phraseIds']) for f in patterns)
+by_id={p['id']:p for p in phrases}
+assert all(len({by_id[pid]['follow'] for pid in f['phraseIds']})==5 for f in patterns), 'each new phrase pattern needs five distinct follow-up turns'
 assert all(sum(p['categoryId']==c['id'] for p in phrases)==c['count'] for c in categories)
 assert all(p['subCategoryId'] in {s['id'] for s in subcategories} for p in phrases)
 assert not any(bad in p['en'] for p in phrases for bad in ("I haven't had time to think about the weather", "I'd like to reduce friction in the main call-to-action", "Should we postpone the hotfix until the issue is fixed?"))

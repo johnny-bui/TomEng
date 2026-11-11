@@ -4,7 +4,10 @@ Nguồn V3 là bản biên tập AI. Đã rà cấu trúc 1.200 câu, 210 họ m
 
 - Đã kiểm tra cấu trúc: 1200 câu; 210 họ mẫu × 5 biến thể.
 - Lượt sửa trường dữ liệu: 191; số ID được sửa: 179.
+- Cập nhật 2026-11-11: viết lại follow-up cho 1.050 câu mới theo chủ đề; mỗi nhóm pattern 5 câu có 5 follow-up khác nhau. Đây là biên tập AI, chưa phải phê duyệt ngữ nghĩa bởi người.
 - Chặn phát hành nội dung cuối: cần biên tập viên tiếng Anh bản ngữ duyệt từng câu, đặc biệt tính tự nhiên của câu nối tiếp và các biến thể dùng chung mẫu.
+
+Các đề xuất follow-up trong bảng dưới đây là nhật ký của vòng rà soát trước. Một số câu đã được thay lại trong lượt cập nhật follow-up 2026-11-11; hãy xem `phrases.native.v3.json` để biết nội dung hiện tại, không lấy dòng cũ trong bảng làm bản cuối.
 
 | ID | Lý do | Phương án đã áp dụng | Trạng thái |
 | --- | --- | --- | --- |

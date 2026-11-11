@@ -5,7 +5,7 @@ const path = require('node:path');
 
 const root = path.join(__dirname, '..');
 const sources = ['legacy-v2-fingerprints.js','data.js','meta.js','app.js'].map(file => fs.readFileSync(path.join(root,file),'utf8'));
-function boot(seed = {}, day = '2026-11-11') {
+function boot(seed = {}, day = '2026-11-11', options = {}) {
   const storage = new Map(Object.entries(seed));
   const elements = new Map();
   class ClockDate extends Date {
@@ -18,12 +18,14 @@ function boot(seed = {}, day = '2026-11-11') {
     addEventListener(type,fn) { this['on'+type]=fn; },
     createElement() { return {click(){},set href(v){},set download(v){}}; }
   };
-  const sandbox={document,localStorage:{getItem:k=>storage.has(k)?storage.get(k):null,setItem:(k,v)=>storage.set(k,v),removeItem:k=>storage.delete(k)},navigator:{},location:{protocol:'file:'},console,setTimeout,clearTimeout,Intl,Date:ClockDate,Blob:class{},FileReader:class{readAsText(file){this.result=file.text;this.onload();}},URL:{createObjectURL(){return 'blob:'},revokeObjectURL(){}},window:null};
+  const sandbox={document,localStorage:{getItem:k=>storage.has(k)?storage.get(k):null,setItem:(k,v)=>storage.set(k,v),removeItem:k=>storage.delete(k)},navigator:{},location:{protocol:'file:',reload(){this.reloaded=true;}},console,setTimeout,clearTimeout,Intl,Date:ClockDate,Blob:class{},FileReader:class{readAsText(file){this.result=file.text;this.onload();}},URL:{createObjectURL(){return 'blob:'},revokeObjectURL(){}},window:null};
+  if(options.speech){sandbox.speechSynthesis={cancel(){},getVoices(){return[]},speak(utterance){sandbox.lastUtterance=utterance;} };sandbox.SpeechSynthesisUtterance=class{constructor(text){this.text=text;}};}
+  if(options.recognition){sandbox.SpeechRecognition=class{start(){if(options.recognition==='throw')throw new Error('permission denied');sandbox.lastRecognition=this;}stop(){}};}
   sandbox.window=sandbox;sandbox.scrollTo=()=>{};sandbox.confirm=()=>true;
   vm.createContext(sandbox);
   for(const source of sources)vm.runInContext(source,sandbox);
   const click=dataset=>document.onclick({target:{closest:()=>({dataset,tagName:'BUTTON'})},stopPropagation(){}});
-  return {app:sandbox.TomEng,storage,document,click,html:()=>document.querySelector('#app').innerHTML};
+  return {app:sandbox.TomEng,meta:sandbox.TOMENG_META,storage,document,click,html:()=>document.querySelector('#app').innerHTML,finishSpeech:()=>sandbox.lastUtterance?.onend?.(),recognitionResult:text=>sandbox.lastRecognition?.onresult?.({results:[[{transcript:text}]]}),recognitionError:error=>sandbox.lastRecognition?.onerror?.({error})};
 }
 const key='tomeng_native_v3';
 const fresh=boot();
@@ -93,6 +95,8 @@ assert.equal(Object.keys(legacy.app.getState().completions).length,0,'learned co
 assert.equal(legacy.app.getState().streak,0);
 assert.ok(legacy.storage.has('tomeng_native_v3_migration_backup'));
 assert.ok(legacy.storage.has('tomeng_notebook_v2'));
+legacy.click({page:'progress'});legacy.click({action:'rollback-migration'});assert.equal(legacy.storage.has(key),false,'rollback removes the migrated V3 key');assert.ok(legacy.storage.has('tomeng_notebook_v2'),'rollback restores the legacy V2 key from snapshot');assert.ok([...legacy.storage.keys()].some(k=>k.startsWith('tomeng_before_rollback_')),'rollback snapshots current progress before restoring legacy data');
+const v1=boot({'speak5_data_v1':JSON.stringify({bookmarks:['p001','p151'],sessions:[{learned:['p002','p151']}]})});assert.ok(v1.app.getState().saved.includes('p001'));assert.ok(v1.app.getState().learned.includes('p002'));assert.ok(v1.storage.has('tomeng_native_v3_migration_backup'),'V1 migration receives a recoverable snapshot');
 
 const v2engine=boot({'tomeng_reflex_v3':JSON.stringify({schemaVersion:3,saved:['p151','p999'],learned:['p151','p999'],reviews:{p151:{dueDate:'2026-11-12',interval:1,repetitions:1}},completions:{}})});
 assert.equal(v2engine.app.getState().saved[0],'p152');
@@ -105,6 +109,12 @@ imported.document.onchange({target:{id:'import-file',files:[{text:JSON.stringify
 assert.equal(imported.app.getState().saved[0],'p152');
 assert.equal(imported.app.getState().reviews.p152.interval,1);
 assert.ok([...imported.storage.keys()].some(k=>k.startsWith('tomeng_before_import_')));
+
+const oldCompletions={'day-001':{lessonId:'day-001',day:1,date:'2026-01-01'},'day-031':{lessonId:'day-031',day:31,date:'2026-02-01'},'day-240':{lessonId:'day-240',day:240,date:'2026-09-01'}};
+const completionMigration=boot({'tomeng_reflex_v3':JSON.stringify({schemaVersion:3,saved:[],learned:['p151'],completions:oldCompletions})});
+assert.ok(completionMigration.app.getState().completions['day-001'],'early lesson history is preserved in place');
+assert.equal(completionMigration.app.getState().completions['day-031'],undefined,'reshuffled lesson progress is not falsely applied to different phrases');
+assert.equal(Object.keys(completionMigration.app.getState().migration.archivedCompletions).length,2,'later lesson history remains in the migration archive');
 
 const queueReviews={};for(let i=1;i<=20;i++)queueReviews['p'+String(i).padStart(3,'0')]={dueDate:'2000-01-01',repetitions:1,interval:1};
 const queue=boot({[key]:JSON.stringify({schemaVersion:4,contentVersion:'native-v3.1',saved:[],learned:[],completions:{},reviews:queueReviews})});
@@ -121,4 +131,12 @@ for(let day=31;day<=240;day++)completions['day-'+String(day).padStart(3,'0')]={d
 const done=boot({[key]:JSON.stringify({schemaVersion:4,contentVersion:'native-v3.1',saved:[],learned:[],completions,lastCompletedLessonId:'day-240'})});
 assert.equal(done.app.getState().activeSession,null);
 assert.match(done.html(),/Đã hoàn thành 240 trang/);
-console.log('PASS: daily gate, previous-five review, reveal/rating guards, SRS, V2 fingerprint migration, Day 31/240 and due cap');
+const track=boot();track.click({track:'workplace'});assert.equal(track.app.getState().track,'workplace','track selector is wired and persisted');const workplaceLesson=track.meta.lessons.find(l=>l.primaryCategoryId!=='everyday'&&l.primaryCategoryId!=='reflex');assert.equal(track.app.getState().activeSession.lessonId,workplaceLesson.id,'untouched session follows the selected track');assert.equal(boot(Object.fromEntries(track.storage)).app.getState().track,'workplace','track choice persists across reload');
+track.click({page:'rescue'});track.document.oninput({target:{id:'rescue-search',value:'airport'}});assert.match(track.html(),/airport/i,'Rescue Mode searches arbitrary situations across the library');
+track.click({page:'listening'});assert.match(track.html(),/disabled/);track.click({action:'listening-play'});assert.match(track.html(),/disabled/,'unsupported TTS does not unlock transcript');
+const listener=boot({},'2026-11-11',{speech:true});listener.click({page:'listening'});assert.doesNotMatch(listener.html(),/class="answer-box"/);listener.click({action:'listening-play'});assert.doesNotMatch(listener.html(),/class="answer-box"/,'listening does not reveal the answer');listener.click({action:'listening-reveal'});assert.doesNotMatch(listener.html(),/class="answer-box"/,'transcript stays locked while audio is playing');listener.finishSpeech();listener.click({action:'listening-reveal'});assert.match(listener.html(),/class="answer-box"/,'transcript appears only after audio and self-check');listener.click({action:'listening-next'});assert.doesNotMatch(listener.html(),/class="answer-box"/,'next item clears revealed transcript');
+const noMic=boot();noMic.click({action:'mic',id:'p001'});assert.equal(noMic.app.getState().speakingPracticed.length,0,'unsupported microphone does not count as speaking practice');
+const failedMic=boot({},'2026-11-11',{recognition:'throw'});failedMic.click({action:'mic',id:'p001'});assert.equal(failedMic.app.getState().speakingPracticed.length,0,'microphone start failure does not count as speaking practice');
+const mic=boot({},'2026-11-11',{recognition:true});mic.click({action:'mic',id:'p001'});mic.recognitionError('not-allowed');assert.equal(mic.app.getState().speakingPracticed.length,0,'permission failure does not count as speaking practice');mic.click({action:'mic',id:'p001'});mic.recognitionResult('I am concerned about it');assert.equal(mic.app.getState().speakingPracticed.join(','),'p001','nonempty recognition result is recorded as a practice attempt, not a pronunciation score');
+track.click({page:'conversation'});assert.match(track.html(),/lượt 1\/4/);track.click({action:'conversation-next'});assert.match(track.html(),/lượt 2\/4/);
+console.log('PASS: daily review/learn/recall, track/rescue search, Listening transcript gate, Speaking success/error accounting, SRS, V1/V2 migration, progress archive/rollback, 240 lessons and review cap');

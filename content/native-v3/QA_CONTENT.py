@@ -16,6 +16,8 @@ assert all(x['source']=='legacy' for x in p[:150])
 counts=collections.Counter(x['categoryId'] for x in p)
 assert counts=={'everyday':500,'reflex':125,'meeting':145,'design':150,'business':90,'engineering':125,'leadership':65}
 assert all(x['categoryId'] in {c['id'] for c in cats} and x['subCategoryId'] in {s['id'] for s in subs} for x in p)
+by_id={x['id']:x for x in p}
+assert all(len(f['phraseIds'])==5 and len({by_id[pid]['follow'] for pid in f['phraseIds']})==5 for f in patterns), 'each new pattern family must have five distinct follow-up turns'
 assert not any('{x}' in x['en'] or '{x}' in x['vi'] for x in p)
 assert not any(re.search(r'\bi haven.t had time to think about the weather\b',x['en'],re.I) for x in p)
 print('PASS: 1200 unique phrases / 240 lessons / 7 categories / 70 subcategories / 210 patterns')
