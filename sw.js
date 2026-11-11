@@ -1,4 +1,4 @@
-const CACHE = 'tomeng-v16-native';
+const CACHE = 'tomeng-v17-native';
 const SHELL = ['./','./index.html','./style.css','./app.js','./legacy-v2-fingerprints.js','./data.js','./meta.js','./legacy-lesson-plan-v3.js','./legacy-lesson-plan-v3_1.js','./legacy-lesson-plan-v3_2.js','./legacy-lesson-plan-v3_3.js','./manifest.webmanifest','./logo-tomeng.png','./icon-192.png','./icon-512.png'];
 self.addEventListener('install',(event)=>event.waitUntil(caches.open(CACHE).then((cache)=>cache.addAll(SHELL)).then(()=>self.skipWaiting())));
 self.addEventListener('activate',(event)=>event.waitUntil(caches.keys().then((keys)=>Promise.all(keys.filter((key)=>key.startsWith('tomeng-')&&key!==CACHE).map((key)=>caches.delete(key)))).then(()=>self.clients.claim())));
