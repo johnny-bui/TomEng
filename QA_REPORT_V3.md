@@ -27,7 +27,7 @@ Release: app `3.4.1` / content plan `native-v3.4` / store schema `7`
 | Không bỏ sót ID cuối trong state partial và sau migration V3.2 | PASS local | State còn đúng một ID chưa học vẫn cấp ID đó vào buổi năm câu; saved/learned/SRS và backup còn nguyên. |
 | Coverage 1.200 ID, track switch, refresh, SRS, Mastery, persistence | PASS local | Engine simulation và regression suite hiện có chạy qua đủ coverage; #9 thêm case snapshot/migration/adversarial. |
 | Lint cú pháp, PWA shell/cache, ID/content structural QA, scenario map | PASS local | Các lệnh bên dưới. |
-| GitHub Actions trên head PR cuối | NOT TESTED | Sẽ cập nhật sau khi workflow hoàn tất. |
+| GitHub Actions cho mã Issue #9 | PASS | [PR run 43014128830](https://github.com/johnny-bui/TomEng/actions/runs/43014128830) trên commit `6767e9e` PASS (3m42s). Report-only follow-up sẽ được CI chạy lại trên head cuối trước khi merge; xem trạng thái mới nhất tại [PR #11 checks](https://github.com/johnny-bui/TomEng/pull/11). |
 | Native editor duyệt ngữ nghĩa toàn bộ 1.200 cụm | NOT TESTED | Structural/content QA không thay thế việc biên tập viên bản ngữ rà toàn bộ catalog. |
 | Chrome Android, Safari iPhone, micro/TTS và offline trên thiết bị thật | NOT TESTED | Chưa chạy trên thiết bị thật trong môi trường hiện tại. |
 | GitHub Pages production sau merge | NOT TESTED | Pages production sẽ được xác minh sau CI và merge. |
@@ -45,4 +45,4 @@ git diff --check
 
 ## Release gate
 
-Chỉ merge sau khi CI của đúng head PR PASS. Sau merge, xác minh `main` quality workflow, GitHub Pages deploy và production assets. Các giới hạn native-editor và thiết bị thật được ghi rõ, không đánh dấu PASS.
+Mã Issue #9 đã qua CI ở `6767e9e`; report-only follow-up vẫn phải qua CI trên head cuối trước merge. Sau merge, xác minh `main` quality workflow, GitHub Pages deploy và production assets. Các giới hạn native-editor và thiết bị thật được ghi rõ, không đánh dấu PASS.
