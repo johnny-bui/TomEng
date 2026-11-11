@@ -3,7 +3,7 @@ name: TomEng quality
 on:
   pull_request:
   push:
-    branches: [main, feat/tomeng-native-v3, feat/tomeng-issue-7-adaptive-learning]
+    branches: [main, feat/tomeng-native-v3]
 
 jobs:
   verify:

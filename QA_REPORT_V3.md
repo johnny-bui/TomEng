@@ -28,7 +28,7 @@ Release: `3.4.0` / content plan `native-v3.4`
 | Hết 1.200 chuyển Mastery, không tạo NEW giả | PASS | Mô phỏng đến full coverage rồi kiểm tra session Mastery và progress không đổi. |
 | English/translation được kiểm duyệt bởi native editor | NOT TESTED | QA cấu trúc và các sample tình huống đã rà; chưa có biên tập viên native duyệt đủ 1.200 câu. Không tuyên bố native-approved. |
 | Android Chrome, iPhone Safari, mic/TTS thật, offline PWA | NOT TESTED | Không chạy thiết bị thật trong phiên này; PWA worker chỉ qua regression test. |
-| Production GitHub Pages | NOT TESTED | Sẽ cập nhật trạng thái sau merge và kiểm tra URL production. |
+| Production GitHub Pages của bản V3.4 | NOT TESTED | Pages dùng `main:/`; sẽ kiểm tra URL sau khi merge và deployment hoàn tất. |
 
 ## Scenario examples đã rà mẫu
 
@@ -46,6 +46,15 @@ Release: `3.4.0` / content plan `native-v3.4`
 - `python3 content/native-v3/QA_CONTENT.py`
 - `git diff --check`
 
+## GitHub Actions
+
+Trên source commit `79b243e` của PR #8, cả PR check và push check đều **PASS**:
+
+- [PR workflow run](https://github.com/johnny-bui/TomEng/actions/runs/43004618053)
+- [Push workflow run](https://github.com/johnny-bui/TomEng/actions/runs/43004665464)
+
+Sau khi ghi kết quả này vào report và gọn trigger push, Actions chạy lại trên head cuối của PR trước khi merge.
+
 ## Release gate
 
-Đang chờ full local regression suite, GitHub Actions trên PR và kiểm tra GitHub Pages sau khi merge. Không merge nếu engine/migration/coverage test hoặc CI thất bại. Các kiểm thử native/editor và thiết bị thật là residual risks, không được ghi PASS.
+Local regression và Actions trên source đã PASS. Chỉ merge sau khi check của head cuối PR PASS; kiểm tra GitHub Pages production sau merge. Các kiểm thử native/editor và thiết bị thật là residual risks, không được ghi PASS.
