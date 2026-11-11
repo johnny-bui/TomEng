@@ -1,314 +1,182 @@
 (() => {
   'use strict';
-
   const PHRASES = window.SPEAK5_PHRASES || [];
-  const OLD_KEY = 'speak5_data_v1';
+  const META = window.TOMENG_META || { categories: [], subcategories: [], lessons: [], patterns: [] };
   const KEY = 'tomeng_notebook_v2';
-  const $ = (selector) => document.querySelector(selector);
-  const esc = (value) => String(value ?? '').replace(/[&<>"']/g, (char) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
+  const OLD_KEY = 'speak5_data_v1';
+  const V3_KEY = 'tomeng_reflex_v3';
+  const BACKUP_KEY = 'tomeng_migration_backup_v3';
+  const byId = new Map(PHRASES.map((p) => [p.id, p]));
+  const lessonById = new Map(META.lessons.map((lesson) => [lesson.id, lesson]));
+  const subById = new Map(META.subcategories.map((sub) => [sub.id, sub]));
+  const categoryStyles = ['coral','olive','yellow','blue','cream','ink','lavender'];
+  const $ = (selector, root = document) => root.querySelector(selector);
+  const esc = (v) => String(v ?? '').replace(/[&<>"']/g, (c) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const iconPaths = {
-    home:'<path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10v10h13V10M9 20v-6h6v6"/>',
-    book:'<path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v17H6.5A2.5 2.5 0 0 1 4 17.5z"/><path d="M4 17.5V5.5M8 7h8"/>',
-    play:'<path d="m8 5 11 7-11 7z"/>',
-    bookmark:'<path d="M6 3h12v18l-6-4-6 4z"/>',
-    chart:'<path d="M4 20V9m6 11V4m6 16v-7m4 7H2"/>',
-    search:'<circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/>',
-    bell:'<path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"/>',
-    arrow:'<path d="M5 12h14m-5-5 5 5-5 5"/>',
-    volume:'<path d="M11 5 6 9H3v6h3l5 4zM15 9a5 5 0 0 1 0 6m3-9a9 9 0 0 1 0 12"/>',
-    check:'<path d="m5 12 4 4L19 6"/>',
-    close:'<path d="m6 6 12 12M18 6 6 18"/>',
-    shuffle:'<path d="M3 7h3c4 0 6 10 10 10h5m-4-4 4 4-4 4M3 17h3c1.8 0 3.2-2 4.5-4M16 7h5m-4-4 4 4-4 4"/>',
-    flame:'<path d="M12 22c4.5 0 8-3.4 8-8 0-3.7-2-6.7-5-10-.3 3-1.9 4.5-3 5-1-2-1.8-3.1-3-4.3-.3 3-5 5.2-5 9.3 0 4.6 3.5 8 8 8z"/>',
-    spark:'<path d="m12 3 1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7z"/>'
+    home:'<path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10v10h13V10M9 20v-6h6v6"/>',book:'<path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v17H6.5A2.5 2.5 0 0 1 4 17.5z"/><path d="M4 17.5V5.5M8 7h8"/>',play:'<path d="m8 5 11 7-11 7z"/>',bookmark:'<path d="M6 3h12v18l-6-4-6 4z"/>',chart:'<path d="M4 20V9m6 11V4m6 16v-7m4 7H2"/>',search:'<circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/>',arrow:'<path d="M5 12h14m-5-5 5 5-5 5"/>',volume:'<path d="M11 5 6 9H3v6h3l5 4zM15 9a5 5 0 0 1 0 6m3-9a9 9 0 0 1 0 12"/>',check:'<path d="m5 12 4 4L19 6"/>',close:'<path d="m6 6 12 12M18 6 6 18"/>',spark:'<path d="m12 3 1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7z"/>',copy:'<rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"/>',mic:'<rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0 0 14 0M12 17v5m-4 0h8"/>'
   };
   const icon = (name) => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${iconPaths[name] || iconPaths.spark}</svg>`;
-
-  const categories = [
-    {id:'meeting', number:'01', name:'Phòng họp', desc:'Mở đầu, làm rõ và chốt cuộc họp.', className:'coral', days:[1,2,5,10,14,15,19,26]},
-    {id:'workday', number:'02', name:'Ngày làm việc', desc:'Tiến độ, ưu tiên và xử lý vướng mắc.', className:'olive', days:[6,7,8,9,29]},
-    {id:'product', number:'03', name:'Product & Design', desc:'Review, yêu cầu, dữ liệu và handoff.', className:'yellow', days:[3,4,11,12,13,16,17,18,20,21,22,23,24,25,28]},
-    {id:'daily', number:'04', name:'Giao tiếp hằng ngày', desc:'Small talk và hội thoại tự nhiên.', className:'blue', days:[27,30]},
-    {id:'confidence', number:'05', name:'Nói tự tin', desc:'Phản xạ, hỏi lại và nói có sắc thái.', className:'cream', days:[1,2,27,30]},
-    {id:'leadership', number:'06', name:'Lãnh đạo & đồng thuận', desc:'Điều phối, quyết định và theo dõi.', className:'ink', days:[5,7,10,14,15,26,29]}
-  ];
-  const grammar = [
-    {group:'Các thì trong giao tiếp', title:'Present simple · Hiện tại đơn', pattern:'I work / She works', tip:'Dùng cho lịch cố định, thói quen và sự thật ổn định. Trong công việc: “I usually send the recap after each meeting.”', clue:'usually · every week · on Mondays'},
-    {group:'Các thì trong giao tiếp', title:'Present continuous · Hiện tại tiếp diễn', pattern:'I am working', tip:'Dùng cho việc đang diễn ra hoặc tình huống tạm thời quanh hiện tại. “I’m working on the updated flow this week.”', clue:'now · at the moment · this week'},
-    {group:'Các thì trong giao tiếp', title:'Present perfect · Hiện tại hoàn thành', pattern:'I have finished', tip:'Nối việc đã xảy ra với kết quả hiện tại; không nêu thời điểm quá khứ cụ thể. “I’ve shared the latest version.”', clue:'already · just · yet · so far'},
-    {group:'Các thì trong giao tiếp', title:'Past simple · Quá khứ đơn', pattern:'I joined / We agreed', tip:'Việc đã kết thúc tại một thời điểm quá khứ rõ ràng. “We agreed on the scope yesterday.”', clue:'yesterday · last week · in 2024'},
-    {group:'Các thì trong giao tiếp', title:'Past continuous · Quá khứ tiếp diễn', pattern:'I was working', tip:'Bối cảnh đang diễn ra tại một thời điểm quá khứ; thường có việc khác xen vào. “I was presenting when the call dropped.”', clue:'while · when · at 3 p.m.'},
-    {group:'Các thì trong giao tiếp', title:'Will · Quyết định / dự đoán', pattern:'I’ll check / It will help', tip:'Quyết định ngay lúc nói, lời hứa hoặc dự đoán. “I’ll send you the notes after this call.”', clue:'I’ll · probably · I think'},
-    {group:'Các thì trong giao tiếp', title:'Going to · Dự định đã có', pattern:'I’m going to review', tip:'Kế hoạch hoặc ý định đã hình thành trước lúc nói. “We’re going to test the new flow tomorrow.”', clue:'plan · intend · đã sắp xếp'},
-    {group:'Các thì trong giao tiếp', title:'Present continuous · Lịch tương lai', pattern:'We’re meeting at ten', tip:'Dùng cho lịch đã sắp xếp cụ thể, thường có giờ/ngày. “I’m meeting the client on Thursday.”', clue:'giờ/ngày cụ thể · lịch đã chốt'},
-    {group:'Mạo từ a / an / the', title:'A / an · Một thứ chưa xác định', pattern:'a user · an issue', tip:'Danh từ đếm được số ít, mới được nhắc hoặc chưa xác định. Chọn a/an theo âm đầu: an hour nhưng a university.', clue:'lần đầu nhắc · bất kỳ một'},
-    {group:'Mạo từ a / an / the', title:'The · Thứ đã xác định', pattern:'the user · the issue', tip:'Người nghe biết chính xác bạn nói đến thứ nào: đã nhắc trước, có ngữ cảnh chung hoặc chỉ có một.', clue:'đã nhắc · cụ thể · duy nhất trong ngữ cảnh'},
-    {group:'Mạo từ a / an / the', title:'Không dùng mạo từ', pattern:'We need feedback', tip:'Thường bỏ mạo từ với danh từ số nhiều hoặc không đếm được khi nói chung: “Design takes time.” “We need feedback.”', clue:'nói chung · số nhiều · không đếm được'},
-    {group:'Giới từ dễ nhầm', title:'At · Điểm thời gian / địa điểm', pattern:'at 3 p.m. · at the office', tip:'Dùng at cho giờ cụ thể, địa điểm như một điểm và sự kiện: at noon, at the entrance, at a meeting.', clue:'giờ cụ thể · một điểm'},
-    {group:'Giới từ dễ nhầm', title:'On · Ngày / bề mặt', pattern:'on Friday · on the screen', tip:'Dùng on với ngày, ngày tháng và thứ nằm trên bề mặt: on Monday, on the dashboard.', clue:'ngày · thứ · bề mặt'},
-    {group:'Giới từ dễ nhầm', title:'In · Khoảng thời gian / không gian', pattern:'in June · in the document', tip:'Dùng in với tháng, năm, khoảng dài và không gian có ranh giới: in 2026, in the file, in the room.', clue:'tháng/năm · bên trong'},
-    {group:'Giới từ dễ nhầm', title:'For · Mục đích / khoảng kéo dài', pattern:'for the team · for two weeks', tip:'For trả lời “cho ai/để làm gì” hoặc “trong bao lâu”: designed for mobile, for three days.', clue:'đối tượng · mục đích · thời lượng'},
-    {group:'Giới từ dễ nhầm', title:'Since · Mốc bắt đầu', pattern:'since Monday · since 2022', tip:'Since đi với một mốc bắt đầu; thường dùng cùng hiện tại hoàn thành: “I’ve worked here since May.”', clue:'một mốc thời gian'},
-    {group:'Giới từ dễ nhầm', title:'By · Hạn chót / trước thời điểm', pattern:'by Friday', tip:'By Friday nghĩa là không muộn hơn thứ Sáu. Khác until Friday: kéo dài liên tục đến thứ Sáu.', clue:'deadline · không muộn hơn'},
-    {group:'Cấu trúc câu dùng ngay', title:'Could you…? · Nhờ vả lịch sự', pattern:'Could you take a look?', tip:'Cách nhờ lịch sự trong họp và email. Thêm please nếu cần mềm hơn, tránh dùng can you trong yêu cầu nhạy cảm.', clue:'nhờ xem · nhờ hỗ trợ'},
-    {group:'Cấu trúc câu dùng ngay', title:'Would you mind + V-ing?', pattern:'Would you mind sharing the file?', tip:'Dùng để nhờ ai làm gì một cách nhẹ nhàng. Sau mind dùng động từ thêm -ing.', clue:'mind + V-ing'},
-    {group:'Cấu trúc câu dùng ngay', title:'Because / so · Nêu nguyên nhân và kết quả', pattern:'Because X, Y. / X, so Y.', tip:'Because giới thiệu nguyên nhân; so giới thiệu kết quả. Tránh ghép because và so trong cùng một mệnh đề.', clue:'because = vì · so = nên'},
-    {group:'Cấu trúc câu dùng ngay', title:'Although / but · Nhượng bộ', pattern:'Although X, Y. / X, but Y.', tip:'Chọn một cấu trúc: although ở đầu câu hoặc but nối hai ý. Tránh dùng although… but cùng lúc.', clue:'although = mặc dù · but = nhưng'},
-    {group:'Cấu trúc câu dùng ngay', title:'Much / many / a lot of', pattern:'much time · many tasks · a lot of work', tip:'Many đi với danh từ đếm được số nhiều; much với danh từ không đếm được; a lot of dùng tự nhiên trong cả hai kiểu.', clue:'many tasks · much time · a lot of work'},
-    {group:'Cấu trúc câu dùng ngay', title:'Few / a few · Little / a little', pattern:'a few options · a little time', tip:'A few / a little nghĩa là có một ít, sắc thái tích cực. Few / little nhấn mạnh gần như không đủ.', clue:'few + đếm được · little + không đếm được'}
-  ];
-  const byId = new Map(PHRASES.map((phrase) => [phrase.id, phrase]));
-
-  function loadStore() {
-    try {
-      const current = JSON.parse(localStorage.getItem(KEY));
-      if (current && Array.isArray(current.saved) && Array.isArray(current.learned)) return current;
-    } catch {}
-    let legacy = {};
-    try { legacy = JSON.parse(localStorage.getItem(OLD_KEY)) || {}; } catch {}
-    return {
-      saved: Array.isArray(legacy.bookmarks) ? legacy.bookmarks : [],
-      learned: [...new Set((legacy.sessions || []).flatMap((session) => session.learned || []))],
-      accent: legacy.accent || 'en-US',
-      opened: [],
-      streak: 1
+  const dateKey = (date = new Date()) => `${date.getFullYear()}-${String(date.getMonth()+1).padStart(2,'0')}-${String(date.getDate()).padStart(2,'0')}`;
+  const shiftDate = (key, days) => { const [y,m,d] = key.split('-').map(Number); const date = new Date(y,m-1,d+days,12); return dateKey(date); };
+  const daysBetween = (a,b) => { const toUtc = (key) => { const [y,m,d] = key.split('-').map(Number); return Date.UTC(y,m-1,d); }; return Math.round((toUtc(b)-toUtc(a))/86400000); };
+  const emptyStore = () => ({ schemaVersion:3, saved:[], learned:[], accent:'en-US', completions:{}, sessions:[], reviews:{}, contentEdits:{}, activityDates:[], streak:0, activeSession:null, lastCompletedLessonId:null, migration:null });
+  function safeRead(key) { try { return JSON.parse(localStorage.getItem(key) || 'null'); } catch { return null; } }
+  function normaliseStore(input) {
+    const base = emptyStore();
+    return { ...base, ...input, schemaVersion:3,
+      saved:[...new Set((input.saved || []).filter((id) => byId.has(id)))],
+      learned:[...new Set((input.learned || []).filter((id) => byId.has(id)))],
+      completions:input.completions && typeof input.completions==='object' ? input.completions : {},
+      sessions:Array.isArray(input.sessions) ? input.sessions : [],
+      reviews:input.reviews && typeof input.reviews==='object' ? input.reviews : {},
+      contentEdits:input.contentEdits && typeof input.contentEdits==='object' ? input.contentEdits : {},
+      activityDates:[...new Set(input.activityDates || [])].sort(),
+      accent:input.accent || 'en-US'
     };
   }
-
-  let store = loadStore();
-  let ui = {page:'home', category:'all', query:'', selected:null, practiceIds:[], practiceIndex:0, reveal:false};
-  function save() { localStorage.setItem(KEY, JSON.stringify(store)); }
-  function isSaved(id) { return store.saved.includes(id); }
-  function catById(id) { return categories.find((category) => category.id === id); }
-  function categoryFor(phrase) { return categories.find((category) => category.days.includes(phrase.day)) || categories[1]; }
-  function phrasesFor(categoryId) {
-    if (!categoryId || categoryId === 'all') return PHRASES;
-    const category = catById(categoryId);
-    return PHRASES.filter((phrase) => category?.days.includes(phrase.day));
-  }
-  function dayNumber() { return Math.min(30, Math.floor(store.learned.length / 5) + 1); }
-  function todayPhrases() {
-    const day = dayNumber();
-    return PHRASES.filter((phrase) => phrase.day === day).slice(0, 5);
-  }
-  function dailyPhrase() {
-    const now = new Date();
-    const start = new Date(now.getFullYear(), 0, 0);
-    const index = Math.floor((now - start) / 86400000) % PHRASES.length;
-    return PHRASES[index] || {};
-  }
-  function currentDate() {
-    return new Intl.DateTimeFormat('vi-VN', {weekday:'short', day:'2-digit', month:'2-digit'}).format(new Date());
-  }
-  function toast(message) {
-    const element = $('#toast');
-    element.textContent = message;
-    element.classList.add('show');
-    clearTimeout(toast.timer);
-    toast.timer = setTimeout(() => element.classList.remove('show'), 2600);
-  }
-
-  function navButton(page, iconName, label) {
-    return `<button class="rail-btn ${ui.page === page ? 'active' : ''}" data-page="${page}" aria-label="${label}" aria-current="${ui.page === page ? 'page' : 'false'}">${icon(iconName)}<span>${label}</span></button>`;
-  }
-  function mobileNav() {
-    const items = [['home','home','Trang chủ'],['library','book','Sổ tay'],['grammar','spark','Ngữ pháp'],['practice','play','Luyện tập'],['saved','bookmark','Đã lưu']];
-    return `<nav class="mobile-nav" aria-label="Điều hướng di động">${items.map(([page,name,label]) => `<button class="${ui.page===page?'active':''}" data-page="${page}">${icon(name)}${label}</button>`).join('')}</nav>`;
-  }
-  function shell(content) {
-    const phrase = dailyPhrase();
-    return `
-      <aside class="rail">
-        <button class="brand-mark" data-page="home" aria-label="TomEng"><img src="logo-tomeng.png" alt=""></button>
-        <nav class="rail-nav" aria-label="Điều hướng chính">
-          ${navButton('home','home','Trang chủ')}${navButton('library','book','Sổ tay')}${navButton('grammar','spark','Mẹo nhanh')}${navButton('practice','play','Luyện tập')}${navButton('saved','bookmark','Đã lưu')}${navButton('progress','chart','Tiến độ')}
-        </nav>
-        <div class="rail-bottom"><div class="avatar">TE</div></div>
-      </aside>
-      <main class="main">
-        <header class="topbar">
-          <div class="brand-word">TomEng</div>
-          <label class="search">${icon('search')}<input id="global-search" type="search" value="${esc(ui.query)}" placeholder="Tìm cụm câu, tình huống, chủ đề..." aria-label="Tìm kiếm"></label>
-          <div class="top-actions"><span class="date-label">${currentDate()}</span><button class="icon-btn" data-action="random" aria-label="Cụm ngẫu nhiên">${icon('shuffle')}</button></div>
-        </header>
-        <div class="content">${content}</div>
-      </main>
-      <aside class="right-panel">
-        <div class="right-brand"><div><b>TomEng</b><small>phrase notebook</small></div><button class="icon-btn" data-page="saved" aria-label="Cụm đã lưu">${icon('bookmark')}</button></div>
-        <section class="daily-card">
-          <div class="eyebrow">Cụm câu hôm nay</div>
-          <h2>${esc(phrase.en)}</h2>
-          <div class="translation">${esc(phrase.vi)}</div>
-          <p class="context">${esc(phrase.context)}</p>
-          <div class="daily-actions"><button class="mini-action" data-action="speak" data-id="${phrase.id}" aria-label="Nghe phát âm">${icon('volume')}</button><button class="mini-action ${isSaved(phrase.id)?'on':''}" data-action="save" data-id="${phrase.id}" aria-label="Lưu cụm câu">${icon('bookmark')}</button><button class="btn btn-ghost" data-open="${phrase.id}">Xem ghi chú ${icon('arrow')}</button></div>
-        </section>
-        ${schedulePanel()}
-        <section class="notes"><h3>Ghi chú bên lề</h3><div class="note-item"><div></div><div><b>Học theo tình huống</b><p>“Đừng dịch từng từ. Hãy nhớ lúc nào mình cần nói cả cụm.”</p><small>TomEng method · 2 phút đọc</small></div></div><div class="note-item"><div></div><div><b>Mục tiêu tuần này</b><p>Dùng ít nhất một cụm mới trong cuộc họp thật.</p><small>${store.learned.length} cụm đã nằm trong sổ</small></div></div></section>
-      </aside>${mobileNav()}`;
-  }
-
-  function schedulePanel() {
-    const now = new Date();
-    const labels = ['CN','T2','T3','T4','T5','T6','T7'];
-    const days = Array.from({length:7}, (_, i) => {
-      const date = new Date(now); date.setDate(now.getDate() - now.getDay() + i);
-      const isToday = date.toDateString() === now.toDateString();
-      return `<div class="day ${isToday?'today active':''}"><b>${labels[i]}</b><span>${date.getDate()}</span></div>`;
-    }).join('');
-    return `<section class="schedule"><div class="schedule-title"><h3>Nhịp học tuần này</h3><span class="eyebrow">${store.streak || 1} ngày</span></div><div class="week">${days}</div></section>`;
-  }
-
-  function homePage() {
-    const today = todayPhrases();
-    const done = today.filter((phrase) => store.learned.includes(phrase.id)).length;
-    return `
-      <section class="hero">
-        <div><div class="eyebrow">Sổ tay tiếng Anh của bạn</div><h1 class="display">Nói đúng câu,<br><em>đúng lúc.</em></h1><p class="subcopy">TomEng gom những cụm câu dùng thật trong công việc, cuộc họp và đời sống — để bạn mở sổ, học nhanh và dùng ngay.</p><div class="hero-actions"><button class="btn btn-dark" data-action="continue">Tiếp tục trang ${String(dayNumber()).padStart(2,'0')} ${icon('arrow')}</button><button class="btn" data-page="library">Mở sổ tay</button></div></div>
-        <div class="notebook-stack" aria-hidden="true"><div class="book back"></div><div class="book mid"></div><div class="book front"><div class="edition">TomEng pocket notes</div><h3>Useful English<br>for real life.</h3><p>Meetings · Work · Everyday</p><div class="book-no">${String(dayNumber()).padStart(2,'0')}</div></div></div>
-      </section>
-      <div class="section-head"><div><h2>Chọn một chuyên mục</h2><p>Mỗi ngăn sổ là một bối cảnh giao tiếp khác nhau.</p></div><button class="text-btn" data-page="library">Xem toàn bộ →</button></div>
-      <section class="category-grid">${categories.map(categoryCard).join('')}</section>
-      <div class="section-head"><div><h2>Trang đang học</h2><p>${esc(today[0]?.topic || 'Bắt đầu cuốn sổ đầu tiên')}</p></div></div>
-      <section class="today-strip"><div class="strip-index">${String(dayNumber()).padStart(2,'0')}</div><div class="strip-copy"><b>${esc(today[done]?.en || 'Bạn đã hoàn thành trang này!')}</b><span>${done}/5 cụm đã ghi nhớ · khoảng ${Math.max(1,5-done)*2} phút còn lại</span></div><div class="progress-track"><i style="width:${done/5*100}%"></i></div><button class="btn btn-coral" data-action="continue">${done === 5 ? 'Xem lại' : 'Học tiếp'} ${icon('arrow')}</button></section>`;
-  }
-  function categoryCard(category) {
-    return `<button class="category-card ${category.className}" data-category="${category.id}"><div class="number">${category.number}</div><h3>${category.name}</h3><p>${category.desc}</p><span class="arrow">${icon('arrow')}</span></button>`;
-  }
-
-  function libraryPage() {
-    const query = ui.query.trim().toLowerCase();
-    let list = phrasesFor(ui.category);
-    if (query) list = list.filter((phrase) => [phrase.en,phrase.vi,phrase.topic,phrase.context,phrase.follow].join(' ').toLowerCase().includes(query));
-    const heading = query ? `Kết quả cho “${esc(ui.query.trim())}”` : (ui.category === 'all' ? 'Toàn bộ sổ tay' : catById(ui.category)?.name);
-    return `<header class="page-head"><div class="eyebrow">${PHRASES.length} cụm câu · 30 trang</div><h1>${heading}</h1><p class="subcopy">Tìm theo tình huống, nghe cách đọc và đánh dấu những câu bạn muốn mang theo.</p></header><div class="filters"><button class="filter ${ui.category==='all'?'active':''}" data-filter="all">Tất cả</button>${categories.map((category) => `<button class="filter ${ui.category===category.id?'active':''}" data-filter="${category.id}">${category.name}</button>`).join('')}</div><section class="phrase-grid">${list.length ? list.map(phraseCard).join('') : '<div class="empty">Không tìm thấy cụm câu phù hợp. Thử một từ khóa khác nhé.</div>'}</section>`;
-  }
-
-  function grammarPage() {
-    const groups = [...new Set(grammar.map((tip) => tip.group))];
-    const query = ui.query.trim().toLowerCase();
-    const items = grammar.filter((tip) => !query || Object.values(tip).join(' ').toLowerCase().includes(query));
-    return `<header class="page-head"><div class="eyebrow">Mẹo bỏ túi · tra nhanh trong lúc làm việc</div><h1>Ngữ pháp dùng được ngay.</h1><p class="subcopy">Một câu hỏi nhanh để chọn đúng cấu trúc. Đây là ghi chú thực hành, không phải bài lý thuyết dài.</p></header>${groups.map((group) => { const visible = items.filter((tip) => tip.group === group); return visible.length ? `<section class="grammar-group"><div class="section-head"><div><h2>${group}</h2><p>${visible.length} mẹo ngắn</p></div></div><div class="grammar-grid">${visible.map((tip) => `<article class="grammar-card"><div class="eyebrow">${group}</div><h3>${tip.title}</h3><code>${tip.pattern}</code><p>${tip.tip}</p><small>Gợi ý nhận biết: ${tip.clue}</small></article>`).join('')}</div></section>` : ''; }).join('')}`;
-  }
-  function phraseCard(phrase) {
-    const category = categoryFor(phrase);
-    return `<article class="phrase-card" data-open="${phrase.id}" tabindex="0"><div class="meta">${esc(category.name)} · trang ${String(phrase.day).padStart(2,'0')}</div><button class="card-save ${isSaved(phrase.id)?'on':''}" data-action="save" data-id="${phrase.id}" aria-label="Lưu cụm câu">${icon('bookmark')}</button><h3>${esc(phrase.en)}</h3><p>${esc(phrase.vi)}</p></article>`;
-  }
-
-  function savedPage() {
-    const list = store.saved.map((id) => byId.get(id)).filter(Boolean);
-    return `<header class="page-head"><div class="eyebrow">Bộ sưu tập cá nhân</div><h1>Những câu đã đánh dấu</h1><p class="subcopy">Một góc riêng cho các cụm bạn muốn dùng thường xuyên.</p></header><section class="phrase-grid">${list.length ? list.map(phraseCard).join('') : '<div class="empty">Chưa có cụm nào được đánh dấu. Bấm biểu tượng dấu trang để lưu câu vào đây.</div>'}</section>`;
-  }
-
-  function practicePage() {
-    if (!ui.practiceIds.length) startPractice(false);
-    const phrase = byId.get(ui.practiceIds[ui.practiceIndex]) || PHRASES[0];
-    return `<header class="page-head"><div class="eyebrow">Luyện phản xạ</div><h1>Nói trước khi lật trang.</h1><p class="subcopy">Đọc tình huống, thử nói câu tiếng Anh rồi mới xem đáp án.</p></header><div class="practice-wrap"><article class="flash-card"><div class="card-count">Thẻ ${ui.practiceIndex+1} / ${ui.practiceIds.length} · ${esc(categoryFor(phrase).name)}</div><h2>${ui.reveal ? esc(phrase.en) : esc(phrase.vi)}</h2><div class="vi">${ui.reveal ? esc(phrase.vi) : 'Hãy thử nói câu tiếng Anh tương ứng.'}</div><div class="situation"><b>Tình huống:</b> ${esc(phrase.context)}${ui.reveal && phrase.follow ? `<br><br><b>Nói tiếp:</b> ${esc(phrase.follow)}` : ''}</div></article><div class="practice-actions"><button class="btn" data-action="speak" data-id="${phrase.id}">${icon('volume')} Nghe</button><button class="btn btn-dark" data-action="reveal">${ui.reveal?'Ẩn đáp án':'Lật đáp án'}</button><button class="btn btn-coral" data-action="next-card">Thẻ tiếp theo ${icon('arrow')}</button></div></div>`;
-  }
-
-  function progressPage() {
-    const learned = new Set(store.learned);
-    const completedDays = new Set(store.learned.map((id) => byId.get(id)?.day).filter(Boolean)).size;
-    return `<header class="page-head"><div class="eyebrow">Dấu vết học tập</div><h1>Cuốn sổ dày lên mỗi ngày.</h1><p class="subcopy">Tiến độ chỉ lưu trên thiết bị này — nhẹ, riêng tư và không cần tài khoản.</p></header><section class="progress-cards"><div class="stat"><b>${store.learned.length}</b><span>Cụm đã ghi nhớ</span></div><div class="stat"><b>${store.saved.length}</b><span>Cụm đã đánh dấu</span></div><div class="stat"><b>${completedDays}</b><span>Trang đã mở</span></div></section><section class="collection-list">${categories.map((category) => { const all = phrasesFor(category.id); const done = all.filter((phrase) => learned.has(phrase.id)).length; const pct = all.length ? Math.round(done/all.length*100) : 0; return `<div class="collection-row"><div class="n">${category.number}</div><div><b>${category.name}</b><small>${done} / ${all.length} cụm đã học</small></div><div class="bar"><i style="width:${pct}%"></i></div></div>`; }).join('')}</section>`;
-  }
-
-  function render() {
-    const keepSearchFocus = document.activeElement?.id === 'global-search';
-    let content = homePage();
-    if (ui.page === 'library') content = libraryPage();
-    if (ui.page === 'grammar') content = grammarPage();
-    if (ui.page === 'practice') content = practicePage();
-    if (ui.page === 'saved') content = savedPage();
-    if (ui.page === 'progress') content = progressPage();
-    $('#app').innerHTML = shell(content);
-    renderModal();
-    if (keepSearchFocus) {
-      const search = $('#global-search');
-      search?.focus();
-      search?.setSelectionRange(search.value.length, search.value.length);
+  function migrateStore() {
+    const current = safeRead(V3_KEY);
+    if (current?.schemaVersion === 3) return normaliseStore(current);
+    const v2 = safeRead(KEY), v1 = safeRead(OLD_KEY);
+    if (v2 || v1) {
+      const backup = { createdAt:new Date().toISOString(), v2, v1 };
+      try { if (!localStorage.getItem(BACKUP_KEY)) localStorage.setItem(BACKUP_KEY, JSON.stringify(backup)); } catch {}
     }
+    const saved = [...new Set([...(v2?.saved || []), ...(v1?.bookmarks || [])])].filter((id) => byId.has(id));
+    const learned = [...new Set([...(v2?.learned || []), ...(v1?.sessions || []).flatMap((s) => s.learned || [])])].filter((id) => byId.has(id));
+    const result = emptyStore(); result.saved = saved; result.learned = learned; result.accent = v2?.accent || v1?.accent || 'en-US';
+    const learnedSet = new Set(learned);
+    for (const lesson of META.lessons.filter((x) => x.day <= 30)) {
+      if (lesson.phraseIds.every((id) => learnedSet.has(id))) result.completions[lesson.id] = { lessonId:lesson.id, day:lesson.day, completedAt:null, migrated:true };
+    }
+    result.lastCompletedLessonId = [...META.lessons].reverse().find((x) => result.completions[x.id])?.id || null;
+    result.migration = { fromV2:!!v2, fromV1:!!v1, migratedAt:new Date().toISOString(), inferredLessons:Object.keys(result.completions).length };
+    try { localStorage.setItem(V3_KEY, JSON.stringify(result)); } catch { toast('Không lưu được dữ liệu. Hãy xuất bản sao lưu trước khi tiếp tục.'); }
+    return result;
   }
-  function renderModal() {
-    const root = $('#modal-root');
-    if (!ui.selected) { root.innerHTML = ''; return; }
-    const phrase = byId.get(ui.selected);
-    if (!phrase) return;
-    const learned = store.learned.includes(phrase.id);
-    root.innerHTML = `<div class="modal-overlay" data-action="close-modal"><article class="modal" role="dialog" aria-modal="true" aria-labelledby="phrase-title"><button class="icon-btn modal-close" data-action="close-modal" aria-label="Đóng">${icon('close')}</button><div class="eyebrow">${esc(categoryFor(phrase).name)} · trang ${String(phrase.day).padStart(2,'0')}</div><h2 id="phrase-title">${esc(phrase.en)}</h2><div class="modal-vi">${esc(phrase.vi)}</div><div class="modal-context"><b>Dùng khi:</b><br>${esc(phrase.context)}</div><div class="modal-follow">${esc(phrase.follow)}</div><div class="hero-actions"><button class="btn" data-action="speak" data-id="${phrase.id}">${icon('volume')} Nghe phát âm</button><button class="btn ${isSaved(phrase.id)?'btn-coral':''}" data-action="save" data-id="${phrase.id}">${icon('bookmark')} ${isSaved(phrase.id)?'Đã lưu':'Lưu vào sổ'}</button><button class="btn btn-dark" data-action="learn" data-id="${phrase.id}">${icon('check')} ${learned?'Đã ghi nhớ':'Đánh dấu đã nhớ'}</button></div></article></div>`;
+  let store = migrateStore();
+  let ui = { page:'home', category:'all', subcategory:'all', query:'', selected:null, lessonId:null, stepIndex:0, revealed:false, speakingId:null, transcript:'', rescueIntent:'clarify', familyId:null, patternView:false };
+  function save() { try { localStorage.setItem(V3_KEY, JSON.stringify(store)); } catch { toast('Bộ nhớ trình duyệt đầy. Hãy tải bản sao lưu rồi thử lại.'); } }
+  function toast(message) { const el=$('#toast'); if(!el)return; el.textContent=message; el.classList.add('show'); clearTimeout(toast.timer); toast.timer=setTimeout(()=>el.classList.remove('show'),2600); }
+  function lessonForNew() { return META.lessons.find((lesson) => !store.completions[lesson.id]) || null; }
+  function mostRecentCompleted() { return store.lastCompletedLessonId ? lessonById.get(store.lastCompletedLessonId) : [...META.lessons].reverse().find((l)=>store.completions[l.id]) || null; }
+  function ensureSession() {
+    if (store.activeSession && lessonById.has(store.activeSession.lessonId) && !store.completions[store.activeSession.lessonId]) return store.activeSession;
+    if (store.activeSession) store.activeSession=null;
+    const lesson = lessonForNew();
+    if (!lesson) return null;
+    const prev = mostRecentCompleted();
+    store.activeSession = { lessonId:lesson.id, phase:prev?'review':'learn', reviewLessonId:prev?.id || null, reviewIndex:0, reviewDone:[], learnIndex:0, learnedViewed:[], recallIndex:0, recallRevealed:false, recallDone:[], startedAt:new Date().toISOString() };
+    save(); return store.activeSession;
   }
-
-  function startPractice(shouldRender = true) {
-    const source = store.saved.length >= 5 ? store.saved.filter((id) => byId.has(id)) : PHRASES.map((phrase) => phrase.id);
-    ui.practiceIds = [...source].sort(() => Math.random() - .5).slice(0, 5);
-    ui.practiceIndex = 0;
-    ui.reveal = false;
-    if (shouldRender) render();
+  function activeLesson() { return lessonById.get(store.activeSession?.lessonId) || lessonForNew(); }
+  function phraseList(lesson) { return (lesson?.phraseIds || []).map((id)=>byId.get(id)).filter(Boolean); }
+  function nextInterval(record, rating) {
+    if (rating==='again') return 1;
+    if (rating==='hard') return Math.max(1,Math.round((record.interval || 1)*1.2));
+    if (rating==='easy') return Math.min(60,Math.max(3,Math.round((record.interval || 1)*(record.repetitions<2?3:2.5))));
+    const seq=[1,3,7,14,30]; return seq[Math.min(record.repetitions || 0,seq.length-1)] || Math.min(60,(record.interval||30)*2);
   }
-  function speak(id) {
-    const phrase = byId.get(id);
-    if (!phrase || !('speechSynthesis' in window)) { toast('Thiết bị này chưa hỗ trợ phát âm.'); return; }
-    speechSynthesis.cancel();
-    const utterance = new SpeechSynthesisUtterance(phrase.en);
-    utterance.lang = store.accent || 'en-US';
-    utterance.rate = .86;
-    speechSynthesis.speak(utterance);
+  function ratePhrase(id, rating) {
+    const today=dateKey(); const prior=store.reviews[id] || { repetitions:0, interval:0, ease:2.5, dueDate:today, lastReviewed:null };
+    const interval=nextInterval(prior,rating);
+    store.reviews[id]={ repetitions:rating==='again'?0:(prior.repetitions||0)+1, interval, ease:Math.max(1.3,Math.min(3.2,(prior.ease||2.5)+(rating==='easy'?.15:rating==='hard'?-.15:rating==='again'?-.25:0))), dueDate:shiftDate(today,interval), lastReviewed:today, lastRating:rating };
   }
-  function toggleSave(id) {
-    store.saved = isSaved(id) ? store.saved.filter((item) => item !== id) : [...store.saved, id];
-    save();
-    toast(isSaved(id) ? 'Đã lưu vào sổ tay.' : 'Đã bỏ khỏi sổ tay.');
-    render();
+  function finishSession() {
+    const session=store.activeSession, lesson=activeLesson(); if(!session||!lesson)return;
+    const today=dateKey(),alreadyPracticed=store.activityDates.includes(today),hadYesterday=store.activityDates.includes(shiftDate(today,-1)); store.completions[lesson.id]={lessonId:lesson.id,day:lesson.day,completedAt:new Date().toISOString(),date:today};
+    store.sessions.push({lessonId:lesson.id,date:today,completedAt:new Date().toISOString(),reviewed:session.reviewDone.length,newPhrases:lesson.phraseIds.length});
+    store.activityDates=[...new Set([...store.activityDates,today])].sort();
+    store.streak=alreadyPracticed?(store.streak||1):(hadYesterday?(store.streak||1)+1:1);
+    store.lastCompletedLessonId=lesson.id; store.learned=[...new Set([...store.learned,...session.learnedViewed])]; store.activeSession=null; save();
+    ui.page='home'; toast(lesson.day===240?'Hoàn tất 240 trang. Sổ chuyển sang chế độ ôn tập.':'Trang học đã hoàn tất. Hẹn gặp lại ở phiên tiếp theo.'); render();
   }
-  function learn(id) {
-    if (!store.learned.includes(id)) store.learned.push(id);
-    save();
-    toast('Đã ghi dấu vào tiến độ học.');
-    render();
+  function isSaved(id) { return store.saved.includes(id); }
+  function catById(id) { return META.categories.find((c)=>c.id===id); }
+  function categoryFor(p) { return catById(p.categoryId); }
+  function phrasesFor(categoryId='all', subcategoryId='all') { return PHRASES.filter((p)=>(categoryId==='all'||p.categoryId===categoryId)&&(subcategoryId==='all'||p.subCategoryId===subcategoryId)); }
+  function shown(p) { return p ? {...p,...(store.contentEdits[p.id]||{})} : p; }
+  function textFor(p) { p=shown(p);return [p.en,p.vi,p.topic,p.focus,p.context,p.follow,p.pattern,p.memoryTip,p.categoryId,p.subCategoryId,JSON.stringify(p.tags||[])].join(' ').normalize('NFC').toLocaleLowerCase('vi'); }
+  function navButton(page,name,label) { return `<button class="rail-btn ${ui.page===page?'active':''}" data-page="${page}" aria-label="${label}" aria-current="${ui.page===page?'page':'false'}">${icon(name)}<span>${label}</span></button>`; }
+  function mobileNav() { const items=[['home','home','Hôm nay'],['library','book','Sổ tay'],['rescue','spark','Cứu nguy'],['practice','play','Nói'],['due','spark','Ôn thêm'],['saved','bookmark','Đã lưu']]; return `<nav class="mobile-nav" aria-label="Điều hướng di động">${items.map(([p,i,l])=>`<button class="${ui.page===p?'active':''}" data-page="${p}">${icon(i)}<span>${l}</span></button>`).join('')}</nav>`; }
+  function shell(content) {
+    return `<aside class="rail"><button class="brand-mark" data-page="home" aria-label="TomEng"><img src="logo-tomeng.png" alt=""></button><nav class="rail-nav" aria-label="Điều hướng chính">${navButton('home','home','Hôm nay')}${navButton('library','book','Sổ tay')}${navButton('grammar','spark','Mẹo nhanh')}${navButton('rescue','spark','Cứu nguy')}${navButton('practice','play','Speaking')}${navButton('due','spark','Ôn thêm')}${navButton('saved','bookmark','Đã lưu')}${navButton('progress','chart','Tiến độ')}</nav><div class="rail-bottom"><button class="rail-btn" data-action="backup" aria-label="Sao lưu dữ liệu">${icon('copy')}<span>Sao lưu</span></button></div></aside><main class="main"><header class="topbar"><div class="brand-word">TomEng</div><label class="search">${icon('search')}<input id="global-search" type="search" value="${esc(ui.query)}" placeholder="Tìm câu, tình huống, pattern..." aria-label="Tìm trong sổ tay"></label><div class="top-actions"><span class="date-label">${new Intl.DateTimeFormat('vi-VN',{weekday:'short',day:'2-digit',month:'2-digit'}).format(new Date())}</span><button class="icon-btn" data-action="random" aria-label="Câu ngẫu nhiên">${icon('spark')}</button></div></header><div class="content">${content}</div></main><aside class="right-panel"><div class="right-brand"><div><b>TomEng</b><small>workplace phrase notebook</small></div><button class="icon-btn" data-action="backup" aria-label="Sao lưu">${icon('copy')}</button></div>${rightPanel()}</aside>${mobileNav()}`;
   }
-  function continueToday() {
-    const today = todayPhrases();
-    const next = today.find((phrase) => !store.learned.includes(phrase.id)) || today[0];
-    ui.selected = next?.id || PHRASES[0]?.id;
-    renderModal();
+  function rightPanel() { const now=new Date(); const start=new Date(now.getFullYear(),now.getMonth(),now.getDate()-now.getDay()); const days=Array.from({length:7},(_,i)=>{const d=new Date(start);d.setDate(start.getDate()+i);return `<div class="day ${dateKey(d)===dateKey()?'today active':''}"><b>${['CN','T2','T3','T4','T5','T6','T7'][i]}</b><span>${d.getDate()}</span></div>`;}).join(''); return `<section class="schedule"><div class="schedule-title"><h3>Nhịp học tuần này</h3><span class="eyebrow">${store.streak} ngày</span></div><div class="week">${days}</div></section><section class="notes"><h3>Ghi chú bên lề</h3><div class="note-item"><div></div><div><b>Nhớ theo tình huống</b><p>Hình dung người đang nói với mình, rồi đáp lại bằng cả cụm.</p></div></div><div class="note-item"><div></div><div><b>Tiến độ thật</b><p>${Object.keys(store.completions).length} / 240 trang hoàn tất.</p></div></div><div class="note-tools"><button class="btn btn-ghost" data-action="export">Tải bản sao lưu</button><label class="btn btn-ghost">Khôi phục<input id="import-file" type="file" accept="application/json" hidden></label></div></section>`; }
+  function homePage() {
+    const session=ensureSession(), lesson=activeLesson(), completed=Object.keys(store.completions).length;
+    const due=Object.entries(store.reviews).filter(([,r])=>r.dueDate<=dateKey()).length;
+    const progress=lesson?.day?Math.round((lesson.day-1)/240*100):100;
+    const review=lesson?.day===1?'Phiên đầu tiên · làm quen với 5 cụm':session?.phase==='review'?'Bước 1 · Ôn đúng 5 cụm của trang trước':'Bắt đầu bằng 5 cụm mới';
+    return `<section class="hero"><div><div class="eyebrow">Sổ tay phản xạ · ${PHRASES.length} câu dùng thật</div><h1 class="display">Nói đúng câu,<br><em>đúng lúc.</em></h1><p class="subcopy">Luyện nói ngắn gọn cho Meeting, UI/UX, BA, Developer và những cuộc trò chuyện thường ngày.</p><div class="hero-actions"><button class="btn btn-dark" data-action="continue">${lesson?`Mở trang ${String(lesson.day).padStart(3,'0')}`:'Vào chế độ ôn tập'} ${icon('arrow')}</button><button class="btn" data-page="rescue">Tình huống này nói sao?</button></div><div class="today-status"><span>${esc(review)}</span><b>${completed} / 240 trang</b></div><div class="progress-track wide"><i style="width:${progress}%"></i></div></div><div class="notebook-stack" aria-hidden="true"><div class="book back"></div><div class="book mid"></div><div class="book front"><div class="edition">TomEng · field notes</div><h3>Useful English<br>for real work.</h3><p>Meeting · Product · Everyday</p><div class="book-no">${lesson?String(lesson.day).padStart(3,'0'):'✓'}</div></div></div></section><div class="section-head"><div><h2>Chọn một ngăn sổ</h2><p>Mỗi ngăn là một bối cảnh giao tiếp khác nhau.</p></div><button class="text-btn" data-page="library">Mở toàn bộ →</button></div><section class="category-grid">${META.categories.map((c,i)=>`<button class="category-card ${categoryStyles[i%categoryStyles.length]}" data-category="${c.id}"><div class="number">${String(i+1).padStart(2,'0')}</div><h3>${esc(c.name)}</h3><p>${esc(c.description)}</p><span class="cat-count">${c.count} câu</span><span class="arrow">${icon('arrow')}</span></button>`).join('')}</section><section class="quick-stats"><div><b>${completed}</b><span>trang hoàn tất</span></div><div><b>${due}</b><span>cụm đến lịch ôn</span></div><div><b>${store.streak}</b><span>ngày liên tiếp</span></div></section>${due?`<section class="due-callout"><span>${due} câu đến lịch ôn · tối đa 12 câu mỗi lượt</span><button class="btn btn-ghost" data-page="due">Ôn thêm →</button></section>`:''}${lesson?`<div class="section-head"><div><h2>Trang ${String(lesson.day).padStart(3,'0')}</h2><p>${esc(lesson.title)}</p></div><span>${session.phase==='review'?'Ôn trước · học sau':'5 cụm mới'}</span></div><section class="today-strip"><div class="strip-index">${String(lesson.day).padStart(3,'0')}</div><div class="strip-copy"><b>${esc(lesson.title)}</b><span>${session.phase==='review'?'Ôn 5 câu gần nhất, sau đó học 5 câu mới.':'Nói thử · mở ghi chú · tự kiểm tra.'}</span></div><button class="btn btn-coral" data-action="continue">Tiếp tục ${icon('arrow')}</button></section>`:'<section class="maintenance"><h2>Đã hoàn thành 240 trang!</h2><p>Giữ nhịp bằng những cụm đến lịch ôn hoặc mở Speaking Practice.</p><button class="btn btn-coral" data-page="practice">Bắt đầu ôn</button></section>'}`;
   }
-  function go(page) {
-    ui.page = page;
-    ui.selected = null;
-    if (page === 'practice') startPractice(false);
-    render();
-    window.scrollTo({top:0, behavior:'smooth'});
+  function phraseCard(source) { const p=shown(source),cat=categoryFor(p), sub=subById.get(p.subCategoryId); return `<article class="phrase-card" data-open="${p.id}" tabindex="0"><div class="meta">${esc(cat?.name||'')} · ${esc(sub?.name||p.topic)}</div><button class="card-save ${isSaved(p.id)?'on':''}" data-action="save" data-id="${p.id}" aria-label="${isSaved(p.id)?'Bỏ lưu':'Lưu'} câu ${esc(p.en)}">${icon('bookmark')}</button><h3>${esc(p.en)}</h3><p>${esc(p.vi)}</p><small>${esc(p.context)}</small></article>`; }
+  function libraryPage() {
+    let list=phrasesFor(ui.category,ui.subcategory), q=ui.query.trim().normalize('NFC').toLocaleLowerCase('vi'); if(q)list=list.filter((p)=>textFor(p).includes(q));
+    const subs=ui.category==='all'?META.subcategories:META.subcategories.filter((s)=>s.categoryId===ui.category);
+    const selected=catById(ui.category); const title=ui.query?`Kết quả tìm kiếm`:(selected?.name||'Toàn bộ sổ tay');
+    const families=ui.patternView?[...new Map(list.map((p)=>[p.patternId,p])).values()]:null;
+    return `<header class="page-head"><div class="eyebrow">${PHRASES.length} câu · ${META.lessons.length} trang · 7 chuyên mục</div><h1>${title}</h1><p class="subcopy">Tìm theo tiếng Anh, tiếng Việt, tình huống, mẹo nhớ, tag hoặc khung câu.</p></header><div class="library-tools"><button class="filter ${!ui.patternView?'active':''}" data-action="pattern-view">Câu cụ thể</button><button class="filter ${ui.patternView?'active':''}" data-action="pattern-view">Khung câu</button><button class="filter" data-action="export">Sao lưu</button><label class="filter import-label">Nhập bản sao lưu<input id="import-file" type="file" accept="application/json" hidden></label></div><div class="filters"><button class="filter ${ui.category==='all'?'active':''}" data-filter="all">Tất cả · ${PHRASES.length}</button>${META.categories.map((c)=>`<button class="filter ${ui.category===c.id?'active':''}" data-filter="${c.id}">${esc(c.name)} · ${c.count}</button>`).join('')}</div><div class="filters sub-filters"><button class="filter ${ui.subcategory==='all'?'active':''}" data-subfilter="all">Tất cả nhóm nhỏ</button>${subs.map((s)=>`<button class="filter ${ui.subcategory===s.id?'active':''}" data-subfilter="${s.id}">${esc(s.name)}</button>`).join('')}</div>${ui.patternView?`<section class="pattern-grid">${families.map((p)=>`<button class="pattern-card" data-family="${esc(p.patternId)}"><span class="eyebrow">${esc(categoryFor(p)?.name||'')} · ${p.patternId}</span><h3>${esc(p.pattern)}</h3><p>${esc(p.memoryTip)}</p><small>${PHRASES.filter((x)=>x.patternId===p.patternId).length} ngữ cảnh · chạm để xem biến thể</small></button>`).join('')}</section>`:`<section class="phrase-grid">${list.length?list.map(phraseCard).join(''):'<div class="empty">Không tìm thấy câu phù hợp. Thử tình huống hoặc ý định khác.</div>'}</section>`}`;
   }
-
-  document.addEventListener('click', (event) => {
-    const target = event.target.closest('[data-page],[data-action],[data-category],[data-filter],[data-open]');
-    if (!target) return;
-    if (target.dataset.action === 'save') event.stopPropagation();
-    if (target.dataset.page) return go(target.dataset.page);
-    if (target.dataset.category) { ui.category = target.dataset.category; return go('library'); }
-    if (target.dataset.filter) { ui.category = target.dataset.filter; return render(); }
-    if (target.dataset.open) { ui.selected = target.dataset.open; return renderModal(); }
-    const action = target.dataset.action;
-    if (action === 'random') { ui.selected = PHRASES[Math.floor(Math.random()*PHRASES.length)]?.id; renderModal(); }
-    if (action === 'continue') continueToday();
-    if (action === 'speak') speak(target.dataset.id);
-    if (action === 'save') toggleSave(target.dataset.id);
-    if (action === 'learn') learn(target.dataset.id);
-    if (action === 'reveal') { ui.reveal = !ui.reveal; render(); }
-    if (action === 'next-card') { ui.practiceIndex = (ui.practiceIndex + 1) % ui.practiceIds.length; ui.reveal = false; render(); }
-    if (action === 'close-modal' && (target === event.target || target.tagName === 'BUTTON')) { ui.selected = null; renderModal(); }
+  const grammar=[
+    ['Thì dùng nhanh','Việc thường xuyên','I usually check the flow before handoff.','Thói quen hoặc quy trình lặp lại. Dùng động từ thường.','usually · every sprint · on Mondays'],['Thì dùng nhanh','Việc đang diễn ra','I’m reviewing the latest build.','Đang làm lúc này hoặc chỉ tạm thời trong giai đoạn này.','now · this week · at the moment'],['Thì dùng nhanh','Đã xong, kết quả còn liên quan','I’ve shared the notes.','Dùng khi muốn báo kết quả hiện tại; không nói rõ mốc quá khứ.','already · just · yet · so far'],['Thì dùng nhanh','Việc đã kết thúc','We agreed on the scope yesterday.','Việc đã xong ở một thời điểm quá khứ cụ thể.','yesterday · last week · in May'],['Thì dùng nhanh','Quyết định ngay lúc nói','I’ll check and get back to you.','Lời hứa hoặc quyết định vừa đưa ra.','I’ll · I think · probably'],['Thì dùng nhanh','Kế hoạch đã có','We’re going to test the new flow tomorrow.','Ý định đã định trước; hoặc dùng hiện tại tiếp diễn khi lịch đã chốt cụ thể.','plan · tomorrow · scheduled'],['A / an / the','Một thứ chưa xác định','We need a clearer error message.','Danh từ đếm được số ít khi nhắc lần đầu. Chọn theo âm: an hour, a user.','mới nhắc · một thứ bất kỳ'],['A / an / the','Thứ đã xác định','The error appears after sign-in.','Người nghe biết chính xác lỗi nào nhờ ngữ cảnh hoặc đã nhắc trước.','đã nhắc · xác định trong ngữ cảnh'],['A / an / the','Nói chung, thường bỏ mạo từ','We need feedback from users.','Danh từ số nhiều hoặc không đếm được khi nói khái quát thường không cần a/the.','feedback · users nói chung'],['Giới từ','At','The review starts at 2 p.m.','at cho giờ cụ thể hoặc một điểm địa điểm.','at 2 · at the entrance'],['Giới từ','On','Let’s sync on Friday.','on cho thứ/ngày và bề mặt.','on Friday · on the screen'],['Giới từ','In','The note is in the design file.','in cho tháng/năm, khoảng dài hoặc bên trong một không gian/tài liệu.','in June · in the file'],['Giới từ','For / since','We’ve used this flow for two months. / since May.','for + khoảng kéo dài; since + mốc bắt đầu.','for 2 weeks · since Monday'],['Giới từ','By / until','Please send it by Friday. / I’m here until Friday.','by = hạn chót muộn nhất; until = việc tiếp diễn đến mốc đó.','deadline · kéo dài'],['Khung câu','Nhờ lịch sự','Could you take a look at this state?','Could you…? là lời nhờ ngắn, lịch sự và dùng được trong họp.','Could you + động từ…?'],['Khung câu','Đề xuất mềm','Would it make sense to test both options?','Dùng để gợi ý mà không áp đặt; thêm lý do ngay sau đó.','Would it make sense to…?'],['Khung câu','Nêu lý do','Because the scope changed, we need to update the estimate.','because giới thiệu lý do; so giới thiệu kết quả. Không cần ghép cả hai cho cùng một quan hệ.','because X, Y · X, so Y'],['Khung câu','Số lượng nhanh','We have a few options and a little time.','a few + danh từ đếm được; a little + không đếm được.','a few tasks · a little time']
+  ];
+  function grammarPage() { const q=ui.query.toLowerCase(); return `<header class="page-head"><div class="eyebrow">Tra nhanh · không phải bài ngữ pháp</div><h1>Mẹo nói gọn, dùng được ngay.</h1><p class="subcopy">Chọn cấu trúc trong vài giây: khung câu + dấu hiệu nhận biết + một ví dụ công việc.</p></header>${[...new Set(grammar.map(x=>x[0]))].map((group)=>`<section class="grammar-group"><div class="section-head"><div><h2>${group}</h2><p>Mở ra khi cần tra nhanh</p></div></div><div class="grammar-grid">${grammar.filter(x=>!q||x.join(' ').toLowerCase().includes(q)).filter(x=>x[0]===group).map(x=>`<article class="grammar-card"><div class="eyebrow">${x[0]}</div><h3>${x[1]}</h3><code>${x[2]}</code><p>${x[3]}</p><small>${x[4]}</small></article>`).join('')}</div></section>`).join('')}<section class="backup-box"><h2>Dữ liệu nằm trên thiết bị này</h2><p>Tải JSON để sao lưu bookmark, lịch ôn và tiến độ; nhập chỉ sau khi xem trước nội dung.</p><button class="btn btn-dark" data-action="export">Tải bản sao lưu</button><label class="btn">Khôi phục bản sao lưu<input id="import-file" type="file" accept="application/json" hidden></label></section>`; }
+  const intents=[['clarify','Hỏi lại chi tiết',['clarify','detail','mean','specific','which']],['missed','Không nghe kịp',['hear','catch','repeat','missed']],['slow','Nhờ nói chậm',['slow','again','repeat']],['think','Xin thời gian suy nghĩ',['think','moment','check','confirm']],['pushback','Phản biện lịch sự',['concern','risk','trade-off','alternative']],['close','Chốt cuộc họp',['wrap','recap','action','next step']],['blocker','Báo blocker',['blocked','blocker','waiting','unblock']],['risk','Nêu rủi ro',['risk','impact','might','could']],['design','Review UI',['design','layout','screen','visual','usability']],['ba','Hỏi BA',['requirement','acceptance','business','scope']],['dev','Handoff Dev',['handoff','implement','dev','build','edge case']],['smalltalk','Small talk',['weekend','weather','coffee','travel','nice']]];
+  function rescueResults(intentId) { const intent=intents.find(x=>x[0]===intentId)||intents[0], keys=intent[2]; let results=PHRASES.map((p)=>({p,score:keys.reduce((n,k)=>n+(textFor(p).includes(k)?1:0),0)})).filter(x=>x.score).sort((a,b)=>b.score-a.score).slice(0,3).map(x=>x.p); if(results.length<3) results=[...results,...PHRASES.filter(p=>!results.includes(p)).slice(0,3-results.length)]; return results; }
+  function rescuePage() { const intent=intents.find(x=>x[0]===ui.rescueIntent)||intents[0], list=rescueResults(intent[0]).map(shown); return `<header class="page-head"><div class="eyebrow">Rescue Mode · tra câu nói ngay</div><h1>Tình huống này nói sao?</h1><p class="subcopy">Chọn ý định. TomEng lấy ba câu gần nhất trong sổ, kèm nghĩa, ngữ cảnh, nghe và copy.</p></header><div class="intent-grid">${intents.map(x=>`<button class="intent-chip ${ui.rescueIntent===x[0]?'active':''}" data-intent="${x[0]}">${x[1]}</button>`).join('')}</div><section class="rescue-list"><div class="section-head"><div><h2>${intent[1]}</h2><p>Ba cách đáp ngắn có sẵn · không cần mạng hoặc chatbot.</p></div></div>${list.map((p)=>`<article class="rescue-card"><div class="eyebrow">${esc(categoryFor(p)?.name||'')} · ${esc(subById.get(p.subCategoryId)?.name||p.topic)}</div><h3>${esc(p.en)}</h3><p>${esc(p.vi)}</p><small>${esc(p.context)}</small><div class="rescue-actions"><button class="mini-action" data-action="speak" data-id="${p.id}" aria-label="Nghe câu">${icon('volume')}</button><button class="btn btn-ghost" data-action="copy" data-id="${p.id}">${icon('copy')} Copy</button><button class="btn btn-ghost" data-open="${p.id}">Ghi chú</button></div></article>`).join('')}</section>`; }
+  function savedPage() { const list=store.saved.map(id=>byId.get(id)).filter(Boolean); return `<header class="page-head"><div class="eyebrow">Bộ sưu tập cá nhân</div><h1>Những câu đã đánh dấu</h1><p class="subcopy">Các câu bạn muốn mang theo vào công việc thật.</p></header><section class="phrase-grid">${list.length?list.map(phraseCard).join(''):'<div class="empty">Sổ chưa có câu nào. Chạm dấu trang để lưu câu bạn muốn dùng.</div>'}</section>`; }
+  function progressPage() { const done=Object.keys(store.completions).length,due=Object.entries(store.reviews).filter(([,r])=>r.dueDate<=dateKey()).length; return `<header class="page-head"><div class="eyebrow">Dấu vết học tập</div><h1>Tiến độ trong sổ.</h1><p class="subcopy">Chỉ tính trang đã đi đủ các bước và hoàn thành recall, không tính bookmark hay mở câu trong thư viện.</p></header><section class="progress-cards"><div class="stat"><b>${done}/240</b><span>trang hoàn tất</span></div><div class="stat"><b>${store.saved.length}</b><span>câu đã lưu</span></div><div class="stat"><b>${due}</b><span>câu đến lịch ôn</span></div></section><section class="collection-list">${META.categories.map((c,i)=>{const n=PHRASES.filter(p=>p.categoryId===c.id).length;return `<div class="collection-row"><div class="n">${String(i+1).padStart(2,'0')}</div><div><b>${esc(c.name)}</b><small>${n} câu · ${esc(c.description)}</small></div><div>${c.count}</div></div>`;}).join('')}</section><section class="backup-box"><h2>Sao lưu và khôi phục</h2><p>Xuất tiến độ gồm bookmark, các ID cũ, phiên hoàn tất và lịch SRS. Tệp chỉ lưu trên thiết bị của bạn.</p><button class="btn btn-dark" data-action="export">Tải JSON</button><label class="btn">Chọn tệp để khôi phục<input id="import-file" type="file" accept="application/json" hidden></label></section>`; }
+  function duePage() { const due=Object.entries(store.reviews).filter(([,r])=>r.dueDate<=dateKey()).sort((a,b)=>(a[1].lastRating==='again'?-1:0)-(b[1].lastRating==='again'?-1:0)||a[1].dueDate.localeCompare(b[1].dueDate)).slice(0,12); return `<header class="page-head"><div class="eyebrow">Spaced repetition · ôn thêm tự chọn</div><h1>Ôn vừa đủ, không ngợp.</h1><p class="subcopy">Tối đa 12 câu đến lịch hôm nay. Câu ở trang gần nhất luôn được ôn trước; mục này không chặn bài mới.</p></header>${due.length?`<section class="due-list">${due.map(([id,r])=>{const p=shown(byId.get(id));return p?`<article class="due-card"><div class="eyebrow">${esc(categoryFor(p)?.name||'')} · ${r.lastRating==='again'?'Cần gặp lại':'Đến lịch ôn'}</div><h3>${ui.dueRevealed===id?esc(p.en):esc(p.vi)}</h3><p>${esc(p.context)}</p>${ui.dueRevealed===id?`<div class="modal-vi">${esc(p.vi)}</div><div class="practice-actions">${['again','hard','good','easy'].map(x=>`<button class="btn ${x==='good'?'btn-coral':''}" data-due-rating="${x}" data-id="${p.id}">${{again:'Chưa nhớ',hard:'Khó',good:'Nhớ được',easy:'Dễ' }[x]}</button>`).join('')}</div>`:`<button class="btn btn-dark" data-due-reveal="${id}">Nói thử · hiện đáp án</button>`}</article>`:''}).join('')}</section>`:'<section class="empty">Hôm nay chưa có câu nào đến lịch ôn. Hoàn thành phiên học để tạo lịch lặp lại.</section>'}`; }
+  function modal() { const root=$('#modal-root'); if(!ui.selected){root.innerHTML='';return;} const source=byId.get(ui.selected); if(!source)return; const p=shown(source),cat=categoryFor(p), sub=subById.get(p.subCategoryId), siblings=PHRASES.filter(x=>x.patternId===p.patternId); const variations=siblings.slice(0,5).map(source=>{const x=shown(source);return `<li><b>${esc(x.en)}</b><span>${esc(x.vi)}</span></li>`;}).join(''); root.innerHTML=`<div class="modal-overlay" data-action="close-modal"><article class="modal" role="dialog" aria-modal="true" aria-labelledby="phrase-title"><button class="icon-btn modal-close" data-action="close-modal" aria-label="Đóng">${icon('close')}</button><div class="eyebrow">${esc(cat?.name||'')} · ${esc(sub?.name||p.topic)} · trang ${String(p.day).padStart(3,'0')}</div><h2 id="phrase-title">${esc(p.en)}</h2><div class="modal-vi">${esc(p.vi)}</div><div class="modal-context"><b>Dùng khi:</b><br>${esc(p.context)}</div><section class="modal-note"><b>Mẹo nói nhanh</b><p>${esc(p.memoryTip)}</p><div class="sentence-frame">${esc(p.pattern)}</div></section><p class="modal-follow"><b>Nói tiếp:</b> ${esc(p.follow)}</p><details class="variations"><summary>Khung câu và biến thể (${siblings.length})</summary><ul>${variations}</ul></details><details class="content-edit"><summary>Rà soát / chỉnh bản nháp trên thiết bị</summary><p>Ghi chú biên tập chỉ áp dụng trên thiết bị này; ID và dữ liệu gốc không đổi.</p><label>Câu tiếng Anh<input id="edit-en" value="${esc(p.en)}"></label><label>Bản dịch tiếng Việt<input id="edit-vi" value="${esc(p.vi)}"></label><label>Dùng khi<textarea id="edit-context">${esc(p.context)}</textarea></label><label>Câu nói tiếp<input id="edit-follow" value="${esc(p.follow)}"></label><button class="btn btn-dark" data-action="save-edit" data-id="${p.id}">Lưu bản nháp</button></details><div class="hero-actions"><button class="btn" data-action="speak" data-id="${p.id}">${icon('volume')} Nghe câu</button><button class="btn ${isSaved(p.id)?'btn-coral':''}" data-action="save" data-id="${p.id}">${icon('bookmark')} ${isSaved(p.id)?'Đã lưu':'Lưu vào sổ'}</button></div></article></div>`; $('.modal-close',root)?.focus(); }
+  function reviewScreen(s,lesson) { const prev=lessonById.get(s.reviewLessonId), phrases=phraseList(prev),p=phrases[s.reviewIndex]; if(!p){s.phase='learn';s.learnIndex=0;s.revealed=false;save();return learningScreen(s,lesson);} return `<header class="page-head"><div class="eyebrow">Bước 1 / 3 · Ôn trang ${String(prev.day).padStart(3,'0')}</div><h1>Nhớ lại trước khi lật.</h1><p class="subcopy">Câu ${s.reviewIndex+1}/5 · đọc tình huống bằng tiếng Việt rồi tự nói câu trả lời.</p></header><div class="practice-wrap"><article class="flash-card"><div class="card-count">Ôn lại · ${esc(subById.get(p.subCategoryId)?.name||p.topic)}</div><h2>${esc(p.vi)}</h2><div class="situation"><b>Dùng khi:</b> ${esc(p.context)}</div>${s.revealed?`<div class="answer-box"><h3>${esc(p.en)}</h3><p>${esc(p.follow)}</p></div>`:''}</article><div class="practice-actions">${s.revealed?['again','hard','good','easy'].map((r)=>`<button class="btn ${r==='good'?'btn-coral':''}" data-rating="${r}" data-id="${p.id}">${{again:'Chưa nhớ',hard:'Khó',good:'Nhớ được',easy:'Dễ'}[r]}</button>`).join(''):`<button class="btn" data-action="speak" data-id="${p.id}">${icon('volume')} Nghe gợi ý</button><button class="btn btn-dark" data-action="reveal">Lật đáp án</button>`}</div><p class="step-hint">Nút đánh giá sẽ lên lịch ôn phù hợp; bỏ qua ngày vẫn giữ nguyên 5 câu của trang gần nhất.</p></div>`; }
+  function learningScreen(s,lesson) { const phrases=phraseList(lesson),p=phrases[s.learnIndex]; if(!p){s.phase='quick';s.recallIndex=0;s.recallRevealed=false;save();return quickScreen(s,lesson);} return `<header class="page-head"><div class="eyebrow">Bước 2 / 3 · Học 5 câu mới</div><h1>${esc(lesson.title)}</h1><p class="subcopy">Câu ${s.learnIndex+1}/5 · đọc tình huống, thử nói thành tiếng, rồi mở khung câu.</p></header><div class="practice-wrap"><article class="flash-card"><div class="card-count">${esc(categoryFor(p)?.name||'')} · ${esc(subById.get(p.subCategoryId)?.name||p.topic)}</div><h2>${esc(p.vi)}</h2><div class="situation"><b>Dùng khi:</b> ${esc(p.context)}</div>${s.revealed?`<div class="answer-box"><h3>${esc(p.en)}</h3><p>${esc(p.follow)}</p><div class="sentence-frame">${esc(p.pattern)}</div><small>${esc(p.memoryTip)}</small></div>`:''}</article><div class="practice-actions">${!s.revealed?`<button class="btn" data-action="mic" data-id="${p.id}">${icon('mic')} Thử nói</button><button class="btn btn-dark" data-action="reveal">Mở ghi chú</button>`:`<button class="btn" data-action="speak" data-id="${p.id}">${icon('volume')} Nghe mẫu</button><button class="btn" data-action="practice-mark" data-id="${p.id}" data-mark="practice">Cần luyện thêm</button><button class="btn btn-coral" data-action="practice-mark" data-id="${p.id}" data-mark="ready">Đã thử nói · tiếp theo ${icon('arrow')}</button>`}</div>${ui.speakingId===p.id?`<div class="transcript-note">${ui.transcript?`Bản nhận dạng gần đúng: “${esc(ui.transcript)}”`:'Đang nghe… câu được nhận dạng chỉ là tham khảo.'}</div>`:''}</div>`; }
+  function quickScreen(s,lesson) { const phrases=phraseList(lesson),p=phrases[s.recallIndex]; if(!p){finishSession();return '';} return `<header class="page-head"><div class="eyebrow">Bước 3 / 3 · Recall nhanh</div><h1>Đóng sổ, nhớ lại.</h1><p class="subcopy">Câu ${s.recallIndex+1}/5 · nói câu tiếng Anh trước khi mở đáp án.</p></header><div class="practice-wrap"><article class="flash-card"><div class="card-count">Tình huống thật · ${esc(subById.get(p.subCategoryId)?.name||p.topic)}</div><h2>${esc(p.vi)}</h2><div class="situation">${esc(p.context)}</div>${s.recallRevealed?`<div class="answer-box"><h3>${esc(p.en)}</h3><p>${esc(p.follow)}</p></div>`:''}</article><div class="practice-actions">${s.recallRevealed?['again','hard','good','easy'].map((r)=>`<button class="btn ${r==='good'?'btn-coral':''}" data-new-rating="${r}" data-id="${p.id}">${{again:'Cần ôn lại',hard:'Còn chậm',good:'Nhớ được',easy:'Bật ra nhanh'}[r]}</button>`).join(''):`<button class="btn" data-action="mic" data-id="${p.id}">${icon('mic')} Thử nói</button><button class="btn btn-dark" data-action="quick-reveal">Hiện câu mẫu</button>`}</div>${ui.speakingId===p.id?`<div class="transcript-note">${ui.transcript?`Bản nhận dạng gần đúng: “${esc(ui.transcript)}”`:'Đang nghe… câu được nhận dạng chỉ là tham khảo.'}</div>`:''}</div>`; }
+  function practicePage() { if(!ui.speakingId){ui.speakingId=PHRASES[Math.floor(Math.random()*PHRASES.length)]?.id;} const p=shown(byId.get(ui.speakingId)||PHRASES[0]); return `<header class="page-head"><div class="eyebrow">Speaking Practice · nói trước khi xem</div><h1>Thử đáp lại bằng tiếng Anh.</h1><p class="subcopy">Tự luyện không chấm sai paraphrase. Micro chỉ là tiện ích tùy chọn; bản nhận dạng có thể không chính xác.</p></header><div class="practice-wrap"><article class="flash-card"><div class="card-count">${esc(categoryFor(p)?.name||'')} · ${esc(subById.get(p.subCategoryId)?.name||p.topic)}</div><h2>${esc(p.vi)}</h2><div class="situation"><b>Tình huống:</b> ${esc(p.context)}</div>${ui.revealed?`<div class="answer-box"><h3>${esc(p.en)}</h3><p>${esc(p.follow)}</p><div class="sentence-frame">${esc(p.pattern)}</div><small>${esc(p.memoryTip)}</small><p class="transcript-note">Các cách diễn đạt hợp lý khác vẫn có thể đúng; đây là câu mẫu tham khảo.</p></div>`:''}</article><div class="practice-actions"><button class="btn" data-action="mic" data-id="${p.id}">${icon('mic')} ${ui.speakingId===p.id&&ui.transcript?'Ghi lại câu':'Thử nói'}</button><button class="btn btn-dark" data-action="reveal">${ui.revealed?'Ẩn câu mẫu':'Xem câu mẫu'}</button><button class="btn" data-action="practice-random">Câu khác ${icon('arrow')}</button><button class="btn" data-action="speak" data-id="${p.id}">${icon('volume')} Nghe</button></div>${ui.speakingId===p.id&&ui.transcript?`<div class="transcript-note">Bản nhận dạng gần đúng: “${esc(ui.transcript)}”</div>`:''}</div>`; }
+  function patternPage() { const family=PHRASES.filter(p=>p.patternId===ui.familyId); const base=family[0]; return `<div class="modal-overlay" data-action="close-family"><article class="modal" role="dialog" aria-modal="true"><button class="icon-btn modal-close" data-action="close-family" aria-label="Đóng">${icon('close')}</button><div class="eyebrow">Khung câu · ${family.length} tình huống</div><h2>${esc(base?.pattern||'')}</h2><p>${esc(base?.memoryTip||'')}</p><ul class="family-list">${family.map(p=>`<li><b>${esc(p.en)}</b><span>${esc(p.vi)}</span><small>${esc(p.context)}</small><button class="text-btn" data-open="${p.id}">Ghi chú câu →</button></li>`).join('')}</ul></article></div>`; }
+  function render() { const keep=$('#global-search')===document.activeElement; let content=homePage(); if(ui.page==='library')content=libraryPage();if(ui.page==='grammar')content=grammarPage();if(ui.page==='rescue')content=rescuePage();if(ui.page==='practice')content=practicePage();if(ui.page==='saved')content=savedPage();if(ui.page==='progress')content=progressPage();if(ui.page==='due')content=duePage();if(ui.page==='learn'){const s=ensureSession(),l=activeLesson();content=s.phase==='review'?reviewScreen(s,l):s.phase==='learn'?learningScreen(s,l):quickScreen(s,l);} $('#app').innerHTML=shell(content); modal(); if(ui.familyId)$('#modal-root').innerHTML=patternPage(); if(keep){const search=$('#global-search');search?.focus();search?.setSelectionRange(search.value.length,search.value.length);} }
+  function go(page) { ui.page=page;ui.selected=null;ui.familyId=null;render();window.scrollTo({top:0,behavior:'smooth'}); }
+  function speak(id) { const p=shown(byId.get(id)); if(!p||!('speechSynthesis'in window)){toast('Thiết bị chưa hỗ trợ đọc câu.');return;} speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(p.en);u.lang=store.accent||'en-US';u.rate=.88;speechSynthesis.speak(u); }
+  function toggleSave(id) { store.saved=isSaved(id)?store.saved.filter(x=>x!==id):[...store.saved,id];save();toast(isSaved(id)?'Đã bỏ khỏi sổ.':'Đã lưu vào sổ tay.');render(); }
+  function advanceReview(p,rating) { const s=store.activeSession; ratePhrase(p.id,rating);s.reviewDone.push(p.id);s.reviewIndex++;s.revealed=false;if(s.reviewIndex>=5){s.phase='learn';s.learnIndex=0;}save();render(); }
+  function advanceNew(p,mark) { const s=store.activeSession; if(!s.learnedViewed.includes(p.id))s.learnedViewed.push(p.id);s.learnIndex++;s.revealed=false;ui.speakingId=null;ui.transcript='';if(s.learnIndex>=5){s.phase='quick';s.recallIndex=0;}save();render(); }
+  function advanceRecall(p,rating) { const s=store.activeSession;ratePhrase(p.id,rating);if(rating==='again')store.learned=store.learned.filter((x)=>x!==p.id);else if(!store.learned.includes(p.id))store.learned.push(p.id);s.recallDone.push(p.id);s.recallIndex++;s.recallRevealed=false;ui.speakingId=null;ui.transcript='';save();render(); }
+  function startSpeech(id) { const p=byId.get(id), Speech=window.SpeechRecognition||window.webkitSpeechRecognition; if(!Speech){ui.speakingId=id;ui.transcript='Trình duyệt không hỗ trợ nhận dạng; hãy tự nói rồi tự đánh giá.';toast('Có thể tự luyện mà không cần micro.');render();return;} const rec=new Speech();rec.lang=store.accent||'en-US';rec.interimResults=false;rec.maxAlternatives=1;ui.speakingId=id;ui.transcript='';rec.onresult=(e)=>{ui.transcript=e.results[0][0].transcript;render();};rec.onerror=()=>{ui.transcript='Không nhận dạng được. Bạn vẫn có thể tự đánh giá câu trả lời.';render();};rec.onend=()=>{window._tomengRecognition=null;if(!ui.transcript){ui.transcript='Chưa có bản nhận dạng. Bạn vẫn có thể tự đánh giá câu trả lời.';render();}};window._tomengRecognition=rec;try{rec.start();}catch{toast('Không mở được micro. Thử tự luyện bằng cách nói thành tiếng.');}render(); }
+  function exportData() { const payload={app:'TomEng',schemaVersion:3,exportedAt:new Date().toISOString(),data:store};const blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`tomeng-backup-${dateKey()}.json`;a.click();URL.revokeObjectURL(a.href);toast('Đã tải bản sao lưu.'); }
+  function importFile(file) { const reader=new FileReader();reader.onload=()=>{try{const payload=JSON.parse(reader.result);const data=payload.data||payload;if(payload.app&&payload.app!=='TomEng')throw new Error('Tệp không phải bản sao lưu TomEng.');if(!data||!Array.isArray(data.saved)||!Array.isArray(data.learned)||!data.completions||!data.reviews)throw new Error('Thiếu trường dữ liệu bắt buộc.');if(![...data.saved,...data.learned].every(id=>typeof id==='string'&&byId.has(id)))throw new Error('Có ID câu không tồn tại.');if(!Object.entries(data.completions).every(([id,r])=>lessonById.has(id)&&r&&Number.isInteger(r.day)&&r.day>=1&&r.day<=240))throw new Error('Dữ liệu trang học không hợp lệ.');if(!Object.entries(data.reviews).every(([id,r])=>byId.has(id)&&r&&/^\d{4}-\d{2}-\d{2}$/.test(r.dueDate)&&Number.isFinite(r.interval)&&r.interval>=0))throw new Error('Lịch ôn không hợp lệ.');if(data.activeSession&&(!lessonById.has(data.activeSession.lessonId)||!['review','learn','quick'].includes(data.activeSession.phase)))throw new Error('Phiên học đang lưu không hợp lệ.');const preview=`Sẽ khôi phục ${data.saved.length} bookmark, ${Object.keys(data.completions).length} trang hoàn tất và ${Object.keys(data.reviews).length} lịch ôn. Dữ liệu hiện tại được sao lưu trước. Tiếp tục?`;if(!window.confirm(preview))return;localStorage.setItem(`tomeng_before_import_${Date.now()}`,JSON.stringify(store));store=normaliseStore(data);save();toast('Đã khôi phục dữ liệu.');render();}catch(e){toast(e.message||'Tệp không hợp lệ, chưa thay đổi dữ liệu.');}};reader.readAsText(file); }
+  document.addEventListener('click',(event)=>{
+    const target=event.target.closest('[data-page],[data-action],[data-category],[data-filter],[data-subfilter],[data-open],[data-rating],[data-new-rating],[data-intent],[data-family],[data-mark],[data-due-reveal],[data-due-rating]');if(!target)return;
+    if(target.dataset.page)return go(target.dataset.page);
+    if(target.dataset.category){ui.category=target.dataset.category;ui.subcategory='all';return go('library');}
+    if(target.dataset.filter){ui.category=target.dataset.filter;ui.subcategory='all';return render();}
+    if(target.dataset.subfilter){ui.subcategory=target.dataset.subfilter;return render();}
+    if(target.dataset.open){ui.modalReturnFocus=target;ui.selected=target.dataset.open;modal();return;}
+    if(target.dataset.family){ui.familyId=target.dataset.family;render();return;}
+    if(target.dataset.intent){ui.rescueIntent=target.dataset.intent;return render();}
+    if(target.dataset.rating){const p=byId.get(target.dataset.id);if(p)advanceReview(p,target.dataset.rating);return;}
+    if(target.dataset.newRating){const p=byId.get(target.dataset.id);if(p)advanceRecall(p,target.dataset.newRating);return;}
+    if(target.dataset.dueReveal){ui.dueRevealed=target.dataset.dueReveal;return render();}
+    if(target.dataset.dueRating){ratePhrase(target.dataset.id,target.dataset.dueRating);ui.dueRevealed=null;save();return render();}
+    if(target.dataset.mark){const s=store.activeSession,p=byId.get(target.dataset.id);if(s&&p){advanceNew(p,target.dataset.mark);return;}}
+    const action=target.dataset.action;
+    if(action==='continue'){if(lessonForNew()){ensureSession();go('learn');}else go('practice');}
+    if(action==='random'){ui.modalReturnFocus=target;ui.selected=PHRASES[Math.floor(Math.random()*PHRASES.length)]?.id;modal();}
+    if(action==='save'){event.stopPropagation();toggleSave(target.dataset.id);}
+    if(action==='save-edit'){const id=target.dataset.id;store.contentEdits[id]={en:$('#edit-en')?.value?.trim()||byId.get(id).en,vi:$('#edit-vi')?.value?.trim()||byId.get(id).vi,context:$('#edit-context')?.value?.trim()||byId.get(id).context,follow:$('#edit-follow')?.value?.trim()||byId.get(id).follow};save();toast('Đã lưu bản nháp biên tập trên thiết bị.');modal();}
+    if(action==='speak')speak(target.dataset.id);
+    if(action==='reveal'){if(ui.page==='learn'&&store.activeSession)store.activeSession.revealed=!store.activeSession.revealed;else ui.revealed=!ui.revealed;save();render();}
+    if(action==='quick-reveal'){store.activeSession.recallRevealed=true;save();render();}
+    if(action==='practice-random'){ui.speakingId=PHRASES[Math.floor(Math.random()*PHRASES.length)]?.id;ui.revealed=false;ui.transcript='';render();}
+    if(action==='mic')startSpeech(target.dataset.id);
+    if(action==='pattern-view'){ui.patternView=!ui.patternView;render();}
+    if(action==='export'||action==='backup')exportData();
+    if(action==='copy'){const p=shown(byId.get(target.dataset.id));navigator.clipboard?.writeText(p?.en||'').then(()=>toast('Đã copy câu tiếng Anh.')).catch(()=>toast('Trình duyệt chưa cho phép copy.'));}
+    if(action==='close-modal'&&(target===event.target||target.tagName==='BUTTON')){ui.selected=null;modal();ui.modalReturnFocus?.focus?.();ui.modalReturnFocus=null;}
+    if(action==='close-family'&&(target===event.target||target.tagName==='BUTTON')){ui.familyId=null;render();}
   });
-  document.addEventListener('input', (event) => {
-    if (event.target.id !== 'global-search') return;
-    ui.query = event.target.value;
-    ui.page = 'library';
-    ui.category = 'all';
-    clearTimeout(ui.searchTimer);
-    ui.searchTimer = setTimeout(render, 120);
-  });
-  document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape' && ui.selected) { ui.selected = null; renderModal(); }
-    const card = event.target.closest?.('.phrase-card');
-    if (card && (event.key === 'Enter' || event.key === ' ')) { event.preventDefault(); ui.selected = card.dataset.open; renderModal(); }
-  });
-
+  document.addEventListener('input',(event)=>{if(event.target.id==='global-search'){ui.query=event.target.value;ui.page='library';ui.category='all';ui.subcategory='all';clearTimeout(ui.searchTimer);ui.searchTimer=setTimeout(render,100);}});
+  document.addEventListener('change',(event)=>{if(event.target.id==='import-file'&&event.target.files?.[0])importFile(event.target.files[0]);});
+  document.addEventListener('keydown',(event)=>{if(event.key==='Escape'){if(ui.selected){ui.selected=null;modal();ui.modalReturnFocus?.focus?.();ui.modalReturnFocus=null;}else if(ui.familyId){ui.familyId=null;render();}}if(event.key==='Tab'&&ui.selected){const root=$('#modal-root'),focusable=root?.querySelectorAll?.('button,input,textarea,summary');if(focusable?.length){const first=focusable[0],last=focusable[focusable.length-1];if(event.shiftKey&&document.activeElement===first){event.preventDefault();last.focus();}else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first.focus();}}}const card=event.target.closest?.('.phrase-card');if(card&&(event.key==='Enter'||event.key===' ')){event.preventDefault();ui.modalReturnFocus=card;ui.selected=card.dataset.open;modal();}});
+  window.TomEng={version:3,storageKey:V3_KEY,phraseCount:PHRASES.length,getState:()=>JSON.parse(JSON.stringify(store)),getNextInterval:nextInterval,getDateKey:dateKey,shiftDate};
   render();
 })();

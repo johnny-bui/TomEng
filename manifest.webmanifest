@@ -1,7 +1,7 @@
 {
   "name": "TomEng — English Phrase Notebook",
   "short_name": "TomEng",
-  "description": "Sổ tay cụm câu tiếng Anh cho công việc, họp và giao tiếp hằng ngày",
+  "description": "Sổ tay luyện phản xạ tiếng Anh thực tế cho công việc, cuộc họp và giao tiếp hằng ngày",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#efede6",

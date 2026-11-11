@@ -1,0 +1,419 @@
+[
+  {
+    "id": "legacy-day-01",
+    "categoryId": "reflex",
+    "name": "Tự tin trong cuộc họp",
+    "description": "Nội dung từ phiên bản đầu tiên, giữ nguyên ID và ngày học",
+    "isLegacy": true
+  },
+  {
+    "id": "legacy-day-02",
+    "categoryId": "reflex",
+    "name": "Nghe rõ và hỏi lại",
+    "description": "Nội dung từ phiên bản đầu tiên, giữ nguyên ID và ngày học",
+    "isLegacy": true
+  },
+  {
+    "id": "legacy-day-03",
+    "categoryId": "design",
+    "name": "Góp ý thiết kế",
+    "description": "Nội dung từ phiên bản đầu tiên, giữ nguyên ID và ngày học",
+    "isLegacy": true
+  },
+  {
+    "id": "legacy-day-04",
+    "categoryId": "business",
+    "name": "Làm rõ yêu cầu BA",
+    "description": "Nội dung từ phiên bản đầu tiên, giữ nguyên ID và ngày học",
+    "isLegacy": true
+  },
+  {
+    "id": "legacy-day-05",
+    "categoryId": "meeting",
+    "name": "Thống nhất trong team",
+    "description": "Nội dung từ phiên bản đầu tiên, giữ nguyên ID và ngày học",
+    "isLegacy": true
+  },
+  {
+    "id": "legacy-day-06",
+    "categoryId": "leadership",
+    "name": "Phạm vi công việc",
+    "description": "Nội dung từ phiên bản đầu tiên, giữ nguyên ID và ngày học",
+    "isLegacy": true
+  },
+  {
+    "id": "legacy-day-07",
+    "categoryId": "leadership",
+    "name": "Sắp xếp ưu tiên",
+    "description": "Nội dung từ phiên bản đầu tiên, giữ nguyên ID và ngày học",
+    "isLegacy": true
+  },
+  {
+    "id": "legacy-day-08",
+    "categoryId": "engineering",
+    "name": "Tiến độ và deadline",
+    "description": "Nội dung từ phiên bản đầu tiên, giữ nguyên ID và ngày học",
+    "isLegacy": true
+  },
+  {
+    "id": "legacy-day-09",
+    "categoryId": "engineering",
+    "name": "Báo cáo vướng mắc",
+    "description": "Nội dung từ phiên bản đầu tiên, giữ nguyên ID và ngày học",
+    "isLegacy": true
+  },
+  {
+    "id": "legacy-day-10",
+    "categoryId": "leadership",
+    "name": "Chốt quyết định",
+    "description": "Nội dung từ phiên bản đầu tiên, giữ nguyên ID và ngày học",
+    "isLegacy": true
+  },
+  {
+    "id": "legacy-day-11",
+    "categoryId": "design",
+    "name": "Đánh giá trải nghiệm",
+    "description": "Nội dung từ phiên bản đầu tiên, giữ nguyên ID và ngày học",
+    "isLegacy": true
+  },
+  {
+    "id": "legacy-day-12",
+    "categoryId": "design",
+    "name": "Dữ liệu và chỉ số",
+    "description": "Nội dung từ phiên bản đầu tiên, giữ nguyên ID và ngày học",
+    "isLegacy": true
+  },
+  {
+    "id": "legacy-day-13",
+    "categoryId": "engineering",
+    "name": "Bàn giao cho Developer",
+    "description": "Nội dung từ phiên bản đầu tiên, giữ nguyên ID và ngày học",
+    "isLegacy": true
+  },
+  {
+    "id": "legacy-day-14",
+    "categoryId": "meeting",
+    "name": "Điều phối cuộc họp",
+    "description": "Nội dung từ phiên bản đầu tiên, giữ nguyên ID và ngày học",
+    "isLegacy": true
+  },
+  {
+    "id": "legacy-day-15",
+    "categoryId": "meeting",
+    "name": "Theo dõi sau họp",
+    "description": "Nội dung từ phiên bản đầu tiên, giữ nguyên ID và ngày học",
+    "isLegacy": true
+  },
+  {
+    "id": "legacy-day-16",
+    "categoryId": "meeting",
+    "name": "Bất đồng chuyên nghiệp",
+    "description": "Nội dung từ phiên bản đầu tiên, giữ nguyên ID và ngày học",
+    "isLegacy": true
+  },
+  {
+    "id": "legacy-day-17",
+    "categoryId": "business",
+    "name": "Phối hợp liên phòng ban",
+    "description": "Nội dung từ phiên bản đầu tiên, giữ nguyên ID và ngày học",
+    "isLegacy": true
+  },
+  {
+    "id": "legacy-day-18",
+    "categoryId": "design",
+    "name": "Nghiên cứu người dùng",
+    "description": "Nội dung từ phiên bản đầu tiên, giữ nguyên ID và ngày học",
+    "isLegacy": true
+  },
+  {
+    "id": "legacy-day-19",
+    "categoryId": "design",
+    "name": "Demo và prototype",
+    "description": "Nội dung từ phiên bản đầu tiên, giữ nguyên ID và ngày học",
+    "isLegacy": true
+  },
+  {
+    "id": "legacy-day-20",
+    "categoryId": "design",
+    "name": "Giải thích giải pháp UX",
+    "description": "Nội dung từ phiên bản đầu tiên, giữ nguyên ID và ngày học",
+    "isLegacy": true
+  },
+  {
+    "id": "legacy-day-21",
+    "categoryId": "design",
+    "name": "Chiến lược sản phẩm",
+    "description": "Nội dung từ phiên bản đầu tiên, giữ nguyên ID và ngày học",
+    "isLegacy": true
+  },
+  {
+    "id": "legacy-day-22",
+    "categoryId": "leadership",
+    "name": "Đánh đổi và rủi ro",
+    "description": "Nội dung từ phiên bản đầu tiên, giữ nguyên ID và ngày học",
+    "isLegacy": true
+  },
+  {
+    "id": "legacy-day-23",
+    "categoryId": "meeting",
+    "name": "Thuyết trình rõ ràng",
+    "description": "Nội dung từ phiên bản đầu tiên, giữ nguyên ID và ngày học",
+    "isLegacy": true
+  },
+  {
+    "id": "legacy-day-24",
+    "categoryId": "engineering",
+    "name": "Kiểm tra và QA",
+    "description": "Nội dung từ phiên bản đầu tiên, giữ nguyên ID và ngày học",
+    "isLegacy": true
+  },
+  {
+    "id": "legacy-day-25",
+    "categoryId": "engineering",
+    "name": "Cập nhật công việc",
+    "description": "Nội dung từ phiên bản đầu tiên, giữ nguyên ID và ngày học",
+    "isLegacy": true
+  },
+  {
+    "id": "legacy-day-26",
+    "categoryId": "engineering",
+    "name": "Quản lý thay đổi",
+    "description": "Nội dung từ phiên bản đầu tiên, giữ nguyên ID và ngày học",
+    "isLegacy": true
+  },
+  {
+    "id": "legacy-day-27",
+    "categoryId": "leadership",
+    "name": "Trao đổi với quản lý",
+    "description": "Nội dung từ phiên bản đầu tiên, giữ nguyên ID và ngày học",
+    "isLegacy": true
+  },
+  {
+    "id": "legacy-day-28",
+    "categoryId": "business",
+    "name": "Giao tiếp với người dùng nghiệp vụ",
+    "description": "Nội dung từ phiên bản đầu tiên, giữ nguyên ID và ngày học",
+    "isLegacy": true
+  },
+  {
+    "id": "legacy-day-29",
+    "categoryId": "leadership",
+    "name": "Tổng kết và cải tiến",
+    "description": "Nội dung từ phiên bản đầu tiên, giữ nguyên ID và ngày học",
+    "isLegacy": true
+  },
+  {
+    "id": "legacy-day-30",
+    "categoryId": "reflex",
+    "name": "Phản xạ hội thoại tự nhiên",
+    "description": "Nội dung từ phiên bản đầu tiên, giữ nguyên ID và ngày học",
+    "isLegacy": true
+  },
+  {
+    "id": "ask-for-clarification",
+    "categoryId": "reflex",
+    "name": "Hỏi lại khi chưa rõ",
+    "description": "Khi người nói trình bày nhanh hoặc yêu cầu chưa đủ rõ.",
+    "isLegacy": false,
+    "patternFamilies": 9,
+    "phraseCount": 45
+  },
+  {
+    "id": "missed-information",
+    "categoryId": "reflex",
+    "name": "Nghe thiếu chi tiết",
+    "description": "Khi nghe được đại ý nhưng bỏ lỡ thông tin cụ thể.",
+    "isLegacy": false,
+    "patternFamilies": 9,
+    "phraseCount": 45
+  },
+  {
+    "id": "buy-time",
+    "categoryId": "reflex",
+    "name": "Xin thời gian suy nghĩ",
+    "description": "Khi bị hỏi bất ngờ và cần tránh trả lời vội.",
+    "isLegacy": false,
+    "patternFamilies": 9,
+    "phraseCount": 45
+  },
+  {
+    "id": "start-meeting",
+    "categoryId": "meeting",
+    "name": "Bắt đầu và dẫn dắt cuộc họp",
+    "description": "Khi chủ trì cuộc họp hoặc chuyển sang nội dung chính.",
+    "isLegacy": false,
+    "patternFamilies": 10,
+    "phraseCount": 50
+  },
+  {
+    "id": "invite-feedback",
+    "categoryId": "meeting",
+    "name": "Mời phản hồi trong cuộc họp",
+    "description": "Khi cần thu thập ý kiến thay vì tự quyết định.",
+    "isLegacy": false,
+    "patternFamilies": 10,
+    "phraseCount": 50
+  },
+  {
+    "id": "action-and-closure",
+    "categoryId": "meeting",
+    "name": "Chốt hành động sau họp",
+    "description": "Khi cần rõ ai làm gì, khi nào xong và ai xác nhận.",
+    "isLegacy": false,
+    "patternFamilies": 10,
+    "phraseCount": 50
+  },
+  {
+    "id": "pushback",
+    "categoryId": "meeting",
+    "name": "Phản biện lịch sự",
+    "description": "Khi không đồng ý nhưng muốn giữ cuộc trao đổi tích cực.",
+    "isLegacy": false,
+    "patternFamilies": 9,
+    "phraseCount": 45
+  },
+  {
+    "id": "usability-review",
+    "categoryId": "design",
+    "name": "Review trải nghiệm người dùng",
+    "description": "Khi góp ý UI dựa trên sự rõ ràng, thao tác và hiệu quả.",
+    "isLegacy": false,
+    "patternFamilies": 11,
+    "phraseCount": 55
+  },
+  {
+    "id": "interaction-states",
+    "categoryId": "design",
+    "name": "Tương tác và trạng thái UI",
+    "description": "Khi giải thích hành vi component trong prototype.",
+    "isLegacy": false,
+    "patternFamilies": 11,
+    "phraseCount": 55
+  },
+  {
+    "id": "design-system",
+    "categoryId": "design",
+    "name": "Design System trong thực tế",
+    "description": "Khi đảm bảo component, token và states không bị lệch chuẩn.",
+    "isLegacy": false,
+    "patternFamilies": 11,
+    "phraseCount": 55
+  },
+  {
+    "id": "research-strategy",
+    "categoryId": "design",
+    "name": "Nghiên cứu và chiến lược UX",
+    "description": "Khi giải thích quyết định dựa trên dữ liệu và hành vi người dùng.",
+    "isLegacy": false,
+    "patternFamilies": 10,
+    "phraseCount": 50
+  },
+  {
+    "id": "business-rules",
+    "categoryId": "business",
+    "name": "Làm rõ quy tắc nghiệp vụ",
+    "description": "Khi BA trình bày điều kiện, policy, role và tiêu chí xử lý.",
+    "isLegacy": false,
+    "patternFamilies": 10,
+    "phraseCount": 50
+  },
+  {
+    "id": "edge-cases",
+    "categoryId": "business",
+    "name": "Xử lý tình huống ngoại lệ",
+    "description": "Khi cần xác định trạng thái và hành vi ở các case không đi theo happy path.",
+    "isLegacy": false,
+    "patternFamilies": 9,
+    "phraseCount": 45
+  },
+  {
+    "id": "operational-workflow",
+    "categoryId": "business",
+    "name": "Quy trình vận hành thực tế",
+    "description": "Khi phỏng vấn người dùng nghiệp vụ hoặc mapping quy trình hiện tại.",
+    "isLegacy": false,
+    "patternFamilies": 9,
+    "phraseCount": 45
+  },
+  {
+    "id": "stakeholder-validation",
+    "categoryId": "business",
+    "name": "Xác nhận với BA và Biz User",
+    "description": "Khi cần business sign-off và bảo đảm UI khớp nghiệp vụ.",
+    "isLegacy": false,
+    "patternFamilies": 9,
+    "phraseCount": 45
+  },
+  {
+    "id": "dev-handoff",
+    "categoryId": "engineering",
+    "name": "Handoff sang developer",
+    "description": "Khi bàn giao hành vi UI và phối hợp FE/BE.",
+    "isLegacy": false,
+    "patternFamilies": 10,
+    "phraseCount": 50
+  },
+  {
+    "id": "qa-triage",
+    "categoryId": "engineering",
+    "name": "QA, debug và xử lý lỗi",
+    "description": "Khi cùng QA tái hiện lỗi và xác nhận bản sửa.",
+    "isLegacy": false,
+    "patternFamilies": 9,
+    "phraseCount": 45
+  },
+  {
+    "id": "release-and-deployment",
+    "categoryId": "engineering",
+    "name": "Release, production và tiến độ",
+    "description": "Khi trao đổi về triển khai và kiểm soát rủi ro trước phát hành.",
+    "isLegacy": false,
+    "patternFamilies": 9,
+    "phraseCount": 45
+  },
+  {
+    "id": "casual-check-in",
+    "categoryId": "everyday",
+    "name": "Small talk đầu ngày",
+    "description": "Khi gặp đồng nghiệp trước giờ làm hoặc đầu cuộc họp.",
+    "isLegacy": false,
+    "patternFamilies": 8,
+    "phraseCount": 40
+  },
+  {
+    "id": "office-help",
+    "categoryId": "everyday",
+    "name": "Nhờ giúp đỡ tự nhiên",
+    "description": "Khi cần hỏi thông tin hoặc nhờ đồng nghiệp một việc nhỏ.",
+    "isLegacy": false,
+    "patternFamilies": 8,
+    "phraseCount": 40
+  },
+  {
+    "id": "casual-conversation",
+    "categoryId": "everyday",
+    "name": "Hội thoại đời sống tự nhiên",
+    "description": "Khi trò chuyện ngắn mà không muốn phải dịch từng từ.",
+    "isLegacy": false,
+    "patternFamilies": 8,
+    "phraseCount": 40
+  },
+  {
+    "id": "priority-tradeoffs",
+    "categoryId": "leadership",
+    "name": "Ưu tiên và đánh đổi",
+    "description": "Khi cần quyết định nên xử lý việc gì trước mà không nói vòng vo.",
+    "isLegacy": false,
+    "patternFamilies": 6,
+    "phraseCount": 30
+  },
+  {
+    "id": "lead-with-clarity",
+    "categoryId": "leadership",
+    "name": "Lãnh đạo bằng sự rõ ràng",
+    "description": "Khi dẫn dắt team, trao đổi với quản lý và thuyết phục stakeholder.",
+    "isLegacy": false,
+    "patternFamilies": 6,
+    "phraseCount": 30
+  }
+]

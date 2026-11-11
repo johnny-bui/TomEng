@@ -1,0 +1,132 @@
+[
+  {
+    "id": "reflex",
+    "name": "Nghe hiểu & phản xạ",
+    "target": 150,
+    "description": "Không nghe kịp, hỏi lại, xác nhận, xin thời gian suy nghĩ",
+    "icon": "ear",
+    "priority": 1,
+    "count": 150,
+    "subcategories": [
+      "legacy-day-01",
+      "legacy-day-02",
+      "legacy-day-30",
+      "ask-for-clarification",
+      "missed-information",
+      "buy-time"
+    ]
+  },
+  {
+    "id": "meeting",
+    "name": "Họp & phối hợp nhóm",
+    "target": 220,
+    "description": "Mở đầu, trình bày, thảo luận, chốt và follow-up",
+    "icon": "users",
+    "priority": 2,
+    "count": 220,
+    "subcategories": [
+      "legacy-day-05",
+      "legacy-day-14",
+      "legacy-day-15",
+      "legacy-day-16",
+      "legacy-day-23",
+      "start-meeting",
+      "invite-feedback",
+      "action-and-closure",
+      "pushback"
+    ]
+  },
+  {
+    "id": "design",
+    "name": "UI/UX & Product Design",
+    "target": 250,
+    "description": "Review, prototype, design system, user research, product decisions",
+    "icon": "pen-tool",
+    "priority": 3,
+    "count": 250,
+    "subcategories": [
+      "legacy-day-03",
+      "legacy-day-11",
+      "legacy-day-12",
+      "legacy-day-18",
+      "legacy-day-19",
+      "legacy-day-20",
+      "legacy-day-21",
+      "usability-review",
+      "interaction-states",
+      "design-system",
+      "research-strategy"
+    ]
+  },
+  {
+    "id": "business",
+    "name": "BA & Business Requirements",
+    "target": 200,
+    "description": "Business rules, edge cases, stakeholder, nghiệp vụ bảo hiểm",
+    "icon": "clipboard-list",
+    "priority": 4,
+    "count": 200,
+    "subcategories": [
+      "legacy-day-04",
+      "legacy-day-17",
+      "legacy-day-28",
+      "business-rules",
+      "edge-cases",
+      "operational-workflow",
+      "stakeholder-validation"
+    ]
+  },
+  {
+    "id": "engineering",
+    "name": "Developer, QA & Release",
+    "target": 170,
+    "description": "Handoff, trạng thái, API, QA, blocker, production",
+    "icon": "code",
+    "priority": 5,
+    "count": 170,
+    "subcategories": [
+      "legacy-day-08",
+      "legacy-day-09",
+      "legacy-day-13",
+      "legacy-day-24",
+      "legacy-day-25",
+      "legacy-day-26",
+      "dev-handoff",
+      "qa-triage",
+      "release-and-deployment"
+    ]
+  },
+  {
+    "id": "everyday",
+    "name": "Small Talk & Everyday English",
+    "target": 120,
+    "description": "Hội thoại tự nhiên ở văn phòng và đời sống",
+    "icon": "coffee",
+    "priority": 6,
+    "count": 120,
+    "subcategories": [
+      "casual-check-in",
+      "office-help",
+      "casual-conversation"
+    ]
+  },
+  {
+    "id": "leadership",
+    "name": "Leadership & Decision Making",
+    "target": 90,
+    "description": "Ưu tiên, trade-off, rủi ro, thuyết phục và lãnh đạo",
+    "icon": "target",
+    "priority": 7,
+    "count": 90,
+    "subcategories": [
+      "legacy-day-06",
+      "legacy-day-07",
+      "legacy-day-10",
+      "legacy-day-22",
+      "legacy-day-27",
+      "legacy-day-29",
+      "priority-tradeoffs",
+      "lead-with-clarity"
+    ]
+  }
+]

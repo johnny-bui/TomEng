@@ -1,0 +1,3602 @@
+[
+  {
+    "day": 1,
+    "id": "day-001",
+    "title": "Tự tin trong cuộc họp",
+    "phraseIds": [
+      "p001",
+      "p002",
+      "p003",
+      "p004",
+      "p005"
+    ],
+    "newCount": 5,
+    "reviewRequired": false,
+    "reviewLessonId": null
+  },
+  {
+    "day": 2,
+    "id": "day-002",
+    "title": "Nghe rõ và hỏi lại",
+    "phraseIds": [
+      "p006",
+      "p007",
+      "p008",
+      "p009",
+      "p010"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-001"
+  },
+  {
+    "day": 3,
+    "id": "day-003",
+    "title": "Góp ý thiết kế",
+    "phraseIds": [
+      "p011",
+      "p012",
+      "p013",
+      "p014",
+      "p015"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-002"
+  },
+  {
+    "day": 4,
+    "id": "day-004",
+    "title": "Làm rõ yêu cầu BA",
+    "phraseIds": [
+      "p016",
+      "p017",
+      "p018",
+      "p019",
+      "p020"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-003"
+  },
+  {
+    "day": 5,
+    "id": "day-005",
+    "title": "Thống nhất trong team",
+    "phraseIds": [
+      "p021",
+      "p022",
+      "p023",
+      "p024",
+      "p025"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-004"
+  },
+  {
+    "day": 6,
+    "id": "day-006",
+    "title": "Phạm vi công việc",
+    "phraseIds": [
+      "p026",
+      "p027",
+      "p028",
+      "p029",
+      "p030"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-005"
+  },
+  {
+    "day": 7,
+    "id": "day-007",
+    "title": "Sắp xếp ưu tiên",
+    "phraseIds": [
+      "p031",
+      "p032",
+      "p033",
+      "p034",
+      "p035"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-006"
+  },
+  {
+    "day": 8,
+    "id": "day-008",
+    "title": "Tiến độ và deadline",
+    "phraseIds": [
+      "p036",
+      "p037",
+      "p038",
+      "p039",
+      "p040"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-007"
+  },
+  {
+    "day": 9,
+    "id": "day-009",
+    "title": "Báo cáo vướng mắc",
+    "phraseIds": [
+      "p041",
+      "p042",
+      "p043",
+      "p044",
+      "p045"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-008"
+  },
+  {
+    "day": 10,
+    "id": "day-010",
+    "title": "Chốt quyết định",
+    "phraseIds": [
+      "p046",
+      "p047",
+      "p048",
+      "p049",
+      "p050"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-009"
+  },
+  {
+    "day": 11,
+    "id": "day-011",
+    "title": "Đánh giá trải nghiệm",
+    "phraseIds": [
+      "p051",
+      "p052",
+      "p053",
+      "p054",
+      "p055"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-010"
+  },
+  {
+    "day": 12,
+    "id": "day-012",
+    "title": "Dữ liệu và chỉ số",
+    "phraseIds": [
+      "p056",
+      "p057",
+      "p058",
+      "p059",
+      "p060"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-011"
+  },
+  {
+    "day": 13,
+    "id": "day-013",
+    "title": "Bàn giao cho Developer",
+    "phraseIds": [
+      "p061",
+      "p062",
+      "p063",
+      "p064",
+      "p065"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-012"
+  },
+  {
+    "day": 14,
+    "id": "day-014",
+    "title": "Điều phối cuộc họp",
+    "phraseIds": [
+      "p066",
+      "p067",
+      "p068",
+      "p069",
+      "p070"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-013"
+  },
+  {
+    "day": 15,
+    "id": "day-015",
+    "title": "Theo dõi sau họp",
+    "phraseIds": [
+      "p071",
+      "p072",
+      "p073",
+      "p074",
+      "p075"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-014"
+  },
+  {
+    "day": 16,
+    "id": "day-016",
+    "title": "Bất đồng chuyên nghiệp",
+    "phraseIds": [
+      "p076",
+      "p077",
+      "p078",
+      "p079",
+      "p080"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-015"
+  },
+  {
+    "day": 17,
+    "id": "day-017",
+    "title": "Phối hợp liên phòng ban",
+    "phraseIds": [
+      "p081",
+      "p082",
+      "p083",
+      "p084",
+      "p085"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-016"
+  },
+  {
+    "day": 18,
+    "id": "day-018",
+    "title": "Nghiên cứu người dùng",
+    "phraseIds": [
+      "p086",
+      "p087",
+      "p088",
+      "p089",
+      "p090"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-017"
+  },
+  {
+    "day": 19,
+    "id": "day-019",
+    "title": "Demo và prototype",
+    "phraseIds": [
+      "p091",
+      "p092",
+      "p093",
+      "p094",
+      "p095"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-018"
+  },
+  {
+    "day": 20,
+    "id": "day-020",
+    "title": "Giải thích giải pháp UX",
+    "phraseIds": [
+      "p096",
+      "p097",
+      "p098",
+      "p099",
+      "p100"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-019"
+  },
+  {
+    "day": 21,
+    "id": "day-021",
+    "title": "Chiến lược sản phẩm",
+    "phraseIds": [
+      "p101",
+      "p102",
+      "p103",
+      "p104",
+      "p105"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-020"
+  },
+  {
+    "day": 22,
+    "id": "day-022",
+    "title": "Đánh đổi và rủi ro",
+    "phraseIds": [
+      "p106",
+      "p107",
+      "p108",
+      "p109",
+      "p110"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-021"
+  },
+  {
+    "day": 23,
+    "id": "day-023",
+    "title": "Thuyết trình rõ ràng",
+    "phraseIds": [
+      "p111",
+      "p112",
+      "p113",
+      "p114",
+      "p115"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-022"
+  },
+  {
+    "day": 24,
+    "id": "day-024",
+    "title": "Kiểm tra và QA",
+    "phraseIds": [
+      "p116",
+      "p117",
+      "p118",
+      "p119",
+      "p120"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-023"
+  },
+  {
+    "day": 25,
+    "id": "day-025",
+    "title": "Cập nhật công việc",
+    "phraseIds": [
+      "p121",
+      "p122",
+      "p123",
+      "p124",
+      "p125"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-024"
+  },
+  {
+    "day": 26,
+    "id": "day-026",
+    "title": "Quản lý thay đổi",
+    "phraseIds": [
+      "p126",
+      "p127",
+      "p128",
+      "p129",
+      "p130"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-025"
+  },
+  {
+    "day": 27,
+    "id": "day-027",
+    "title": "Trao đổi với quản lý",
+    "phraseIds": [
+      "p131",
+      "p132",
+      "p133",
+      "p134",
+      "p135"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-026"
+  },
+  {
+    "day": 28,
+    "id": "day-028",
+    "title": "Giao tiếp với người dùng nghiệp vụ",
+    "phraseIds": [
+      "p136",
+      "p137",
+      "p138",
+      "p139",
+      "p140"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-027"
+  },
+  {
+    "day": 29,
+    "id": "day-029",
+    "title": "Tổng kết và cải tiến",
+    "phraseIds": [
+      "p141",
+      "p142",
+      "p143",
+      "p144",
+      "p145"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-028"
+  },
+  {
+    "day": 30,
+    "id": "day-030",
+    "title": "Phản xạ hội thoại tự nhiên",
+    "phraseIds": [
+      "p146",
+      "p147",
+      "p148",
+      "p149",
+      "p150"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-029"
+  },
+  {
+    "day": 31,
+    "id": "day-031",
+    "title": "English in action · Day 31",
+    "phraseIds": [
+      "p151",
+      "p152",
+      "p153",
+      "p154",
+      "p155"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-030"
+  },
+  {
+    "day": 32,
+    "id": "day-032",
+    "title": "English in action · Day 32",
+    "phraseIds": [
+      "p156",
+      "p157",
+      "p158",
+      "p159",
+      "p160"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-031"
+  },
+  {
+    "day": 33,
+    "id": "day-033",
+    "title": "English in action · Day 33",
+    "phraseIds": [
+      "p161",
+      "p162",
+      "p163",
+      "p164",
+      "p165"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-032"
+  },
+  {
+    "day": 34,
+    "id": "day-034",
+    "title": "English in action · Day 34",
+    "phraseIds": [
+      "p166",
+      "p167",
+      "p168",
+      "p169",
+      "p170"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-033"
+  },
+  {
+    "day": 35,
+    "id": "day-035",
+    "title": "English in action · Day 35",
+    "phraseIds": [
+      "p171",
+      "p172",
+      "p173",
+      "p174",
+      "p175"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-034"
+  },
+  {
+    "day": 36,
+    "id": "day-036",
+    "title": "English in action · Day 36",
+    "phraseIds": [
+      "p176",
+      "p177",
+      "p178",
+      "p179",
+      "p180"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-035"
+  },
+  {
+    "day": 37,
+    "id": "day-037",
+    "title": "English in action · Day 37",
+    "phraseIds": [
+      "p181",
+      "p182",
+      "p183",
+      "p184",
+      "p185"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-036"
+  },
+  {
+    "day": 38,
+    "id": "day-038",
+    "title": "English in action · Day 38",
+    "phraseIds": [
+      "p186",
+      "p187",
+      "p188",
+      "p189",
+      "p190"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-037"
+  },
+  {
+    "day": 39,
+    "id": "day-039",
+    "title": "English in action · Day 39",
+    "phraseIds": [
+      "p191",
+      "p192",
+      "p193",
+      "p194",
+      "p195"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-038"
+  },
+  {
+    "day": 40,
+    "id": "day-040",
+    "title": "English in action · Day 40",
+    "phraseIds": [
+      "p196",
+      "p197",
+      "p198",
+      "p199",
+      "p200"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-039"
+  },
+  {
+    "day": 41,
+    "id": "day-041",
+    "title": "English in action · Day 41",
+    "phraseIds": [
+      "p201",
+      "p202",
+      "p203",
+      "p204",
+      "p205"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-040"
+  },
+  {
+    "day": 42,
+    "id": "day-042",
+    "title": "English in action · Day 42",
+    "phraseIds": [
+      "p206",
+      "p207",
+      "p208",
+      "p209",
+      "p210"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-041"
+  },
+  {
+    "day": 43,
+    "id": "day-043",
+    "title": "English in action · Day 43",
+    "phraseIds": [
+      "p211",
+      "p212",
+      "p213",
+      "p214",
+      "p215"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-042"
+  },
+  {
+    "day": 44,
+    "id": "day-044",
+    "title": "English in action · Day 44",
+    "phraseIds": [
+      "p216",
+      "p217",
+      "p218",
+      "p219",
+      "p220"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-043"
+  },
+  {
+    "day": 45,
+    "id": "day-045",
+    "title": "English in action · Day 45",
+    "phraseIds": [
+      "p221",
+      "p222",
+      "p223",
+      "p224",
+      "p225"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-044"
+  },
+  {
+    "day": 46,
+    "id": "day-046",
+    "title": "English in action · Day 46",
+    "phraseIds": [
+      "p226",
+      "p227",
+      "p228",
+      "p229",
+      "p230"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-045"
+  },
+  {
+    "day": 47,
+    "id": "day-047",
+    "title": "English in action · Day 47",
+    "phraseIds": [
+      "p231",
+      "p232",
+      "p233",
+      "p234",
+      "p235"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-046"
+  },
+  {
+    "day": 48,
+    "id": "day-048",
+    "title": "English in action · Day 48",
+    "phraseIds": [
+      "p236",
+      "p237",
+      "p238",
+      "p239",
+      "p240"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-047"
+  },
+  {
+    "day": 49,
+    "id": "day-049",
+    "title": "English in action · Day 49",
+    "phraseIds": [
+      "p241",
+      "p242",
+      "p243",
+      "p244",
+      "p245"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-048"
+  },
+  {
+    "day": 50,
+    "id": "day-050",
+    "title": "English in action · Day 50",
+    "phraseIds": [
+      "p246",
+      "p247",
+      "p248",
+      "p249",
+      "p250"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-049"
+  },
+  {
+    "day": 51,
+    "id": "day-051",
+    "title": "English in action · Day 51",
+    "phraseIds": [
+      "p251",
+      "p252",
+      "p253",
+      "p254",
+      "p255"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-050"
+  },
+  {
+    "day": 52,
+    "id": "day-052",
+    "title": "English in action · Day 52",
+    "phraseIds": [
+      "p256",
+      "p257",
+      "p258",
+      "p259",
+      "p260"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-051"
+  },
+  {
+    "day": 53,
+    "id": "day-053",
+    "title": "English in action · Day 53",
+    "phraseIds": [
+      "p261",
+      "p262",
+      "p263",
+      "p264",
+      "p265"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-052"
+  },
+  {
+    "day": 54,
+    "id": "day-054",
+    "title": "English in action · Day 54",
+    "phraseIds": [
+      "p266",
+      "p267",
+      "p268",
+      "p269",
+      "p270"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-053"
+  },
+  {
+    "day": 55,
+    "id": "day-055",
+    "title": "English in action · Day 55",
+    "phraseIds": [
+      "p271",
+      "p272",
+      "p273",
+      "p274",
+      "p275"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-054"
+  },
+  {
+    "day": 56,
+    "id": "day-056",
+    "title": "English in action · Day 56",
+    "phraseIds": [
+      "p276",
+      "p277",
+      "p278",
+      "p279",
+      "p280"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-055"
+  },
+  {
+    "day": 57,
+    "id": "day-057",
+    "title": "English in action · Day 57",
+    "phraseIds": [
+      "p281",
+      "p282",
+      "p283",
+      "p284",
+      "p285"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-056"
+  },
+  {
+    "day": 58,
+    "id": "day-058",
+    "title": "English in action · Day 58",
+    "phraseIds": [
+      "p286",
+      "p287",
+      "p288",
+      "p289",
+      "p290"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-057"
+  },
+  {
+    "day": 59,
+    "id": "day-059",
+    "title": "English in action · Day 59",
+    "phraseIds": [
+      "p291",
+      "p292",
+      "p293",
+      "p294",
+      "p295"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-058"
+  },
+  {
+    "day": 60,
+    "id": "day-060",
+    "title": "English in action · Day 60",
+    "phraseIds": [
+      "p296",
+      "p297",
+      "p298",
+      "p299",
+      "p300"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-059"
+  },
+  {
+    "day": 61,
+    "id": "day-061",
+    "title": "English in action · Day 61",
+    "phraseIds": [
+      "p301",
+      "p302",
+      "p303",
+      "p304",
+      "p305"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-060"
+  },
+  {
+    "day": 62,
+    "id": "day-062",
+    "title": "English in action · Day 62",
+    "phraseIds": [
+      "p306",
+      "p307",
+      "p308",
+      "p309",
+      "p310"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-061"
+  },
+  {
+    "day": 63,
+    "id": "day-063",
+    "title": "English in action · Day 63",
+    "phraseIds": [
+      "p311",
+      "p312",
+      "p313",
+      "p314",
+      "p315"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-062"
+  },
+  {
+    "day": 64,
+    "id": "day-064",
+    "title": "English in action · Day 64",
+    "phraseIds": [
+      "p316",
+      "p317",
+      "p318",
+      "p319",
+      "p320"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-063"
+  },
+  {
+    "day": 65,
+    "id": "day-065",
+    "title": "English in action · Day 65",
+    "phraseIds": [
+      "p321",
+      "p322",
+      "p323",
+      "p324",
+      "p325"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-064"
+  },
+  {
+    "day": 66,
+    "id": "day-066",
+    "title": "English in action · Day 66",
+    "phraseIds": [
+      "p326",
+      "p327",
+      "p328",
+      "p329",
+      "p330"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-065"
+  },
+  {
+    "day": 67,
+    "id": "day-067",
+    "title": "English in action · Day 67",
+    "phraseIds": [
+      "p331",
+      "p332",
+      "p333",
+      "p334",
+      "p335"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-066"
+  },
+  {
+    "day": 68,
+    "id": "day-068",
+    "title": "English in action · Day 68",
+    "phraseIds": [
+      "p336",
+      "p337",
+      "p338",
+      "p339",
+      "p340"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-067"
+  },
+  {
+    "day": 69,
+    "id": "day-069",
+    "title": "English in action · Day 69",
+    "phraseIds": [
+      "p341",
+      "p342",
+      "p343",
+      "p344",
+      "p345"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-068"
+  },
+  {
+    "day": 70,
+    "id": "day-070",
+    "title": "English in action · Day 70",
+    "phraseIds": [
+      "p346",
+      "p347",
+      "p348",
+      "p349",
+      "p350"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-069"
+  },
+  {
+    "day": 71,
+    "id": "day-071",
+    "title": "English in action · Day 71",
+    "phraseIds": [
+      "p351",
+      "p352",
+      "p353",
+      "p354",
+      "p355"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-070"
+  },
+  {
+    "day": 72,
+    "id": "day-072",
+    "title": "English in action · Day 72",
+    "phraseIds": [
+      "p356",
+      "p357",
+      "p358",
+      "p359",
+      "p360"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-071"
+  },
+  {
+    "day": 73,
+    "id": "day-073",
+    "title": "English in action · Day 73",
+    "phraseIds": [
+      "p361",
+      "p362",
+      "p363",
+      "p364",
+      "p365"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-072"
+  },
+  {
+    "day": 74,
+    "id": "day-074",
+    "title": "English in action · Day 74",
+    "phraseIds": [
+      "p366",
+      "p367",
+      "p368",
+      "p369",
+      "p370"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-073"
+  },
+  {
+    "day": 75,
+    "id": "day-075",
+    "title": "English in action · Day 75",
+    "phraseIds": [
+      "p371",
+      "p372",
+      "p373",
+      "p374",
+      "p375"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-074"
+  },
+  {
+    "day": 76,
+    "id": "day-076",
+    "title": "English in action · Day 76",
+    "phraseIds": [
+      "p376",
+      "p377",
+      "p378",
+      "p379",
+      "p380"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-075"
+  },
+  {
+    "day": 77,
+    "id": "day-077",
+    "title": "English in action · Day 77",
+    "phraseIds": [
+      "p381",
+      "p382",
+      "p383",
+      "p384",
+      "p385"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-076"
+  },
+  {
+    "day": 78,
+    "id": "day-078",
+    "title": "English in action · Day 78",
+    "phraseIds": [
+      "p386",
+      "p387",
+      "p388",
+      "p389",
+      "p390"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-077"
+  },
+  {
+    "day": 79,
+    "id": "day-079",
+    "title": "English in action · Day 79",
+    "phraseIds": [
+      "p391",
+      "p392",
+      "p393",
+      "p394",
+      "p395"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-078"
+  },
+  {
+    "day": 80,
+    "id": "day-080",
+    "title": "English in action · Day 80",
+    "phraseIds": [
+      "p396",
+      "p397",
+      "p398",
+      "p399",
+      "p400"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-079"
+  },
+  {
+    "day": 81,
+    "id": "day-081",
+    "title": "English in action · Day 81",
+    "phraseIds": [
+      "p401",
+      "p402",
+      "p403",
+      "p404",
+      "p405"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-080"
+  },
+  {
+    "day": 82,
+    "id": "day-082",
+    "title": "English in action · Day 82",
+    "phraseIds": [
+      "p406",
+      "p407",
+      "p408",
+      "p409",
+      "p410"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-081"
+  },
+  {
+    "day": 83,
+    "id": "day-083",
+    "title": "English in action · Day 83",
+    "phraseIds": [
+      "p411",
+      "p412",
+      "p413",
+      "p414",
+      "p415"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-082"
+  },
+  {
+    "day": 84,
+    "id": "day-084",
+    "title": "English in action · Day 84",
+    "phraseIds": [
+      "p416",
+      "p417",
+      "p418",
+      "p419",
+      "p420"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-083"
+  },
+  {
+    "day": 85,
+    "id": "day-085",
+    "title": "English in action · Day 85",
+    "phraseIds": [
+      "p421",
+      "p422",
+      "p423",
+      "p424",
+      "p425"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-084"
+  },
+  {
+    "day": 86,
+    "id": "day-086",
+    "title": "English in action · Day 86",
+    "phraseIds": [
+      "p426",
+      "p427",
+      "p428",
+      "p429",
+      "p430"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-085"
+  },
+  {
+    "day": 87,
+    "id": "day-087",
+    "title": "English in action · Day 87",
+    "phraseIds": [
+      "p431",
+      "p432",
+      "p433",
+      "p434",
+      "p435"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-086"
+  },
+  {
+    "day": 88,
+    "id": "day-088",
+    "title": "English in action · Day 88",
+    "phraseIds": [
+      "p436",
+      "p437",
+      "p438",
+      "p439",
+      "p440"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-087"
+  },
+  {
+    "day": 89,
+    "id": "day-089",
+    "title": "English in action · Day 89",
+    "phraseIds": [
+      "p441",
+      "p442",
+      "p443",
+      "p444",
+      "p445"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-088"
+  },
+  {
+    "day": 90,
+    "id": "day-090",
+    "title": "English in action · Day 90",
+    "phraseIds": [
+      "p446",
+      "p447",
+      "p448",
+      "p449",
+      "p450"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-089"
+  },
+  {
+    "day": 91,
+    "id": "day-091",
+    "title": "English in action · Day 91",
+    "phraseIds": [
+      "p451",
+      "p452",
+      "p453",
+      "p454",
+      "p455"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-090"
+  },
+  {
+    "day": 92,
+    "id": "day-092",
+    "title": "English in action · Day 92",
+    "phraseIds": [
+      "p456",
+      "p457",
+      "p458",
+      "p459",
+      "p460"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-091"
+  },
+  {
+    "day": 93,
+    "id": "day-093",
+    "title": "English in action · Day 93",
+    "phraseIds": [
+      "p461",
+      "p462",
+      "p463",
+      "p464",
+      "p465"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-092"
+  },
+  {
+    "day": 94,
+    "id": "day-094",
+    "title": "English in action · Day 94",
+    "phraseIds": [
+      "p466",
+      "p467",
+      "p468",
+      "p469",
+      "p470"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-093"
+  },
+  {
+    "day": 95,
+    "id": "day-095",
+    "title": "English in action · Day 95",
+    "phraseIds": [
+      "p471",
+      "p472",
+      "p473",
+      "p474",
+      "p475"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-094"
+  },
+  {
+    "day": 96,
+    "id": "day-096",
+    "title": "English in action · Day 96",
+    "phraseIds": [
+      "p476",
+      "p477",
+      "p478",
+      "p479",
+      "p480"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-095"
+  },
+  {
+    "day": 97,
+    "id": "day-097",
+    "title": "English in action · Day 97",
+    "phraseIds": [
+      "p481",
+      "p482",
+      "p483",
+      "p484",
+      "p485"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-096"
+  },
+  {
+    "day": 98,
+    "id": "day-098",
+    "title": "English in action · Day 98",
+    "phraseIds": [
+      "p486",
+      "p487",
+      "p488",
+      "p489",
+      "p490"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-097"
+  },
+  {
+    "day": 99,
+    "id": "day-099",
+    "title": "English in action · Day 99",
+    "phraseIds": [
+      "p491",
+      "p492",
+      "p493",
+      "p494",
+      "p495"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-098"
+  },
+  {
+    "day": 100,
+    "id": "day-100",
+    "title": "English in action · Day 100",
+    "phraseIds": [
+      "p496",
+      "p497",
+      "p498",
+      "p499",
+      "p500"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-099"
+  },
+  {
+    "day": 101,
+    "id": "day-101",
+    "title": "English in action · Day 101",
+    "phraseIds": [
+      "p501",
+      "p502",
+      "p503",
+      "p504",
+      "p505"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-100"
+  },
+  {
+    "day": 102,
+    "id": "day-102",
+    "title": "English in action · Day 102",
+    "phraseIds": [
+      "p506",
+      "p507",
+      "p508",
+      "p509",
+      "p510"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-101"
+  },
+  {
+    "day": 103,
+    "id": "day-103",
+    "title": "English in action · Day 103",
+    "phraseIds": [
+      "p511",
+      "p512",
+      "p513",
+      "p514",
+      "p515"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-102"
+  },
+  {
+    "day": 104,
+    "id": "day-104",
+    "title": "English in action · Day 104",
+    "phraseIds": [
+      "p516",
+      "p517",
+      "p518",
+      "p519",
+      "p520"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-103"
+  },
+  {
+    "day": 105,
+    "id": "day-105",
+    "title": "English in action · Day 105",
+    "phraseIds": [
+      "p521",
+      "p522",
+      "p523",
+      "p524",
+      "p525"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-104"
+  },
+  {
+    "day": 106,
+    "id": "day-106",
+    "title": "English in action · Day 106",
+    "phraseIds": [
+      "p526",
+      "p527",
+      "p528",
+      "p529",
+      "p530"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-105"
+  },
+  {
+    "day": 107,
+    "id": "day-107",
+    "title": "English in action · Day 107",
+    "phraseIds": [
+      "p531",
+      "p532",
+      "p533",
+      "p534",
+      "p535"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-106"
+  },
+  {
+    "day": 108,
+    "id": "day-108",
+    "title": "English in action · Day 108",
+    "phraseIds": [
+      "p536",
+      "p537",
+      "p538",
+      "p539",
+      "p540"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-107"
+  },
+  {
+    "day": 109,
+    "id": "day-109",
+    "title": "English in action · Day 109",
+    "phraseIds": [
+      "p541",
+      "p542",
+      "p543",
+      "p544",
+      "p545"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-108"
+  },
+  {
+    "day": 110,
+    "id": "day-110",
+    "title": "English in action · Day 110",
+    "phraseIds": [
+      "p546",
+      "p547",
+      "p548",
+      "p549",
+      "p550"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-109"
+  },
+  {
+    "day": 111,
+    "id": "day-111",
+    "title": "English in action · Day 111",
+    "phraseIds": [
+      "p551",
+      "p552",
+      "p553",
+      "p554",
+      "p555"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-110"
+  },
+  {
+    "day": 112,
+    "id": "day-112",
+    "title": "English in action · Day 112",
+    "phraseIds": [
+      "p556",
+      "p557",
+      "p558",
+      "p559",
+      "p560"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-111"
+  },
+  {
+    "day": 113,
+    "id": "day-113",
+    "title": "English in action · Day 113",
+    "phraseIds": [
+      "p561",
+      "p562",
+      "p563",
+      "p564",
+      "p565"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-112"
+  },
+  {
+    "day": 114,
+    "id": "day-114",
+    "title": "English in action · Day 114",
+    "phraseIds": [
+      "p566",
+      "p567",
+      "p568",
+      "p569",
+      "p570"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-113"
+  },
+  {
+    "day": 115,
+    "id": "day-115",
+    "title": "English in action · Day 115",
+    "phraseIds": [
+      "p571",
+      "p572",
+      "p573",
+      "p574",
+      "p575"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-114"
+  },
+  {
+    "day": 116,
+    "id": "day-116",
+    "title": "English in action · Day 116",
+    "phraseIds": [
+      "p576",
+      "p577",
+      "p578",
+      "p579",
+      "p580"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-115"
+  },
+  {
+    "day": 117,
+    "id": "day-117",
+    "title": "English in action · Day 117",
+    "phraseIds": [
+      "p581",
+      "p582",
+      "p583",
+      "p584",
+      "p585"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-116"
+  },
+  {
+    "day": 118,
+    "id": "day-118",
+    "title": "English in action · Day 118",
+    "phraseIds": [
+      "p586",
+      "p587",
+      "p588",
+      "p589",
+      "p590"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-117"
+  },
+  {
+    "day": 119,
+    "id": "day-119",
+    "title": "English in action · Day 119",
+    "phraseIds": [
+      "p591",
+      "p592",
+      "p593",
+      "p594",
+      "p595"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-118"
+  },
+  {
+    "day": 120,
+    "id": "day-120",
+    "title": "English in action · Day 120",
+    "phraseIds": [
+      "p596",
+      "p597",
+      "p598",
+      "p599",
+      "p600"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-119"
+  },
+  {
+    "day": 121,
+    "id": "day-121",
+    "title": "English in action · Day 121",
+    "phraseIds": [
+      "p601",
+      "p602",
+      "p603",
+      "p604",
+      "p605"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-120"
+  },
+  {
+    "day": 122,
+    "id": "day-122",
+    "title": "English in action · Day 122",
+    "phraseIds": [
+      "p606",
+      "p607",
+      "p608",
+      "p609",
+      "p610"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-121"
+  },
+  {
+    "day": 123,
+    "id": "day-123",
+    "title": "English in action · Day 123",
+    "phraseIds": [
+      "p611",
+      "p612",
+      "p613",
+      "p614",
+      "p615"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-122"
+  },
+  {
+    "day": 124,
+    "id": "day-124",
+    "title": "English in action · Day 124",
+    "phraseIds": [
+      "p616",
+      "p617",
+      "p618",
+      "p619",
+      "p620"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-123"
+  },
+  {
+    "day": 125,
+    "id": "day-125",
+    "title": "English in action · Day 125",
+    "phraseIds": [
+      "p621",
+      "p622",
+      "p623",
+      "p624",
+      "p625"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-124"
+  },
+  {
+    "day": 126,
+    "id": "day-126",
+    "title": "English in action · Day 126",
+    "phraseIds": [
+      "p626",
+      "p627",
+      "p628",
+      "p629",
+      "p630"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-125"
+  },
+  {
+    "day": 127,
+    "id": "day-127",
+    "title": "English in action · Day 127",
+    "phraseIds": [
+      "p631",
+      "p632",
+      "p633",
+      "p634",
+      "p635"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-126"
+  },
+  {
+    "day": 128,
+    "id": "day-128",
+    "title": "English in action · Day 128",
+    "phraseIds": [
+      "p636",
+      "p637",
+      "p638",
+      "p639",
+      "p640"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-127"
+  },
+  {
+    "day": 129,
+    "id": "day-129",
+    "title": "English in action · Day 129",
+    "phraseIds": [
+      "p641",
+      "p642",
+      "p643",
+      "p644",
+      "p645"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-128"
+  },
+  {
+    "day": 130,
+    "id": "day-130",
+    "title": "English in action · Day 130",
+    "phraseIds": [
+      "p646",
+      "p647",
+      "p648",
+      "p649",
+      "p650"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-129"
+  },
+  {
+    "day": 131,
+    "id": "day-131",
+    "title": "English in action · Day 131",
+    "phraseIds": [
+      "p651",
+      "p652",
+      "p653",
+      "p654",
+      "p655"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-130"
+  },
+  {
+    "day": 132,
+    "id": "day-132",
+    "title": "English in action · Day 132",
+    "phraseIds": [
+      "p656",
+      "p657",
+      "p658",
+      "p659",
+      "p660"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-131"
+  },
+  {
+    "day": 133,
+    "id": "day-133",
+    "title": "English in action · Day 133",
+    "phraseIds": [
+      "p661",
+      "p662",
+      "p663",
+      "p664",
+      "p665"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-132"
+  },
+  {
+    "day": 134,
+    "id": "day-134",
+    "title": "English in action · Day 134",
+    "phraseIds": [
+      "p666",
+      "p667",
+      "p668",
+      "p669",
+      "p670"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-133"
+  },
+  {
+    "day": 135,
+    "id": "day-135",
+    "title": "English in action · Day 135",
+    "phraseIds": [
+      "p671",
+      "p672",
+      "p673",
+      "p674",
+      "p675"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-134"
+  },
+  {
+    "day": 136,
+    "id": "day-136",
+    "title": "English in action · Day 136",
+    "phraseIds": [
+      "p676",
+      "p677",
+      "p678",
+      "p679",
+      "p680"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-135"
+  },
+  {
+    "day": 137,
+    "id": "day-137",
+    "title": "English in action · Day 137",
+    "phraseIds": [
+      "p681",
+      "p682",
+      "p683",
+      "p684",
+      "p685"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-136"
+  },
+  {
+    "day": 138,
+    "id": "day-138",
+    "title": "English in action · Day 138",
+    "phraseIds": [
+      "p686",
+      "p687",
+      "p688",
+      "p689",
+      "p690"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-137"
+  },
+  {
+    "day": 139,
+    "id": "day-139",
+    "title": "English in action · Day 139",
+    "phraseIds": [
+      "p691",
+      "p692",
+      "p693",
+      "p694",
+      "p695"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-138"
+  },
+  {
+    "day": 140,
+    "id": "day-140",
+    "title": "English in action · Day 140",
+    "phraseIds": [
+      "p696",
+      "p697",
+      "p698",
+      "p699",
+      "p700"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-139"
+  },
+  {
+    "day": 141,
+    "id": "day-141",
+    "title": "English in action · Day 141",
+    "phraseIds": [
+      "p701",
+      "p702",
+      "p703",
+      "p704",
+      "p705"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-140"
+  },
+  {
+    "day": 142,
+    "id": "day-142",
+    "title": "English in action · Day 142",
+    "phraseIds": [
+      "p706",
+      "p707",
+      "p708",
+      "p709",
+      "p710"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-141"
+  },
+  {
+    "day": 143,
+    "id": "day-143",
+    "title": "English in action · Day 143",
+    "phraseIds": [
+      "p711",
+      "p712",
+      "p713",
+      "p714",
+      "p715"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-142"
+  },
+  {
+    "day": 144,
+    "id": "day-144",
+    "title": "English in action · Day 144",
+    "phraseIds": [
+      "p716",
+      "p717",
+      "p718",
+      "p719",
+      "p720"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-143"
+  },
+  {
+    "day": 145,
+    "id": "day-145",
+    "title": "English in action · Day 145",
+    "phraseIds": [
+      "p721",
+      "p722",
+      "p723",
+      "p724",
+      "p725"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-144"
+  },
+  {
+    "day": 146,
+    "id": "day-146",
+    "title": "English in action · Day 146",
+    "phraseIds": [
+      "p726",
+      "p727",
+      "p728",
+      "p729",
+      "p730"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-145"
+  },
+  {
+    "day": 147,
+    "id": "day-147",
+    "title": "English in action · Day 147",
+    "phraseIds": [
+      "p731",
+      "p732",
+      "p733",
+      "p734",
+      "p735"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-146"
+  },
+  {
+    "day": 148,
+    "id": "day-148",
+    "title": "English in action · Day 148",
+    "phraseIds": [
+      "p736",
+      "p737",
+      "p738",
+      "p739",
+      "p740"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-147"
+  },
+  {
+    "day": 149,
+    "id": "day-149",
+    "title": "English in action · Day 149",
+    "phraseIds": [
+      "p741",
+      "p742",
+      "p743",
+      "p744",
+      "p745"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-148"
+  },
+  {
+    "day": 150,
+    "id": "day-150",
+    "title": "English in action · Day 150",
+    "phraseIds": [
+      "p746",
+      "p747",
+      "p748",
+      "p749",
+      "p750"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-149"
+  },
+  {
+    "day": 151,
+    "id": "day-151",
+    "title": "English in action · Day 151",
+    "phraseIds": [
+      "p751",
+      "p752",
+      "p753",
+      "p754",
+      "p755"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-150"
+  },
+  {
+    "day": 152,
+    "id": "day-152",
+    "title": "English in action · Day 152",
+    "phraseIds": [
+      "p756",
+      "p757",
+      "p758",
+      "p759",
+      "p760"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-151"
+  },
+  {
+    "day": 153,
+    "id": "day-153",
+    "title": "English in action · Day 153",
+    "phraseIds": [
+      "p761",
+      "p762",
+      "p763",
+      "p764",
+      "p765"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-152"
+  },
+  {
+    "day": 154,
+    "id": "day-154",
+    "title": "English in action · Day 154",
+    "phraseIds": [
+      "p766",
+      "p767",
+      "p768",
+      "p769",
+      "p770"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-153"
+  },
+  {
+    "day": 155,
+    "id": "day-155",
+    "title": "English in action · Day 155",
+    "phraseIds": [
+      "p771",
+      "p772",
+      "p773",
+      "p774",
+      "p775"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-154"
+  },
+  {
+    "day": 156,
+    "id": "day-156",
+    "title": "English in action · Day 156",
+    "phraseIds": [
+      "p776",
+      "p777",
+      "p778",
+      "p779",
+      "p780"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-155"
+  },
+  {
+    "day": 157,
+    "id": "day-157",
+    "title": "English in action · Day 157",
+    "phraseIds": [
+      "p781",
+      "p782",
+      "p783",
+      "p784",
+      "p785"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-156"
+  },
+  {
+    "day": 158,
+    "id": "day-158",
+    "title": "English in action · Day 158",
+    "phraseIds": [
+      "p786",
+      "p787",
+      "p788",
+      "p789",
+      "p790"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-157"
+  },
+  {
+    "day": 159,
+    "id": "day-159",
+    "title": "English in action · Day 159",
+    "phraseIds": [
+      "p791",
+      "p792",
+      "p793",
+      "p794",
+      "p795"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-158"
+  },
+  {
+    "day": 160,
+    "id": "day-160",
+    "title": "English in action · Day 160",
+    "phraseIds": [
+      "p796",
+      "p797",
+      "p798",
+      "p799",
+      "p800"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-159"
+  },
+  {
+    "day": 161,
+    "id": "day-161",
+    "title": "English in action · Day 161",
+    "phraseIds": [
+      "p801",
+      "p802",
+      "p803",
+      "p804",
+      "p805"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-160"
+  },
+  {
+    "day": 162,
+    "id": "day-162",
+    "title": "English in action · Day 162",
+    "phraseIds": [
+      "p806",
+      "p807",
+      "p808",
+      "p809",
+      "p810"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-161"
+  },
+  {
+    "day": 163,
+    "id": "day-163",
+    "title": "English in action · Day 163",
+    "phraseIds": [
+      "p811",
+      "p812",
+      "p813",
+      "p814",
+      "p815"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-162"
+  },
+  {
+    "day": 164,
+    "id": "day-164",
+    "title": "English in action · Day 164",
+    "phraseIds": [
+      "p816",
+      "p817",
+      "p818",
+      "p819",
+      "p820"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-163"
+  },
+  {
+    "day": 165,
+    "id": "day-165",
+    "title": "English in action · Day 165",
+    "phraseIds": [
+      "p821",
+      "p822",
+      "p823",
+      "p824",
+      "p825"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-164"
+  },
+  {
+    "day": 166,
+    "id": "day-166",
+    "title": "English in action · Day 166",
+    "phraseIds": [
+      "p826",
+      "p827",
+      "p828",
+      "p829",
+      "p830"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-165"
+  },
+  {
+    "day": 167,
+    "id": "day-167",
+    "title": "English in action · Day 167",
+    "phraseIds": [
+      "p831",
+      "p832",
+      "p833",
+      "p834",
+      "p835"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-166"
+  },
+  {
+    "day": 168,
+    "id": "day-168",
+    "title": "English in action · Day 168",
+    "phraseIds": [
+      "p836",
+      "p837",
+      "p838",
+      "p839",
+      "p840"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-167"
+  },
+  {
+    "day": 169,
+    "id": "day-169",
+    "title": "English in action · Day 169",
+    "phraseIds": [
+      "p841",
+      "p842",
+      "p843",
+      "p844",
+      "p845"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-168"
+  },
+  {
+    "day": 170,
+    "id": "day-170",
+    "title": "English in action · Day 170",
+    "phraseIds": [
+      "p846",
+      "p847",
+      "p848",
+      "p849",
+      "p850"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-169"
+  },
+  {
+    "day": 171,
+    "id": "day-171",
+    "title": "English in action · Day 171",
+    "phraseIds": [
+      "p851",
+      "p852",
+      "p853",
+      "p854",
+      "p855"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-170"
+  },
+  {
+    "day": 172,
+    "id": "day-172",
+    "title": "English in action · Day 172",
+    "phraseIds": [
+      "p856",
+      "p857",
+      "p858",
+      "p859",
+      "p860"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-171"
+  },
+  {
+    "day": 173,
+    "id": "day-173",
+    "title": "English in action · Day 173",
+    "phraseIds": [
+      "p861",
+      "p862",
+      "p863",
+      "p864",
+      "p865"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-172"
+  },
+  {
+    "day": 174,
+    "id": "day-174",
+    "title": "English in action · Day 174",
+    "phraseIds": [
+      "p866",
+      "p867",
+      "p868",
+      "p869",
+      "p870"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-173"
+  },
+  {
+    "day": 175,
+    "id": "day-175",
+    "title": "English in action · Day 175",
+    "phraseIds": [
+      "p871",
+      "p872",
+      "p873",
+      "p874",
+      "p875"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-174"
+  },
+  {
+    "day": 176,
+    "id": "day-176",
+    "title": "English in action · Day 176",
+    "phraseIds": [
+      "p876",
+      "p877",
+      "p878",
+      "p879",
+      "p880"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-175"
+  },
+  {
+    "day": 177,
+    "id": "day-177",
+    "title": "English in action · Day 177",
+    "phraseIds": [
+      "p881",
+      "p882",
+      "p883",
+      "p884",
+      "p885"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-176"
+  },
+  {
+    "day": 178,
+    "id": "day-178",
+    "title": "English in action · Day 178",
+    "phraseIds": [
+      "p886",
+      "p887",
+      "p888",
+      "p889",
+      "p890"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-177"
+  },
+  {
+    "day": 179,
+    "id": "day-179",
+    "title": "English in action · Day 179",
+    "phraseIds": [
+      "p891",
+      "p892",
+      "p893",
+      "p894",
+      "p895"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-178"
+  },
+  {
+    "day": 180,
+    "id": "day-180",
+    "title": "English in action · Day 180",
+    "phraseIds": [
+      "p896",
+      "p897",
+      "p898",
+      "p899",
+      "p900"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-179"
+  },
+  {
+    "day": 181,
+    "id": "day-181",
+    "title": "English in action · Day 181",
+    "phraseIds": [
+      "p901",
+      "p902",
+      "p903",
+      "p904",
+      "p905"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-180"
+  },
+  {
+    "day": 182,
+    "id": "day-182",
+    "title": "English in action · Day 182",
+    "phraseIds": [
+      "p906",
+      "p907",
+      "p908",
+      "p909",
+      "p910"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-181"
+  },
+  {
+    "day": 183,
+    "id": "day-183",
+    "title": "English in action · Day 183",
+    "phraseIds": [
+      "p911",
+      "p912",
+      "p913",
+      "p914",
+      "p915"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-182"
+  },
+  {
+    "day": 184,
+    "id": "day-184",
+    "title": "English in action · Day 184",
+    "phraseIds": [
+      "p916",
+      "p917",
+      "p918",
+      "p919",
+      "p920"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-183"
+  },
+  {
+    "day": 185,
+    "id": "day-185",
+    "title": "English in action · Day 185",
+    "phraseIds": [
+      "p921",
+      "p922",
+      "p923",
+      "p924",
+      "p925"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-184"
+  },
+  {
+    "day": 186,
+    "id": "day-186",
+    "title": "English in action · Day 186",
+    "phraseIds": [
+      "p926",
+      "p927",
+      "p928",
+      "p929",
+      "p930"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-185"
+  },
+  {
+    "day": 187,
+    "id": "day-187",
+    "title": "English in action · Day 187",
+    "phraseIds": [
+      "p931",
+      "p932",
+      "p933",
+      "p934",
+      "p935"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-186"
+  },
+  {
+    "day": 188,
+    "id": "day-188",
+    "title": "English in action · Day 188",
+    "phraseIds": [
+      "p936",
+      "p937",
+      "p938",
+      "p939",
+      "p940"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-187"
+  },
+  {
+    "day": 189,
+    "id": "day-189",
+    "title": "English in action · Day 189",
+    "phraseIds": [
+      "p941",
+      "p942",
+      "p943",
+      "p944",
+      "p945"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-188"
+  },
+  {
+    "day": 190,
+    "id": "day-190",
+    "title": "English in action · Day 190",
+    "phraseIds": [
+      "p946",
+      "p947",
+      "p948",
+      "p949",
+      "p950"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-189"
+  },
+  {
+    "day": 191,
+    "id": "day-191",
+    "title": "English in action · Day 191",
+    "phraseIds": [
+      "p951",
+      "p952",
+      "p953",
+      "p954",
+      "p955"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-190"
+  },
+  {
+    "day": 192,
+    "id": "day-192",
+    "title": "English in action · Day 192",
+    "phraseIds": [
+      "p956",
+      "p957",
+      "p958",
+      "p959",
+      "p960"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-191"
+  },
+  {
+    "day": 193,
+    "id": "day-193",
+    "title": "English in action · Day 193",
+    "phraseIds": [
+      "p961",
+      "p962",
+      "p963",
+      "p964",
+      "p965"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-192"
+  },
+  {
+    "day": 194,
+    "id": "day-194",
+    "title": "English in action · Day 194",
+    "phraseIds": [
+      "p966",
+      "p967",
+      "p968",
+      "p969",
+      "p970"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-193"
+  },
+  {
+    "day": 195,
+    "id": "day-195",
+    "title": "English in action · Day 195",
+    "phraseIds": [
+      "p971",
+      "p972",
+      "p973",
+      "p974",
+      "p975"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-194"
+  },
+  {
+    "day": 196,
+    "id": "day-196",
+    "title": "English in action · Day 196",
+    "phraseIds": [
+      "p976",
+      "p977",
+      "p978",
+      "p979",
+      "p980"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-195"
+  },
+  {
+    "day": 197,
+    "id": "day-197",
+    "title": "English in action · Day 197",
+    "phraseIds": [
+      "p981",
+      "p982",
+      "p983",
+      "p984",
+      "p985"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-196"
+  },
+  {
+    "day": 198,
+    "id": "day-198",
+    "title": "English in action · Day 198",
+    "phraseIds": [
+      "p986",
+      "p987",
+      "p988",
+      "p989",
+      "p990"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-197"
+  },
+  {
+    "day": 199,
+    "id": "day-199",
+    "title": "English in action · Day 199",
+    "phraseIds": [
+      "p991",
+      "p992",
+      "p993",
+      "p994",
+      "p995"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-198"
+  },
+  {
+    "day": 200,
+    "id": "day-200",
+    "title": "English in action · Day 200",
+    "phraseIds": [
+      "p996",
+      "p997",
+      "p998",
+      "p999",
+      "p1000"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-199"
+  },
+  {
+    "day": 201,
+    "id": "day-201",
+    "title": "English in action · Day 201",
+    "phraseIds": [
+      "p1001",
+      "p1002",
+      "p1003",
+      "p1004",
+      "p1005"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-200"
+  },
+  {
+    "day": 202,
+    "id": "day-202",
+    "title": "English in action · Day 202",
+    "phraseIds": [
+      "p1006",
+      "p1007",
+      "p1008",
+      "p1009",
+      "p1010"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-201"
+  },
+  {
+    "day": 203,
+    "id": "day-203",
+    "title": "English in action · Day 203",
+    "phraseIds": [
+      "p1011",
+      "p1012",
+      "p1013",
+      "p1014",
+      "p1015"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-202"
+  },
+  {
+    "day": 204,
+    "id": "day-204",
+    "title": "English in action · Day 204",
+    "phraseIds": [
+      "p1016",
+      "p1017",
+      "p1018",
+      "p1019",
+      "p1020"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-203"
+  },
+  {
+    "day": 205,
+    "id": "day-205",
+    "title": "English in action · Day 205",
+    "phraseIds": [
+      "p1021",
+      "p1022",
+      "p1023",
+      "p1024",
+      "p1025"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-204"
+  },
+  {
+    "day": 206,
+    "id": "day-206",
+    "title": "English in action · Day 206",
+    "phraseIds": [
+      "p1026",
+      "p1027",
+      "p1028",
+      "p1029",
+      "p1030"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-205"
+  },
+  {
+    "day": 207,
+    "id": "day-207",
+    "title": "English in action · Day 207",
+    "phraseIds": [
+      "p1031",
+      "p1032",
+      "p1033",
+      "p1034",
+      "p1035"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-206"
+  },
+  {
+    "day": 208,
+    "id": "day-208",
+    "title": "English in action · Day 208",
+    "phraseIds": [
+      "p1036",
+      "p1037",
+      "p1038",
+      "p1039",
+      "p1040"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-207"
+  },
+  {
+    "day": 209,
+    "id": "day-209",
+    "title": "English in action · Day 209",
+    "phraseIds": [
+      "p1041",
+      "p1042",
+      "p1043",
+      "p1044",
+      "p1045"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-208"
+  },
+  {
+    "day": 210,
+    "id": "day-210",
+    "title": "English in action · Day 210",
+    "phraseIds": [
+      "p1046",
+      "p1047",
+      "p1048",
+      "p1049",
+      "p1050"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-209"
+  },
+  {
+    "day": 211,
+    "id": "day-211",
+    "title": "English in action · Day 211",
+    "phraseIds": [
+      "p1051",
+      "p1052",
+      "p1053",
+      "p1054",
+      "p1055"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-210"
+  },
+  {
+    "day": 212,
+    "id": "day-212",
+    "title": "English in action · Day 212",
+    "phraseIds": [
+      "p1056",
+      "p1057",
+      "p1058",
+      "p1059",
+      "p1060"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-211"
+  },
+  {
+    "day": 213,
+    "id": "day-213",
+    "title": "English in action · Day 213",
+    "phraseIds": [
+      "p1061",
+      "p1062",
+      "p1063",
+      "p1064",
+      "p1065"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-212"
+  },
+  {
+    "day": 214,
+    "id": "day-214",
+    "title": "English in action · Day 214",
+    "phraseIds": [
+      "p1066",
+      "p1067",
+      "p1068",
+      "p1069",
+      "p1070"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-213"
+  },
+  {
+    "day": 215,
+    "id": "day-215",
+    "title": "English in action · Day 215",
+    "phraseIds": [
+      "p1071",
+      "p1072",
+      "p1073",
+      "p1074",
+      "p1075"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-214"
+  },
+  {
+    "day": 216,
+    "id": "day-216",
+    "title": "English in action · Day 216",
+    "phraseIds": [
+      "p1076",
+      "p1077",
+      "p1078",
+      "p1079",
+      "p1080"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-215"
+  },
+  {
+    "day": 217,
+    "id": "day-217",
+    "title": "English in action · Day 217",
+    "phraseIds": [
+      "p1081",
+      "p1082",
+      "p1083",
+      "p1084",
+      "p1085"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-216"
+  },
+  {
+    "day": 218,
+    "id": "day-218",
+    "title": "English in action · Day 218",
+    "phraseIds": [
+      "p1086",
+      "p1087",
+      "p1088",
+      "p1089",
+      "p1090"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-217"
+  },
+  {
+    "day": 219,
+    "id": "day-219",
+    "title": "English in action · Day 219",
+    "phraseIds": [
+      "p1091",
+      "p1092",
+      "p1093",
+      "p1094",
+      "p1095"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-218"
+  },
+  {
+    "day": 220,
+    "id": "day-220",
+    "title": "English in action · Day 220",
+    "phraseIds": [
+      "p1096",
+      "p1097",
+      "p1098",
+      "p1099",
+      "p1100"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-219"
+  },
+  {
+    "day": 221,
+    "id": "day-221",
+    "title": "English in action · Day 221",
+    "phraseIds": [
+      "p1101",
+      "p1102",
+      "p1103",
+      "p1104",
+      "p1105"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-220"
+  },
+  {
+    "day": 222,
+    "id": "day-222",
+    "title": "English in action · Day 222",
+    "phraseIds": [
+      "p1106",
+      "p1107",
+      "p1108",
+      "p1109",
+      "p1110"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-221"
+  },
+  {
+    "day": 223,
+    "id": "day-223",
+    "title": "English in action · Day 223",
+    "phraseIds": [
+      "p1111",
+      "p1112",
+      "p1113",
+      "p1114",
+      "p1115"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-222"
+  },
+  {
+    "day": 224,
+    "id": "day-224",
+    "title": "English in action · Day 224",
+    "phraseIds": [
+      "p1116",
+      "p1117",
+      "p1118",
+      "p1119",
+      "p1120"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-223"
+  },
+  {
+    "day": 225,
+    "id": "day-225",
+    "title": "English in action · Day 225",
+    "phraseIds": [
+      "p1121",
+      "p1122",
+      "p1123",
+      "p1124",
+      "p1125"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-224"
+  },
+  {
+    "day": 226,
+    "id": "day-226",
+    "title": "English in action · Day 226",
+    "phraseIds": [
+      "p1126",
+      "p1127",
+      "p1128",
+      "p1129",
+      "p1130"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-225"
+  },
+  {
+    "day": 227,
+    "id": "day-227",
+    "title": "English in action · Day 227",
+    "phraseIds": [
+      "p1131",
+      "p1132",
+      "p1133",
+      "p1134",
+      "p1135"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-226"
+  },
+  {
+    "day": 228,
+    "id": "day-228",
+    "title": "English in action · Day 228",
+    "phraseIds": [
+      "p1136",
+      "p1137",
+      "p1138",
+      "p1139",
+      "p1140"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-227"
+  },
+  {
+    "day": 229,
+    "id": "day-229",
+    "title": "English in action · Day 229",
+    "phraseIds": [
+      "p1141",
+      "p1142",
+      "p1143",
+      "p1144",
+      "p1145"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-228"
+  },
+  {
+    "day": 230,
+    "id": "day-230",
+    "title": "English in action · Day 230",
+    "phraseIds": [
+      "p1146",
+      "p1147",
+      "p1148",
+      "p1149",
+      "p1150"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-229"
+  },
+  {
+    "day": 231,
+    "id": "day-231",
+    "title": "English in action · Day 231",
+    "phraseIds": [
+      "p1151",
+      "p1152",
+      "p1153",
+      "p1154",
+      "p1155"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-230"
+  },
+  {
+    "day": 232,
+    "id": "day-232",
+    "title": "English in action · Day 232",
+    "phraseIds": [
+      "p1156",
+      "p1157",
+      "p1158",
+      "p1159",
+      "p1160"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-231"
+  },
+  {
+    "day": 233,
+    "id": "day-233",
+    "title": "English in action · Day 233",
+    "phraseIds": [
+      "p1161",
+      "p1162",
+      "p1163",
+      "p1164",
+      "p1165"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-232"
+  },
+  {
+    "day": 234,
+    "id": "day-234",
+    "title": "English in action · Day 234",
+    "phraseIds": [
+      "p1166",
+      "p1167",
+      "p1168",
+      "p1169",
+      "p1170"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-233"
+  },
+  {
+    "day": 235,
+    "id": "day-235",
+    "title": "English in action · Day 235",
+    "phraseIds": [
+      "p1171",
+      "p1172",
+      "p1173",
+      "p1174",
+      "p1175"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-234"
+  },
+  {
+    "day": 236,
+    "id": "day-236",
+    "title": "English in action · Day 236",
+    "phraseIds": [
+      "p1176",
+      "p1177",
+      "p1178",
+      "p1179",
+      "p1180"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-235"
+  },
+  {
+    "day": 237,
+    "id": "day-237",
+    "title": "English in action · Day 237",
+    "phraseIds": [
+      "p1181",
+      "p1182",
+      "p1183",
+      "p1184",
+      "p1185"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-236"
+  },
+  {
+    "day": 238,
+    "id": "day-238",
+    "title": "English in action · Day 238",
+    "phraseIds": [
+      "p1186",
+      "p1187",
+      "p1188",
+      "p1189",
+      "p1190"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-237"
+  },
+  {
+    "day": 239,
+    "id": "day-239",
+    "title": "English in action · Day 239",
+    "phraseIds": [
+      "p1191",
+      "p1192",
+      "p1193",
+      "p1194",
+      "p1195"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-238"
+  },
+  {
+    "day": 240,
+    "id": "day-240",
+    "title": "English in action · Day 240",
+    "phraseIds": [
+      "p1196",
+      "p1197",
+      "p1198",
+      "p1199",
+      "p1200"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-239"
+  }
+]

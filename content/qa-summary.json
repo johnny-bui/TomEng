@@ -1,0 +1,56 @@
+{
+  "sourceOriginalCount": 150,
+  "addedCount": 1050,
+  "totalPhraseEntries": 1200,
+  "uniquePatternFamiliesAdded": 210,
+  "scenarioVariantsPerNewPattern": 5,
+  "categories": {
+    "reflex": 150,
+    "design": 250,
+    "business": 200,
+    "meeting": 220,
+    "leadership": 90,
+    "engineering": 170,
+    "everyday": 120
+  },
+  "totalCategoryCount": 7,
+  "subcategoriesCount": 53,
+  "newSubcategoriesCount": 23,
+  "days": 240,
+  "firstDay": {
+    "day": 1,
+    "id": "day-001",
+    "title": "Tự tin trong cuộc họp",
+    "phraseIds": [
+      "p001",
+      "p002",
+      "p003",
+      "p004",
+      "p005"
+    ],
+    "newCount": 5,
+    "reviewRequired": false,
+    "reviewLessonId": null
+  },
+  "lastDay": {
+    "day": 240,
+    "id": "day-240",
+    "title": "English in action · Day 240",
+    "phraseIds": [
+      "p1196",
+      "p1197",
+      "p1198",
+      "p1199",
+      "p1200"
+    ],
+    "newCount": 5,
+    "reviewRequired": true,
+    "reviewLessonId": "day-239"
+  },
+  "duplicatesExactEnglish": 0,
+  "notes": [
+    "New records generated from 210 authored core patterns and 5 meaningfully distinct scenario substitutions.",
+    "Content is an editorial draft. Native-speaker editorial review of usage and translations remains required.",
+    "Day 1–30, phrase IDs p001–p150 and legacy English, Vietnamese, context, follow are preserved."
+  ]
+}
