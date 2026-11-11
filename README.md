@@ -1,39 +1,48 @@
-# TomEng Native V3 — sổ tay luyện phản xạ tiếng Anh
+# TomEng V3.4 — sổ tay luyện phản xạ tiếng Anh
 
-TomEng là ứng dụng tĩnh, chạy bằng trình duyệt và lưu tiến độ trên thiết bị. Nội dung ưu tiên câu ngắn cho đời sống hằng ngày, phản xạ nghe, họp, UI/UX, BA, Developer và công việc. Không cần tài khoản hoặc API AI trả phí.
+TomEng là ứng dụng tĩnh, lưu tiến độ trên thiết bị. Nội dung tập trung vào tiếng Anh dùng được trong đời sống, họp, UI/UX, BA, Developer và giao tiếp công việc. Không cần tài khoản hoặc API AI trả phí.
 
-## Nội dung và luồng học
+## Nội dung và buổi học
 
-- 1.200 câu, 7 chuyên mục, 70 nhóm tình huống, 210 họ mẫu và 240 trang × 5 câu.
-- Trang đầu học 5 câu mới. Từ trang thứ hai: ôn đúng 5 câu của trang trước, sau đó học 5 câu mới và tự nhớ lại cả 5 câu.
-- Một ngày địa phương chỉ hoàn tất tối đa một trang mới. Bỏ lỡ ngày không làm mất trang; streak tính từ ngày hoàn tất thực tế.
-- Đánh giá Nhớ ngay / Cần gợi ý / Chưa nhớ tạo lịch ôn. Mục Ôn thêm giới hạn 12 câu đến hạn mỗi lượt; số còn lại giữ nguyên.
-- Speaking Practice có microphone tùy chọn; bản nhận dạng chỉ là tham khảo. TTS do thiết bị tạo, tốc độ 0.8× hoặc 1×; không phải bản thu của người bản ngữ.
-- Rescue Mode chọn câu theo 9 tình huống thường dùng. Tìm kiếm gồm câu tiếng Anh, bản dịch, ngữ cảnh, chuyên mục, nhóm nhỏ và mẹo nhớ.
+- 1.200 ID câu, 7 chuyên mục, 70 nhóm nhỏ và 210 mẫu câu.
+- 265 scenario-candidate records, mỗi record có 5 câu. 240 ID bài cũ và snapshot V3.2/V3.3 vẫn được giữ để migration; đây không phải giới hạn số buổi học.
+- Buổi đầu có thể gồm 5 câu mới. Các buổi sau luôn có 5 câu cho một tình huống: kết hợp linh hoạt 1–5 câu chưa introduced với câu đã học phù hợp. Hệ thống không tính câu cũ là câu mới.
+- Trước tình huống mới, ứng dụng có thể ôn tối đa 5 câu của buổi trước; câu trùng với tình huống hôm nay được bỏ khỏi phần warm-up.
+- Tiến độ Home là số ID introduced duy nhất trên 1.200, chỉ tăng sau khi hoàn tất Learn, Recall và nhiệm vụ áp dụng. Lịch SRS dựa trên mức nhớ; nhóm ôn thêm được giới hạn để tránh dồn nợ.
+- Khi hết câu mới trong track đã chọn, ứng dụng báo phần còn lại và cho chuyển sang Mixed. Khi đủ 1.200 ID, ứng dụng chuyển sang Mastery Mode.
+
+## Các chế độ
+
+- Everyday English, Workplace English và Mixed Learning.
+- Listening Drill phát audio trước rồi mới mở transcript; Speaking Practice dùng nhận dạng giọng nói tùy trình duyệt, chỉ hiển thị transcript tham khảo, không chấm phát âm.
+- TTS dùng giọng có sẵn trên thiết bị ở tốc độ 0.8× hoặc 1×.
+- Library tìm theo câu, bản dịch, tình huống, mẫu câu và mẹo nhớ. Rescue Mode có thể tìm mọi cụm theo tình huống.
+- PWA lưu shell và snapshot migration để mở lại khi offline; backup/restore nằm trong ứng dụng.
 
 ## Chạy local
 
-Mở `index.html` trực tiếp để xem ứng dụng. Để kiểm tra PWA và service worker, chạy máy chủ tĩnh:
+Mở `index.html` để xem giao diện. Để kiểm tra service worker/PWA, chạy máy chủ tĩnh:
 
 ```bash
 python3 -m http.server 4173
 ```
 
-Rồi mở `http://localhost:4173`. Asset dùng đường dẫn tương đối để chạy tại `/TomEng/` trên GitHub Pages.
+Mở `http://localhost:4173`. Asset dùng đường dẫn tương đối để chạy tại `/TomEng/` trên GitHub Pages.
 
 ## Migration và sao lưu
 
-Native V3 ghi vào key `tomeng_native_v3` với `schemaVersion: 4` và `contentVersion: native-v3.1`. Dữ liệu từ `tomeng_reflex_v3`, `tomeng_notebook_v2` và `speak5_data_v1` được giữ nguyên cùng snapshot migration. ID p001–p150 giữ nội dung cũ. Với ID p151 trở đi, app đối chiếu nguyên câu tiếng Anh V2 trước khi chuyển bookmark, trạng thái nhớ và lịch ôn. ID không khớp nằm trong bản gốc và danh sách `migration.unresolvedIds`; app không gán nhầm sang câu V3. Không suy diễn bài hoàn tất từ số câu đã học.
+Store hiện tại dùng key `tomeng_native_v3`, schema 7 và content plan `native-v3.4`. Migration từ dữ liệu V1/V2/V3/V3.1/V3.2/V3.3 tạo và xác minh backup trước khi đổi plan. Completion có membership khác được archive cùng phrase IDs gốc; evidence introduced, bookmark, lịch SRS, session đang dở và nội dung người dùng sửa được giữ theo ID, không theo số thứ tự bài.
 
-Xuất và nhập JSON trong ứng dụng để sao lưu. Khi nhập bản V2, app sao lưu bản gốc trước khi chuyển. Lịch sử hoàn tất sau trang 30 của bản V2 nháp không được tính thành trang V3 vì thứ tự câu đã đổi.
+Tải backup JSON định kỳ. Nếu không ghi được backup trước migration, ứng dụng dừng migration và không ghi đè tiến độ cũ.
 
 ## Kiểm thử
 
 ```bash
-python3 content/native-v3/QA_CONTENT.py
-python3 tests/content.test.py
+node --check app.js && node --check sw.js
 node tests/engine.test.cjs
-node --check app.js
+node tests/pwa.test.cjs
+python3 tests/content.test.py
+python3 content/native-v3/QA_CONTENT.py
 ```
 
-Nguồn nội dung V3 ở `content/native-v3/`. Các sửa biên tập có thể tái tạo bằng `editorial_pass.py` từ file gốc trong gói V3. [Báo cáo vấn đề nội dung](content/native-v3/CONTENT_QA_ISSUES.md) và [báo cáo QA V3](QA_REPORT_V3.md) ghi rõ giới hạn kiểm thử. Không coi bản nháp AI là bản đã được người bản ngữ duyệt.
+Content QA tự động kiểm tra ID, coverage, role NEW/REUSE, scenario structure và mapping. Đây không phải xác nhận rằng biên tập viên bản ngữ đã duyệt toàn bộ 1.200 câu; xem [QA_REPORT_V3.md](QA_REPORT_V3.md) để biết giới hạn và bằng chứng.

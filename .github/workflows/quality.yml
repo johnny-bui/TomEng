@@ -24,3 +24,5 @@ jobs:
         run: node tests/pwa.test.cjs
       - name: Test phrase data
         run: python3 tests/content.test.py
+      - name: Test scenario coverage map and migration snapshots
+        run: python3 content/native-v3/QA_CONTENT.py
