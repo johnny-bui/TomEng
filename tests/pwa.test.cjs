@@ -20,7 +20,7 @@ const sandbox = {
   },
   caches: {
     open: async () => cache,
-    keys: async () => ['tomeng-v11-native', 'tomeng-v12-native', 'tomeng-v13-native', 'tomeng-v14-native'],
+    keys: async () => ['tomeng-v11-native', 'tomeng-v12-native', 'tomeng-v13-native', 'tomeng-v14-native', 'tomeng-v15-native'],
     delete: async key => { deleted.push(key); return true; },
     match: async () => null
   },
@@ -44,11 +44,11 @@ vm.runInNewContext(source, sandbox);
   let activatePromise;
   handlers.activate({ waitUntil: promise => { activatePromise = promise; } });
   await activatePromise;
-  assert.deepEqual(deleted, ['tomeng-v11-native', 'tomeng-v12-native', 'tomeng-v13-native', 'tomeng-v14-native']);
+  assert.deepEqual(deleted, ['tomeng-v11-native', 'tomeng-v12-native', 'tomeng-v13-native', 'tomeng-v14-native', 'tomeng-v15-native']);
   assert.ok(claimed, 'new worker controls open clients');
 
   const index = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
-  assert.match(index, /sw\.js\?v=15-native/);
+  assert.match(index, /sw\.js\?v=16-native/);
   assert.ok(index.indexOf('legacy-lesson-plan-v3.js') < index.indexOf('app.js'));
   const app = fs.readFileSync(path.join(root, 'app.js'), 'utf8');
   const css = fs.readFileSync(path.join(root, 'style.css'), 'utf8');
