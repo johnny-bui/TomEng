@@ -8,7 +8,7 @@
   const PREVIOUS_ENGINE_KEY = 'tomeng_reflex_v3';
   const BACKUP_KEY = 'tomeng_native_v3_migration_backup';
   // MAJOR.MINOR.PATCH: major for breaking changes, minor for features, patch for fixes/content.
-  const APP_VERSION = '3.4.0';
+  const APP_VERSION = '3.4.1';
   const CONTENT_VERSION = 'native-v3.4';
   const CURRENT_PLAN_VERSION = 'native-v3.4';
   const LEGACY_PLANS = [window.TOMENG_LEGACY_LESSON_PLAN_V3_3,window.TOMENG_LEGACY_LESSON_PLAN_V3_2,window.TOMENG_LEGACY_LESSON_PLAN_V3_1,window.TOMENG_LEGACY_LESSON_PLAN_V3].filter(Boolean);
@@ -21,6 +21,7 @@
   const esc = (v) => String(v ?? '').replace(/[&<>"']/g, (c) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   let migrationBlockedMessage='';
   let persistenceWarning=false;
+  let sessionAllocationError='';
   function writeVerified(key,value) { const serialized=typeof value==='string'?value:JSON.stringify(value);localStorage.setItem(key,serialized);if(localStorage.getItem(key)!==serialized)throw new Error(`Không xác minh được dữ liệu đã ghi: ${key}`);return serialized; }
   function writeTransactionally(key,value,previousRaw) {
     const serialized=typeof value==='string'?value:JSON.stringify(value);
@@ -42,10 +43,10 @@
   function safeRead(key) { try { return JSON.parse(localStorage.getItem(key) || 'null'); } catch { return null; } }
   function introducedFromEvidence(input) {
     const ids=new Set((input.introducedPhraseIds||[]).filter((id)=>byId.has(id)));
-    const add=(record)=>{if(!record||record.migrated)return;const source=Array.isArray(record.newPhraseIds)?record.newPhraseIds:record.phraseIds;if(Array.isArray(source)&&source.length>0&&source.every((id)=>byId.has(id)))source.forEach((id)=>ids.add(id));};
-    Object.values(input.completions||{}).forEach(add);
-    Object.values(input.migration?.archivedCompletions||{}).forEach(add);
-    (Array.isArray(input.sessions)?input.sessions:[]).forEach((session)=>{if(session?.newPhrases===5||session?.applicationPracticed)add(session);});
+    const add=(record,completion=false)=>{if(!record||record.migrated)return;const source=Array.isArray(record.newPhraseIds)?record.newPhraseIds:completion&&Array.isArray(record.catalogCandidatePhraseIds)?record.catalogCandidatePhraseIds:record.phraseIds;if(Array.isArray(source)&&source.length>0&&source.every((id)=>byId.has(id)))source.forEach((id)=>ids.add(id));};
+    Object.values(input.completions||{}).forEach(record=>add(record,true));
+    Object.values(input.migration?.archivedCompletions||{}).forEach(record=>add(record,true));
+    (Array.isArray(input.sessions)?input.sessions:[]).forEach((session)=>{if(session?.newPhrases===5||session?.applicationPracticed)add(session,false);});
     return PHRASES.map((phrase)=>phrase.id).filter((id)=>ids.has(id));
   }
   function normaliseActiveSessionRoles(session, introducedIds) {
@@ -93,13 +94,13 @@
       let oldLessons=new Map((previous?.lessons||[]).map((item)=>[item.id,item]));
       const archivedCompletions={...(result.migration?.archivedCompletions||{})};
       for(const [id,completion] of Object.entries(result.completions)){
-        const oldIds=completion?.phraseIds||oldLessons.get(id)?.phraseIds||[],newIds=lessonById.get(id)?.phraseIds||[];
-        const ambiguousLegacyPlan=!completion?.phraseIds&&lessonById.get(id)?.day>30&&!oldLessons.get(id)?.phraseIds;
+        const storedCatalogIds=completion?.catalogCandidatePhraseIds||completion?.phraseIds,oldIds=storedCatalogIds||oldLessons.get(id)?.phraseIds||[],newIds=lessonById.get(id)?.phraseIds||[];
+        const ambiguousLegacyPlan=!storedCatalogIds&&lessonById.get(id)?.day>30&&!oldLessons.get(id)?.phraseIds;
         if(ambiguousLegacyPlan||oldIds.length===5&&oldIds.slice().sort().join('|')!==newIds.slice().sort().join('|')){
-          archivedCompletions[id]={...completion,phraseIds:oldIds,possiblePhraseIdsByPlan:!completion?.phraseIds?Object.fromEntries(LEGACY_PLANS.map((plan)=>[plan.version,plan.lessons.find((item)=>item.id===id)?.phraseIds||[]])):undefined,archivedReason:'lesson-plan-changed-or-ambiguous'};delete result.completions[id];
-        } else result.completions[id]={...completion,phraseIds:oldIds,planVersion:CURRENT_PLAN_VERSION};
+          archivedCompletions[id]={...completion,catalogCandidatePhraseIds:oldIds,possiblePhraseIdsByPlan:!storedCatalogIds?Object.fromEntries(LEGACY_PLANS.map((plan)=>[plan.version,plan.lessons.find((item)=>item.id===id)?.phraseIds||[]])):undefined,archivedReason:'lesson-plan-changed-or-ambiguous'};delete result.completions[id];
+        } else result.completions[id]={...completion,catalogCandidatePhraseIds:oldIds,planVersion:CURRENT_PLAN_VERSION};
       }
-      result.sessions=result.sessions.map(session=>{const old=oldLessons.get(session.lessonId),completion=current.completions?.[session.lessonId];return {...session,phraseIds:[...(session.phraseIds||completion?.phraseIds||old?.phraseIds||[])],planVersion:session.planVersion||sourceVersion};});
+      result.sessions=result.sessions.map(session=>{const snapshot=actualSessionSnapshot(session);return {...session,...(snapshot?{phraseIds:[...snapshot],practicedPhraseIds:[...snapshot]}:{}),planVersion:session.planVersion||sourceVersion};});
       const s=result.activeSession,legacy=oldLessons.get(s?.lessonId),reviewLegacy=oldLessons.get(s?.reviewLessonId);
       if(s&&legacy){s.phraseIds=[...(s.phraseIds?.length===5?s.phraseIds:legacy.phraseIds)];s.newPhraseIds=[...(Array.isArray(s.newPhraseIds)?s.newPhraseIds:s.phraseIds)];s.reviewPhraseIds=[...(s.reviewPhraseIds?.length===5?s.reviewPhraseIds:reviewLegacy?.phraseIds||[])];s.planVersion=sourceVersion;s.scenarioSnapshot=s.scenarioSnapshot||legacy;}
       result.migration={...(result.migration||{}),contentPlanUpdatedFrom:current.contentVersion,planMigrationBackupKey,archivedCompletions,migratedAt:new Date().toISOString()};rebuildProgress(result);
@@ -138,7 +139,7 @@
     const archivedCompletions={};
     for(const [lessonId,completion] of Object.entries(engine?.completions||{})){
       const lesson=lessonById.get(lessonId);
-      if(lesson&&completion&&!completion.migrated){if(lesson.day<=30&&completion.date)result.completions[lessonId]={...completion,phraseIds:[...lesson.phraseIds],planVersion:CURRENT_PLAN_VERSION};else archivedCompletions[lessonId]={...completion,phraseIds:LEGACY_PLANS.at(-1)?.lessons.find((item)=>item.id===lessonId)?.phraseIds||[],archivedReason:'legacy-lesson-plan-archived'};}
+      if(lesson&&completion&&!completion.migrated){if(lesson.day<=30&&completion.date)result.completions[lessonId]={...completion,catalogCandidatePhraseIds:lessonCandidates(lesson),phraseIds:[...lesson.phraseIds],planVersion:CURRENT_PLAN_VERSION};else archivedCompletions[lessonId]={...completion,catalogCandidatePhraseIds:LEGACY_PLANS.at(-1)?.lessons.find((item)=>item.id===lessonId)?.phraseIds||[],phraseIds:LEGACY_PLANS.at(-1)?.lessons.find((item)=>item.id===lessonId)?.phraseIds||[],archivedReason:'legacy-lesson-plan-archived'};}
     }
     result.lastCompletedLessonId=newestCompletedId(result.completions);
     result.activityDates=[...new Set(Object.values(result.completions).map(x=>x.date).filter(x=>/^\d{4}-\d{2}-\d{2}$/.test(x||'')))].sort();
@@ -167,6 +168,7 @@
   function snapshotScenario(lesson){return {scenarioId:lesson.scenarioId,scenarioTitle:lesson.scenarioTitle||lesson.title,scenarioGoal:lesson.scenarioGoal||lesson.title,difficulty:lesson.difficulty||'everyday',roleContext:lesson.roleContext||'',scenarioContext:lesson.scenarioContext||'',practicePrompt:lesson.practicePrompt||'',whyThesePhrases:lesson.whyThesePhrases||'',familyId:lesson.familyId||null,primaryCategoryId:lesson.primaryCategoryId,candidatePhraseIds:[...(lesson.candidatePhraseIds||lesson.newPhraseIds||[])],reusePhraseIds:[...(lesson.reusePhraseIds||lesson.reinforcementPhraseIds||[])],steps:(lesson.steps||[]).map((step)=>({...step}))};}
   function lessonCandidates(lesson){return [...new Set((Array.isArray(lesson?.candidatePhraseIds)?lesson.candidatePhraseIds:Array.isArray(lesson?.newPhraseIds)?lesson.newPhraseIds:lesson?.phraseIds||[]).filter((id)=>byId.has(id)))];}
   function lessonForNew() {
+    sessionAllocationError='';
     if(hasSessionToday())return null;
     const introduced=introducedSet(),route=lessonsForTrack();
     for(const lesson of route){
@@ -199,21 +201,49 @@
         if(nextFamilyNew&&newIds.length<5){extraNewIds.push(nextFamilyNew);newCount++;continue;}
         reinforcementIds=collectOld(5-newIds.length,usedPatterns,oldPool.filter((id)=>!newIds.includes(id)));
         if(newIds.length+reinforcementIds.length===5)break;
-        return null;
+        break;
       }
+      if(newIds.length+reinforcementIds.length!==5)continue;
       const phraseIds=[...newIds,...reinforcementIds],newSet=new Set(newIds);
       const steps=phraseIds.map((id,index)=>{const source=lesson.steps.find((step)=>step.phraseId===id)||phraseSteps.get(id)||{};return {...source,phraseId:id,turn:index+1,kind:newSet.has(id)?'new':'reuse',cue:source.cue||byId.get(id)?.vi||'',intent:source.intent||byId.get(id)?.focus||byId.get(id)?.pattern||'Tiếp lời'};});
       if(new Set(phraseIds.map((id)=>byId.get(id)?.patternId)).size!==5)continue;
       return {...lesson,phraseIds,candidatePhraseIds:newIds,newPhraseIds:newIds,reusePhraseIds:reinforcementIds,reinforcementPhraseIds:reinforcementIds,newCount:newIds.length,steps};
     }
+    // The adaptive SRS allocator can reject a scenario when its preferred REUSE pool
+    // is too small or shares patterns. Fall back to the authored scenario family so
+    // an unseen phrase cannot be stranded by a pool-selection edge case.
+    for(const lesson of route){
+      const candidates=lessonCandidates(lesson),family=lesson.familyId?route.filter(item=>item.familyId===lesson.familyId):[lesson];
+      if(!candidates.some(id=>!introduced.has(id)))continue;
+      const newIds=[],reuseIds=[],usedPatterns=new Set();
+      const add=(id,role)=>{const phrase=byId.get(id),pattern=phrase?.patternId;if(!phrase||!pattern||usedPatterns.has(pattern)||newIds.includes(id)||reuseIds.includes(id)||newIds.length+reuseIds.length>=5)return false;usedPatterns.add(pattern);(role==='new'?newIds:reuseIds).push(id);return true;};
+      for(const id of [...new Set(family.flatMap(lessonCandidates))])if(!introduced.has(id))add(id,'new');
+      const reusePool=[...new Set(family.flatMap(item=>[...(item.phraseIds||[]),...(item.reusePhraseIds||item.reinforcementPhraseIds||[])]))].filter(id=>introduced.has(id));
+      for(const id of reusePool)add(id,'reuse');
+      if(newIds.length<5){
+        const familyIds=[...new Set(family.flatMap(item=>[...(item.phraseIds||[]),...lessonCandidates(item)]))];
+        for(const id of familyIds)if(!introduced.has(id))add(id,'new');
+      }
+      if(newIds.length+reuseIds.length!==5||!newIds.length)continue;
+      const phraseIds=[...newIds,...reuseIds],newSet=new Set(newIds),steps=phraseIds.map((id,index)=>{const source=family.flatMap(item=>item.steps||[]).find(step=>step.phraseId===id)||phraseSteps.get(id)||{};return {...source,phraseId:id,turn:index+1,kind:newSet.has(id)?'new':'reuse',cue:source.cue||byId.get(id)?.vi||'',intent:source.intent||byId.get(id)?.focus||byId.get(id)?.pattern||'Tiếp lời'};});
+      return {...lesson,phraseIds,candidatePhraseIds:newIds,newPhraseIds:newIds,reusePhraseIds:reuseIds,reinforcementPhraseIds:reuseIds,newCount:newIds.length,steps};
+    }
+    const unseen=allRemainingPhraseIds();
+    if(unseen.length)sessionAllocationError=`Còn ${unseen.length} cụm mới nhưng chưa ghép được thành tình huống hợp lệ trong track này. Hãy chuyển Mixed để thử các nhóm tình huống còn lại.`;
     return null;
   }
     function lessonsForTrack(){return META.lessons.filter(l=>store.track==='mixed'||(store.track==='everyday'?l.primaryCategoryId==='everyday'||l.primaryCategoryId==='reflex':l.primaryCategoryId!=='everyday'&&l.primaryCategoryId!=='reflex'));}
+  function validSessionPhraseSnapshot(ids){return Array.isArray(ids)&&ids.length>=1&&ids.length<=7&&new Set(ids).size===ids.length&&ids.every(id=>byId.has(id));}
+  function actualSessionSnapshot(session){if(validSessionPhraseSnapshot(session?.practicedPhraseIds))return session.practicedPhraseIds;if(validSessionPhraseSnapshot(session?.phraseIds))return session.phraseIds;return null;}
+  function compareRecentEvents(a,b){return String(b.completedAt||b.date||'').localeCompare(String(a.completedAt||a.date||''))||(Number(b.sessionSequence)||0)-(Number(a.sessionSequence)||0)||Number(b.snapshotSource==='session')-Number(a.snapshotSource==='session')||(Number(b.eventOrder)||0)-(Number(a.eventOrder)||0);}
   function mostRecentCompleted() {
-    const completed=Object.entries(store.completions||{}).map(([id,item])=>({...item,lessonId:item.lessonId||id,phraseIds:item.phraseIds||[],completedAt:item.completedAt||item.date}));
-    const sessions=(store.sessions||[]).map(item=>({...item,lessonId:item.lessonId,completedAt:item.completedAt||item.date}));
-    const archived=Object.entries(store.migration?.archivedCompletions||{}).map(([id,item])=>({...item,lessonId:item.lessonId||id,phraseIds:item.phraseIds||[],completedAt:item.completedAt||item.date}));
-    return [...completed,...sessions,...archived].filter(item=>item.lessonId&&Array.isArray(item.phraseIds)&&item.phraseIds.length===5).sort((a,b)=>String(b.completedAt||b.date||'').localeCompare(String(a.completedAt||a.date||''))||((b.day||0)-(a.day||0)))[0]||null;
+    const sessions=(store.sessions||[]).map((item,index)=>{const snapshot=actualSessionSnapshot(item);return {...item,lessonId:item.lessonId,phraseIds:snapshot||[],completedAt:item.completedAt||item.date,sessionSequence:Number(item.sessionSequence)||index+1,eventOrder:index,snapshotSource:'session'};}).filter(item=>item.lessonId&&validSessionPhraseSnapshot(item.phraseIds));
+    const allCompletions=[...Object.entries(store.completions||{}),...Object.entries(store.migration?.archivedCompletions||{})];
+    const explicitCompletions=allCompletions.map(([id,item],index)=>({ ...item,lessonId:item.lessonId||id,phraseIds:Array.isArray(item.practicedPhraseIds)?item.practicedPhraseIds:[],completedAt:item.completedAt||item.date,sessionSequence:Number(item.sessionSequence)||0,eventOrder:index,snapshotSource:'completion-practice'})).filter(item=>item.lessonId&&validSessionPhraseSnapshot(item.phraseIds));
+    const actualSnapshots=[...sessions,...explicitCompletions];
+    if(actualSnapshots.length)return actualSnapshots.sort(compareRecentEvents)[0];
+    const legacyFallbacks=allCompletions.map(([id,item],index)=>{const snapshot=item.catalogCandidatePhraseIds||item.phraseIds;return {...item,lessonId:item.lessonId||id,phraseIds:Array.isArray(snapshot)?snapshot:[],completedAt:item.completedAt||item.date,eventOrder:index,snapshotSource:'legacy-completion-fallback'};});
+    return legacyFallbacks.filter(item=>item.lessonId&&validSessionPhraseSnapshot(item.phraseIds)).sort(compareRecentEvents)[0]||null;
   }
   function ensureSession() {
     if (store.activeSession && lessonById.has(store.activeSession.lessonId) && (store.activeSession.mode==='mastery'||!store.completions[store.activeSession.lessonId])) return store.activeSession;
@@ -221,7 +251,7 @@
     const lesson = lessonForNew();
     if (!lesson) return null;
     const prev=mostRecentCompleted(),reuse=[...(lesson.reusePhraseIds||lesson.reinforcementPhraseIds||[])],reviewPhraseIds=prev?prev.phraseIds.filter((id)=>!lesson.phraseIds.includes(id)).slice(0,5):[];
-    store.activeSession = { lessonId:lesson.id, phraseIds:[...lesson.phraseIds], candidatePhraseIds:[...(lesson.candidatePhraseIds||lesson.newPhraseIds||[])], newPhraseIds:[...(lesson.newPhraseIds||lesson.phraseIds)], reusePhraseIds:reuse, reinforcementPhraseIds:reuse, scenarioSnapshot:snapshotScenario(lesson), scenarioId:lesson.scenarioId, reviewPhraseIds, planVersion:CURRENT_PLAN_VERSION, phase:reviewPhraseIds.length?'review':'learn', reviewLessonId:prev?.lessonId || null, reviewIndex:0, reviewDone:[], learnIndex:0, learnedViewed:[], recallIndex:0, recallRevealed:false, recallDone:[], applicationPracticed:false, startedAt:new Date().toISOString() };
+    store.activeSession = { lessonId:lesson.id, phraseIds:[...lesson.phraseIds], candidatePhraseIds:[...(lesson.candidatePhraseIds||lesson.newPhraseIds||[])], newPhraseIds:[...(lesson.newPhraseIds||lesson.phraseIds)], reusePhraseIds:reuse, reinforcementPhraseIds:reuse, scenarioSnapshot:snapshotScenario(lesson), scenarioId:lesson.scenarioId, reviewPhraseIds, reviewSnapshotSource:prev?.snapshotSource||null, planVersion:CURRENT_PLAN_VERSION, phase:reviewPhraseIds.length?'review':'learn', reviewLessonId:prev?.lessonId || null, reviewIndex:0, reviewDone:[], learnIndex:0, learnedViewed:[], recallIndex:0, recallRevealed:false, recallDone:[], applicationPracticed:false, startedAt:new Date().toISOString() };
     save(); return store.activeSession;
   }
   function ensureMasterySession(){
@@ -265,12 +295,15 @@
     if(!mastery){
       store.introducedPhraseIds=[...new Set([...store.introducedPhraseIds,...newPhraseIds])];
       const allCandidatesIntroduced=lessonCandidates(baseLesson).every((id)=>store.introducedPhraseIds.includes(id));
-      const completion={lessonId:lesson.id,day:lesson.day,phraseIds:[...(baseLesson.phraseIds||sessionPhraseIds)],newPhraseIds:lessonCandidates(baseLesson),planVersion:CURRENT_PLAN_VERSION,scenarioId:lesson.scenarioId||lesson.familyId,completedAt:new Date().toISOString(),date:today};
+      const completedAt=new Date().toISOString(),sessionSequence=store.sessions.reduce((max,item,index)=>Math.max(max,Number(item.sessionSequence)||index+1),0)+1,catalogCandidatePhraseIds=lessonCandidates(baseLesson);
+      const completion={lessonId:lesson.id,day:lesson.day,catalogCandidatePhraseIds,practicedPhraseIds:sessionPhraseIds,newPhraseIds:catalogCandidatePhraseIds,planVersion:CURRENT_PLAN_VERSION,scenarioId:lesson.scenarioId||lesson.familyId,completedAt,date:today,sessionSequence};
       if(currentPlanSession&&allCandidatesIntroduced)store.completions[lesson.id]=completion;
-      else if(!currentPlanSession)store.migration={...(store.migration||{}),archivedCompletions:{...(store.migration?.archivedCompletions||{}),[lesson.id]:{...completion,phraseIds:sessionPhraseIds,newPhraseIds,archivedReason:'completed-preserved-legacy-session'}}};
+      else if(!currentPlanSession)store.migration={...(store.migration||{}),archivedCompletions:{...(store.migration?.archivedCompletions||{}),[lesson.id]:{...completion,catalogCandidatePhraseIds,practicedPhraseIds:sessionPhraseIds,newPhraseIds,archivedReason:'completed-preserved-legacy-session'}}};
+      session._completionEvent={completedAt,sessionSequence};
     }
     const reusePhraseIds=[...(session.reusePhraseIds||session.reinforcementPhraseIds||[])];
-    store.sessions.push({lessonId:lesson.id,date:today,completedAt:new Date().toISOString(),phraseIds:sessionPhraseIds,candidatePhraseIds:[...(session.candidatePhraseIds||[])],newPhraseIds,reusePhraseIds,reinforcementPhraseIds:reusePhraseIds,introducedCount:newPhraseIds.length,scenarioSnapshot:session.scenarioSnapshot||snapshotScenario(lesson),familyId:lesson.familyId||null,planVersion:session.planVersion||CURRENT_PLAN_VERSION,scenarioId:lesson.scenarioId||lesson.familyId,applicationPracticed:true,mastery,reviewed:session.reviewDone?.length||0,newPhrases:newPhraseIds.length});
+    const completedAt=session._completionEvent?.completedAt||new Date().toISOString(),sessionSequence=session._completionEvent?.sessionSequence||store.sessions.reduce((max,item,index)=>Math.max(max,Number(item.sessionSequence)||index+1),0)+1;
+    store.sessions.push({lessonId:lesson.id,date:today,completedAt,sessionSequence,phraseIds:sessionPhraseIds,practicedPhraseIds:sessionPhraseIds,catalogCandidatePhraseIds:lessonCandidates(baseLesson),candidatePhraseIds:[...(session.candidatePhraseIds||[])],newPhraseIds,reusePhraseIds,reinforcementPhraseIds:reusePhraseIds,introducedCount:newPhraseIds.length,scenarioSnapshot:session.scenarioSnapshot||snapshotScenario(lesson),familyId:lesson.familyId||null,planVersion:session.planVersion||CURRENT_PLAN_VERSION,scenarioId:lesson.scenarioId||lesson.familyId,applicationPracticed:true,mastery,reviewed:session.reviewDone?.length||0,newPhrases:newPhraseIds.length});
     store.activityDates=[...new Set([...store.activityDates,today])].sort();
     store.streak=streakForDates(store.activityDates);
     if(!mastery&&currentPlanSession&&store.completions[lesson.id])store.lastCompletedLessonId=lesson.id;else if(mastery)store.masteryCursor=(lesson.day||0)%META.lessons.length;store.activeSession=null;const persisted=save();
@@ -293,13 +326,14 @@
   function homePage() {
     const remainingGlobal=PHRASES.length-store.introducedPhraseIds.length,trackRemaining=allRemainingPhraseIds().length,mastery=remainingGlobal===0;
     const session=mastery?ensureMasterySession():ensureSession(),lesson=session?activeLesson():null;
+    const allocationError=!session&&!mastery&&!hasSessionToday()&&trackRemaining>0?sessionAllocationError:'';
     const completed=completedSessionCount();
     const archived=Object.keys(store.migration?.archivedCompletions||{}).length;
     const due=Object.values(store.reviews).filter((record)=>record.dueDate<=dateKey()).length,progress=Math.min(100,Math.round(store.introducedPhraseIds.length/PHRASES.length*100));
     const trackLabel=store.track==='everyday'?'Everyday':store.track==='workplace'?'Workplace':'Mixed';
-    const mainAction=session?'continue':mastery&&!hasSessionToday()?'continue':mastery||hasSessionToday()?'due':trackRemaining===0?'track-mixed':'due';
-    const mainLabel=session?(mastery?'Bắt đầu Mastery drill':`Mở trang ${String(lesson.day).padStart(3,'0')}`):mastery?hasSessionToday()?'Ôn thêm hôm nay đã xong':'Vào Mastery Mode':trackRemaining===0?'Chuyển Mixed để học tiếp':'Hôm nay đã xong';
-    return `<section class="hero"><div><div class="eyebrow">Sổ tay phản xạ · ${PHRASES.length} câu dùng thật</div><h1 class="display">Nói đúng câu,<br><em>đúng lúc.</em></h1><p class="subcopy">Luyện nói ngắn gọn cho Meeting, UI/UX, BA, Developer và những cuộc trò chuyện thường ngày.</p><div class="hero-actions"><button class="btn btn-dark" ${mainAction==='track-mixed'?'data-track="mixed"':mainAction==='due'?'data-page="due"':'data-action="continue"'}>${esc(mainLabel)} ${icon('arrow')}</button><button class="btn" data-page="rescue">Tình huống này nói sao?</button></div><div class="today-status"><span>Đã học mới</span><b>${store.introducedPhraseIds.length} / ${PHRASES.length} cụm</b></div><div class="progress-track wide"><i style="width:${progress}%"></i></div><small class="progress-caption">${completed} buổi đã hoàn tất · còn ${remainingGlobal} cụm chưa được giới thiệu${archived?` · ${archived} bài lịch sử cũ được lưu riêng`:''}</small><p class="step-hint">Chỉ ID mới được giới thiệu trong buổi hoàn tất mới tăng tiến độ; câu ôn, bookmark và xem câu không cộng vào số này.</p></div><div class="notebook-stack" aria-hidden="true"><div class="book back"></div><div class="book mid"></div><div class="book front"><div class="edition">TomEng · field notes</div><h3>Useful English<br>for real work.</h3><p>Meeting · Product · Everyday</p><div class="book-no">${lesson?String(lesson.day).padStart(3,'0'):mastery?'✓':''}</div></div></div></section><section class="track-picker"><button class="filter ${store.track==='everyday'?'active':''}" data-track="everyday">Everyday English</button><button class="filter ${store.track==='workplace'?'active':''}" data-track="workplace">Workplace English</button><button class="filter ${store.track==='mixed'?'active':''}" data-track="mixed">Mixed Learning</button><button class="btn" data-page="listening">Listening Drill</button><button class="btn" data-page="conversation">Hội thoại</button><button class="btn" data-page="practice">Speaking</button></section><div class="section-head"><div><h2>Chọn một ngăn sổ</h2><p>Mỗi ngăn là một bối cảnh giao tiếp khác nhau.</p></div><button class="text-btn" data-page="library">Mở toàn bộ →</button></div><section class="category-grid">${META.categories.map((c,i)=>`<button class="category-card ${categoryStyles[i%categoryStyles.length]}" data-category="${c.id}"><div class="number">${String(i+1).padStart(2,'0')}</div><h3>${esc(c.name)}</h3><p>${esc(c.description)}</p><span class="cat-count">${c.count} câu</span><span class="arrow">${icon('arrow')}</span></button>`).join('')}</section><section class="quick-stats"><div><b>${store.introducedPhraseIds.length}</b><span>cụm học mới</span></div><div><b>${due}</b><span>cụm đến lịch ôn</span></div><div><b>${store.streak}</b><span>ngày liên tiếp</span></div></section>${due?`<section class="due-callout"><span>${due} cụm đến lịch · ôn tự chọn, tối đa 7 mỗi lượt</span><button class="btn btn-ghost" data-page="due">Ôn 3–7 câu →</button></section>`:''}${lesson?`<div class="section-head"><div><h2>${session.mode==='mastery'?'Mastery Mode':`Tình huống ${String(lesson.day).padStart(3,'0')}`}</h2><p>${esc(lesson.scenarioTitle||lesson.title)}</p></div><span>${session.mode==='mastery'?'Luyện gọi lại theo tình huống':session.phase==='review'?'Ôn trước · luyện sau':'Tình huống hôm nay'}</span></div><section class="today-strip scenario-today"><div class="strip-index">${String(lesson.day).padStart(3,'0')}</div><div class="strip-copy"><b>${esc(lesson.scenarioTitle||lesson.title)}</b><span>${esc(lesson.scenarioGoal||lesson.title)} ${session.mode==='mastery'?'Ôn cụm đến lịch và câu còn yếu, rồi vận dụng.':session.phase==='review'?'Ôn '+session.reviewPhraseIds.length+' câu không trùng với tình huống hôm nay, sau đó luyện đủ 5 câu.':'Buổi học có 5 câu: '+(session.newPhraseIds||[]).length+' mới · '+(session.reusePhraseIds||session.reinforcementPhraseIds||[]).length+' đã học. Luyện 5 → Recall 5 → áp dụng.'}</span><small>${esc(lesson.roleContext||'')}</small></div><button class="btn btn-coral" data-action="continue">Tiếp tục ${icon('arrow')}</button></section>`:`<section class="maintenance"><h2>${mastery?'Đã học mới đủ 1.200 cụm.':trackRemaining===0?`Đã học hết cụm mới trong ${trackLabel}.`:'Hôm nay đã học xong.'}</h2><p>${mastery?hasSessionToday()?'Hôm nay đã hoàn thành phiên Mastery. Cụm mới không bị reset.':'Từ đây luyện lại theo tình huống, ưu tiên cụm đến lịch và cụm còn yếu.':trackRemaining===0?`Còn ${remainingGlobal} cụm mới ở các track khác. Chuyển Mixed để tiếp tục và không học lại cụm đã giới thiệu.`:'Ngày mai học tình huống mới. Bạn có thể ôn SRS tự chọn hoặc luyện nói.'}</p>${mastery?hasSessionToday()?'<button class="btn btn-coral" data-page="due">Ôn thêm tự chọn</button>':'<button class="btn btn-coral" data-action="continue">Mở Mastery Mode</button>':trackRemaining===0?'<button class="btn btn-coral" data-track="mixed">Chuyển Mixed để học tiếp</button>':'<button class="btn btn-coral" data-page="due">Ôn thêm</button>'}</section>`}`;
+    const mainAction=session?'continue':mastery&&!hasSessionToday()?'continue':mastery||hasSessionToday()?'due':allocationError?'allocation-error':trackRemaining===0?'track-mixed':'due';
+    const mainLabel=session?(mastery?'Bắt đầu Mastery drill':`Mở trang ${String(lesson.day).padStart(3,'0')}`):mastery?hasSessionToday()?'Ôn thêm hôm nay đã xong':'Vào Mastery Mode':trackRemaining===0?'Chuyển Mixed để học tiếp':allocationError?'Thử xếp lại tình huống':'Hôm nay đã xong';
+    return `<section class="hero"><div><div class="eyebrow">Sổ tay phản xạ · ${PHRASES.length} câu dùng thật</div><h1 class="display">Nói đúng câu,<br><em>đúng lúc.</em></h1><p class="subcopy">Luyện nói ngắn gọn cho Meeting, UI/UX, BA, Developer và những cuộc trò chuyện thường ngày.</p><div class="hero-actions"><button class="btn btn-dark" ${mainAction==='track-mixed'?'data-track="mixed"':mainAction==='due'?'data-page="due"':'data-action="continue"'}>${esc(mainLabel)} ${icon('arrow')}</button><button class="btn" data-page="rescue">Tình huống này nói sao?</button></div><div class="today-status"><span>Đã học mới</span><b>${store.introducedPhraseIds.length} / ${PHRASES.length} cụm</b></div><div class="progress-track wide"><i style="width:${progress}%"></i></div><small class="progress-caption">${completed} buổi đã hoàn tất · còn ${remainingGlobal} cụm chưa được giới thiệu${archived?` · ${archived} bài lịch sử cũ được lưu riêng`:''}</small><p class="step-hint">Chỉ ID mới được giới thiệu trong buổi hoàn tất mới tăng tiến độ; câu ôn, bookmark và xem câu không cộng vào số này.</p></div><div class="notebook-stack" aria-hidden="true"><div class="book back"></div><div class="book mid"></div><div class="book front"><div class="edition">TomEng · field notes</div><h3>Useful English<br>for real work.</h3><p>Meeting · Product · Everyday</p><div class="book-no">${lesson?String(lesson.day).padStart(3,'0'):mastery?'✓':''}</div></div></div></section><section class="track-picker"><button class="filter ${store.track==='everyday'?'active':''}" data-track="everyday">Everyday English</button><button class="filter ${store.track==='workplace'?'active':''}" data-track="workplace">Workplace English</button><button class="filter ${store.track==='mixed'?'active':''}" data-track="mixed">Mixed Learning</button><button class="btn" data-page="listening">Listening Drill</button><button class="btn" data-page="conversation">Hội thoại</button><button class="btn" data-page="practice">Speaking</button></section><div class="section-head"><div><h2>Chọn một ngăn sổ</h2><p>Mỗi ngăn là một bối cảnh giao tiếp khác nhau.</p></div><button class="text-btn" data-page="library">Mở toàn bộ →</button></div><section class="category-grid">${META.categories.map((c,i)=>`<button class="category-card ${categoryStyles[i%categoryStyles.length]}" data-category="${c.id}"><div class="number">${String(i+1).padStart(2,'0')}</div><h3>${esc(c.name)}</h3><p>${esc(c.description)}</p><span class="cat-count">${c.count} câu</span><span class="arrow">${icon('arrow')}</span></button>`).join('')}</section><section class="quick-stats"><div><b>${store.introducedPhraseIds.length}</b><span>cụm học mới</span></div><div><b>${due}</b><span>cụm đến lịch ôn</span></div><div><b>${store.streak}</b><span>ngày liên tiếp</span></div></section>${due?`<section class="due-callout"><span>${due} cụm đến lịch · ôn tự chọn, tối đa 7 mỗi lượt</span><button class="btn btn-ghost" data-page="due">Ôn 3–7 câu →</button></section>`:''}${lesson?`<div class="section-head"><div><h2>${session.mode==='mastery'?'Mastery Mode':`Tình huống ${String(lesson.day).padStart(3,'0')}`}</h2><p>${esc(lesson.scenarioTitle||lesson.title)}</p></div><span>${session.mode==='mastery'?'Luyện gọi lại theo tình huống':session.phase==='review'?'Ôn trước · luyện sau':'Tình huống hôm nay'}</span></div><section class="today-strip scenario-today"><div class="strip-index">${String(lesson.day).padStart(3,'0')}</div><div class="strip-copy"><b>${esc(lesson.scenarioTitle||lesson.title)}</b><span>${esc(lesson.scenarioGoal||lesson.title)} ${session.mode==='mastery'?'Ôn cụm đến lịch và câu còn yếu, rồi vận dụng.':session.phase==='review'?'Ôn '+session.reviewPhraseIds.length+' câu không trùng với tình huống hôm nay, sau đó luyện đủ 5 câu.':'Buổi học có 5 câu: '+(session.newPhraseIds||[]).length+' mới · '+(session.reusePhraseIds||session.reinforcementPhraseIds||[]).length+' đã học. Luyện 5 → Recall 5 → áp dụng.'}</span><small>${esc(lesson.roleContext||'')}</small></div><button class="btn btn-coral" data-action="continue">Tiếp tục ${icon('arrow')}</button></section>`:`<section class="maintenance"><h2>${mastery?'Đã học mới đủ 1.200 cụm.':trackRemaining===0?`Đã học hết cụm mới trong ${trackLabel}.`:allocationError?'Chưa ghép được tình huống':'Hôm nay đã học xong.'}</h2><p>${mastery?hasSessionToday()?'Hôm nay đã hoàn thành phiên Mastery. Cụm mới không bị reset.':'Từ đây luyện lại theo tình huống, ưu tiên cụm đến lịch và cụm còn yếu.':trackRemaining===0?`Còn ${remainingGlobal} cụm mới ở các track khác. Chuyển Mixed để tiếp tục và không học lại cụm đã giới thiệu.`:allocationError?esc(allocationError):'Ngày mai học tình huống mới. Bạn có thể ôn SRS tự chọn hoặc luyện nói.'}</p>${mastery?hasSessionToday()?'<button class="btn btn-coral" data-page="due">Ôn thêm tự chọn</button>':'<button class="btn btn-coral" data-action="continue">Mở Mastery Mode</button>':trackRemaining===0?'<button class="btn btn-coral" data-track="mixed">Chuyển Mixed để học tiếp</button>':allocationError?'<button class="btn btn-coral" data-action="continue">Thử lại</button>':'<button class="btn btn-coral" data-page="due">Ôn thêm</button>'}</section>`}`;
   }
   function phraseCard(source) { const p=shown(source),cat=categoryFor(p), sub=subById.get(p.subCategoryId); return `<article class="phrase-card" data-open="${p.id}" tabindex="0"><div class="meta">${esc(cat?.name||'')} · ${esc(sub?.name||p.topic)}</div><button class="card-save ${isSaved(p.id)?'on':''}" data-action="save" data-id="${p.id}" aria-label="${isSaved(p.id)?'Bỏ lưu':'Lưu'} câu ${esc(p.en)}">${icon('bookmark')}</button><h3>${esc(p.en)}</h3><p>${esc(p.vi)}</p><small>${esc(p.context)}</small></article>`; }
   function libraryPage() {
@@ -369,8 +403,8 @@
     result.speakingPracticed=[];result.selfReportedPractice=[...new Set([...(data.selfReportedPractice||[]),...(data.speakingPracticed||[])].map(mapId).filter(Boolean))];
     for(const [id,review] of Object.entries(data.reviews||{})){const mapped=mapId(id);if(mapped)result.reviews[mapped]=review;}
     for(const [id,edit] of Object.entries(data.contentEdits||{})){const mapped=mapId(id);if(mapped)result.contentEdits[mapped]=edit;}
-    const archivedCompletions={};for(const [id,completion] of Object.entries(data.completions||{})){const lesson=lessonById.get(id),legacyLesson=LEGACY_V3_PLAN?.lessons.find(item=>item.id===id);if(lesson&&completion&&!completion.migrated){if(lesson.day<=30&&completion.date)result.completions[id]={...completion,phraseIds:lesson.phraseIds,planVersion:CURRENT_PLAN_VERSION};else archivedCompletions[id]={...completion,phraseIds:(legacyLesson?.phraseIds||[]).map(mapId).filter(Boolean),archivedReason:'v2-import-plan-archived'};}}
-    result.sessions=Array.isArray(data.sessions)?data.sessions:[];
+    const archivedCompletions={};for(const [id,completion] of Object.entries(data.completions||{})){const lesson=lessonById.get(id),legacyLesson=LEGACY_V3_PLAN?.lessons.find(item=>item.id===id);if(lesson&&completion&&!completion.migrated){if(lesson.day<=30&&completion.date)result.completions[id]={...completion,catalogCandidatePhraseIds:lessonCandidates(lesson),phraseIds:lesson.phraseIds,planVersion:CURRENT_PLAN_VERSION};else archivedCompletions[id]={...completion,catalogCandidatePhraseIds:(legacyLesson?.phraseIds||[]).map(mapId).filter(Boolean),phraseIds:(legacyLesson?.phraseIds||[]).map(mapId).filter(Boolean),archivedReason:'v2-import-plan-archived'};}}
+    result.sessions=(Array.isArray(data.sessions)?data.sessions:[]).map(session=>{const snapshot=Array.isArray(session.practicedPhraseIds)&&session.practicedPhraseIds.length?session.practicedPhraseIds:session.phraseIds,ids=Array.isArray(snapshot)?snapshot.map(mapId).filter(Boolean):null;return {...session,...(ids?.length?{phraseIds:ids,practicedPhraseIds:ids}:{}),...(Array.isArray(session.newPhraseIds)?{newPhraseIds:session.newPhraseIds.map(mapId).filter(Boolean)}:{}),planVersion:session.planVersion||'v2-fingerprints'};});
     const v2Plan=new Map((LEGACY_V3_PLAN?.lessons||[]).map(item=>[item.id,item])),session=data.activeSession,sessionLesson=v2Plan.get(session?.lessonId),reviewLesson=v2Plan.get(session?.reviewLessonId);
     if(session&&sessionLesson){result.activeSession={...session,phraseIds:(session.phraseIds||sessionLesson.phraseIds).map(mapId).filter(Boolean),reviewPhraseIds:(session.reviewPhraseIds||reviewLesson?.phraseIds||[]).map(mapId).filter(Boolean),learnedViewed:(session.learnedViewed||[]).map(mapId).filter(Boolean),reviewDone:(session.reviewDone||[]).map(mapId).filter(Boolean),recallDone:(session.recallDone||[]).map(mapId).filter(Boolean),planVersion:'native-v2-import'};}
     result.track=['everyday','workplace','mixed'].includes(data.track)?data.track:'mixed';result.speechRate=data.speechRate===.8?.8:1;
@@ -387,11 +421,11 @@
     const oldLessons=new Map(plan.lessons.map(lesson=>[lesson.id,lesson])),result=normaliseStore(data),archivedCompletions={...(result.migration?.archivedCompletions||{})};
     result.selfReportedPractice=[...new Set([...result.selfReportedPractice,...result.speakingPracticed])];result.speakingPracticed=[];
     for(const [id,completion] of Object.entries(result.completions)){
-      const oldIds=completion?.phraseIds||oldLessons.get(id)?.phraseIds||[],newIds=lessonById.get(id)?.phraseIds||[];
-      if(oldIds.length!==5||oldIds.slice().sort().join('|')!==newIds.slice().sort().join('|')){archivedCompletions[id]={...completion,phraseIds:oldIds,archivedReason:'imported-lesson-plan-changed',sourcePlan:sourceVersion};delete result.completions[id];}
-      else result.completions[id]={...completion,phraseIds:oldIds,planVersion:CURRENT_PLAN_VERSION};
+      const oldIds=completion?.catalogCandidatePhraseIds||completion?.phraseIds||oldLessons.get(id)?.phraseIds||[],newIds=lessonById.get(id)?.phraseIds||[];
+      if(oldIds.length!==5||oldIds.slice().sort().join('|')!==newIds.slice().sort().join('|')){archivedCompletions[id]={...completion,catalogCandidatePhraseIds:oldIds,archivedReason:'imported-lesson-plan-changed',sourcePlan:sourceVersion};delete result.completions[id];}
+      else result.completions[id]={...completion,catalogCandidatePhraseIds:oldIds,planVersion:CURRENT_PLAN_VERSION};
     }
-    result.sessions=result.sessions.map(session=>{const old=oldLessons.get(session.lessonId),completion=data.completions?.[session.lessonId];return {...session,phraseIds:[...(session.phraseIds||completion?.phraseIds||old?.phraseIds||[])],planVersion:session.planVersion||sourceVersion};});
+    result.sessions=result.sessions.map(session=>{const snapshot=actualSessionSnapshot(session);return {...session,...(snapshot?{phraseIds:[...snapshot],practicedPhraseIds:[...snapshot]}:{}),planVersion:session.planVersion||sourceVersion};});
     const session=result.activeSession,legacy=oldLessons.get(session?.lessonId);
     if(session&&legacy){session.phraseIds=[...(session.phraseIds?.length===5?session.phraseIds:legacy.phraseIds)];session.newPhraseIds=[...(Array.isArray(session.newPhraseIds)?session.newPhraseIds:session.phraseIds)];session.reviewPhraseIds=[...(session.reviewPhraseIds?.length===5?session.reviewPhraseIds:oldLessons.get(session.reviewLessonId)?.phraseIds||[])];session.planVersion=sourceVersion;session.scenarioSnapshot=session.scenarioSnapshot||legacy;}
     result.migration={...(result.migration||{}),fromImport:true,sourceContentVersion:sourceVersion,archivedCompletions,migratedAt:new Date().toISOString()};
@@ -462,7 +496,7 @@
     if(target.dataset.dueRating){ratePhrase(target.dataset.id,target.dataset.dueRating);ui.dueRevealed=null;save();return render();}
     if(target.dataset.mark){const s=store.activeSession,p=byId.get(target.dataset.id);if(s&&p){advanceNew(p,target.dataset.mark);return;}}
     const action=target.dataset.action;
-    if(action==='continue'){if(store.activeSession){go('learn');}else if(store.introducedPhraseIds.length===PHRASES.length){if(ensureMasterySession())go('learn');else go('due');}else if(lessonForNew()){ensureSession();go('learn');}else go('due');}
+    if(action==='continue'){if(store.activeSession){go('learn');}else if(store.introducedPhraseIds.length===PHRASES.length){if(ensureMasterySession())go('learn');else go('due');}else{const next=ensureSession();if(next)go('learn');else if(sessionAllocationError)toast(sessionAllocationError);else go('due');}}
     if(action==='random'){ui.modalReturnFocus=target;ui.selected=PHRASES[Math.floor(Math.random()*PHRASES.length)]?.id;modal();}
     if(action==='save'){event.stopPropagation();toggleSave(target.dataset.id);}
     if(action==='retry-save'){if(save())toast('Tiến độ đã được lưu trên thiết bị.');return render();}
