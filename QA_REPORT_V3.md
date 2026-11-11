@@ -1,65 +1,73 @@
-# TomEng V3.1 — QA checklist cập nhật
+# TomEng Native V3.2 — Independent Audit & QA
 
 **Ngày:** 2026-11-11
-**Branch:** `feat/tomeng-native-v3` · **PR:** #2 (Draft)
-**Quyết định:** chưa merge; chưa đủ căn cứ để phát hành vì còn nội dung cần biên tập viên độc lập và kiểm thử thiết bị thật.
+**Branch:** `feat/tomeng-native-v3` · **PR:** [#2](https://github.com/johnny-bui/TomEng/pull/2) (**Draft**)
+**Audit được xử lý:** Independent Audit review `5854030770`
+**Phiên bản nội dung / schema:** `native-v3.2` / `5`
+**Quyết định:** Giữ Draft, không merge và không phát hành production. Chỉ các mục có bằng chứng tương ứng mới được đánh dấu PASS; thiết bị thật và biên tập viên độc lập vẫn chưa có trong môi trường này.
 
-## P0 — Nội dung, luồng học và dữ liệu
+## Tóm tắt audit mới
+
+| Hạng mục audit | Trạng thái | Xử lý / bằng chứng |
+| --- | --- | --- |
+| P0: import V2/V3/V3.1 backup nhầm ID do dùng fingerprint V2 | **PASS** | Import phân nhánh theo `schemaVersion` + `contentVersion`. V2 dùng fingerprint; V3/V3.1 giữ ID gốc và lesson plan nguồn; V3.2 restore theo schema/version hiện tại. Regression xác nhận `p151 → p152` chỉ cho V2, còn V3/V3.1/V3.2 giữ `p151`. |
+| P0: giữ dữ liệu import và tránh áp completion sang bài đã đổi nội dung | **PASS** | Fixtures bao gồm saved, learned, reviews, contentEdits, completions, archive, sessions, activeSession. Completion chỉ giữ khi 5 phrase ID khớp lesson hiện tại; completion cũ khác plan được archive cùng ID/snapshot nguồn. |
+| P0: backup trước import / import lỗi | **PASS** | Tạo snapshot rồi đọc lại xác nhận đã ghi trước khi thay store; lỗi ghi backup dừng import. Schema/version không hỗ trợ hoặc envelope/payload mâu thuẫn cũng bị từ chối trước khi mutate. |
+| P1: đổi track nhưng phải ôn bài hoàn thành gần nhất ở track khác | **PASS** | Test chuyển Everyday → Workplace, Workplace → Everyday và tuyến học trong từng track; reviewPhraseIds được lấy từ completion mới nhất toàn cục. |
+| P1: migration V3.1 đang ở phase review chọn sai plan theo điểm ID | **PASS** | Khi phase là `review`, migration ưu tiên plan theo contentVersion nguồn; fixture đang review 2/5 phrase xác nhận lesson, review lesson, index và done IDs giữ nguyên. |
+| QA report phản ánh phiên bản mới | **PASS** | Báo cáo này là V3.2 và phân biệt PASS / NOT TESTED, gồm giới hạn của test giả lập và thiết bị thật. |
+
+## P0 — Nội dung, chu trình học và dữ liệu
 
 | Hạng mục | Trạng thái | Bằng chứng / giới hạn |
 | --- | --- | --- |
-| Đủ 1.200 cụm, ID duy nhất p001–p1200; giữ nguyên 150 câu cũ | **PASS** | `QA_CONTENT.py`, `tests/content.test.py`; đối chiếu toàn bộ trường legacy yêu cầu. |
-| 240 bài, mỗi bài 5 cụm; bài 31–240 cùng một chủ đề | **PASS** | Kiểm tra tự động trên 210 bài mới; bài 1–30 legacy giữ nhóm gốc. |
-| Duyệt ngữ nghĩa độc lập toàn bộ bản dịch, câu nối, mẹo nhớ và biến thể | **NOT TESTED** | Đã biên tập AI 179 ID / 191 lượt sửa; chưa có biên tập viên tiếng Anh bản ngữ rà từng câu. `CONTENT_QA_ISSUES.md` còn ghi các mục cần người duyệt. |
-| Follow-up không lặp trong từng nhóm 5 biến thể và nối được hội thoại | **PASS** (đa dạng cấu trúc) / **NOT TESTED** (ngữ nghĩa) | 1.050 follow-up mới đã được biên tập lại; cả 210 nhóm đều có 5 câu nối tiếp khác nhau. Tổng hiện 350 follow-up duy nhất, tối đa lặp 8 lần trong các nhóm cùng chủ đề. Chưa có người duyệt xem từng câu có đúng mạch không. |
-| Review 5 → Learn 5 → Recall 5; không bỏ qua ôn; không lộ đáp án trước khi recall | **PASS** | `node tests/engine.test.cjs`: kiểm tra cổng chuyển bước, đánh giá sau reveal và 5 cụm ôn bắt buộc. |
-| SRS theo tự đánh giá; câu “Chưa nhớ” đến hạn ngày sau; giới hạn lượt ôn | **PASS** | Kiểm tra interval 1/3/7/14/30 ngày và giới hạn 12 câu/lượt. Đây là lịch dựa trên tự đánh giá, không phải đo trí nhớ sinh lý. |
-| Ngày học, bỏ ngày, bài 31 và bài 240 | **PASS** | Kiểm tra ngày địa phương, streak, day 31, hoàn tất 240 bài. |
-| Migration V1/V2/V3, sao lưu trước, không gán sai ID sau đổi thứ tự | **PASS** | Kiểm thử fixture tổng hợp; V2 đối chiếu English fingerprint; completion bài cũ khác thứ tự được giữ trong archive thay vì đánh dấu nhầm bài mới. |
-| Hoàn tác migration | **PASS** | Có thao tác rollback xác nhận; chụp trạng thái hiện tại trước khi khôi phục key đã lưu. Kiểm thử trên localStorage giả lập. |
-| Không mất dữ liệu trên profile thật của người dùng | **NOT TESTED** | Chưa nhận/khôi phục bản backup thật; dữ liệu cá nhân không có trong fixture kiểm thử. |
+| 1.200 cụm hợp lệ, ID duy nhất; giữ đủ 150 cụm legacy | **PASS** | `python3 tests/content.test.py`; `python3 content/native-v3/QA_CONTENT.py`. |
+| 240 bài, mỗi bài 5 cụm; bài mới nhất quán theo tình huống/pattern | **PASS** | Automated content QA: 240 bài, 7 danh mục, 70 tiểu mục, 210 pattern; không thay ID. |
+| Rà soát độc lập ngữ pháp, tự nhiên, ngữ cảnh, dịch và mẹo nhớ toàn bộ 1.200 cụm | **NOT TESTED** | Script cấu trúc không chứng nhận chất lượng bản ngữ. Chưa có biên tập viên độc lập duyệt thủ công từng mục; không tuyên bố native-approved. |
+| Review 5 → Learn 5 → Recall 5, không lộ đáp án trước recall | **PASS** | `node tests/engine.test.cjs` kiểm tra chuyển phase, review gate và reveal/rating. |
+| SRS theo kết quả người học và giới hạn lượt ôn | **PASS** | Engine regression kiểm tra lịch 1/3/7/14/30 ngày, đánh giá nhớ và review cap. |
+| Ngày học, streak, bài đầu/cuối và 240 bài | **PASS** | Regression kiểm tra ngày địa phương, ngày nghỉ, lesson 31 và hoàn tất đến lesson 240. |
+| Local migration V1/V2/V3/V3.1 → V3.2, giữ active session | **PASS** | Synthetic fixtures kiểm tra phrase IDs, completion archive, review phase và session cũ; backup local được tạo trước migration. |
+| Import backup V2/V3/V3.1/V3.2 | **PASS** | `node tests/engine.test.cjs`; fixtures phiên bản riêng kiểm tra toàn bộ mảng/trường tiến độ và ID `p151`. |
+| Khôi phục profile thật của người dùng và xác nhận mọi dữ liệu riêng | **NOT TESTED** | Không có file backup thật để nhập; chỉ fixture tổng hợp. |
+| Rollback trên trình duyệt / profile thật sau import | **NOT TESTED** | Test xác minh guard và snapshot khi import; chưa khôi phục một profile production thật. |
 
-## P1 — Học, speaking/listening, UI và mobile
-
-| Hạng mục | Trạng thái | Bằng chứng / giới hạn |
-| --- | --- | --- |
-| Everyday / Workplace / Mixed track | **PASS** | Chọn track, lưu lựa chọn, giữ phiên đã bắt đầu và áp dụng track mới cho phiên chưa chạm được kiểm tra tự động. |
-| Listening: nghe trước, transcript chỉ mở sau khi audio kết thúc và tự kiểm tra | **PASS** | Engine test giả lập TTS và callback kết thúc; không hỗ trợ hoặc lỗi TTS không mở transcript. |
-| Listening trên giọng đọc thật của thiết bị | **NOT TESTED** | Môi trường browser QA không phát hoàn tất TTS; chưa đo giọng/voice trên Chrome Android hoặc Safari iPhone. |
-| Hội thoại 4 lượt theo chủ đề | **PASS** | Có lượt nối tiếp và gợi ý sau khi người học tự đáp; điều hướng 1–4 được kiểm tra. Tính liên tục tự nhiên của mọi nhóm cần người biên tập nghe/đọc lại. |
-| Speaking không tăng tiến độ do bấm micro, thiếu hỗ trợ, lỗi quyền hoặc lỗi khởi động | **PASS** | Unit test cho unsupported, permission error, start throw và transcript không rỗng. |
-| Không tuyên bố chấm điểm phát âm bằng speech-to-text | **PASS** | UI ghi rõ transcript gần đúng/tham khảo; không có điểm phát âm. |
-| Rescue Mode ngoài 9 ý định cố định | **PASS** | Tìm kiếm tự do trên 1.200 cụm; browser QA tìm `airport` trả kết quả và giữ focus input. |
-| Tìm kiếm, lọc và nội dung sửa cục bộ hiển thị nhất quán giữa mọi màn học | **NOT TESTED** | Luồng search chính và Rescue đã thử; chưa kiểm chứng end-to-end toàn bộ `contentEdits` qua mọi view. |
-| Mobile nav 4 mục, không tràn ngang ở 360 / 768 / 1440 px | **PASS** | Browser localhost QA tại cả ba viewport; 360px có 4 mục, 0px overflow. |
-| Ô nhập mobile không kích hoạt Safari auto-zoom | **PASS** | Các ô search, recall và biên tập dùng 16px ở breakpoint mobile; đo CSS computed 16px trên viewport 360px. Safari thật chưa thử. |
-| Keyboard modal, focus ban đầu, Escape và focus trap | **PASS** | Browser QA mở phrase bằng Enter, focus vào nút Đóng, đóng bằng Escape. Screen reader chưa kiểm thử. |
-| Permission prompt/micro thực tế và callbacks trên thiết bị | **NOT TESTED** | Có test callback giả lập; chưa bấm micro hoặc cấp quyền trên thiết bị thật. |
-
-## P2 — Giao diện, kiến trúc, hiệu năng và PWA
+## P1 — Track, tìm kiếm, Speaking/Listening và trải nghiệm
 
 | Hạng mục | Trạng thái | Bằng chứng / giới hạn |
 | --- | --- | --- |
-| Lỗi panel ghi chú bị ép chữ thành cột dọc | **PASS** | Sửa grid thành block có marker định vị; đo chiều rộng nội dung 280px tại desktop 1440px và xem trực tiếp browser. |
-| CSS override mâu thuẫn ở note panel và bottom nav | **PASS** | Bỏ các override 8px/1fr gây lỗi và các cấu hình nav 5/6 cột xung đột; giữ cấu hình 4 mục. |
-| Refactor CSS override trùng lặp gây lệch giao diện | **PASS** | Gộp mỗi breakpoint vào một media block; bỏ khai báo trùng cho root font, lưới chính, note panel, grammar và bottom nav; giữ responsive override cần thiết theo viewport. |
-| Không lỗi console trong browser QA | **PASS** | Không có warning/error console trong các luồng đã mở trên localhost. |
-| Benchmark hiệu năng tìm kiếm 1.200 câu và Library trên máy yếu | **NOT TESTED** | Có kiểm tra functional; chưa chạy benchmark định lượng trên điện thoại thật. |
-| PWA cập nhật app shell/cache | **PASS** | Tăng cache lên `tomeng-v8-native` sau khi chốt code và payload nội dung để app shell mới lấy đủ asset mới. Browser QA trước đó bắt được lỗi cache v6; v8 chưa được xác minh offline trên thiết bị. |
-| PWA cài đặt, mở offline, nâng cấp cache và Safari iOS | **NOT TESTED** | Chưa xác minh offline thật hoặc cài PWA trên iPhone/Android; localhost browser smoke không thay thế kiểm thử đó. |
-| Kiểm thử Chrome Android, Safari iPhone, screen reader | **NOT TESTED** | Không có thiết bị tương ứng trong phiên QA. |
+| Everyday / Workplace / Mixed; đổi track vẫn ôn completion gần nhất | **PASS** | Regression các hướng chuyển track và kiểm tra chính xác review phrase IDs. |
+| Search/category/Library/Rescue và trang dữ liệu lớn | **PASS** (logic) / **NOT TESTED** (thiết bị thật) | Engine test xác nhận tìm phrase trên catalog; chưa benchmark trên điện thoại yếu. |
+| `contentEdits` đồng nhất trong các bề mặt học | **PASS** (fixture logic) / **NOT TESTED** (browser E2E) | Regression xác nhận edit đi qua import/persistence và các view model được dựng từ nội dung đã sửa; chưa hoàn thành thao tác browser E2E mọi màn. |
+| Listening nghe trước, transcript sau | **PASS** (callback giả lập) / **NOT TESTED** (voice thật) | Engine test kiểm tra transcript gate và trường hợp TTS không hỗ trợ/lỗi. Chất lượng voice chưa nghe trên thiết bị. |
+| Speaking chỉ ghi nhận khi có kết quả transcript; không chấm phát âm | **PASS** (callback giả lập) / **NOT TESTED** (micro thật) | Engine test mô phỏng unsupported, permission/start/error và transcript. Không có xác nhận chấm phát âm; chưa chạy quyền micro thật. |
+| Hội thoại nối tiếp và tính tự nhiên của mọi hội thoại | **PASS** (cấu trúc) / **NOT TESTED** (biên tập ngữ nghĩa) | Có cấu trúc hội thoại 2–4 lượt theo scenario; chưa nghe/đọc độc lập toàn bộ hội thoại. |
+| Keyboard, modal, screen reader, focus và accessibility | **NOT TESTED** | Không có vòng browser/screen-reader QA mới trong phiên này. |
+| Mobile layout và Safari input zoom | **NOT TESTED** | Chưa chạy Chrome Android/Safari iPhone thật trong phiên này. |
 
-## Kiểm thử đã chạy
+## P2 — PWA, hiệu năng và giao diện
+
+| Hạng mục | Trạng thái | Bằng chứng / giới hạn |
+| --- | --- | --- |
+| PWA cache version, precache migration assets, install/activate | **PASS** (mô phỏng worker) | `node tests/pwa.test.cjs`: kiểm tra asset tồn tại, cache version mới, xóa cache cũ, `skipWaiting`/`clients.claim`. |
+| Offline thật, cài đặt và cập nhật PWA trên thiết bị | **NOT TESTED** | Worker test không thay thế kiểm tra offline từ browser/device. |
+| Screenshot browser QA và kiểm tra 360/768/1440 px | **NOT TESTED** | Chưa chụp bằng chứng browser trong vòng audit hiện tại. |
+| Benchmark tìm kiếm / render trên thiết bị cấu hình thấp | **NOT TESTED** | Chưa đo hiệu năng định lượng. |
+| CSS override refactor và kiểm tra toàn bộ breakpoint sau thay đổi | **NOT TESTED** | Không thuộc patch audit hiện tại; cần browser visual regression. |
+
+## Regression suite đã chạy
 
 - `node --check app.js` — **PASS**
 - `node --check sw.js` — **PASS**
-- `node tests/engine.test.cjs` — **PASS**: daily flow, track, Rescue search, Listening gate, Speaking callbacks/error cases, SRS, migration/archive/rollback, 240 bài.
-- `python3 content/native-v3/QA_CONTENT.py` — **PASS** cấu trúc: 1.200 cụm, 240 bài, 7 danh mục, 70 nhóm, 210 pattern; script nêu rõ không chứng nhận văn phong bản ngữ.
-- `python3 tests/content.test.py` — **PASS**: payload, CSV, 150 câu legacy.
+- `node --check tests/engine.test.cjs` — **PASS**
+- `node --check tests/pwa.test.cjs` — **PASS**
+- `node tests/engine.test.cjs` — **PASS**: daily flow, cross-track review, import/migration fixtures, persistence, SRS, Listening/Speaking callbacks, 240 lessons.
+- `node tests/pwa.test.cjs` — **PASS**: service-worker cache lifecycle và asset precache.
+- `python3 tests/content.test.py` — **PASS**: 1.200 phrase records, 150 legacy fields, payload/CSV.
+- `python3 content/native-v3/QA_CONTENT.py` — **PASS** cấu trúc; **không** xác nhận editorial/native naturalness.
 - `git diff --check` — **PASS**
-- Browser localhost: **PASS** functional/responsive tại 360, 768, 1440px; Rescue search; modal keyboard; ghi chú không còn chữ dọc.
-- Browser console: **PASS** không có lỗi trong các luồng trên.
+- GitHub Actions sau commit — **PENDING**; sẽ cập nhật sau khi push.
 
 ## Kết luận
 
-Các sửa chức năng P0/P1 có thể kiểm tra tự động đã được triển khai. Không đánh dấu PR hoàn tất vì semantic review toàn bộ chưa có người duyệt độc lập, PWA offline/device QA chưa thực hiện. Giữ PR **Draft**, không merge hoặc phát hành production cho đến khi các mục NOT TESTED phía trên được xử lý hoặc được người sở hữu chấp nhận với lý do cụ thể.
+Các mục code có thể tái lập trong audit mới đã được sửa và có regression tests. PR vẫn **Draft**. Chưa đủ bằng chứng để đánh dấu hoàn tất toàn bộ audit: editorial review độc lập, import/rollback profile thật, browser/device QA (Android/iPhone), offline PWA, accessibility và benchmark vẫn **NOT TESTED**.

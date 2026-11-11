@@ -20,5 +20,7 @@ jobs:
         run: node --check app.js && node --check sw.js
       - name: Test learning engine and migrations
         run: node tests/engine.test.cjs
+      - name: Test PWA shell and cache migration assets
+        run: node tests/pwa.test.cjs
       - name: Test phrase data
         run: python3 tests/content.test.py

@@ -62,10 +62,9 @@
           archivedCompletions[id]={...completion,phraseIds:oldIds,possiblePhraseIdsByPlan:!completion?.phraseIds?Object.fromEntries(LEGACY_PLANS.map((plan)=>[plan.version,plan.lessons.find((item)=>item.id===id)?.phraseIds||[]])):undefined,archivedReason:'lesson-plan-changed-or-ambiguous'};delete result.completions[id];
         }
       }
-      const s=result.activeSession, touched=[...(s?.learnedViewed||[]),...(s?.reviewDone||[]),...(s?.recallDone||[])],candidates=LEGACY_PLANS.filter((plan)=>plan.lessons.some((item)=>item.id===s?.lessonId)),score=plan=>touched.filter((id)=>plan.lessons.find((item)=>item.id===s?.lessonId)?.phraseIds.includes(id)).length,selectedPlan=candidates.sort((a,b)=>score(b)-score(a)||(a.version==='native-v3'?-1:1))[0]||previous;oldLessons=new Map((selectedPlan?.lessons||[]).map((item)=>[item.id,item]));const legacy=oldLessons.get(s?.lessonId);
+      const s=result.activeSession, touched=[...(s?.learnedViewed||[]),...(s?.reviewDone||[]),...(s?.recallDone||[])],candidates=LEGACY_PLANS.filter((plan)=>plan.lessons.some((item)=>item.id===s?.lessonId)),score=plan=>touched.filter((id)=>plan.lessons.find((item)=>item.id===s?.lessonId)?.phraseIds.includes(id)).length,selectedPlan=s?.phase==='review'?previous:candidates.sort((a,b)=>score(b)-score(a)||(a.version===current.contentVersion?-1:a.version==='native-v3'?-1:1))[0]||previous;oldLessons=new Map((selectedPlan?.lessons||[]).map((item)=>[item.id,item]));const legacy=oldLessons.get(s?.lessonId);
       if(s&&legacy){s.phraseIds=[...legacy.phraseIds];s.reviewPhraseIds=[...(oldLessons.get(s.reviewLessonId)?.phraseIds||[])];s.planVersion=selectedPlan.version;}
-      result.migration={...(result.migration||{}),contentPlanUpdatedFrom:current.contentVersion,planMigrationBackupKey,archivedCompletions,migratedAt:new Date().toISOString()};
-      result.lastCompletedLessonId=[...META.lessons].reverse().find((x)=>result.completions[x.id])?.id||null;
+      result.migration={...(result.migration||{}),contentPlanUpdatedFrom:current.contentVersion,planMigrationBackupKey,archivedCompletions,migratedAt:new Date().toISOString()};rebuildProgress(result);
       try { localStorage.setItem(V3_KEY,JSON.stringify(result)); } catch { toast('Không lưu được dữ liệu sau khi cập nhật kế hoạch học.'); }
       return result;
     }
@@ -102,19 +101,21 @@
       const lesson=lessonById.get(lessonId);
       if(lesson&&completion&&!completion.migrated){if(lesson.day<=30&&completion.date)result.completions[lessonId]=completion;else archivedCompletions[lessonId]=completion;}
     }
-    result.lastCompletedLessonId=[...META.lessons].reverse().find(x=>result.completions[x.id])?.id||null;
+    result.lastCompletedLessonId=newestCompletedId(result.completions);
     result.activityDates=[...new Set(Object.values(result.completions).map(x=>x.date).filter(x=>/^\d{4}-\d{2}-\d{2}$/.test(x||'')))].sort();
     result.streak=streakForDates(result.activityDates);
     result.migration={fromPreviousEngine:!!engine,fromV2:!!v2,fromV1:!!v1,migratedAt:new Date().toISOString(),mappedSaved:result.saved.length,mappedLearned:result.learned.length,unresolvedIds:[...unresolved],preservedCompletedLessons:Object.keys(result.completions).length,archivedCompletions};
     try { localStorage.setItem(V3_KEY, JSON.stringify(result)); } catch { toast('Không lưu được dữ liệu. Hãy xuất bản sao lưu trước khi tiếp tục.'); }
     return result;
   }
+  function newestCompletedId(completions) { return Object.entries(completions||{}).filter(([,c])=>c&&!c.migrated).sort((a,b)=>String(b[1].completedAt||b[1].date||'').localeCompare(String(a[1].completedAt||a[1].date||''))||((b[1].day||0)-(a[1].day||0))).map(([id])=>id).find(id=>lessonById.has(id))||null; }
   function streakForDates(dates) {
     const set=new Set(dates),today=dateKey();
     let cursor=set.has(today)?today:shiftDate(today,-1),count=0;
     while(set.has(cursor)){count++;cursor=shiftDate(cursor,-1);}
     return count;
   }
+  function rebuildProgress(result) { result.activityDates=[...new Set([...Object.values(result.completions||{}).map(c=>c?.date),...(result.sessions||[]).map(s=>s?.date)].filter(d=>/^\d{4}-\d{2}-\d{2}$/.test(d||'')))].sort();result.streak=streakForDates(result.activityDates);result.lastCompletedLessonId=newestCompletedId(result.completions);return result; }
   let store = migrateStore();
   let ui = { page:'home', category:'all', subcategory:'all', query:'', rescueQuery:'', selected:null, lessonId:null, stepIndex:0, revealed:false, listeningId:null, listeningHeard:false, listeningRevealed:false, listeningRequest:0, conversationIndex:0, speakingId:null, transcript:'', rescueIntent:'missed', familyId:null, patternView:false };
   function save() { try { localStorage.setItem(V3_KEY, JSON.stringify(store)); } catch { toast('Bộ nhớ trình duyệt đầy. Hãy tải bản sao lưu rồi thử lại.'); } }
@@ -124,13 +125,13 @@
     return lessonsForTrack().find((lesson) => !store.completions[lesson.id]) || null;
   }
   function lessonsForTrack(){return META.lessons.filter(l=>store.track==='mixed'||(store.track==='everyday'?l.primaryCategoryId==='everyday'||l.primaryCategoryId==='reflex':l.primaryCategoryId!=='everyday'&&l.primaryCategoryId!=='reflex'));}
-  function mostRecentCompleted() { return store.lastCompletedLessonId ? lessonById.get(store.lastCompletedLessonId) : [...META.lessons].reverse().find((l)=>store.completions[l.id]) || null; }
+  function mostRecentCompleted() { return lessonById.get(newestCompletedId(store.completions))||null; }
   function ensureSession() {
     if (store.activeSession && lessonById.has(store.activeSession.lessonId) && !store.completions[store.activeSession.lessonId]) return store.activeSession;
     if (store.activeSession) store.activeSession=null;
     const lesson = lessonForNew();
     if (!lesson) return null;
-    const available=lessonsForTrack(),lessonIndex=available.findIndex(x=>x.id===lesson.id),prev=available.slice(0,lessonIndex).reverse().find(x=>store.completions[x.id]&&!store.completions[x.id].migrated)||null;
+    const prev=mostRecentCompleted();
     store.activeSession = { lessonId:lesson.id, phraseIds:[...lesson.phraseIds], reviewPhraseIds:prev?[...(store.completions[prev.id]?.phraseIds||prev.phraseIds)]:[], planVersion:CURRENT_PLAN_VERSION, phase:prev?'review':'learn', reviewLessonId:prev?.id || null, reviewIndex:0, reviewDone:[], learnIndex:0, learnedViewed:[], recallIndex:0, recallRevealed:false, recallDone:[], startedAt:new Date().toISOString() };
     save(); return store.activeSession;
   }
@@ -237,14 +238,35 @@
     };
     result.saved=[...new Set((data.saved||[]).map(mapId).filter(Boolean))];
     result.learned=[...new Set((data.learned||[]).map(mapId).filter(Boolean))];
+    result.speakingPracticed=[];result.selfReportedPractice=[...new Set([...(data.selfReportedPractice||[]),...(data.speakingPracticed||[])].map(mapId).filter(Boolean))];
     for(const [id,review] of Object.entries(data.reviews||{})){const mapped=mapId(id);if(mapped)result.reviews[mapped]=review;}
     for(const [id,edit] of Object.entries(data.contentEdits||{})){const mapped=mapId(id);if(mapped)result.contentEdits[mapped]=edit;}
-    const archivedCompletions={};for(const [id,completion] of Object.entries(data.completions||{})){const lesson=lessonById.get(id);if(lesson&&completion&&!completion.migrated){if(lesson.day<=30&&completion.date)result.completions[id]=completion;else archivedCompletions[id]=completion;}}
-    result.activityDates=[...new Set(Object.values(result.completions).map(x=>x.date).filter(Boolean))].sort();
+    const archivedCompletions={};for(const [id,completion] of Object.entries(data.completions||{})){const lesson=lessonById.get(id),legacyLesson=LEGACY_PLANS[1]?.lessons.find(item=>item.id===id);if(lesson&&completion&&!completion.migrated){if(lesson.day<=30&&completion.date)result.completions[id]={...completion,phraseIds:lesson.phraseIds,planVersion:'native-v2-import'};else archivedCompletions[id]={...completion,phraseIds:(legacyLesson?.phraseIds||[]).map(mapId).filter(Boolean),archivedReason:'v2-import-plan-archived'};}}
+    result.sessions=Array.isArray(data.sessions)?data.sessions:[];
+    const v2Plan=new Map((LEGACY_PLANS[1]?.lessons||[]).map(item=>[item.id,item])),session=data.activeSession,sessionLesson=v2Plan.get(session?.lessonId),reviewLesson=v2Plan.get(session?.reviewLessonId);
+    if(session&&sessionLesson){result.activeSession={...session,phraseIds:(session.phraseIds||sessionLesson.phraseIds).map(mapId).filter(Boolean),reviewPhraseIds:(session.reviewPhraseIds||reviewLesson?.phraseIds||[]).map(mapId).filter(Boolean),learnedViewed:(session.learnedViewed||[]).map(mapId).filter(Boolean),reviewDone:(session.reviewDone||[]).map(mapId).filter(Boolean),recallDone:(session.recallDone||[]).map(mapId).filter(Boolean),planVersion:'native-v2-import'};}
+    result.track=['everyday','workplace','mixed'].includes(data.track)?data.track:'mixed';result.speechRate=data.speechRate===.8?.8:1;
+    result.activityDates=[...new Set([...Object.values(result.completions).map(x=>x.date),...result.sessions.map(x=>x?.date)].filter(x=>/^\d{4}-\d{2}-\d{2}$/.test(x||'')))].sort();
     result.streak=streakForDates(result.activityDates);
-    result.lastCompletedLessonId=[...META.lessons].reverse().find(x=>result.completions[x.id])?.id||null;
+    result.lastCompletedLessonId=newestCompletedId(result.completions);
     result.accent=data.accent||'en-US';
-    result.migration={fromImport:true,unresolvedIds:[...new Set(unresolved)],migratedAt:new Date().toISOString(),archivedCompletions};
+    result.migration={fromImport:true,sourceContentVersion:'v2-fingerprints',unresolvedIds:[...new Set(unresolved)],migratedAt:new Date().toISOString(),archivedCompletions};
+    return result;
+  }
+  function migrateNativeImportedStore(data,sourceVersion) {
+    const plan=LEGACY_PLANS.find(item=>item.version===sourceVersion);
+    if(!plan)throw new Error(`Không nhận diện được lesson plan của backup ${sourceVersion}. Dữ liệu hiện tại chưa bị thay đổi.`);
+    const oldLessons=new Map(plan.lessons.map(lesson=>[lesson.id,lesson])),result=normaliseStore(data),archivedCompletions={...(result.migration?.archivedCompletions||{})};
+    result.selfReportedPractice=[...new Set([...result.selfReportedPractice,...result.speakingPracticed])];result.speakingPracticed=[];
+    for(const [id,completion] of Object.entries(result.completions)){
+      const oldIds=completion?.phraseIds||oldLessons.get(id)?.phraseIds||[],newIds=lessonById.get(id)?.phraseIds||[];
+      if(oldIds.length!==5||oldIds.slice().sort().join('|')!==newIds.slice().sort().join('|')){archivedCompletions[id]={...completion,phraseIds:oldIds,archivedReason:'imported-lesson-plan-changed',sourcePlan:sourceVersion};delete result.completions[id];}
+      else result.completions[id]={...completion,phraseIds:oldIds,planVersion:sourceVersion};
+    }
+    const session=result.activeSession,legacy=oldLessons.get(session?.lessonId);
+    if(session&&legacy){session.phraseIds=[...(session.phraseIds||legacy.phraseIds)];session.reviewPhraseIds=[...(session.reviewPhraseIds||oldLessons.get(session.reviewLessonId)?.phraseIds||[])];session.planVersion=sourceVersion;}
+    result.migration={...(result.migration||{}),fromImport:true,sourceContentVersion:sourceVersion,archivedCompletions,migratedAt:new Date().toISOString()};
+    rebuildProgress(result);
     return result;
   }
   function exportData() { const payload={app:'TomEng',schemaVersion:5,contentVersion:CONTENT_VERSION,exportedAt:new Date().toISOString(),data:store};const blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`tomeng-backup-${dateKey()}.json`;a.click();URL.revokeObjectURL(a.href);toast('Đã tải bản sao lưu.'); }
@@ -259,7 +281,35 @@
     if(registration.waiting)registration.waiting.postMessage({type:'SKIP_WAITING'});
     setTimeout(()=>{if(!changed)window.location.reload();},1500);
   }
-  function importFile(file) { const reader=new FileReader();reader.onload=()=>{try{const payload=JSON.parse(reader.result);const data=payload.data||payload;if(payload.app&&payload.app!=='TomEng')throw new Error('Tệp không phải bản sao lưu TomEng.');if(!data||!Array.isArray(data.saved)||!Array.isArray(data.learned)||!data.completions||!data.reviews)throw new Error('Thiếu trường dữ liệu bắt buộc.');if(![...data.saved,...data.learned].every(id=>typeof id==='string'&&byId.has(id)))throw new Error('Có ID câu không tồn tại.');if(!Object.entries(data.completions).every(([id,r])=>lessonById.has(id)&&r&&Number.isInteger(r.day)&&r.day>=1&&r.day<=META.lessons.length))throw new Error('Dữ liệu trang học không hợp lệ.');if(!Object.entries(data.reviews).every(([id,r])=>byId.has(id)&&r&&/^\d{4}-\d{2}-\d{2}$/.test(r.dueDate)&&Number.isFinite(r.interval)&&r.interval>=0))throw new Error('Lịch ôn không hợp lệ.');if(data.activeSession&&(!lessonById.has(data.activeSession.lessonId)||!['review','learn','quick'].includes(data.activeSession.phase)))throw new Error('Phiên học đang lưu không hợp lệ.');const legacy=data.schemaVersion<5||data.contentVersion!==CONTENT_VERSION;const preview=`Sẽ khôi phục ${data.saved.length} bookmark, ${Object.keys(data.completions).length} trang hoàn tất và ${Object.keys(data.reviews).length} lịch ôn.${legacy?' Bản V2 được đối chiếu bằng câu tiếng Anh; các ID không khớp sẽ giữ trong bản sao lưu gốc.':''} Dữ liệu hiện tại được sao lưu trước. Tiếp tục?`;if(!window.confirm(preview))return;localStorage.setItem(`tomeng_before_import_${Date.now()}`,JSON.stringify(store));if(legacy)localStorage.setItem(`tomeng_import_original_${Date.now()}`,JSON.stringify(data));store=legacy?migrateImportedStore(data):normaliseStore(data);save();toast('Đã khôi phục dữ liệu.');render();}catch(e){toast(e.message||'Tệp không hợp lệ, chưa thay đổi dữ liệu.');}};reader.readAsText(file); }
+  function importFile(file) {
+    const reader=new FileReader();
+    reader.onload=()=>{
+      try{
+        const payload=JSON.parse(reader.result),data=payload.data||payload;
+        if(payload.app&&payload.app!=='TomEng')throw new Error('Tệp không phải bản sao lưu TomEng.');
+        if(!data||!Array.isArray(data.saved)||!Array.isArray(data.learned)||!data.completions||!data.reviews)throw new Error('Thiếu trường dữ liệu bắt buộc.');
+        if(![...data.saved,...data.learned].every(id=>typeof id==='string'))throw new Error('Danh sách bookmark hoặc learned bị lỗi.');
+        if(!Object.entries(data.completions).every(([id,r])=>lessonById.has(id)&&r&&Number.isInteger(r.day)&&r.day>=1&&r.day<=META.lessons.length))throw new Error('Dữ liệu trang học không hợp lệ.');
+        if(!Object.entries(data.reviews).every(([id,r])=>typeof id==='string'&&r&&/^\d{4}-\d{2}-\d{2}$/.test(r.dueDate)&&Number.isFinite(r.interval)&&r.interval>=0))throw new Error('Lịch ôn không hợp lệ.');
+        if(data.activeSession&&(!lessonById.has(data.activeSession.lessonId)||!['review','learn','quick'].includes(data.activeSession.phase)))throw new Error('Phiên học đang lưu không hợp lệ.');
+        const schema=Number(payload.schemaVersion??data.schemaVersion),version=payload.contentVersion||data.contentVersion;
+        if(payload.schemaVersion!==undefined&&data.schemaVersion!==undefined&&Number(payload.schemaVersion)!==Number(data.schemaVersion))throw new Error('Schema ở đầu tệp và dữ liệu backup không khớp.');
+        if(payload.contentVersion&&data.contentVersion&&payload.contentVersion!==data.contentVersion)throw new Error('Version ở đầu tệp và dữ liệu backup không khớp.');
+        let imported,sourceLabel;
+        if(schema===5&&version===CONTENT_VERSION){imported=normaliseStore(data);sourceLabel='V3.2';}
+        else if(schema===4&&['native-v3','native-v3.1'].includes(version)){imported=migrateNativeImportedStore(data,version);sourceLabel=version;}
+        else if(schema<=3){imported=migrateImportedStore(data);sourceLabel='V2';}
+        else throw new Error(`Backup schema ${schema} / ${version||'không rõ version'} chưa được hỗ trợ. Dữ liệu hiện tại chưa bị thay đổi.`);
+        const preview=`Sẽ khôi phục ${data.saved.length} bookmark, ${Object.keys(imported.completions).length} trang được giữ đúng nội dung, ${Object.keys(imported.migration?.archivedCompletions||{}).length} trang cũ lưu trong archive và ${Object.keys(imported.reviews).length} lịch ôn từ backup ${sourceLabel}. Dữ liệu hiện tại được sao lưu trước. Tiếp tục?`;
+        if(!window.confirm(preview))return;
+        const beforeKey=`tomeng_before_import_${Date.now()}`,before=JSON.stringify(store);localStorage.setItem(beforeKey,before);
+        if(localStorage.getItem(beforeKey)!==before)throw new Error('Không tạo được bản sao lưu dữ liệu hiện tại; chưa nhập backup.');
+        localStorage.setItem(`tomeng_import_original_${Date.now()}`,JSON.stringify(payload));store=imported;save();toast('Đã khôi phục dữ liệu.');render();
+      }catch(e){toast(e.message||'Tệp không hợp lệ, chưa thay đổi dữ liệu.');}
+    };
+    reader.readAsText(file);
+  }
+
   document.addEventListener('click',(event)=>{
     const target=event.target.closest('[data-page],[data-action],[data-track],[data-category],[data-filter],[data-subfilter],[data-open],[data-rating],[data-new-rating],[data-intent],[data-family],[data-mark],[data-due-reveal],[data-due-rating]');if(!target)return;
     if(target.dataset.page)return go(target.dataset.page);
