@@ -1,60 +1,48 @@
-# TomEng V3.4 — QA & Release Report
+# TomEng V3.4.1 — QA report P0 Issue #9
 
 Ngày lập: 11/11/2026
-Issue: [#7 — Adaptive Scenario Sessions](https://github.com/johnny-bui/TomEng/issues/7)
-Branch: `feat/tomeng-issue-7-adaptive-learning`
-Release: `3.4.0` / content plan `native-v3.4`
 
-## Phạm vi triển khai
+Issues: [#7 — Adaptive Scenario Learning](https://github.com/johnny-bui/TomEng/issues/7), [#9 — Actual session review snapshot](https://github.com/johnny-bui/TomEng/issues/9)
 
-- Mỗi phiên tình huống có đúng 5 ID khác nhau. Vai trò từng ID được lưu tách bạch bằng `candidatePhraseIds` (đủ điều kiện giới thiệu mới) và `reusePhraseIds` (đã có bằng chứng introduced); phiên thực tế chụp cố định các vai trò trước khi bắt đầu.
-- Bộ chọn thích ứng đưa 1–5 câu NEW vào phiên; số REUSE phụ thuộc số câu mới còn lại, mức yếu và lịch SRS. Khi track còn câu chưa introduced, phiên hoàn thành cần giới thiệu ít nhất một ID mới. SRS không nhét câu không hợp tình huống để lấp chỗ trống.
-- Review đầu buổi lấy tối đa 5 câu từ phiên trước, loại câu trùng với năm câu tình huống hiện tại.
-- Progress Home lấy số ID introduced duy nhất trên 1.200; số buổi là số session thực tế, không dùng mẫu số 240.
-- Danh mục hiện có 265 scenario-candidate records, mỗi record đúng 5 câu. Giữ 240 ID bài lịch sử để đọc/migration; giữ snapshot V3.2 và V3.3 gồm 240 bài mỗi bản. Số scenario records không giới hạn số buổi thực tế.
-- Khi membership một bài lịch sử thay đổi, migration lưu completion trong archive cùng phrase IDs cũ; các ID đó vẫn là bằng chứng introduced và không bị cấp lại là NEW. Bookmark, learned, SRS, nội dung người dùng sửa, ngày học và session đang dở được giữ.
-- PWA cache được nâng lên `tomeng-v14-native`, có precache snapshot V3.2/V3.3.
+Branch: `fix/issue-9-actual-review-snapshot`
 
-## Acceptance & QA matrix
+Release: app `3.4.1` / content plan `native-v3.4` / store schema `7`
+
+## Thay đổi Issue #9
+
+- `sessions[]` là nguồn ưu tiên cho phần ôn: chọn snapshot `practicedPhraseIds` hoặc `phraseIds` của phiên thật gần nhất. Nếu thời điểm trùng, thứ tự phiên tăng dần được ghi bằng `sessionSequence`; log cũ không có sequence dùng vị trí cuối trong mảng.
+- Completion mới tách `catalogCandidatePhraseIds` khỏi `practicedPhraseIds`; completion không còn ghi bộ phrase tĩnh dưới trường `phraseIds` như thể đó là năm câu người học vừa thực hành. Completion cũ chỉ làm fallback khi không có snapshot phiên thật.
+- Migration V3.2/V3.3 và import backup giữ snapshot phiên có thật; không tự điền câu catalog vào log phiên bị thiếu dữ liệu. Backup, bookmark, learned, SRS, content edits, lịch sử và dữ liệu phiên đang dở vẫn được giữ.
+- Nếu bộ phân bổ SRS không ghép được, selector thử các scenario khác rồi fallback sang câu trong cùng family; nếu vẫn không khả thi, Home cho biết còn ID mới và đưa hành động thử lại/chuyển Mixed thay vì báo đã hết bài.
+- Service worker cache được nâng lên `tomeng-v15-native`; app version hiển thị `3.4.1`.
+
+## QA matrix
 
 | Hạng mục | Trạng thái | Bằng chứng / giới hạn |
 | --- | --- | --- |
-| Đúng 1.200 ID, 150 ID gốc không đổi; mỗi ID có đúng một vị trí candidate | PASS | `tests/content.test.py`, `QA_CONTENT.py`; IDs được kiểm tra toàn bộ và mapping đồng bộ. |
-| Năm slot, role NEW/REUSE riêng, ratio linh hoạt | PASS | Regression kiểm tra phiên 3+2, 4+1, 2+3; lần đầu là 5+0; reused IDs chỉ lấy từ introduced. |
-| Coverage đủ 1.200; không lặp NEW, không bỏ sót, >240 phiên khi cần | PASS | Mô phỏng runtime đến 1.200/1.200, kiểm tra `introduced ∪ remaining`, không giao nhau; có lần refresh, giữ IDs/vai trò/snapshot. |
-| Home progress 0 → 5 → 8; 3 session không hiện `/240` | PASS | Regression kiểm tra ID duy nhất và case 3 NEW + 2 REUSE. |
-| Track switch, track cạn, chuyển Mixed; migration V3.2/V3.3 | PASS | Regression Everyday/Workplace/Mixed, lưu bằng chứng phrase-level và archive lesson đổi membership; session legacy resume theo snapshot. |
-| Review → Learn → Recall → áp dụng → lưu | PASS | Engine regression tương tác qua các bước; không cộng progress khi chưa hoàn tất application. |
-| Hết 1.200 chuyển Mastery, không tạo NEW giả | PASS | Mô phỏng đến full coverage rồi kiểm tra session Mastery và progress không đổi. |
-| English/translation được kiểm duyệt bởi native editor | NOT TESTED | QA cấu trúc và các sample tình huống đã rà; chưa có biên tập viên native duyệt đủ 1.200 câu. Không tuyên bố native-approved. |
-| Android Chrome, iPhone Safari, mic/TTS thật, offline PWA | NOT TESTED | Không chạy thiết bị thật trong phiên này; PWA worker chỉ qua regression test. |
-| Production GitHub Pages của bản V3.4 | NOT TESTED | Pages dùng `main:/`; sẽ kiểm tra URL sau khi merge và deployment hoàn tất. |
+| Cùng bài có 3 NEW + 2 REUSE rồi 2 NEW + 3 REUSE; completion lưu snapshot thực tế | PASS local | Regression hoàn tất đủ 5 candidate ID, so sánh snapshot với catalog candidates. |
+| Hai timestamp giống hệt; phiên thật thắng completion tĩnh | PASS local | `ClockDate` cố định cùng millisecond; ngày kế tiếp chỉ ôn ID của phiên cuối sau khi loại overlap với scenario mới. |
+| V3.2 và V3.3 giữ snapshot phiên thật | PASS local | Migration có backup trước; snapshot review vẫn trùng phrase IDs đã thực hành. |
+| Backup legacy không có session log | PASS local | Completion chỉ dùng làm fallback có nguồn `legacy-completion-fallback`; không bịa session snapshot. |
+| Không bỏ sót ID cuối trong state partial và sau migration V3.2 | PASS local | State còn đúng một ID chưa học vẫn cấp ID đó vào buổi năm câu; saved/learned/SRS và backup còn nguyên. |
+| Coverage 1.200 ID, track switch, refresh, SRS, Mastery, persistence | PASS local | Engine simulation và regression suite hiện có chạy qua đủ coverage; #9 thêm case snapshot/migration/adversarial. |
+| Lint cú pháp, PWA shell/cache, ID/content structural QA, scenario map | PASS local | Các lệnh bên dưới. |
+| GitHub Actions trên head PR cuối | NOT TESTED | Sẽ cập nhật sau khi workflow hoàn tất. |
+| Native editor duyệt ngữ nghĩa toàn bộ 1.200 cụm | NOT TESTED | Structural/content QA không thay thế việc biên tập viên bản ngữ rà toàn bộ catalog. |
+| Chrome Android, Safari iPhone, micro/TTS và offline trên thiết bị thật | NOT TESTED | Chưa chạy trên thiết bị thật trong môi trường hiện tại. |
+| GitHub Pages production sau merge | NOT TESTED | Pages production sẽ được xác minh sau CI và merge. |
 
-## Scenario examples đã rà mẫu
+## Lệnh kiểm thử
 
-- **Small talk trước giờ làm:** hỏi thăm cuối tuần, bắt chuyện nhẹ, phản hồi điều vừa nghe và hỏi tiếp.
-- **Trao đổi phương án trong cuộc họp:** mời góp ý về flow, ghi deadline, nêu rủi ro timeline và quay lại open questions.
-- **Review luồng sản phẩm:** đề xuất đơn giản hóa navigation, rà interaction state, design system và onboarding flow.
-- Các nhóm được tạo bằng cách đan xen subcategory liên quan; tự động QA kiểm tra diversity/pattern/ID, nhưng không thay thế việc đọc ngữ nghĩa toàn bộ nội dung.
-
-## Commands
-
-- `node --check app.js && node --check sw.js && node --check tests/engine.test.cjs && node --check tests/pwa.test.cjs`
-- `node tests/engine.test.cjs`
-- `node tests/pwa.test.cjs`
-- `python3 tests/content.test.py`
-- `python3 content/native-v3/QA_CONTENT.py`
-- `git diff --check`
-
-## GitHub Actions
-
-Trên source commit `79b243e` của PR #8, cả PR check và push check đều **PASS**:
-
-- [PR workflow run](https://github.com/johnny-bui/TomEng/actions/runs/43004618053)
-- [Push workflow run](https://github.com/johnny-bui/TomEng/actions/runs/43004665464)
-
-Sau khi ghi kết quả này vào report và gọn trigger push, Actions chạy lại trên head cuối của PR trước khi merge.
+```bash
+node --check app.js && node --check sw.js && node --check tests/engine.test.cjs && node --check tests/pwa.test.cjs
+node tests/engine.test.cjs
+node tests/pwa.test.cjs
+python3 tests/content.test.py
+python3 content/native-v3/QA_CONTENT.py
+git diff --check
+```
 
 ## Release gate
 
-Local regression và Actions trên source đã PASS. Chỉ merge sau khi check của head cuối PR PASS; kiểm tra GitHub Pages production sau merge. Các kiểm thử native/editor và thiết bị thật là residual risks, không được ghi PASS.
+Chỉ merge sau khi CI của đúng head PR PASS. Sau merge, xác minh `main` quality workflow, GitHub Pages deploy và production assets. Các giới hạn native-editor và thiết bị thật được ghi rõ, không đánh dấu PASS.

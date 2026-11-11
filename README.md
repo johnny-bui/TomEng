@@ -1,4 +1,4 @@
-# TomEng V3.4 — sổ tay luyện phản xạ tiếng Anh
+# TomEng V3.4.1 — sổ tay luyện phản xạ tiếng Anh
 
 TomEng là ứng dụng tĩnh, lưu tiến độ trên thiết bị. Nội dung tập trung vào tiếng Anh dùng được trong đời sống, họp, UI/UX, BA, Developer và giao tiếp công việc. Không cần tài khoản hoặc API AI trả phí.
 
@@ -31,7 +31,7 @@ Mở `http://localhost:4173`. Asset dùng đường dẫn tương đối để c
 
 ## Migration và sao lưu
 
-Store hiện tại dùng key `tomeng_native_v3`, schema 7 và content plan `native-v3.4`. Migration từ dữ liệu V1/V2/V3/V3.1/V3.2/V3.3 tạo và xác minh backup trước khi đổi plan. Completion có membership khác được archive cùng phrase IDs gốc; evidence introduced, bookmark, lịch SRS, session đang dở và nội dung người dùng sửa được giữ theo ID, không theo số thứ tự bài.
+Store hiện tại dùng key `tomeng_native_v3`, schema 7 và content plan `native-v3.4`. Bản app `3.4.1` sửa việc chọn câu ôn theo snapshot phiên thực tế, thêm `catalogCandidatePhraseIds`/`practicedPhraseIds` vào completion mới và giữ tương thích dữ liệu cũ. Migration từ dữ liệu V1/V2/V3/V3.1/V3.2/V3.3 tạo và xác minh backup trước khi đổi plan. Snapshot phiên thật được giữ nguyên; completion catalog cũ chỉ là fallback khi backup không có session log. Bookmark, lịch SRS, session đang dở và nội dung người dùng sửa được giữ theo ID, không theo số thứ tự bài.
 
 Tải backup JSON định kỳ. Nếu không ghi được backup trước migration, ứng dụng dừng migration và không ghi đè tiến độ cũ.
 
