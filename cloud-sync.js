@@ -10,7 +10,7 @@
   const dialog = document.createElement('dialog');
   dialog.className = 'sync-dialog';
   dialog.setAttribute('aria-labelledby', 'sync-dialog-title');
-  document.querySelector('#modal-root')?.append(dialog);
+  (document.querySelector('#sync-root') || document.body).append(dialog);
 
   const safeText = (value) => String(value ?? '').replace(/[&<>"']/g, (char) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
   const statusText = () => ({idle:'Chưa đăng nhập',loading:'Đang kết nối…',pending:'Có thay đổi chưa đồng bộ',syncing:'Đang đồng bộ…',synced:'Đã đồng bộ',offline:'Đang ngoại tuyến',error:'Chưa đồng bộ được'}[state.status] || 'Chưa đăng nhập');
