@@ -40,6 +40,8 @@ vm.runInNewContext(source, sandbox);
   assert.ok(cacheShell.includes('./legacy-lesson-plan-v3_2.js'));
   assert.ok(cacheShell.includes('./legacy-lesson-plan-v3_3.js'));
   assert.ok(cacheShell.includes('./app.js'));
+  assert.ok(cacheShell.includes('./sync-merge.js'));
+  assert.ok(cacheShell.includes('./cloud-sync.js'));
 
   let activatePromise;
   handlers.activate({ waitUntil: promise => { activatePromise = promise; } });
@@ -48,7 +50,7 @@ vm.runInNewContext(source, sandbox);
   assert.ok(claimed, 'new worker controls open clients');
 
   const index = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
-  assert.match(index, /sw\.js\?v=17-native/);
+  assert.match(index, /sw\.js\?v=18-native/);
   assert.ok(index.indexOf('legacy-lesson-plan-v3.js') < index.indexOf('app.js'));
   const app = fs.readFileSync(path.join(root, 'app.js'), 'utf8');
   const css = fs.readFileSync(path.join(root, 'style.css'), 'utf8');
@@ -69,6 +71,7 @@ vm.runInNewContext(source, sandbox);
   assert.ok(index.indexOf('legacy-lesson-plan-v3_1.js') < index.indexOf('app.js'));
   assert.ok(index.indexOf('legacy-lesson-plan-v3_2.js') < index.indexOf('app.js'));
   assert.ok(index.indexOf('legacy-lesson-plan-v3_3.js') < index.indexOf('app.js'));
+  assert.ok(index.indexOf('sync-merge.js') < index.indexOf('cloud-sync.js'));
   for (const asset of cacheShell) assert.ok(fs.existsSync(path.join(root, asset.replace(/^\.\//, ''))), `precache asset exists: ${asset}`);
   console.log('PASS: service worker cache version, migration-plan precache, install/activate and asset existence');
 })().catch(error => { console.error(error); process.exitCode = 1; });
