@@ -20,7 +20,7 @@ const sandbox = {
   },
   caches: {
     open: async () => cache,
-    keys: async () => ['tomeng-v11-native', 'tomeng-v12-native', 'tomeng-v13-native', 'tomeng-v14-native', 'tomeng-v15-native', 'tomeng-v16-native', 'tomeng-v17-native', 'tomeng-v19-native'],
+    keys: async () => ['tomeng-v11-native', 'tomeng-v12-native', 'tomeng-v13-native', 'tomeng-v14-native', 'tomeng-v15-native', 'tomeng-v16-native', 'tomeng-v17-native', 'tomeng-v18-native', 'tomeng-v19-native'],
     delete: async key => { deleted.push(key); return true; },
     match: async () => null
   },
@@ -46,16 +46,16 @@ vm.runInNewContext(source, sandbox);
   let activatePromise;
   handlers.activate({ waitUntil: promise => { activatePromise = promise; } });
   await activatePromise;
-  assert.deepEqual(deleted, ['tomeng-v11-native', 'tomeng-v12-native', 'tomeng-v13-native', 'tomeng-v14-native', 'tomeng-v15-native', 'tomeng-v16-native', 'tomeng-v17-native', 'tomeng-v18-native']);
+  assert.deepEqual(deleted, ['tomeng-v11-native', 'tomeng-v12-native', 'tomeng-v13-native', 'tomeng-v14-native', 'tomeng-v15-native', 'tomeng-v16-native', 'tomeng-v17-native', 'tomeng-v18-native', 'tomeng-v19-native']);
   assert.ok(claimed, 'new worker controls open clients');
 
   const index = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
-  assert.match(index, /sw\.js\?v=19-native/);
+  assert.match(index, /sw\.js\?v=20-native/);
   assert.ok(index.indexOf('legacy-lesson-plan-v3.js') < index.indexOf('app.js'));
   const app = fs.readFileSync(path.join(root, 'app.js'), 'utf8');
   const sync = fs.readFileSync(path.join(root, 'cloud-sync.js'), 'utf8');
-  assert.match(index, /<div id=\"modal-root\"><\\/div>\\s*<div id=\"sync-root\"><\\/div>/, 'sync dialog has a dedicated mount outside the app-cleared phrase modal root');
-  assert.match(sync, /document.querySelector\\('#sync-root'\\) \\|\\| document.body\\)\\.append\\(dialog\\)/, 'sync dialog mounts outside the phrase modal lifecycle');
+  assert.ok(index.includes('<div id="modal-root"></div>\n  <div id="sync-root"></div>'), 'sync dialog has a dedicated mount outside the app-cleared phrase modal root');
+  assert.ok(sync.includes("(document.querySelector('#sync-root') || document.body).append(dialog);"), 'sync dialog mounts outside the phrase modal lifecycle');
   const css = fs.readFileSync(path.join(root, 'style.css'), 'utf8');
   assert.equal((app.match(/const APP_VERSION =/g) || []).length, 1, 'SemVer has one source of truth');
   assert.match(app, /data-app-version=\"\$\{APP_VERSION\}\"/);
