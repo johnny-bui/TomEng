@@ -20,7 +20,7 @@ const sandbox = {
   },
   caches: {
     open: async () => cache,
-    keys: async () => ['tomeng-v11-native', 'tomeng-v12-native', 'tomeng-v13-native', 'tomeng-v14-native', 'tomeng-v15-native', 'tomeng-v16-native', 'tomeng-v17-native', 'tomeng-v18-native'],
+    keys: async () => ['tomeng-v11-native', 'tomeng-v12-native', 'tomeng-v13-native', 'tomeng-v14-native', 'tomeng-v15-native', 'tomeng-v16-native', 'tomeng-v17-native', 'tomeng-v19-native'],
     delete: async key => { deleted.push(key); return true; },
     match: async () => null
   },
@@ -35,13 +35,13 @@ vm.runInNewContext(source, sandbox);
   handlers.install({ waitUntil: promise => { installPromise = promise; } });
   await installPromise;
   assert.ok(skipped, 'install activates the updated worker without waiting for an old tab');
-  assert.ok(cacheShell.includes('./legacy-lesson-plan-v3.js?v=3.5.0'));
-  assert.ok(cacheShell.includes('./legacy-lesson-plan-v3_1.js?v=3.5.0'));
-  assert.ok(cacheShell.includes('./legacy-lesson-plan-v3_2.js?v=3.5.0'));
-  assert.ok(cacheShell.includes('./legacy-lesson-plan-v3_3.js?v=3.5.0'));
-  assert.ok(cacheShell.includes('./app.js?v=3.5.0'));
-  assert.ok(cacheShell.includes('./sync-merge.js?v=3.5.0'));
-  assert.ok(cacheShell.includes('./cloud-sync.js?v=3.5.0'));
+  assert.ok(cacheShell.includes('./legacy-lesson-plan-v3.js?v=3.5.1'));
+  assert.ok(cacheShell.includes('./legacy-lesson-plan-v3_1.js?v=3.5.1'));
+  assert.ok(cacheShell.includes('./legacy-lesson-plan-v3_2.js?v=3.5.1'));
+  assert.ok(cacheShell.includes('./legacy-lesson-plan-v3_3.js?v=3.5.1'));
+  assert.ok(cacheShell.includes('./app.js?v=3.5.1'));
+  assert.ok(cacheShell.includes('./sync-merge.js?v=3.5.1'));
+  assert.ok(cacheShell.includes('./cloud-sync.js?v=3.5.1'));
 
   let activatePromise;
   handlers.activate({ waitUntil: promise => { activatePromise = promise; } });
@@ -53,6 +53,9 @@ vm.runInNewContext(source, sandbox);
   assert.match(index, /sw\.js\?v=19-native/);
   assert.ok(index.indexOf('legacy-lesson-plan-v3.js') < index.indexOf('app.js'));
   const app = fs.readFileSync(path.join(root, 'app.js'), 'utf8');
+  const sync = fs.readFileSync(path.join(root, 'cloud-sync.js'), 'utf8');
+  assert.match(index, /<div id=\"modal-root\"><\\/div>\\s*<div id=\"sync-root\"><\\/div>/, 'sync dialog has a dedicated mount outside the app-cleared phrase modal root');
+  assert.match(sync, /document.querySelector\\('#sync-root'\\) \\|\\| document.body\\)\\.append\\(dialog\\)/, 'sync dialog mounts outside the phrase modal lifecycle');
   const css = fs.readFileSync(path.join(root, 'style.css'), 'utf8');
   assert.equal((app.match(/const APP_VERSION =/g) || []).length, 1, 'SemVer has one source of truth');
   assert.match(app, /data-app-version=\"\$\{APP_VERSION\}\"/);
