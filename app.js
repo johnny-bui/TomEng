@@ -179,7 +179,7 @@
     const serialized=JSON.stringify(store);localStorage.setItem(V3_KEY,serialized);
     if(localStorage.getItem(V3_KEY)!==serialized)throw new Error('Không xác minh được dữ liệu sau khi lưu.');
     lastSyncSnapshot=JSON.parse(serialized);persistenceWarning=false;
-    window.dispatchEvent(new CustomEvent('tomeng:local-save',{detail:{updatedAt:modifiedAt}}));return true;
+    if(typeof CustomEvent==='function'&&typeof window.dispatchEvent==='function'){try{window.dispatchEvent(new CustomEvent('tomeng:local-save',{detail:{updatedAt:modifiedAt}}));}catch{}}return true;
   } catch { persistenceWarning=true;toast('TIẾN ĐỘ CHƯA LƯU trên thiết bị. Hãy thử lưu lại hoặc tải backup trước khi đóng trang.');return false; } }
   function toast(message) { const el=$('#toast'); if(!el)return; el.textContent=message; el.classList.add('show'); clearTimeout(toast.timer); toast.timer=setTimeout(()=>el.classList.remove('show'),2600); }
   function introducedSet(){return new Set(store.introducedPhraseIds||[]);}
