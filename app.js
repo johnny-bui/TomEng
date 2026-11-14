@@ -8,7 +8,7 @@
   const PREVIOUS_ENGINE_KEY = 'tomeng_reflex_v3';
   const BACKUP_KEY = 'tomeng_native_v3_migration_backup';
   // MAJOR.MINOR.PATCH: major for breaking changes, minor for features, patch for fixes/content.
-  const APP_VERSION = '3.4.3';
+  const APP_VERSION = '3.5.0';
   const CONTENT_VERSION = 'native-v3.4';
   const CURRENT_PLAN_VERSION = 'native-v3.4';
   const LEGACY_PLANS = [window.TOMENG_LEGACY_LESSON_PLAN_V3_3,window.TOMENG_LEGACY_LESSON_PLAN_V3_2,window.TOMENG_LEGACY_LESSON_PLAN_V3_1,window.TOMENG_LEGACY_LESSON_PLAN_V3].filter(Boolean);
@@ -157,8 +157,30 @@
   }
   function rebuildProgress(result) { result.activityDates=[...new Set([...(result.activityDates||[]),...Object.values(result.completions||{}).map(c=>c?.date),...(result.sessions||[]).map(s=>s?.date)].filter(d=>/^\d{4}-\d{2}-\d{2}$/.test(d||'')))].sort();result.streak=streakForDates(result.activityDates);result.lastCompletedLessonId=newestCompletedId(result.completions)||result.lastCompletedLessonId||null;result.introducedPhraseIds=introducedFromEvidence(result);normaliseActiveSessionRoles(result.activeSession,result.introducedPhraseIds);return result; }
   let store = migrateStore();
+  let lastSyncSnapshot = JSON.parse(JSON.stringify(store));
   let ui = { page:'home', category:META.categories[0]?.id||'all', subcategory:'all', query:'', rescueQuery:'', selected:null, lessonId:null, stepIndex:0, revealed:false, listeningId:null, listeningHeard:false, listeningRevealed:false, listeningRequest:0, conversationIndex:0, speakingId:null, transcript:'', rescueIntent:'missed', familyId:null, patternView:false };
-  function save() { try { const serialized=JSON.stringify(store);localStorage.setItem(V3_KEY,serialized);if(localStorage.getItem(V3_KEY)!==serialized)throw new Error('Không xác minh được dữ liệu sau khi lưu.');persistenceWarning=false;return true; } catch { persistenceWarning=true;toast('TIẾN ĐỘ CHƯA LƯU trên thiết bị. Hãy thử lưu lại hoặc tải backup trước khi đóng trang.');return false; } }
+  function stampSyncChanges(modifiedAt) {
+    const previous=lastSyncSnapshot||{},meta={...(store.syncMeta||{})};
+    for(const field of ['saved','learned','speakingPracticed','selfReportedPractice']){
+      const before=new Set(Array.isArray(previous[field])?previous[field]:[]),after=new Set(Array.isArray(store[field])?store[field]:[]),bucket={...(meta[field]||{})};
+      for(const id of new Set([...before,...after]))if(before.has(id)!==after.has(id))bucket[id]={value:after.has(id),at:modifiedAt};
+      meta[field]=bucket;
+    }
+    for(const field of ['reviews','completions','contentEdits']){
+      const prior=previous[field]||{};
+      for(const [id,value] of Object.entries(store[field]||{})){
+        if(JSON.stringify(value)!==JSON.stringify(prior[id])&&value&&typeof value==='object')store[field][id]={...value,syncModifiedAt:modifiedAt};
+      }
+    }
+    store.syncMeta=meta;
+  }
+  function save() { try {
+    const modifiedAt=new Date().toISOString();stampSyncChanges(modifiedAt);store.cloudUpdatedAt=modifiedAt;
+    const serialized=JSON.stringify(store);localStorage.setItem(V3_KEY,serialized);
+    if(localStorage.getItem(V3_KEY)!==serialized)throw new Error('Không xác minh được dữ liệu sau khi lưu.');
+    lastSyncSnapshot=JSON.parse(serialized);persistenceWarning=false;
+    window.dispatchEvent(new CustomEvent('tomeng:local-save',{detail:{updatedAt:modifiedAt}}));return true;
+  } catch { persistenceWarning=true;toast('TIẾN ĐỘ CHƯA LƯU trên thiết bị. Hãy thử lưu lại hoặc tải backup trước khi đóng trang.');return false; } }
   function toast(message) { const el=$('#toast'); if(!el)return; el.textContent=message; el.classList.add('show'); clearTimeout(toast.timer); toast.timer=setTimeout(()=>el.classList.remove('show'),2600); }
   function introducedSet(){return new Set(store.introducedPhraseIds||[]);}
   function allRemainingPhraseIds(track=store.track){const introduced=introducedSet();return PHRASES.filter((phrase)=>!introduced.has(phrase.id)&&(track==='mixed'||(track==='everyday'?['everyday','reflex'].includes(phrase.categoryId):!['everyday','reflex'].includes(phrase.categoryId)))).map((phrase)=>phrase.id);}
@@ -319,7 +341,7 @@
   function mobileNav() { const items=[['home','home','Hôm nay'],['library','book','Sổ tay'],['rescue','lifebuoy','Cứu nguy'],['due','clock','Ôn thêm'],['more','spark','Thêm']]; return `<nav class="mobile-nav" aria-label="Điều hướng di động">${items.map(([p,i,l])=>`<button class="${ui.page===p?'active':''}" data-page="${p}">${icon(i)}<span>${l}</span></button>`).join('')}</nav>`; }
   function shell(content) {
     const saveNotice=persistenceWarning?`<section class="save-warning" role="alert"><div><b>Tiến độ chưa lưu trên thiết bị</b><p>Giữ trang đang mở. Hãy giải phóng dung lượng rồi thử lưu lại, hoặc tải backup tạm để bảo toàn tiến độ.</p></div><div class="save-warning-actions"><button class="btn btn-dark" data-action="retry-save">Thử lưu lại</button><button class="btn btn-ghost" data-action="export-pending">Tải backup tạm</button></div></section>`:'';
-    return `<aside class="rail"><div class="brand-lockup"><button class="brand-mark" data-page="home" aria-label="TomEng"><img src="logo-tomeng.png" alt=""></button><small class="app-version rail-version" data-app-version="${APP_VERSION}" aria-label="Phiên bản v${APP_VERSION}">v${APP_VERSION}</small></div><nav class="rail-nav" aria-label="Điều hướng chính">${navButton('home','home','Hôm nay')}${navButton('library','book','Sổ tay')}${navButton('grammar','bulb','Mẹo nhanh')}${navButton('rescue','lifebuoy','Cứu nguy')}${navButton('practice','play','Speaking')}${navButton('due','clock','Ôn thêm')}${navButton('saved','bookmark','Đã lưu')}${navButton('progress','chart','Tiến độ')}</nav><div class="rail-bottom"><button class="rail-btn" data-action="backup" aria-label="Sao lưu dữ liệu">${icon('copy')}<span>Sao lưu</span></button></div></aside><main class="main"><header class="topbar"><div class="brand-word" aria-label="TomEng phiên bản v${APP_VERSION}"><span class="brand-name">TomEng</span><small class="app-version mobile-version" data-app-version="${APP_VERSION}" aria-label="Phiên bản v${APP_VERSION}">v${APP_VERSION}</small></div><label class="search">${icon('search')}<input id="global-search" type="search" value="${esc(ui.query)}" placeholder="Tìm câu, tình huống, pattern..." aria-label="Tìm trong sổ tay"></label><div class="top-actions"><span class="date-label">${new Intl.DateTimeFormat('vi-VN',{weekday:'short',day:'2-digit',month:'2-digit'}).format(new Date())}</span><button class="icon-btn" data-action="random" aria-label="Câu ngẫu nhiên">${icon('spark')}</button></div></header>${saveNotice}<div class="content">${content}</div></main><aside class="right-panel"><div class="right-brand"><div><b>TomEng</b><small>workplace phrase notebook</small></div><button class="icon-btn" data-action="backup" aria-label="Sao lưu">${icon('copy')}</button></div>${rightPanel()}</aside>${mobileNav()}`;
+    return `<aside class="rail"><div class="brand-lockup"><button class="brand-mark" data-page="home" aria-label="TomEng"><img src="logo-tomeng.png" alt=""></button><small class="app-version rail-version" data-app-version="${APP_VERSION}" aria-label="Phiên bản v${APP_VERSION}">v${APP_VERSION}</small></div><nav class="rail-nav" aria-label="Điều hướng chính">${navButton('home','home','Hôm nay')}${navButton('library','book','Sổ tay')}${navButton('grammar','bulb','Mẹo nhanh')}${navButton('rescue','lifebuoy','Cứu nguy')}${navButton('practice','play','Speaking')}${navButton('due','clock','Ôn thêm')}${navButton('saved','bookmark','Đã lưu')}${navButton('progress','chart','Tiến độ')}</nav><div class="rail-bottom"><button class="rail-btn" data-action="backup" aria-label="Sao lưu dữ liệu">${icon('copy')}<span>Sao lưu</span></button></div></aside><main class="main"><header class="topbar"><div class="brand-word" aria-label="TomEng phiên bản v${APP_VERSION}"><span class="brand-name">TomEng</span><small class="app-version mobile-version" data-app-version="${APP_VERSION}" aria-label="Phiên bản v${APP_VERSION}">v${APP_VERSION}</small></div><label class="search">${icon('search')}<input id="global-search" type="search" value="${esc(ui.query)}" placeholder="Tìm câu, tình huống, pattern..." aria-label="Tìm trong sổ tay"></label><div class="top-actions"><span class="date-label">${new Intl.DateTimeFormat('vi-VN',{weekday:'short',day:'2-digit',month:'2-digit'}).format(new Date())}</span><button class="icon-btn sync-trigger" type="button" data-sync-action="open" aria-label="Đồng bộ dữ liệu" title="Đồng bộ dữ liệu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 18a4.5 4.5 0 0 1 .1-9A6 6 0 0 1 18.5 11 3.5 3.5 0 0 1 18 18H7Z"/><path d="m9 14 3-3 3 3"/></svg></button><button class="icon-btn" data-action="random" aria-label="Câu ngẫu nhiên">${icon('spark')}</button></div></header>${saveNotice}<div class="content">${content}</div></main><aside class="right-panel"><div class="right-brand"><div><b>TomEng</b><small>workplace phrase notebook</small></div><button class="icon-btn" data-action="backup" aria-label="Sao lưu">${icon('copy')}</button></div>${rightPanel()}</aside>${mobileNav()}`;
   }
   function completedSessionCount(){const keys=new Set(store.sessions.map((item)=>`${item.lessonId}|${item.date}`));for(const [id,item] of [...Object.entries(store.completions||{}),...Object.entries(store.migration?.archivedCompletions||{})])if(item&&!item.migrated){const key=`${item.lessonId||id}|${item.date||''}`;if(!keys.has(key))keys.add(key);}return keys.size;}
   function rightPanel() { const now=new Date(); const start=new Date(now.getFullYear(),now.getMonth(),now.getDate()-now.getDay()); const days=Array.from({length:7},(_,i)=>{const d=new Date(start);d.setDate(start.getDate()+i);return `<div class="day ${dateKey(d)===dateKey()?'today active':''}"><b>${['CN','T2','T3','T4','T5','T6','T7'][i]}</b><span>${d.getDate()}</span></div>`;}).join(''); const done=completedSessionCount();return `<section class="schedule"><div class="schedule-title"><h3>Nhịp học tuần này</h3><span class="eyebrow">${store.streak} ngày</span></div><div class="week">${days}</div></section><section class="notes"><h3>Ghi chú bên lề</h3><div class="note-item"><div></div><div><b>Nhớ theo tình huống</b><p>Hình dung người đang nói với mình, rồi đáp lại bằng cả cụm.</p></div></div><div class="note-item"><div></div><div><b>Đã học mới</b><p>${store.introducedPhraseIds.length} / ${PHRASES.length} cụm · ${done} buổi hoàn tất.</p></div></div><div class="note-tools"><button class="btn btn-ghost" data-action="export">Tải bản sao lưu</button><button class="btn btn-ghost" data-action="refresh">Kiểm tra bản mới</button><label class="btn btn-ghost">Khôi phục<input id="import-file" type="file" accept="application/json" hidden></label></div></section>`; }
@@ -528,6 +550,17 @@
   document.addEventListener('change',(event)=>{if(!migrationBlockedMessage&&event.target.id==='import-file'&&event.target.files?.[0])importFile(event.target.files[0]);});
   document.addEventListener('keydown',(event)=>{if(event.key==='Escape'){if(ui.selected){ui.selected=null;modal();ui.modalReturnFocus?.focus?.();ui.modalReturnFocus=null;}else if(ui.familyId){ui.familyId=null;render();ui.modalReturnFocus?.focus?.();ui.modalReturnFocus=null;}}if(event.key==='Tab'&&(ui.selected||ui.familyId)){const root=$('#modal-root'),focusable=[...(root?.querySelectorAll?.('button,input,textarea,summary')||[])].filter(el=>!el.disabled&&el.getClientRects?.().length);if(focusable.length){const first=focusable[0],last=focusable[focusable.length-1];if(event.shiftKey&&document.activeElement===first){event.preventDefault();last.focus();}else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first.focus();}}}const card=event.target.closest?.('.phrase-card');if(card&&(event.key==='Enter'||event.key===' ')){event.preventDefault();ui.modalReturnFocus=card;ui.selected=card.dataset.open;modal();}});
   window.addEventListener('beforeunload',(event)=>{if(persistenceWarning){event.preventDefault();event.returnValue='';}});
-  window.TomEng={version:3,appVersion:APP_VERSION,storageKey:V3_KEY,phraseCount:PHRASES.length,getState:()=>JSON.parse(JSON.stringify(store)),getPersistenceState:()=>persistenceWarning?'unsaved':'saved',getNextInterval:nextInterval,getDateKey:dateKey,shiftDate};
+  function applyCloudState(input) {
+    if(!input||typeof input!=='object'||Number(input.schemaVersion)!==7)return false;
+    const previousRaw=localStorage.getItem(V3_KEY);
+    try {
+      const backupKey='tomeng_cloud_pre_sync_backup_v1';
+      writeVerified(backupKey,JSON.stringify({app:'TomEng',schemaVersion:7,contentVersion:CONTENT_VERSION,createdAt:new Date().toISOString(),data:store}));
+      const normalized=normaliseStore(input);
+      writeTransactionally(V3_KEY,normalized,previousRaw);
+      store=normalized;lastSyncSnapshot=JSON.parse(JSON.stringify(store));render();return true;
+    } catch(error) { console.warn('Cloud state was not applied:',error?.message||'local persistence unavailable');return false; }
+  }
+  window.TomEng={version:3,appVersion:APP_VERSION,storageKey:V3_KEY,phraseCount:PHRASES.length,getState:()=>JSON.parse(JSON.stringify(store)),applyCloudState,getPersistenceState:()=>persistenceWarning?'unsaved':'saved',getNextInterval:nextInterval,getDateKey:dateKey,shiftDate};
   render();
 })();
