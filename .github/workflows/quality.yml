@@ -17,9 +17,13 @@ jobs:
         with:
           python-version: '3.x'
       - name: Check JavaScript syntax
-        run: node --check app.js && node --check sw.js
+        run: node --check app.js && node --check sw.js && node --check cloud-sync.js && node --check sync-merge.js && node --check sync-api/index.mjs
       - name: Test learning engine and migrations
         run: node tests/engine.test.cjs
+      - name: Test cloud sync merge safety
+        run: node tests/sync-merge.test.cjs
+      - name: Build Neon sync function
+        run: npm ci --prefix sync-api && npm --prefix sync-api run bundle
       - name: Test PWA shell and cache migration assets
         run: node tests/pwa.test.cjs
       - name: Test phrase data
