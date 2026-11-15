@@ -48,7 +48,7 @@ assert.match(source, /const CACHE = 'tomeng-v24-native'/, 'updated worker create
   let activatePromise;
   handlers.activate({ waitUntil: promise => { activatePromise = promise; } });
   await activatePromise;
-  assert.deepEqual(deleted, ['tomeng-v11-native', 'tomeng-v12-native', 'tomeng-v13-native', 'tomeng-v14-native', 'tomeng-v15-native', 'tomeng-v16-native', 'tomeng-v17-native', 'tomeng-v18-native', 'tomeng-v19-native', 'tomeng-v20-native', 'tomeng-v21-native', 'tomeng-v22-native']);
+  assert.deepEqual(deleted, ['tomeng-v11-native', 'tomeng-v12-native', 'tomeng-v13-native', 'tomeng-v14-native', 'tomeng-v15-native', 'tomeng-v16-native', 'tomeng-v17-native', 'tomeng-v18-native', 'tomeng-v19-native', 'tomeng-v20-native', 'tomeng-v21-native', 'tomeng-v22-native', 'tomeng-v23-native']);
   assert.ok(claimed, 'new worker controls open clients');
 
   const index = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
