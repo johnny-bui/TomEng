@@ -29,21 +29,21 @@ const sandbox = {
   Response: { error: () => ({ error: true }) }
 };
 vm.runInNewContext(source, sandbox);
-assert.match(source, /const CACHE = 'tomeng-v26-native'/, 'updated worker creates a new cache version');
+assert.match(source, /const CACHE = 'tomeng-v27-native'/, 'updated worker creates a new cache version');
 
 (async () => {
   let installPromise;
   handlers.install({ waitUntil: promise => { installPromise = promise; } });
   await installPromise;
   assert.ok(skipped, 'install activates the updated worker without waiting for an old tab');
-  assert.ok(cacheShell.includes('./legacy-lesson-plan-v3.js?v=3.5.7'));
-  assert.ok(cacheShell.includes('./legacy-lesson-plan-v3_1.js?v=3.5.7'));
-  assert.ok(cacheShell.includes('./legacy-lesson-plan-v3_2.js?v=3.5.7'));
-  assert.ok(cacheShell.includes('./legacy-lesson-plan-v3_3.js?v=3.5.7'));
-  assert.ok(cacheShell.includes('./app.js?v=3.5.7'));
-  assert.ok(cacheShell.includes('./sync-merge.js?v=3.5.7'));
-  assert.ok(cacheShell.includes('./auth-session.js?v=3.5.7'));
-  assert.ok(cacheShell.includes('./cloud-sync.js?v=3.5.7'));
+  assert.ok(cacheShell.includes('./legacy-lesson-plan-v3.js?v=3.5.8'));
+  assert.ok(cacheShell.includes('./legacy-lesson-plan-v3_1.js?v=3.5.8'));
+  assert.ok(cacheShell.includes('./legacy-lesson-plan-v3_2.js?v=3.5.8'));
+  assert.ok(cacheShell.includes('./legacy-lesson-plan-v3_3.js?v=3.5.8'));
+  assert.ok(cacheShell.includes('./app.js?v=3.5.8'));
+  assert.ok(cacheShell.includes('./sync-merge.js?v=3.5.8'));
+  assert.ok(cacheShell.includes('./auth-session.js?v=3.5.8'));
+  assert.ok(cacheShell.includes('./cloud-sync.js?v=3.5.8'));
 
   let activatePromise;
   handlers.activate({ waitUntil: promise => { activatePromise = promise; } });
@@ -52,7 +52,7 @@ assert.match(source, /const CACHE = 'tomeng-v26-native'/, 'updated worker create
   assert.ok(claimed, 'new worker controls open clients');
 
   const index = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
-  assert.match(index, /sw\.js\?v=26-native/);
+  assert.match(index, /sw\.js\?v=27-native/);
   assert.ok(index.indexOf('legacy-lesson-plan-v3.js') < index.indexOf('app.js'));
   const app = fs.readFileSync(path.join(root, 'app.js'), 'utf8');
   const sync = fs.readFileSync(path.join(root, 'cloud-sync.js'), 'utf8');
