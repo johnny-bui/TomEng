@@ -453,35 +453,52 @@
         : '<p>Đang nghe… hãy nói câu tiếng Anh.</p>';
     return `<div class="speech-feedback${ui.speechError?' is-error':''}" role="status" aria-live="polite">${content}</div>`;
   }
+  function stopSpeech(id) {
+    const rec=window._tomengRecognition;
+    if(!rec||ui.speakingId!==id)return;
+    ui.speechStopping=true;
+    try{rec.stop();}catch{window._tomengRecognition=null;ui.speechStopping=false;ui.speechError=true;ui.transcript='Không dừng được micro. Hãy thử lại.';render();}
+  }
   function startSpeech(id) {
     if(!byId.has(id))return;
+    if(window._tomengRecognition&&ui.speakingId===id){stopSpeech(id);return;}
     const Speech=window.SpeechRecognition||window.webkitSpeechRecognition;
-    ui.speakingId=id;ui.transcript='';ui.speechError=false;
+    ui.speakingId=id;ui.transcript='';ui.speechInterim='';ui.speechStopping=false;ui.speechError=false;
     if(!Speech){ui.speechError=true;ui.transcript='Thiết bị chưa hỗ trợ nhận dạng giọng nói. Anh vẫn có thể tự nói rồi tự đánh giá.';toast('Nhận dạng giọng nói chưa được hỗ trợ.');render();return;}
     try{window._tomengRecognition?.abort?.();}catch{}
-    const rec=new Speech();rec.lang='en-US';rec.interimResults=false;rec.maxAlternatives=1;
+    const rec=new Speech();rec.lang='en-US';rec.interimResults=true;rec.continuous=true;rec.maxAlternatives=1;
     rec.onresult=(event)=>{
       if(window._tomengRecognition!==rec)return;
-      const heard=String(event.results?.[0]?.[0]?.transcript||'').trim();
-      if(!heard)return;
-      ui.transcript=heard;ui.speechError=false;
-      store.speakingPracticed=[...new Set([...store.speakingPracticed,id])];
-      const session=store.activeSession;
-      if(ui.page==='learn'&&session?.phase==='learn'&&phraseIdsForSession(activeLesson())[session.learnIndex]===id)session.revealed=true;
-      else if(ui.page==='learn'&&session?.phase==='quick'&&phraseIdsForSession(activeLesson())[session.recallIndex]===id)session.recallRevealed=true;
-      else if(ui.page==='practice')ui.revealed=true;
-      save();render();
+      let finalText='',interimText='';
+      for(let i=0;i<event.results.length;i++){
+        const result=event.results[i],text=String(result?.[0]?.transcript||'').trim();
+        if(result.isFinal&&text)finalText+=`${finalText?' ':''}${text}`;
+        else if(text)interimText+=`${interimText?' ':''}${text}`;
+      }
+      if(finalText)ui.transcript=[ui.transcript,finalText].filter(Boolean).join(' ').trim();
+      ui.speechInterim=interimText;
+      render();
     };
     rec.onerror=(event)=>{
       if(window._tomengRecognition!==rec)return;
-      ui.speechError=true;
-      ui.transcript=event.error==='not-allowed'?'Micro chưa được cấp quyền. Hãy bật quyền micro trong trình duyệt rồi thử lại.':event.error==='no-speech'?'Chưa nghe được câu nói. Hãy nói gần micro hơn rồi thử lại.':'Không nhận được câu nói. Anh có thể thử lại hoặc tự đánh giá.';
-      render();
+      window._tomengRecognition=null;ui.speechStopping=false;ui.speechError=true;
+      ui.transcript=event.error==='not-allowed'?'Micro chưa được cấp quyền. Hãy bật quyền micro trong trình duyệt rồi thử lại.':event.error==='no-speech'?'Chưa nghe được câu nói. Hãy nói gần micro hơn rồi thử lại.':`Không nhận được câu nói (${event.error||'unknown'}). Anh có thể thử lại.`;
+      ui.speechInterim='';render();
     };
     rec.onend=()=>{
       if(window._tomengRecognition!==rec)return;
-      window._tomengRecognition=null;
-      if(!ui.transcript){ui.speechError=true;ui.transcript='Chưa nhận được câu nói. Tiến độ chưa thay đổi.';}
+      window._tomengRecognition=null;ui.speechStopping=false;
+      if(ui.speechInterim)ui.transcript=[ui.transcript,ui.speechInterim].filter(Boolean).join(' ').trim();
+      ui.speechInterim='';
+      if(ui.transcript){
+        ui.speechError=false;
+        store.speakingPracticed=[...new Set([...store.speakingPracticed,id])];
+        const session=store.activeSession;
+        if(ui.page==='learn'&&session?.phase==='learn'&&phraseIdsForSession(activeLesson())[session.learnIndex]===id)session.revealed=true;
+        else if(ui.page==='learn'&&session?.phase==='quick'&&phraseIdsForSession(activeLesson())[session.recallIndex]===id)session.recallRevealed=true;
+        else if(ui.page==='practice')ui.revealed=true;
+        save();
+      }else if(ui.speechStopping){ui.speechError=true;ui.transcript='Chưa nhận được câu nói. Tiến độ chưa thay đổi.';}
       render();
     };
     window._tomengRecognition=rec;
