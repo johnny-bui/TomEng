@@ -51,7 +51,7 @@ vm.runInNewContext(source, sandbox);
   assert.ok(claimed, 'new worker controls open clients');
 
   const index = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
-  assert.match(index, /sw\.js\?v=21-native/);
+  assert.match(index, /sw\.js\?v=22-native/);
   assert.ok(index.indexOf('legacy-lesson-plan-v3.js') < index.indexOf('app.js'));
   const app = fs.readFileSync(path.join(root, 'app.js'), 'utf8');
   const sync = fs.readFileSync(path.join(root, 'cloud-sync.js'), 'utf8');
