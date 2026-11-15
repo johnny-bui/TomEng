@@ -8,7 +8,7 @@
   const PREVIOUS_ENGINE_KEY = 'tomeng_reflex_v3';
   const BACKUP_KEY = 'tomeng_native_v3_migration_backup';
   // MAJOR.MINOR.PATCH: major for breaking changes, minor for features, patch for fixes/content.
-  const APP_VERSION = '3.5.6';
+  const APP_VERSION = '3.5.7';
   const CONTENT_VERSION = 'native-v3.4';
   const CURRENT_PLAN_VERSION = 'native-v3.4';
   const LEGACY_PLANS = [window.TOMENG_LEGACY_LESSON_PLAN_V3_3,window.TOMENG_LEGACY_LESSON_PLAN_V3_2,window.TOMENG_LEGACY_LESSON_PLAN_V3_1,window.TOMENG_LEGACY_LESSON_PLAN_V3].filter(Boolean);
@@ -394,7 +394,51 @@
   function patternPage() { const family=PHRASES.filter(p=>p.patternId===ui.familyId); const base=family[0]; return `<div class="modal-overlay" data-action="close-family"><article class="modal" role="dialog" aria-modal="true" aria-labelledby="pattern-title"><button class="icon-btn modal-close" data-action="close-family" aria-label="Đóng">${icon('close')}</button><div class="eyebrow">Khung câu · ${family.length} tình huống</div><h2 id="pattern-title">${esc(base?.pattern||'')}</h2><p>${esc(base?.memoryTip||'')}</p><ul class="family-list">${family.map(p=>`<li><b>${esc(p.en)}</b><span>${esc(p.vi)}</span><small>${esc(p.context)}</small><button class="text-btn" data-open="${p.id}">Ghi chú câu →</button></li>`).join('')}</ul></article></div>`; }
   function render() { if(migrationBlockedMessage){$('#app').innerHTML=`<main class="migration-blocked maintenance" role="alert"><h2>Chưa thể cập nhật sổ tay</h2><p>${esc(migrationBlockedMessage)}</p><button class="btn btn-dark" onclick="location.reload()">Thử lại</button></main>`;return;}const focusId=['global-search','rescue-search'].includes(document.activeElement?.id)?document.activeElement.id:null; let content=homePage(); if(ui.page==='library')content=libraryPage();if(ui.page==='more')content=morePage();if(ui.page==='grammar')content=grammarPage();if(ui.page==='rescue')content=rescuePage();if(ui.page==='practice')content=practicePage();if(ui.page==='listening')content=listeningPage();if(ui.page==='conversation')content=conversationPage();if(ui.page==='saved')content=savedPage();if(ui.page==='progress')content=progressPage();if(ui.page==='due')content=duePage();if(ui.page==='learn'){const s=store.activeSession?.mode==='mastery'?store.activeSession:ensureSession(),l=activeLesson();content=!s?`<section class="maintenance"><h2>${store.introducedPhraseIds.length===PHRASES.length?'Đã học mới đủ 1.200 cụm.':'Hôm nay đã học xong.'}</h2><p>${store.introducedPhraseIds.length===PHRASES.length?'Mở Mastery Mode vào ngày tiếp theo để tiếp tục luyện theo tình huống.':'Ngày mai học tình huống mới; hôm nay bạn có thể ôn SRS tự chọn.'}</p><button class="btn btn-coral" data-page="due">Ôn thêm</button></section>`:s.mode==='mastery'?s.phase==='mastery'?masteryScreen(s,l):scenarioApplicationScreen(s,l):s.phase==='review'?reviewScreen(s,l):s.phase==='learn'?learningScreen(s,l):quickScreen(s,l);} $('#app').innerHTML=shell(content); modal(); if(ui.familyId){const root=$('#modal-root');root.innerHTML=patternPage();$('.modal-close',root)?.focus();} if(focusId){const search=$(`#${focusId}`);search?.focus();search?.setSelectionRange(search.value.length,search.value.length);} }
   function go(page) { ui.page=page;ui.selected=null;ui.familyId=null;render();window.scrollTo({top:0,behavior:'smooth'}); }
-  function speak(id,onend) { const p=shown(byId.get(id)); if(!p||!('speechSynthesis'in window)||typeof SpeechSynthesisUtterance==='undefined'){toast('Thiết bị chưa hỗ trợ đọc câu.');return false;} speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(p.en);const voice=speechSynthesis.getVoices?.().find(v=>v.lang?.toLowerCase()==='en-us');if(voice)u.voice=voice;u.lang='en-US';u.rate=store.speechRate||1;u.onend=()=>onend?.();u.onerror=()=>toast('Không phát được âm thanh. Hãy thử lại hoặc kiểm tra cài đặt âm thanh.');try{speechSynthesis.speak(u);return true;}catch{toast('Không phát được âm thanh trên thiết bị này.');return false;} }
+  let activeSpeechUtterance=null,speechAttempt=0;
+  function speechErrorMessage(code) {
+    if(code==='not-allowed')return 'Safari chưa cho phép phát giọng đọc. Hãy chạm Nghe mẫu lần nữa.';
+    if(code==='audio-busy'||code==='audio-hardware')return `Âm thanh đang không khả dụng (${code}). Hãy kiểm tra loa và thử lại.`;
+    if(code==='voice-unavailable'||code==='language-unavailable')return `Không có giọng tiếng Anh khả dụng (${code}). Hãy thử cài giọng English trong cài đặt iPhone.`;
+    if(code==='network')return 'Giọng đọc cần mạng nhưng kết nối đã gián đoạn. Hãy thử lại.';
+    return `Không phát được giọng đọc (${code||'unknown'}). Hãy thử lại.`;
+  }
+  function speak(id,onend) {
+    const p=shown(byId.get(id));
+    if(!p||!('speechSynthesis'in window)||typeof SpeechSynthesisUtterance==='undefined'){toast('Thiết bị chưa hỗ trợ đọc câu.');return false;}
+    const synthesis=window.speechSynthesis;
+    const voices=synthesis.getVoices?.()||[];
+    const enUS=voices.find(v=>v.lang?.toLowerCase()==='en-us');
+    const english=enUS||voices.find(v=>v.lang?.toLowerCase().startsWith('en'));
+    const localEnglish=voices.find(v=>v.localService===true&&v.lang?.toLowerCase()==='en-us');
+    const isIOS=/iPhone|iPad|iPod/.test(navigator.userAgent||'');
+    const primaryVoice=isIOS?(localEnglish||null):(english||null);
+    const fallbackVoice=primaryVoice?null:(english||null);
+    const request=++speechAttempt;
+    if(synthesis.speaking||synthesis.pending)synthesis.cancel();
+    if(synthesis.paused)synthesis.resume?.();
+    let triedFallback=false;
+    const play=(voice)=>{
+      const u=new SpeechSynthesisUtterance(p.en);
+      if(voice)u.voice=voice;
+      u.lang='en-US';u.rate=store.speechRate||1;
+      let failed=false;
+      u.onend=()=>{if(request!==speechAttempt||failed)return;activeSpeechUtterance=null;onend?.();};
+      u.onerror=(event)=>{
+        if(request!==speechAttempt)return;
+        failed=true;
+        const code=String(event?.error||'unknown');
+        if(code==='canceled'||code==='interrupted'){activeSpeechUtterance=null;return;}
+        if(!triedFallback&&fallbackVoice!==primaryVoice&&['voice-unavailable','language-unavailable','synthesis-failed'].includes(code)){
+          triedFallback=true;
+          try{play(fallbackVoice);return;}catch{}
+        }
+        activeSpeechUtterance=null;toast(speechErrorMessage(code));
+      };
+      activeSpeechUtterance=u;
+      synthesis.speak(u);
+    };
+    try{play(primaryVoice);return true;}catch{activeSpeechUtterance=null;toast('Không mở được giọng đọc trên thiết bị này.');return false;}
+  }
   function toggleSave(id) { store.saved=isSaved(id)?store.saved.filter(x=>x!==id):[...store.saved,id];if(save())toast(isSaved(id)?'Đã bỏ khỏi sổ.':'Đã lưu vào sổ tay.');render(); }
   function advanceReview(p,rating) { const s=store.activeSession, expected=s?.reviewPhraseIds?.[s?.reviewIndex];if(!s||s.phase!=='review'||!s.revealed||p.id!==expected)return;ratePhrase(p.id,rating);s.reviewDone.push(p.id);s.reviewIndex++;s.revealed=false;if(s.reviewIndex>=s.reviewPhraseIds.length){s.phase='learn';s.learnIndex=0;}save();render(); }
   function advanceNew(p,mark) { const s=store.activeSession,lesson=activeLesson();if(!s||s.phase!=='learn'||!s.revealed||p.id!==phraseIdsForSession(lesson)[s.learnIndex])return;if(!s.learnedViewed.includes(p.id))s.learnedViewed.push(p.id);if(mark==='ready')store.selfReportedPractice=[...new Set([...store.selfReportedPractice,p.id])];s.learnIndex++;s.revealed=false;ui.speakingId=null;ui.transcript='';if(s.learnIndex>=5){s.phase='quick';s.recallIndex=0;}save();render(); }
