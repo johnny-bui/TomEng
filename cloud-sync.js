@@ -167,8 +167,13 @@
     if(state.auth)return true;
     state.loading=true;
     try{
-      const sdk=await import('https://esm.sh/@neondatabase/neon-js/auth?bundle');
-      state.auth=sdk.createAuthClient(config.authUrl,{fetchOptions:{credentials:'include'}});
+      const [sdk, vanillaAdapters]=await Promise.all([
+        import('https://esm.sh/@neondatabase/neon-js/auth?bundle'),
+        import('https://esm.sh/@neondatabase/neon-js/auth/vanilla/adapters?bundle')
+      ]);
+      state.auth=sdk.createAuthClient(config.authUrl,{
+        adapter:vanillaAdapters.BetterAuthVanillaAdapter({fetchOptions:{credentials:'include'}})
+      });
       state.sdkReady=true;state.sdkError='';
       const sessionResult=await state.auth.getSession();
       state.session=sessionResult?.data?.session||null;state.user=state.session?.user||null;
@@ -212,7 +217,7 @@
           const result=await state.auth.signIn.email({email,password,rememberMe:true});
           if(result?.error)throw new Error(result.error.message||'Email hoặc mật khẩu chưa đúng.');
           const current=await state.auth.getSession();state.session=current?.data?.session||result?.data?.session||null;state.user=state.session?.user||null;
-          if(!state.user)throw new Error('Đăng nhập chưa hoàn tất. Hãy xác minh email nếu vừa tạo tài khoản.');
+          if(!state.user)throw new Error('Chưa nhận được phiên đăng nhập từ dịch vụ. Hãy thử đăng nhập lại.');
           renderDialog();await syncNow();
         }
       }else if(form.dataset.syncForm==='verify'){
