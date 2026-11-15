@@ -117,9 +117,9 @@
     return merged;
   }
   async function authToken() {
-    const result=await state.auth.token();
-    if(result?.error||!result?.data?.token) throw new Error('Phiên đăng nhập hết hạn. Hãy đăng nhập lại.');
-    return result.data.token;
+    const token=await authSession.getJWTToken(state.auth);
+    if(!token) throw new Error('Phiên đăng nhập cloud không còn hiệu lực. Hãy đăng xuất và đăng nhập lại.');
+    return token;
   }
   async function requestSync(method='GET', body=null) {
     const token=await authToken();

@@ -11,5 +11,18 @@
     }
     return { session, user };
   }
-  window.TOMENG_AUTH_SESSION = Object.freeze({ resolve });
+  async function getJWTToken(auth) {
+    if (typeof auth?.getJWTToken === 'function') {
+      const token = await auth.getJWTToken();
+      return typeof token === 'string' && token.trim() ? token.trim() : null;
+    }
+    if (typeof auth?.token === 'function') {
+      const result = await auth.token();
+      if (result?.error) throw result.error;
+      const token = result?.data?.token;
+      return typeof token === 'string' && token.trim() ? token.trim() : null;
+    }
+    return null;
+  }
+  window.TOMENG_AUTH_SESSION = Object.freeze({ resolve, getJWTToken });
 })();

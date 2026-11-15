@@ -20,7 +20,7 @@ const sandbox = {
   },
   caches: {
     open: async () => cache,
-    keys: async () => ['tomeng-v11-native', 'tomeng-v12-native', 'tomeng-v13-native', 'tomeng-v14-native', 'tomeng-v15-native', 'tomeng-v16-native', 'tomeng-v17-native', 'tomeng-v18-native', 'tomeng-v19-native', 'tomeng-v20-native', 'tomeng-v21-native'],
+    keys: async () => ['tomeng-v11-native', 'tomeng-v12-native', 'tomeng-v13-native', 'tomeng-v14-native', 'tomeng-v15-native', 'tomeng-v16-native', 'tomeng-v17-native', 'tomeng-v18-native', 'tomeng-v19-native', 'tomeng-v20-native', 'tomeng-v21-native', 'tomeng-v22-native'],
     delete: async key => { deleted.push(key); return true; },
     match: async () => null
   },
@@ -29,29 +29,30 @@ const sandbox = {
   Response: { error: () => ({ error: true }) }
 };
 vm.runInNewContext(source, sandbox);
+assert.match(source, /const CACHE = 'tomeng-v23-native'/, 'updated worker creates a new cache version');
 
 (async () => {
   let installPromise;
   handlers.install({ waitUntil: promise => { installPromise = promise; } });
   await installPromise;
   assert.ok(skipped, 'install activates the updated worker without waiting for an old tab');
-  assert.ok(cacheShell.includes('./legacy-lesson-plan-v3.js?v=3.5.3'));
-  assert.ok(cacheShell.includes('./legacy-lesson-plan-v3_1.js?v=3.5.3'));
-  assert.ok(cacheShell.includes('./legacy-lesson-plan-v3_2.js?v=3.5.3'));
-  assert.ok(cacheShell.includes('./legacy-lesson-plan-v3_3.js?v=3.5.3'));
-  assert.ok(cacheShell.includes('./app.js?v=3.5.3'));
-  assert.ok(cacheShell.includes('./sync-merge.js?v=3.5.3'));
-  assert.ok(cacheShell.includes('./auth-session.js?v=3.5.3'));
-  assert.ok(cacheShell.includes('./cloud-sync.js?v=3.5.3'));
+  assert.ok(cacheShell.includes('./legacy-lesson-plan-v3.js?v=3.5.4'));
+  assert.ok(cacheShell.includes('./legacy-lesson-plan-v3_1.js?v=3.5.4'));
+  assert.ok(cacheShell.includes('./legacy-lesson-plan-v3_2.js?v=3.5.4'));
+  assert.ok(cacheShell.includes('./legacy-lesson-plan-v3_3.js?v=3.5.4'));
+  assert.ok(cacheShell.includes('./app.js?v=3.5.4'));
+  assert.ok(cacheShell.includes('./sync-merge.js?v=3.5.4'));
+  assert.ok(cacheShell.includes('./auth-session.js?v=3.5.4'));
+  assert.ok(cacheShell.includes('./cloud-sync.js?v=3.5.4'));
 
   let activatePromise;
   handlers.activate({ waitUntil: promise => { activatePromise = promise; } });
   await activatePromise;
-  assert.deepEqual(deleted, ['tomeng-v11-native', 'tomeng-v12-native', 'tomeng-v13-native', 'tomeng-v14-native', 'tomeng-v15-native', 'tomeng-v16-native', 'tomeng-v17-native', 'tomeng-v18-native', 'tomeng-v19-native', 'tomeng-v20-native', 'tomeng-v21-native']);
+  assert.deepEqual(deleted, ['tomeng-v11-native', 'tomeng-v12-native', 'tomeng-v13-native', 'tomeng-v14-native', 'tomeng-v15-native', 'tomeng-v16-native', 'tomeng-v17-native', 'tomeng-v18-native', 'tomeng-v19-native', 'tomeng-v20-native', 'tomeng-v21-native', 'tomeng-v22-native']);
   assert.ok(claimed, 'new worker controls open clients');
 
   const index = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
-  assert.match(index, /sw\.js\?v=22-native/);
+  assert.match(index, /sw\.js\?v=23-native/);
   assert.ok(index.indexOf('legacy-lesson-plan-v3.js') < index.indexOf('app.js'));
   const app = fs.readFileSync(path.join(root, 'app.js'), 'utf8');
   const sync = fs.readFileSync(path.join(root, 'cloud-sync.js'), 'utf8');
@@ -59,6 +60,8 @@ vm.runInNewContext(source, sandbox);
   assert.ok(sync.includes("(document.querySelector('#sync-root') || document.body).append(dialog);"), 'sync dialog mounts outside the phrase modal lifecycle');
   assert.ok(sync.includes("import('https://esm.sh/@neondatabase/neon-js/auth/vanilla/adapters?bundle')"), 'browser auth imports the supported vanilla adapter');
   assert.ok(sync.includes("BetterAuthVanillaAdapter({fetchOptions:{credentials:'include'}})"), 'cross-origin auth sends the session cookie to Neon Auth');
+  assert.ok(sync.includes('authSession.getJWTToken(state.auth)'), 'sync uses Neon Auth SDK JWT helper and its direct string return');
+  assert.ok(!sync.includes('state.auth.token()'), 'sync does not parse Better Auth token endpoint as if it were the Neon JWT helper');
   assert.ok(!sync.includes('createAuthClient(config.authUrl,{fetchOptions:'), 'fetch credentials are not passed at the unsupported createAuthClient config level');
   const css = fs.readFileSync(path.join(root, 'style.css'), 'utf8');
   assert.equal((app.match(/const APP_VERSION =/g) || []).length, 1, 'SemVer has one source of truth');

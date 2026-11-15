@@ -20,4 +20,23 @@ assert.deepEqual(JSON.parse(JSON.stringify(resolve({ data: { session: null, user
   'user is not lost just because the API session object is not nested');
 assert.deepEqual(JSON.parse(JSON.stringify(resolve({}))), { session: null, user: null });
 
-console.log('PASS: Neon auth response session and user normalization');
+const getJWTToken = sandbox.window.TOMENG_AUTH_SESSION.getJWTToken;
+(async () => {
+  assert.equal(await getJWTToken({ getJWTToken: async () => 'jwt-direct' }), 'jwt-direct',
+    'the current Neon SDK returns its JWT directly from getJWTToken()');
+  assert.equal(await getJWTToken({ getJWTToken: async () => '  jwt-trimmed  ' }), 'jwt-trimmed',
+    'JWT strings are normalized before use');
+  assert.equal(await getJWTToken({ getJWTToken: async () => null, token: async () => ({ data: { token: 'legacy' } }) }), null,
+    'a present canonical SDK helper is authoritative when no authenticated JWT exists');
+  assert.equal(await getJWTToken({ token: async () => ({ data: { token: 'legacy-token' } }) }), 'legacy-token',
+    'older SDK clients retain the response-wrapped token fallback');
+  assert.equal(await getJWTToken({ token: async () => ({ data: {} }) }), null,
+    'missing token data is reported as unavailable');
+  assert.equal(await getJWTToken({}), null,
+    'unsupported auth clients do not fabricate a token');
+  console.log('PASS: Neon auth response session, user, and JWT normalization');
+})().catch(error => {
+  console.error(error);
+  process.exitCode = 1;
+});
+
