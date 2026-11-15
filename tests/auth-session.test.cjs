@@ -22,18 +22,22 @@ assert.deepEqual(JSON.parse(JSON.stringify(resolve({}))), { session: null, user:
 
 const getJWTToken = sandbox.window.TOMENG_AUTH_SESSION.getJWTToken;
 (async () => {
-  assert.equal(await getJWTToken({ getJWTToken: async () => 'jwt-direct' }), 'jwt-direct',
-    'the current Neon SDK returns its JWT directly from getJWTToken()');
-  assert.equal(await getJWTToken({ getJWTToken: async () => '  jwt-trimmed  ' }), 'jwt-trimmed',
-    'JWT strings are normalized before use');
-  assert.equal(await getJWTToken({ getJWTToken: async () => null, token: async () => ({ data: { token: 'legacy' } }) }), null,
-    'a present canonical SDK helper is authoritative when no authenticated JWT exists');
-  assert.equal(await getJWTToken({ token: async () => ({ data: { token: 'legacy-token' } }) }), 'legacy-token',
-    'older SDK clients retain the response-wrapped token fallback');
-  assert.equal(await getJWTToken({ token: async () => ({ data: {} }) }), null,
-    'missing token data is reported as unavailable');
-  assert.equal(await getJWTToken({}), null,
-    'unsupported auth clients do not fabricate a token');
+  let legacyCalls = 0;
+  const vanillaAuth = {
+    getSession: async () => ({ data: { session: { token: '  session-jwt  ' }, user } }),
+    token: async () => { legacyCalls++; throw new Error('HTTP 404'); }
+  };
+  assert.equal(await getJWTToken(vanillaAuth), 'session-jwt',
+    'createAuthClient vanilla adapter exposes the JWT in getSession and must not call the unsupported token route');
+  assert.equal(legacyCalls, 0, 'unsupported token endpoint is never requested');
+  assert.equal(await getJWTToken({ getSession: async () => ({ data: { session: null } }), token: vanillaAuth.token }), null,
+    'an expired session cannot fall through to the 404 token route');
+  assert.equal(await getJWTToken({ getSession: async () => ({ error: new Error('session unavailable') }) })
+    .then(() => 'resolved', error => error.message), 'session unavailable',
+    'a session service error remains visible to the caller');
+  assert.equal(await getJWTToken({ getJWTToken: async () => 'direct-jwt' }), 'direct-jwt',
+    'the Neon wrapper helper remains supported when supplied directly');
+  assert.equal(await getJWTToken({}), null, 'unsupported clients do not fabricate a token');
   console.log('PASS: Neon auth response session, user, and JWT normalization');
 })().catch(error => {
   console.error(error);
