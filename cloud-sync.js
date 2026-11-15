@@ -163,6 +163,8 @@
     state.dirty=true;setStatus(navigator.onLine?'pending':'offline');clearTimeout(state.timer);
     state.timer=setTimeout(syncNow,1400);
   }
+  const authSession=window.TOMENG_AUTH_SESSION;
+  if(!authSession||typeof authSession.resolve!=='function')throw new Error('TomEng auth session helper is missing.');
   async function loadAuthClient() {
     if(state.auth)return true;
     state.loading=true;
@@ -176,7 +178,7 @@
       });
       state.sdkReady=true;state.sdkError='';
       const sessionResult=await state.auth.getSession();
-      state.session=sessionResult?.data?.session||null;state.user=state.session?.user||null;
+      const identity=authSession.resolve(sessionResult);state.session=identity.session;state.user=identity.user;
       if(state.user)syncNow();
       return true;
     }catch(error){state.sdkError='Không tải được dịch vụ đăng nhập. Kiểm tra mạng rồi thử lại.';state.sdkReady=false;return false;}
@@ -216,7 +218,7 @@
         }else{
           const result=await state.auth.signIn.email({email,password,rememberMe:true});
           if(result?.error)throw new Error(result.error.message||'Email hoặc mật khẩu chưa đúng.');
-          const current=await state.auth.getSession();state.session=current?.data?.session||result?.data?.session||null;state.user=state.session?.user||null;
+          const current=await state.auth.getSession();const identity=authSession.resolve(current,result);state.session=identity.session;state.user=identity.user;
           if(!state.user)throw new Error('Chưa nhận được phiên đăng nhập từ dịch vụ. Hãy thử đăng nhập lại.');
           renderDialog();await syncNow();
         }
@@ -224,7 +226,7 @@
         const otp=String(formData.get('otp')||'').trim();state.loading=true;renderDialog();
         const result=await state.auth.emailOtp.verifyEmail({email:state.pendingEmail,otp});
         if(result?.error)throw new Error(result.error.message||'Mã xác minh chưa đúng hoặc đã hết hạn.');
-        const current=await state.auth.getSession();state.session=current?.data?.session||result?.data?.session||null;state.user=state.session?.user||null;state.pendingEmail='';
+        const current=await state.auth.getSession();const identity=authSession.resolve(current,result);state.session=identity.session;state.user=identity.user;state.pendingEmail='';
         if(!state.user){state.mode='sign-in';state.message='Email đã xác minh. Đăng nhập để bắt đầu đồng bộ.';renderDialog();return;}
         renderDialog();await syncNow();
       }
