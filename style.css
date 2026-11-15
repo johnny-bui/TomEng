@@ -53,6 +53,11 @@ body{font-family:var(--sans);line-height:1.5}
 .answer-box small{display:block;color:var(--muted);line-height:1.55;margin-top:10px}
 .sentence-frame{border-left:3px solid var(--coral);padding:9px 12px;background:#fbfaf6;font-weight:600;overflow-wrap:anywhere}
 .step-hint,.transcript-note{font-size:12px;color:var(--muted);line-height:1.6;margin-top:14px}
+.speech-feedback{margin-top:18px;padding:16px 18px;border:1px solid #d7dcd1;border-radius:18px;background:#edf2e8;color:var(--ink);font-size:15px;line-height:1.5}
+.speech-feedback b{display:block;font-size:15px}
+.speech-feedback p{margin:4px 0;overflow-wrap:anywhere}
+.speech-feedback small{display:block;margin-top:8px;color:var(--muted);font-size:12px}
+.speech-feedback.is-error{border-color:#f1c8c1;background:#fff0ed}
 .practice-actions{flex-wrap:wrap}
 .practice-actions .btn{min-width:max-content}
 .modal{max-height:min(88vh,900px);overflow:auto}
