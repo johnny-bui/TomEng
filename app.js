@@ -8,7 +8,7 @@
   const PREVIOUS_ENGINE_KEY = 'tomeng_reflex_v3';
   const BACKUP_KEY = 'tomeng_native_v3_migration_backup';
   // MAJOR.MINOR.PATCH: major for breaking changes, minor for features, patch for fixes/content.
-  const APP_VERSION = '3.5.7';
+  const APP_VERSION = '3.5.8';
   const CONTENT_VERSION = 'native-v3.4';
   const CURRENT_PLAN_VERSION = 'native-v3.4';
   const LEGACY_PLANS = [window.TOMENG_LEGACY_LESSON_PLAN_V3_3,window.TOMENG_LEGACY_LESSON_PLAN_V3_2,window.TOMENG_LEGACY_LESSON_PLAN_V3_1,window.TOMENG_LEGACY_LESSON_PLAN_V3].filter(Boolean);
@@ -390,7 +390,7 @@
   function scenarioApplicationScreen(s,lesson){const steps=s.mode==='mastery'?s.phraseIds.map((id,index)=>({...phraseSteps.get(id),turn:index+1,phraseId:id,intent:phraseSteps.get(id)?.intent||'Gọi lại câu đã học',cue:phraseSteps.get(id)?.cue||byId.get(id)?.context||''})):(lesson.steps||[]),support=(s.reinforcementPhraseIds||[]).filter((id)=>!s.phraseIds.includes(id)).map((id)=>byId.get(id)).filter(Boolean);return `<header class="page-head"><div class="eyebrow">${s.mode==='mastery'?'Mastery Mode · vận dụng':'Bước 4 / 4 · Áp dụng tình huống'}</div><h1>${esc(lesson.scenarioTitle||lesson.title)}</h1><p class="subcopy">${esc(lesson.scenarioGoal||'Thử dùng các cụm trong một mạch hội thoại.')}</p></header><section class="scenario-application"><div class="scenario-role"><b>Vai của bạn</b><p>${esc(lesson.roleContext||'')}</p><small>${esc(lesson.scenarioContext||'')}</small></div><div class="scenario-task"><span class="eyebrow">Nhiệm vụ nói</span><p>${esc(lesson.practicePrompt||'Hãy xử lý tình huống bằng các cụm trong bài; có thể đổi chi tiết cho đúng hoàn cảnh của bạn.')}</p><small class="step-hint">Phiên này có 5 câu: ${s.mode==='mastery'?0:(s.newPhraseIds||[]).length} mới · ${s.mode==='mastery'?s.phraseIds.length:(s.reinforcementPhraseIds||[]).length} đã học${s.mode==='mastery'?' · không thêm ID mới':''}.</small></div><ol class="scenario-steps">${steps.map((step,index)=>`<li><span>${String(index+1).padStart(2,'0')}</span><div><b>${esc(step?.intent||'Tiếp lời')}</b><small>${step?.kind==='new'?'Mới':'Đã học · Luyện lại'}</small><p>${esc(step?.cue||'Dùng câu này để tiếp tục tình huống.')}</p></div></li>`).join('')}</ol>${support.length?`<div class="scenario-support"><b>Câu cũ để nối mạch (không tính là câu mới)</b><ul>${support.map((phrase)=>`<li><span>${esc(phrase.vi)}</span><small>${esc(phrase.en)}</small></li>`).join('')}</ul></div>`:''}<p class="step-hint">Nói thành tiếng theo vai của bạn. Câu hỗ trợ đã học có thể dùng lại; phần này không làm tăng số cụm mới.</p><div class="practice-actions"><button class="btn" data-page="conversation">Luyện từng câu</button><button class="btn btn-coral" data-action="scenario-complete">Tôi đã thử xử lý tình huống ${icon('arrow')}</button></div></section>`;}
   function quickScreen(s,lesson) { const phrases=phraseList(lesson),p=shown(phrases[s.recallIndex]); if(!p)return scenarioApplicationScreen(s,lesson); return `<header class="page-head"><div class="eyebrow">Bước 3 / 4 · Recall nhanh</div><h1>Đóng sổ, nhớ lại.</h1><p class="subcopy">Câu ${s.recallIndex+1}/5 · nói câu tiếng Anh trước khi mở đáp án.</p></header><div class="practice-wrap"><article class="flash-card"><div class="card-count">Tình huống thật · ${esc(lesson.scenarioTitle||lesson.title)}</div><h2>${esc(p.vi)}</h2><div class="situation">${esc(p.context)}</div>${s.recallRevealed?`<div class="answer-box"><h3>${esc(p.en)}</h3><p>${esc(p.follow)}</p></div>`:''}</article><div class="practice-actions">${s.recallRevealed?['again','hard','good'].map((r)=>`<button class="btn ${r==='good'?'btn-coral':''}" data-new-rating="${r}" data-id="${p.id}">${{again:'Chưa nhớ',hard:'Cần gợi ý',good:'Nhớ ngay'}[r]}</button>`).join(''):`<button class="btn" data-action="mic" data-id="${p.id}">${icon('mic')} Thử nói</button><button class="btn btn-dark" data-action="quick-reveal">Hiện câu mẫu</button>`}</div>${speechFeedback(p.id)}</div>`; }
   function masteryScreen(s,lesson){const phrases=phraseList(lesson),p=shown(phrases[s.masteryIndex]);if(!p){s.phase='mastery-apply';save();return scenarioApplicationScreen(s,lesson);}return `<header class="page-head"><div class="eyebrow">Mastery Mode · câu ${s.masteryIndex+1}/${phrases.length}</div><h1>Gọi lại câu đã học.</h1><p class="subcopy">Không có cụm mới. Tự nói trước, rồi đánh giá mức nhớ để cập nhật lịch ôn.</p></header><div class="practice-wrap"><article class="flash-card"><div class="card-count">${esc(lesson.scenarioTitle||lesson.title)} · ${esc(subById.get(p.subCategoryId)?.name||p.topic)}</div><h2>${esc(p.vi)}</h2><div class="situation">${esc(p.context)}</div>${s.masteryRevealed?`<div class="answer-box"><h3>${esc(p.en)}</h3><p>${esc(p.follow)}</p></div>`:''}</article><div class="practice-actions">${s.masteryRevealed?['again','hard','good'].map((rating)=>`<button class="btn ${rating==='good'?'btn-coral':''}" data-mastery-rating="${rating}" data-id="${p.id}">${{again:'Chưa nhớ',hard:'Cần gợi ý',good:'Nhớ ngay'}[rating]}</button>`).join(''):`<button class="btn btn-dark" data-action="mastery-reveal">Tôi đã thử nhớ · hiện câu</button>`}</div></div>`;}
-  function practicePage() { if(!ui.speakingId){ui.speakingId=PHRASES[Math.floor(Math.random()*PHRASES.length)]?.id;} const p=shown(byId.get(ui.speakingId)||PHRASES[0]); return `<header class="page-head"><div class="eyebrow">Speaking Practice · nói trước khi xem</div><h1>Thử đáp lại bằng tiếng Anh.</h1><p class="subcopy">Tự luyện không chấm sai paraphrase. Micro chỉ là tiện ích tùy chọn; bản nhận dạng có thể không chính xác.</p></header><div class="practice-wrap"><article class="flash-card"><div class="card-count">${esc(categoryFor(p)?.name||'')} · ${esc(subById.get(p.subCategoryId)?.name||p.topic)}</div><h2>${esc(p.vi)}</h2><div class="situation"><b>Tình huống:</b> ${esc(p.context)}</div>${ui.revealed?`<div class="answer-box"><h3>${esc(p.en)}</h3><p>${esc(p.follow)}</p><div class="sentence-frame">${esc(p.pattern)}</div><small>${esc(p.memoryTip)}</small><p class="transcript-note">Các cách diễn đạt hợp lý khác vẫn có thể đúng; đây là câu mẫu tham khảo.</p></div>`:''}</article><div class="practice-actions"><button class="btn" data-action="mic" data-id="${p.id}">${icon('mic')} ${ui.speakingId===p.id&&ui.transcript?'Ghi lại câu':'Thử nói'}</button><button class="btn btn-dark" data-action="reveal">${ui.revealed?'Ẩn câu mẫu':'Xem câu mẫu'}</button><button class="btn" data-action="practice-random">Câu khác ${icon('arrow')}</button><button class="btn" data-action="speak" data-id="${p.id}">${icon('volume')} Nghe</button></div>${speechFeedback(p.id)}</div>`; }
+  function practicePage() { if(!ui.speakingId){ui.speakingId=PHRASES[Math.floor(Math.random()*PHRASES.length)]?.id;} const p=shown(byId.get(ui.speakingId)||PHRASES[0]); return `<header class="page-head"><div class="eyebrow">Speaking Practice · nói trước khi xem</div><h1>Thử đáp lại bằng tiếng Anh.</h1><p class="subcopy">Tự luyện không chấm sai paraphrase. Micro chỉ là tiện ích tùy chọn; bản nhận dạng có thể không chính xác.</p></header><div class="practice-wrap"><article class="flash-card"><div class="card-count">${esc(categoryFor(p)?.name||'')} · ${esc(subById.get(p.subCategoryId)?.name||p.topic)}</div><h2>${esc(p.vi)}</h2><div class="situation"><b>Tình huống:</b> ${esc(p.context)}</div>${ui.revealed?`<div class="answer-box"><h3>${esc(p.en)}</h3><p>${esc(p.follow)}</p><div class="sentence-frame">${esc(p.pattern)}</div><small>${esc(p.memoryTip)}</small><p class="transcript-note">Các cách diễn đạt hợp lý khác vẫn có thể đúng; đây là câu mẫu tham khảo.</p></div>`:''}</article><div class="practice-actions"><button class="btn" data-action="mic" data-id="${p.id}">${icon('mic')} ${window._tomengRecognition&&ui.speakingId===p.id?'Dừng':ui.transcript?'Thử lại':'Thử nói'}</button><button class="btn btn-dark" data-action="reveal">${ui.revealed?'Ẩn câu mẫu':'Xem câu mẫu'}</button><button class="btn" data-action="practice-random">Câu khác ${icon('arrow')}</button><button class="btn" data-action="speak" data-id="${p.id}">${icon('volume')} Nghe</button></div>${speechFeedback(p.id)}</div>`; }
   function patternPage() { const family=PHRASES.filter(p=>p.patternId===ui.familyId); const base=family[0]; return `<div class="modal-overlay" data-action="close-family"><article class="modal" role="dialog" aria-modal="true" aria-labelledby="pattern-title"><button class="icon-btn modal-close" data-action="close-family" aria-label="Đóng">${icon('close')}</button><div class="eyebrow">Khung câu · ${family.length} tình huống</div><h2 id="pattern-title">${esc(base?.pattern||'')}</h2><p>${esc(base?.memoryTip||'')}</p><ul class="family-list">${family.map(p=>`<li><b>${esc(p.en)}</b><span>${esc(p.vi)}</span><small>${esc(p.context)}</small><button class="text-btn" data-open="${p.id}">Ghi chú câu →</button></li>`).join('')}</ul></article></div>`; }
   function render() { if(migrationBlockedMessage){$('#app').innerHTML=`<main class="migration-blocked maintenance" role="alert"><h2>Chưa thể cập nhật sổ tay</h2><p>${esc(migrationBlockedMessage)}</p><button class="btn btn-dark" onclick="location.reload()">Thử lại</button></main>`;return;}const focusId=['global-search','rescue-search'].includes(document.activeElement?.id)?document.activeElement.id:null; let content=homePage(); if(ui.page==='library')content=libraryPage();if(ui.page==='more')content=morePage();if(ui.page==='grammar')content=grammarPage();if(ui.page==='rescue')content=rescuePage();if(ui.page==='practice')content=practicePage();if(ui.page==='listening')content=listeningPage();if(ui.page==='conversation')content=conversationPage();if(ui.page==='saved')content=savedPage();if(ui.page==='progress')content=progressPage();if(ui.page==='due')content=duePage();if(ui.page==='learn'){const s=store.activeSession?.mode==='mastery'?store.activeSession:ensureSession(),l=activeLesson();content=!s?`<section class="maintenance"><h2>${store.introducedPhraseIds.length===PHRASES.length?'Đã học mới đủ 1.200 cụm.':'Hôm nay đã học xong.'}</h2><p>${store.introducedPhraseIds.length===PHRASES.length?'Mở Mastery Mode vào ngày tiếp theo để tiếp tục luyện theo tình huống.':'Ngày mai học tình huống mới; hôm nay bạn có thể ôn SRS tự chọn.'}</p><button class="btn btn-coral" data-page="due">Ôn thêm</button></section>`:s.mode==='mastery'?s.phase==='mastery'?masteryScreen(s,l):scenarioApplicationScreen(s,l):s.phase==='review'?reviewScreen(s,l):s.phase==='learn'?learningScreen(s,l):quickScreen(s,l);} $('#app').innerHTML=shell(content); modal(); if(ui.familyId){const root=$('#modal-root');root.innerHTML=patternPage();$('.modal-close',root)?.focus();} if(focusId){const search=$(`#${focusId}`);search?.focus();search?.setSelectionRange(search.value.length,search.value.length);} }
   function go(page) { ui.page=page;ui.selected=null;ui.familyId=null;render();window.scrollTo({top:0,behavior:'smooth'}); }
@@ -450,38 +450,55 @@
       ? `<p>${esc(ui.transcript||'Chưa nhận được câu nói. Anh có thể thử lại hoặc tự đối chiếu.')}</p>`
       : ui.transcript
         ? `<b>Đã nghe câu anh nói</b><p>“${esc(ui.transcript)}”</p><small>Đối chiếu với câu mẫu rồi tự chọn bước tiếp theo. Bản nhận dạng không chấm phát âm.</small>`
-        : '<p>Đang nghe… hãy nói câu tiếng Anh.</p>';
+        : `<p>${ui.speechInterim?`Đang nhận: “${esc(ui.speechInterim)}”`:'Đang nghe… hãy nói câu tiếng Anh.'}</p><small>${ui.speechStopping?'Đang chốt kết quả…':'Nhấn Dừng khi đọc xong.'}</small>`;
     return `<div class="speech-feedback${ui.speechError?' is-error':''}" role="status" aria-live="polite">${content}</div>`;
+  }
+  function stopSpeech(id) {
+    const rec=window._tomengRecognition;
+    if(!rec||ui.speakingId!==id)return;
+    ui.speechStopping=true;
+    try{rec.stop();}catch{window._tomengRecognition=null;ui.speechStopping=false;ui.speechError=true;ui.transcript='Không dừng được micro. Hãy thử lại.';render();}
   }
   function startSpeech(id) {
     if(!byId.has(id))return;
+    if(window._tomengRecognition&&ui.speakingId===id){stopSpeech(id);return;}
     const Speech=window.SpeechRecognition||window.webkitSpeechRecognition;
-    ui.speakingId=id;ui.transcript='';ui.speechError=false;
+    ui.speakingId=id;ui.transcript='';ui.speechInterim='';ui.speechStopping=false;ui.speechError=false;
     if(!Speech){ui.speechError=true;ui.transcript='Thiết bị chưa hỗ trợ nhận dạng giọng nói. Anh vẫn có thể tự nói rồi tự đánh giá.';toast('Nhận dạng giọng nói chưa được hỗ trợ.');render();return;}
     try{window._tomengRecognition?.abort?.();}catch{}
-    const rec=new Speech();rec.lang='en-US';rec.interimResults=false;rec.maxAlternatives=1;
+    const rec=new Speech();rec.lang='en-US';rec.interimResults=true;rec.continuous=true;rec.maxAlternatives=1;
     rec.onresult=(event)=>{
       if(window._tomengRecognition!==rec)return;
-      const heard=String(event.results?.[0]?.[0]?.transcript||'').trim();
-      if(!heard)return;
-      ui.transcript=heard;ui.speechError=false;
-      store.speakingPracticed=[...new Set([...store.speakingPracticed,id])];
-      const session=store.activeSession;
-      if(ui.page==='learn'&&session?.phase==='learn'&&phraseIdsForSession(activeLesson())[session.learnIndex]===id)session.revealed=true;
-      else if(ui.page==='learn'&&session?.phase==='quick'&&phraseIdsForSession(activeLesson())[session.recallIndex]===id)session.recallRevealed=true;
-      else if(ui.page==='practice')ui.revealed=true;
-      save();render();
+      let finalText='',interimText='';
+      for(let i=0;i<event.results.length;i++){
+        const result=event.results[i],text=String(result?.[0]?.transcript||'').trim();
+        if(result.isFinal&&text)finalText+=`${finalText?' ':''}${text}`;
+        else if(text)interimText+=`${interimText?' ':''}${text}`;
+      }
+      if(finalText)ui.transcript=[ui.transcript,finalText].filter(Boolean).join(' ').trim();
+      ui.speechInterim=interimText;
+      render();
     };
     rec.onerror=(event)=>{
       if(window._tomengRecognition!==rec)return;
-      ui.speechError=true;
-      ui.transcript=event.error==='not-allowed'?'Micro chưa được cấp quyền. Hãy bật quyền micro trong trình duyệt rồi thử lại.':event.error==='no-speech'?'Chưa nghe được câu nói. Hãy nói gần micro hơn rồi thử lại.':'Không nhận được câu nói. Anh có thể thử lại hoặc tự đánh giá.';
-      render();
+      window._tomengRecognition=null;ui.speechStopping=false;ui.speechError=true;
+      ui.transcript=event.error==='not-allowed'?'Micro chưa được cấp quyền. Hãy bật quyền micro trong trình duyệt rồi thử lại.':event.error==='no-speech'?'Chưa nghe được câu nói. Hãy nói gần micro hơn rồi thử lại.':`Không nhận được câu nói (${event.error||'unknown'}). Anh có thể thử lại.`;
+      ui.speechInterim='';render();
     };
     rec.onend=()=>{
       if(window._tomengRecognition!==rec)return;
-      window._tomengRecognition=null;
-      if(!ui.transcript){ui.speechError=true;ui.transcript='Chưa nhận được câu nói. Tiến độ chưa thay đổi.';}
+      window._tomengRecognition=null;ui.speechStopping=false;
+      if(ui.speechInterim)ui.transcript=[ui.transcript,ui.speechInterim].filter(Boolean).join(' ').trim();
+      ui.speechInterim='';
+      if(ui.transcript){
+        ui.speechError=false;
+        store.speakingPracticed=[...new Set([...store.speakingPracticed,id])];
+        const session=store.activeSession;
+        if(ui.page==='learn'&&session?.phase==='learn'&&phraseIdsForSession(activeLesson())[session.learnIndex]===id)session.revealed=true;
+        else if(ui.page==='learn'&&session?.phase==='quick'&&phraseIdsForSession(activeLesson())[session.recallIndex]===id)session.recallRevealed=true;
+        else if(ui.page==='practice')ui.revealed=true;
+        save();
+      }else if(ui.speechStopping){ui.speechError=true;ui.transcript='Chưa nhận được câu nói. Tiến độ chưa thay đổi.';}
       render();
     };
     window._tomengRecognition=rec;
