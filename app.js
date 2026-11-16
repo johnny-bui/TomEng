@@ -456,6 +456,18 @@
     else if(/\b(yesterday|last night|last week|ago)\b/i.test(en)||/\b(i|we|you|they|he|she) (went|got|had|did|said|missed|sent|called|tried|found|thought|was|were)\b/i.test(en)){form='Quá khứ đơn';why='Dùng để kể việc đã xong tại một thời điểm trước hiện tại.';}
     else if(/\b(am|is|are) \w+ing\b/i.test(en)){form='Hiện tại tiếp diễn: am/is/are + V-ing';why='Nhấn vào việc đang diễn ra hoặc đang được sắp xếp.';}
     else if(/\b(should|might|may|must|need to)\b/i.test(en)){form='Động từ tình thái hoặc cách nói nhu cầu + động từ';why='Thể hiện lời khuyên, khả năng hoặc mức độ cần thiết; giữ động từ chính ở dạng gốc sau modal.';}
+    else if(/^i think\b|^i believe\b/i.test(en)){form='Hiện tại đơn để nêu ý kiến';why='I think/I believe mở đầu một quan điểm, rồi nói điều mình nghĩ; có thể thay bằng I feel để mềm hơn.';}
+    else if(/^i('m| am) \w+ing\b/i.test(en)){form='Hiện tại tiếp diễn: am + V-ing';why='Dùng khi đang làm hoặc đang cân nhắc việc này, ngay lúc nói.';}
+    else if(/^i('m| am)\b/i.test(en)){form='Hiện tại đơn với be: I am + trạng thái';why='Dùng để nói cảm nhận hoặc trạng thái hiện tại của mình.';}
+    else if(/^we('ve| have) \w+\b/i.test(en)){form='Cấu trúc we have + phần thông tin phía sau';why='Have có thể chỉ sở hữu hoặc kết quả đã có; xem động từ theo sau để hiểu ý trong bối cảnh.';}
+    else if(/^we('re| are)\b/i.test(en)){form='Hiện tại với be: we are + trạng thái';why='Nói tình trạng của cả nhóm ở thời điểm hiện tại.';}
+    else if(/^do(es)? (you|we|they|it|this)\b/i.test(en)){form='Câu hỏi hiện tại đơn với do/does';why='Dùng để hỏi thông tin, thói quen hoặc sự phù hợp ở hiện tại; động từ chính giữ dạng gốc sau does.';}
+    else if(/^(is|are|am)\b/i.test(en)){form='Câu hỏi với be ở hiện tại';why='Đảo be lên đầu để hỏi về trạng thái hoặc sự phù hợp lúc này.';}
+    else if(/^(what|who|which|where|when|how|why)\b/i.test(en)){form='Câu hỏi thông tin với từ để hỏi';why='Từ đầu câu cho biết cần hỏi điều gì; giữ khung hỏi rồi đổi chi tiết cần biết.';}
+    else if(/^please\b/i.test(en)){form='Lời nhờ trực tiếp có please';why='Please làm yêu cầu lịch sự hơn; dùng động từ nguyên mẫu để nói hành động cần làm.';}
+    else if(/^i (want|need|agree|see|know|understand|prefer|hope|feel|believe|think)\b/i.test(en)){form='Hiện tại đơn để nói nhu cầu hoặc quan điểm';why='Dùng khi nói điều mình muốn, hiểu hoặc nghĩ ngay lúc trao đổi.';}
+    else if(/^we (want|need|agree|see|know|have|prefer|hope|think|can|should)\b/i.test(en)){form='Hiện tại đơn hoặc động từ tình thái cho cả nhóm';why='We đặt trọng tâm vào hành động hoặc quan điểm chung của nhóm.';}
+    else if(/^(this|that|the|it)\b/i.test(en)){form='Câu nhận xét về một đối tượng cụ thể';why='This/that/it trỏ về điều vừa nói; thay đối tượng khi áp dụng vào việc khác.';}
     if(/\bslower\b/i.test(en))why+=' Slower là dạng so sánh hơn của slow, bổ nghĩa cho speak: nói chậm hơn hiện tại. A little làm yêu cầu nhẹ đi.';
     else if(/\b(a little|a bit)\b/i.test(en))why+=' A little/a bit làm mức độ nhỏ hơn, giúp câu bớt gắt.';
     const apply=focus&&focus.length<45?`Giữ khung câu, đổi phần “${focus}” theo việc anh cần nói.`:'Giữ cách mở câu, đổi đối tượng hoặc thời điểm cho tình huống thật.';
