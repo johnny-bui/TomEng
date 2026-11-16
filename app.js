@@ -446,12 +446,12 @@
   function advanceMastery(p,rating){const s=store.activeSession;if(!s||s.mode!=='mastery'||s.phase!=='mastery'||!s.masteryRevealed||p.id!==s.phraseIds[s.masteryIndex])return;ratePhrase(p.id,rating);if(rating==='good')store.learned=[...new Set([...store.learned,p.id])];else store.learned=store.learned.filter((id)=>id!==p.id);s.masteryDone.push(p.id);s.masteryIndex++;s.masteryRevealed=false;if(s.masteryIndex>=s.phraseIds.length)s.phase='mastery-apply';save();render();}
   function phraseUsageNote(p) {
     const en=p.en.trim(),lower=en.toLowerCase(),focus=String(p.focus||'').trim();
-    let form='Câu giao tiếp ở hiện tại',why='Dùng để nói về tình huống đang xảy ra hoặc điều đúng lúc này.';
+    let form='Mẫu câu giao tiếp theo tình huống',why='Xem người nói đang nhờ, hỏi, kể hay đề xuất; đổi chi tiết để dùng cho việc của mình.';
     if(/^could (you|i|we)\b/i.test(en)){form='Lời nhờ hoặc đề xuất lịch sự: could + chủ ngữ + động từ nguyên mẫu';why='Could làm câu hỏi mềm hơn can; đây là cách nhờ vả, không phải thì quá khứ.';}
     else if(/^would (you|i|we)\b|^i'd\b/i.test(en)){form='Lời đề nghị lịch sự với would + động từ nguyên mẫu';why='Would làm lời đề nghị nhẹ và lịch sự; không nhất thiết nói về tương lai.';}
     else if(/^can (you|i|we)\b/i.test(en)){form='Câu hỏi với can + chủ ngữ + động từ nguyên mẫu';why='Can hỏi khả năng hoặc xin phép ngay trong tình huống hiện tại.';}
     else if(/^let('s| me)\b/i.test(en)){form='Lời đề xuất hoặc xin lượt nói với let';why='Let’s rủ cùng làm; let me xin phép mình thực hiện.';}
-    else if(/^i('ve| have)\b/i.test(en)){form='Hiện tại hoàn thành: have/has + quá khứ phân từ';why='Nhấn vào việc đã xảy ra và còn liên quan đến hiện tại.';}
+    else if(/^i've\b/i.test(en)){form='Hiện tại hoàn thành: have/has + quá khứ phân từ';why='Nhấn vào việc đã xảy ra và còn liên quan đến hiện tại.';}
     else if(/^i('ll| will)\b|^we('ll| will)\b/i.test(en)){form='Will + động từ nguyên mẫu';why='Dùng khi quyết định, hứa hoặc nói bước tiếp theo.';}
     else if(/\b(yesterday|last night|last week|ago)\b/i.test(en)||/\b(i|we|you|they|he|she) (went|got|had|did|said|missed|sent|called|tried|found|thought|was|were)\b/i.test(en)){form='Quá khứ đơn';why='Dùng để kể việc đã xong tại một thời điểm trước hiện tại.';}
     else if(/\b(am|is|are) \w+ing\b/i.test(en)){form='Hiện tại tiếp diễn: am/is/are + V-ing';why='Nhấn vào việc đang diễn ra hoặc đang được sắp xếp.';}
