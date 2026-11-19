@@ -486,6 +486,8 @@
       else extra.push(actual[j++]);
     }
     missing.push(...target.slice(i));extra.push(...actual.slice(j));
+    const moved=[];
+    for(let n=missing.length-1;n>=0;n--){const at=extra.indexOf(missing[n]);if(at>=0){moved.push(missing[n]);missing.splice(n,1);extra.splice(at,1);}}
     const score=Math.round(200*table[0][0]/(target.length+actual.length));
     const tips=[];
     const targetNegation=target.includes('not'),actualNegation=actual.includes('not');
@@ -495,9 +497,9 @@
     if(target.includes('slower')&&actual.includes('slowly'))tips.push('“Slower” nghĩa là chậm hơn mức hiện tại; “slowly” chỉ cách nói chậm, không có ý so sánh.');
     if(missing.length)tips.push('Câu mẫu còn các từ: '+missing.slice(0,6).join(', ')+(missing.length>6?'…':'')+'.');
     if(extra.length)tips.push('Máy nghe thêm: '+extra.slice(0,6).join(', ')+(extra.length>6?'…':'')+'. Kiểm tra lại bản nhận dạng trước khi sửa câu.');
-    if(!missing.length&&!extra.length&&score<100)tips.push('Đủ từ nhưng thứ tự khác câu mẫu; thử nói lại theo đúng nhịp câu.');
+    if(moved.length)tips.push('Đủ các từ “'+moved.slice(0,4).join(', ')+'” nhưng thứ tự khác câu mẫu; thử nói lại theo đúng nhịp câu.');
     if(score===100)tips.push('Các từ và thứ tự khớp câu mẫu. Thử đổi một chi tiết để dùng trong tình huống khác.');
-    return {score,missing,extra,tips:tips.slice(0,3)};
+    return {score,missing,extra,moved,tips:tips.slice(0,3)};
   }
   function speechComparison(id) {
     const expected=shown(byId.get(id))?.en||'';
