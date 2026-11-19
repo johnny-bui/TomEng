@@ -8,7 +8,7 @@
   const PREVIOUS_ENGINE_KEY = 'tomeng_reflex_v3';
   const BACKUP_KEY = 'tomeng_native_v3_migration_backup';
   // MAJOR.MINOR.PATCH: major for breaking changes, minor for features, patch for fixes/content.
-  const APP_VERSION = '3.6.1';
+  const APP_VERSION = '3.6.2';
   const CONTENT_VERSION = 'native-v3.4';
   const CURRENT_PLAN_VERSION = 'native-v3.4';
   const LEGACY_PLANS = [window.TOMENG_LEGACY_LESSON_PLAN_V3_3,window.TOMENG_LEGACY_LESSON_PLAN_V3_2,window.TOMENG_LEGACY_LESSON_PLAN_V3_1,window.TOMENG_LEGACY_LESSON_PLAN_V3].filter(Boolean);
@@ -495,13 +495,23 @@
     const moved=[];
     for(let n=missing.length-1;n>=0;n--){const at=extra.indexOf(missing[n]);if(at>=0){moved.push(missing[n]);missing.splice(n,1);extra.splice(at,1);}}
     const score=Math.round(200*table[0][0]/(target.length+actual.length));
+    const articles=new Set(['a','an','the']);
+    const missingArticles=missing.filter(word=>articles.has(word));
+    const articleOnly=missingArticles.length>0&&missing.length===missingArticles.length&&extra.length===0&&moved.length===0&&target.filter(word=>!articles.has(word)).join(' ')===actual.filter(word=>!articles.has(word)).join(' ');
+    const missingBe=missing.find(word=>['am','is','are','was','were'].includes(word));
+    const beOnly=!!missingBe&&missing.length===1&&extra.length===0&&moved.length===0;
     const tips=[];
     const targetNegation=target.includes('not'),actualNegation=actual.includes('not');
     if(targetNegation!==actualNegation)tips.push('Kiểm tra từ phủ định “not”: thêm hoặc bỏ từ này có thể đổi nghĩa câu.');
     const modal=new Set(['can','could','would','should','will','may','might','must']);
     for(let k=0;k<actual.length-1;k++)if(modal.has(actual[k])&&actual[k+1]==='you'&&/ing$/.test(actual[k+2]||'')) {tips.push('Sau '+actual[k]+' you, dùng động từ nguyên mẫu'+(modal.has(target[0])&&target[1]==='you'?' như “'+target[2]+'”':'')+', không dùng dạng -ing.');break;}
     if(target.includes('slower')&&actual.includes('slowly'))tips.push('“Slower” nghĩa là chậm hơn mức hiện tại; “slowly” chỉ cách nói chậm, không có ý so sánh.');
-    if(missing.length)tips.push('Câu mẫu còn các từ: '+missing.slice(0,6).join(', ')+(missing.length>6?'…':'')+'.');
+    if(articleOnly&&missingArticles.length===1){
+      if(missingArticles[0]==='the')tips.push('Kiểm tra “the”: câu mẫu đang chỉ một phần/vật cụ thể đã xác định. Âm “the” rất nhẹ, máy cũng có thể bỏ sót khi nhận dạng.');
+      else tips.push('Kiểm tra “'+missingArticles[0]+'”: câu mẫu dùng mạo từ trước danh từ số ít. Bỏ mạo từ thường làm câu kém tự nhiên hoặc sai cấu trúc.');
+    }
+    if(beOnly)tips.push('Thiếu “'+missingBe+'” trong bản nhận dạng. Kiểm tra lại động từ be để câu có đủ cấu trúc và đúng thời điểm.');
+    if(missing.length&&!articleOnly&&!beOnly)tips.push('Câu mẫu còn các từ: '+missing.slice(0,6).join(', ')+(missing.length>6?'…':'')+'.');
     if(extra.length)tips.push('Máy nghe thêm: '+extra.slice(0,6).join(', ')+(extra.length>6?'…':'')+'. Kiểm tra lại bản nhận dạng trước khi sửa câu.');
     if(moved.length)tips.push('Đủ các từ “'+moved.slice(0,4).join(', ')+'” nhưng thứ tự khác câu mẫu; thử nói lại theo đúng nhịp câu.');
     if(score===100)tips.push('Các từ và thứ tự khớp câu mẫu. Thử đổi một chi tiết để dùng trong tình huống khác.');
@@ -510,6 +520,11 @@
     let meaningTitle='Chưa thể kết luận đúng ý',meaningDetail='Các từ khác câu mẫu; hãy đối chiếu tình huống và bản dịch trước khi quyết định câu của anh có phù hợp.';
     if(score===100){meaningTitle='Đúng ý câu mẫu';meaningDetail='Bản nhận dạng giữ nguyên nội dung câu mẫu. Anh có thể đổi chi tiết để nói trong tình huống thật.';}
     else if(targetNegation!==actualNegation){meaningTitle='Có thể đổi nghĩa câu';meaningDetail='Câu anh nói và câu mẫu khác nhau ở phủ định. Hãy kiểm tra lại “not” trước khi dùng.';}
+    else if(articleOnly){meaningTitle='Giữ đúng ý, cần kiểm tra mạo từ';
+      if(targetText.includes('the last part')&&missingArticles.includes('the'))meaningDetail='Ý “tôi bỏ lỡ phần cuối” vẫn rõ. Trong “the last part”, “part” là danh từ đếm được số ít và “the” chỉ đúng phần cuối của điều vừa nghe; bỏ “the” khiến cụm “last part” thiếu từ xác định và kém tự nhiên. Nếu anh đã nói “the”, có thể máy nhận dạng bỏ sót âm này.';
+      else meaningDetail='Các từ nội dung và thứ tự đều khớp; khác biệt nằm ở mạo từ “'+missingArticles.join(', ')+'”. Câu mẫu dùng mạo từ để xác định danh từ; bỏ đi có thể khiến câu kém tự nhiên hoặc sai cấu trúc. Nếu anh đã nói, hãy thử kiểm tra lại bản nhận dạng.';
+    }
+    else if(beOnly){meaningTitle='Gần đúng ý, thiếu động từ be';meaningDetail='Các từ nội dung còn lại khớp, nhưng câu mẫu có “'+missingBe+'” để nối chủ ngữ với phần mô tả hoặc diễn tả thì. Nếu anh đã đọc từ này, máy có thể nhận dạng thiếu; nếu chưa, hãy thêm vào câu.';}
     else if(/\bkey point\b/.test(targetText)&&/\bmain content\b/.test(actualText)&&sameAction){meaningTitle='Gần đúng mục đích, lệch trọng tâm';meaningDetail='Anh đã nhờ người kia nhắc lại. “Main content” là nội dung chính nói chung; “key point” là một ý trọng tâm cụ thể. Trong tình huống này, “Could you repeat the main point?” hoặc câu mẫu sẽ tự nhiên và sát ý hơn.';}
     else if(/\bkey point\b/.test(targetText)&&/\bmain (point|idea)\b/.test(actualText)&&sameAction){meaningTitle='Gần đúng ý';meaningDetail='Anh vẫn nhờ nhắc lại ý chính. “Main point” hoặc “main idea” gần nghĩa “key point”; khác chữ không có nghĩa là nói sai.';}
     else if(sameAction){meaningTitle='Đúng hành động, cần xem chi tiết';meaningDetail='Phần mở lời và động từ “'+target[2]+'” khớp. Phần nội dung còn khác; hãy kiểm tra xem đối tượng hoặc mức độ anh nói có đúng tình huống không.';}
