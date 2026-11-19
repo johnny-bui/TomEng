@@ -8,7 +8,7 @@
   const PREVIOUS_ENGINE_KEY = 'tomeng_reflex_v3';
   const BACKUP_KEY = 'tomeng_native_v3_migration_backup';
   // MAJOR.MINOR.PATCH: major for breaking changes, minor for features, patch for fixes/content.
-  const APP_VERSION = '3.5.11';
+  const APP_VERSION = '3.6.0';
   const CONTENT_VERSION = 'native-v3.4';
   const CURRENT_PLAN_VERSION = 'native-v3.4';
   const LEGACY_PLANS = [window.TOMENG_LEGACY_LESSON_PLAN_V3_3,window.TOMENG_LEGACY_LESSON_PLAN_V3_2,window.TOMENG_LEGACY_LESSON_PLAN_V3_1,window.TOMENG_LEGACY_LESSON_PLAN_V3].filter(Boolean);
@@ -473,15 +473,38 @@
     const apply=focus&&focus.length<45?`Giữ khung câu, đổi phần “${focus}” theo việc anh cần nói.`:'Giữ cách mở câu, đổi đối tượng hoặc thời điểm cho tình huống thật.';
     return `<div class="usage-note"><b>Vì sao nói vậy?</b><p><strong>${esc(form)}.</strong> ${esc(why)}</p><small>${esc(apply)}</small></div>`;
   }
+  function speechMatch(expected, spoken) {
+    const tokenize=text=>String(text||'').toLowerCase().replace(/[’‘]/g,"'").replace(/\b(i|you|we|they|he|she|it)'(m|re|ve|ll|d|s)\b/g,(_,subject,ending)=>subject+' '+({m:'am',re:'are',ve:'have',ll:'will',d:'would',s:'is'}[ending])).replace(/\b(can't|cannot|don't|doesn't|didn't|won't|wouldn't|couldn't|shouldn't|isn't|aren't|wasn't|weren't)\b/g,word=>({"can't":'can not','cannot':'can not',"don't":'do not',"doesn't":'does not',"didn't":'did not',"won't":'will not',"wouldn't":'would not',"couldn't":'could not',"shouldn't":'should not',"isn't":'is not',"aren't":'are not',"wasn't":'was not',"weren't":'were not'}[word])).match(/[a-z0-9]+/g)||[];
+    const target=tokenize(expected),actual=tokenize(spoken);
+    if(!target.length||!actual.length)return {score:0,missing:target,extra:actual,tips:['Chưa có đủ chữ để đối chiếu. Hãy thử nói lại gần micro hơn.']};
+    const table=Array.from({length:target.length+1},()=>Array(actual.length+1).fill(0));
+    for(let i=target.length-1;i>=0;i--)for(let j=actual.length-1;j>=0;j--)table[i][j]=target[i]===actual[j]?1+table[i+1][j+1]:Math.max(table[i+1][j],table[i][j+1]);
+    const missing=[],extra=[];let i=0,j=0;
+    while(i<target.length&&j<actual.length){
+      if(target[i]===actual[j]){i++;j++;}
+      else if(table[i+1][j]>=table[i][j+1])missing.push(target[i++]);
+      else extra.push(actual[j++]);
+    }
+    missing.push(...target.slice(i));extra.push(...actual.slice(j));
+    const moved=[];
+    for(let n=missing.length-1;n>=0;n--){const at=extra.indexOf(missing[n]);if(at>=0){moved.push(missing[n]);missing.splice(n,1);extra.splice(at,1);}}
+    const score=Math.round(200*table[0][0]/(target.length+actual.length));
+    const tips=[];
+    const targetNegation=target.includes('not'),actualNegation=actual.includes('not');
+    if(targetNegation!==actualNegation)tips.push('Kiểm tra từ phủ định “not”: thêm hoặc bỏ từ này có thể đổi nghĩa câu.');
+    const modal=new Set(['can','could','would','should','will','may','might','must']);
+    for(let k=0;k<actual.length-1;k++)if(modal.has(actual[k])&&actual[k+1]==='you'&&/ing$/.test(actual[k+2]||'')) {tips.push('Sau '+actual[k]+' you, dùng động từ nguyên mẫu'+(modal.has(target[0])&&target[1]==='you'?' như “'+target[2]+'”':'')+', không dùng dạng -ing.');break;}
+    if(target.includes('slower')&&actual.includes('slowly'))tips.push('“Slower” nghĩa là chậm hơn mức hiện tại; “slowly” chỉ cách nói chậm, không có ý so sánh.');
+    if(missing.length)tips.push('Câu mẫu còn các từ: '+missing.slice(0,6).join(', ')+(missing.length>6?'…':'')+'.');
+    if(extra.length)tips.push('Máy nghe thêm: '+extra.slice(0,6).join(', ')+(extra.length>6?'…':'')+'. Kiểm tra lại bản nhận dạng trước khi sửa câu.');
+    if(moved.length)tips.push('Đủ các từ “'+moved.slice(0,4).join(', ')+'” nhưng thứ tự khác câu mẫu; thử nói lại theo đúng nhịp câu.');
+    if(score===100)tips.push('Các từ và thứ tự khớp câu mẫu. Thử đổi một chi tiết để dùng trong tình huống khác.');
+    return {score,missing,extra,moved,tips:tips.slice(0,3)};
+  }
   function speechComparison(id) {
     const expected=shown(byId.get(id))?.en||'';
-    const spoken=ui.transcript||'';
-    const words=text=>text.toLowerCase().replace(/[^a-z0-9' ]/g,' ').split(/\s+/).filter(Boolean);
-    const target=words(expected),actual=words(spoken);
-    const remaining=[...actual],missing=[];
-    for(const word of target){const at=remaining.indexOf(word);if(at<0)missing.push(word);else remaining.splice(at,1);}
-    if(!missing.length&&!remaining.length)return '<b>Khớp câu mẫu.</b><small>Bản nhận dạng khớp với chữ của câu mẫu; đây không phải điểm phát âm.</small>';
-    return `<b>So với câu mẫu</b><p>Câu mẫu: “${esc(expected)}”</p><small>${missing.length?'Kiểm tra lại: '+esc(missing.join(', '))+'. ':''}${remaining.length?'Máy nghe thêm: '+esc(remaining.join(', '))+'. ':''}Có thể dùng cách diễn đạt khác nếu đúng ngữ cảnh. Bản nhận dạng không chấm phát âm.</small>`;
+    const result=speechMatch(expected,ui.transcript);
+    return `<div class="speech-match"><div class="speech-match-head"><b>Khớp chữ với câu mẫu</b><strong>${result.score}%</strong></div><div class="speech-match-track" role="progressbar" aria-valuenow="${result.score}" aria-valuemin="0" aria-valuemax="100" aria-label="Mức khớp chữ với câu mẫu"><span style="width:${result.score}%"></span></div><p>Câu mẫu: “${esc(expected)}”</p><ul>${result.tips.map(tip=>`<li>${esc(tip)}</li>`).join('')}</ul><small>Tỷ lệ dựa trên từ và thứ tự máy nhận dạng, không chấm phát âm. Cách nói khác vẫn có thể đúng ý; hãy đối chiếu tình huống và bản dịch.</small></div>`;
   }
   function speechFeedback(id) {
     if(ui.speakingId!==id)return '';
