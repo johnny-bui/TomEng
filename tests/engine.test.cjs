@@ -361,6 +361,7 @@ const speechMatchSource=appSource.slice(appSource.indexOf('  function speechMatc
 const speechMatch=vm.runInNewContext(speechMatchSource+'; speechMatch');
 assert.equal(speechMatch("I'm concerned about it.","I am concerned about it").score,100,'contractions and expanded wording match');
 assert.equal(speechMatch('Could you speak a little slower?','Could you speak slower?').score,80,'missing softener lowers text match');
+assert.match(speechMatch('Can you help me?','You can help me?').tips.join(' '),/thứ tự khác/,'word order is explained without false missing-word advice');
 assert.match(speechMatch('Could you speak a little slower?','Can you speaking slowly').tips.join(' '),/động từ nguyên mẫu.*slower|động từ nguyên mẫu.*Slower/s,'comparison gives actionable verb and comparative hints');
 assert.match(speechMatch("I don't agree.","I agree").tips.join(' '),/phủ định/,'missing negation is called out as a meaning risk');
 assert.equal(mic.app.getState().speakingPracticed.length,1,'score does not alter speaking practice count');
