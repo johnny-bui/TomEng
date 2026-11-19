@@ -63,6 +63,8 @@ body{font-family:var(--sans);line-height:1.5}
 .speech-match-head b{font-size:14px}.speech-match-head strong{font-size:23px;color:var(--coral)}
 .speech-match-track{height:8px;margin:8px 0 12px;border-radius:99px;background:#dce3d5;overflow:hidden}
 .speech-match-track span{display:block;height:100%;border-radius:inherit;background:var(--coral)}
+.speech-meaning{margin:12px 0;padding:12px 14px;border-left:3px solid var(--olive);border-radius:0 10px 10px 0;background:#f8faf5}
+.speech-meaning b{font-size:14px}.speech-meaning p{margin:5px 0 0}
 .speech-match ul{margin:8px 0 0;padding-left:19px}.speech-match li{margin:5px 0;overflow-wrap:anywhere}
 
 .practice-actions{flex-wrap:wrap}
