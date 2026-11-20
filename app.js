@@ -8,7 +8,7 @@
   const PREVIOUS_ENGINE_KEY = 'tomeng_reflex_v3';
   const BACKUP_KEY = 'tomeng_native_v3_migration_backup';
   // MAJOR.MINOR.PATCH: major for breaking changes, minor for features, patch for fixes/content.
-  const APP_VERSION = '3.6.3';
+  const APP_VERSION = '3.7.0';
   const CONTENT_VERSION = 'native-v3.4';
   const CURRENT_PLAN_VERSION = 'native-v3.4';
   const LEGACY_PLANS = [window.TOMENG_LEGACY_LESSON_PLAN_V3_3,window.TOMENG_LEGACY_LESSON_PLAN_V3_2,window.TOMENG_LEGACY_LESSON_PLAN_V3_1,window.TOMENG_LEGACY_LESSON_PLAN_V3].filter(Boolean);
@@ -479,21 +479,28 @@
     const apply=focus&&focus.length<45?`Giữ khung câu, đổi phần “${focus}” theo việc anh cần nói.`:'Giữ cách mở câu, đổi đối tượng hoặc thời điểm cho tình huống thật.';
     return `<div class="usage-note"><b>Vì sao nói vậy?</b><p><strong>${esc(form)}.</strong> ${esc(why)}</p><small>${esc(apply)}</small></div>`;
   }
-  function speechMatch(expected, spoken) {
-    const tokenize=text=>String(text||'').toLowerCase().replace(/[’‘]/g,"'").replace(/\b(i|you|we|they|he|she|it)'(m|re|ve|ll|d|s)\b/g,(_,subject,ending)=>subject+' '+({m:'am',re:'are',ve:'have',ll:'will',d:'would',s:'is'}[ending])).replace(/\b(can't|cannot|don't|doesn't|didn't|won't|wouldn't|couldn't|shouldn't|isn't|aren't|wasn't|weren't)\b/g,word=>({"can't":'can not','cannot':'can not',"don't":'do not',"doesn't":'does not',"didn't":'did not',"won't":'will not',"wouldn't":'would not',"couldn't":'could not',"shouldn't":'should not',"isn't":'is not',"aren't":'are not',"wasn't":'was not',"weren't":'were not'}[word])).match(/[a-z0-9]+/g)||[];
+  function speechMatch(expected, spoken, meaning) {
+    const tokenize=text=>String(text||'').toLowerCase().replace(/[’‘]/g,"'").replace(/\bgonna\b/g,'going to').replace(/\bwanna\b/g,'want to').replace(/\blemme\b/g,'let me').replace(/\b(i|you|we|they|he|she|it)'(m|re|ve|ll|d|s)\b/g,(_,subject,ending)=>subject+' '+({m:'am',re:'are',ve:'have',ll:'will',d:'would',s:'is'}[ending])).replace(/\b(can't|cannot|don't|doesn't|didn't|won't|wouldn't|couldn't|shouldn't|isn't|aren't|wasn't|weren't)\b/g,word=>({"can't":'can not','cannot':'can not',"don't":'do not',"doesn't":'does not',"didn't":'did not',"won't":'will not',"wouldn't":'would not',"couldn't":'could not',"shouldn't":'should not',"isn't":'is not',"aren't":'are not',"wasn't":'was not',"weren't":'were not'}[word])).match(/[a-z0-9]+/g)||[];
     const target=tokenize(expected),actual=tokenize(spoken);
-    if(!target.length||!actual.length)return {score:0,missing:target,extra:actual,tips:['Chưa có đủ chữ để đối chiếu. Hãy thử nói lại gần micro hơn.']};
+    if(!target.length||!actual.length)return {score:0,missing:target,extra:actual,issues:[],tips:['Chưa có đủ chữ để đối chiếu. Hãy thử nói lại gần micro hơn.']};
     const table=Array.from({length:target.length+1},()=>Array(actual.length+1).fill(0));
     for(let i=target.length-1;i>=0;i--)for(let j=actual.length-1;j>=0;j--)table[i][j]=target[i]===actual[j]?1+table[i+1][j+1]:Math.max(table[i+1][j],table[i][j+1]);
-    const missing=[],extra=[];let i=0,j=0;
+    const events=[];let i=0,j=0;
     while(i<target.length&&j<actual.length){
       if(target[i]===actual[j]){i++;j++;}
-      else if(table[i+1][j]>=table[i][j+1])missing.push(target[i++]);
-      else extra.push(actual[j++]);
+      else if(table[i+1][j]>=table[i][j+1]){events.push({t:'m',w:target[i],i});i++;}
+      else{events.push({t:'e',w:actual[j],j});j++;}
     }
-    missing.push(...target.slice(i));extra.push(...actual.slice(j));
-    const moved=[];
-    for(let n=missing.length-1;n>=0;n--){const at=extra.indexOf(missing[n]);if(at>=0){moved.push(missing[n]);missing.splice(n,1);extra.splice(at,1);}}
+    for(;i<target.length;i++)events.push({t:'m',w:target[i],i});
+    for(;j<actual.length;j++)events.push({t:'e',w:actual[j],j});
+    const moved=[],movedAt=new Set();
+    for(let n=events.length-1;n>=0;n--){
+      if(events[n].t!=='m'||movedAt.has(n))continue;
+      const at=events.findIndex((ev,k)=>ev.t==='e'&&ev.w===events[n].w&&!movedAt.has(k));
+      if(at>=0){moved.push(events[n].w);movedAt.add(n);movedAt.add(at);}
+    }
+    const live=events.filter((_,k)=>!movedAt.has(k));
+    const missing=live.filter(ev=>ev.t==='m').map(ev=>ev.w),extra=live.filter(ev=>ev.t==='e').map(ev=>ev.w);
     const score=Math.round(200*table[0][0]/(target.length+actual.length));
     const articles=new Set(['a','an','the']);
     const missingArticles=missing.filter(word=>articles.has(word));
@@ -511,8 +518,6 @@
       else tips.push('Kiểm tra “'+missingArticles[0]+'”: câu mẫu dùng mạo từ trước danh từ số ít. Bỏ mạo từ thường làm câu kém tự nhiên hoặc sai cấu trúc.');
     }
     if(beOnly)tips.push('Thiếu “'+missingBe+'” trong bản nhận dạng. Kiểm tra lại động từ be để câu có đủ cấu trúc và đúng thời điểm.');
-    if(missing.length&&!articleOnly&&!beOnly)tips.push('Câu mẫu còn các từ: '+missing.slice(0,6).join(', ')+(missing.length>6?'…':'')+'.');
-    if(extra.length)tips.push('Máy nghe thêm: '+extra.slice(0,6).join(', ')+(extra.length>6?'…':'')+'. Kiểm tra lại bản nhận dạng trước khi sửa câu.');
     if(moved.length)tips.push('Đủ các từ “'+moved.slice(0,4).join(', ')+'” nhưng thứ tự khác câu mẫu; thử nói lại theo đúng nhịp câu.');
     if(score===100)tips.push('Các từ và thứ tự khớp câu mẫu. Thử đổi một chi tiết để dùng trong tình huống khác.');
     const targetText=target.join(' '),actualText=actual.join(' ');
@@ -528,12 +533,88 @@
     else if(/\bkey point\b/.test(targetText)&&/\bmain content\b/.test(actualText)&&sameAction){meaningTitle='Gần đúng mục đích, lệch trọng tâm';meaningDetail='Anh đã nhờ người kia nhắc lại. “Main content” là nội dung chính nói chung; “key point” là một ý trọng tâm cụ thể. Trong tình huống này, “Could you repeat the main point?” hoặc câu mẫu sẽ tự nhiên và sát ý hơn.';}
     else if(/\bkey point\b/.test(targetText)&&/\bmain (point|idea)\b/.test(actualText)&&sameAction){meaningTitle='Gần đúng ý';meaningDetail='Anh vẫn nhờ nhắc lại ý chính. “Main point” hoặc “main idea” gần nghĩa “key point”; khác chữ không có nghĩa là nói sai.';}
     else if(sameAction){meaningTitle='Đúng hành động, cần xem chi tiết';meaningDetail='Phần mở lời và động từ “'+target[2]+'” khớp. Phần nội dung còn khác; hãy kiểm tra xem đối tượng hoặc mức độ anh nói có đúng tình huống không.';}
-    return {score,missing,extra,moved,tips:tips.slice(0,3),meaningTitle,meaningDetail};
+    return {score,missing,extra,moved,issues:speechGapIssues(live,target,meaning),tips:tips.slice(0,3),meaningTitle,meaningDetail};
+  }
+  /* HELPERS · giải thích từng chỗ thiếu / thừa / đổi từ so với câu mẫu (dùng chung cho mọi cụm) */
+  function speechGapIssues(live, target, meaning) {
+    const setOf=text=>new Set(text.split(' '));
+    const MODAL={can:'khả năng hoặc xin phép thông thường',could:'lời nhờ/đề xuất mềm và lịch sự hơn can',would:'lời đề nghị hoặc giả định lịch sự',should:'lời khuyên hoặc điều nên làm',will:'quyết định hoặc dự định chắc chắn',shall:'lời đề nghị trang trọng',may:'khả năng thấp hoặc xin phép lịch sự',might:'khả năng thấp, không chắc',must:'điều bắt buộc hoặc kết luận chắc chắn'};
+    const PREP={in:'trong một khoảng thời gian hoặc không gian',on:'vào ngày, trên bề mặt hoặc về một chủ đề',at:'tại một thời điểm hoặc điểm cụ thể',for:'cho ai, để làm gì hoặc trong bao lâu',of:'thuộc về hoặc một phần của',with:'cùng ai hoặc bằng cái gì',about:'về chủ đề nào',from:'từ đâu hoặc từ ai',by:'bằng cách nào hoặc trước thời hạn nào',into:'đi vào hoặc chuyển thành',over:'qua, trên hoặc xử lý lại',after:'sau khi',before:'trước khi',through:'xuyên qua hoặc thông qua',between:'giữa hai đối tượng',during:'trong suốt',without:'không có',within:'trong phạm vi',around:'khoảng hoặc xung quanh',under:'dưới hoặc trong điều kiện'};
+    const CONJ={and:'nối thêm một ý',but:'đối lập hai ý',so:'chỉ kết quả hoặc mục đích',because:'nêu lý do',if:'đặt điều kiện',or:'đưa ra lựa chọn',then:'chỉ bước tiếp theo',than:'so sánh hơn',that:'mở mệnh đề hoặc chỉ định',while:'hai việc diễn ra cùng lúc'};
+    const SOFT={just:'làm lời nói nhẹ đi (“chỉ là…”, “chỉ để…”) hoặc nhấn việc vừa mới xảy ra',really:'nhấn mạnh mức độ',actually:'đính chính hoặc nói điều thực sự',maybe:'cho thấy mức chắc chắn thấp',probably:'cho thấy khả năng khá cao nhưng chưa chắc',also:'thêm một ý nữa',still:'cho thấy việc vẫn tiếp diễn',already:'cho thấy việc đã xong sớm hơn dự kiến',only:'giới hạn phạm vi',even:'nhấn mạnh điều bất ngờ',quite:'mức độ khá, vừa phải',little:'giảm nhẹ mức độ',bit:'giảm nhẹ mức độ'};
+    const DET=setOf('the a an this that these those my your our their his her its');
+    const PRON=setOf('i you we they he she it me him us them');
+    const WH=setOf('what where when why how who which whose');
+    const AUX=setOf('do does did have has had');
+    const BE=setOf('am is are was were be been being');
+    const PARTICLE=setOf('up out off back down away over');
+    const FILLER=setOf('um uh er ah hmm erm');
+    const NEG=setOf('not no never');
+    const strip=w=>w.replace(/(ing|ed|es|s|er|ly)$/,'');
+    const dist=(a,b)=>{const t=Array.from({length:a.length+1},(_,k)=>[k,...Array(b.length).fill(0)]);for(let y=1;y<=b.length;y++)t[0][y]=y;for(let x=1;x<=a.length;x++)for(let y=1;y<=b.length;y++)t[x][y]=Math.min(t[x-1][y]+1,t[x][y-1]+1,t[x-1][y-1]+(a[x-1]===b[y-1]?0:1));return t[a.length][b.length];};
+    const snippet=idx=>{const from=Math.max(0,idx-2),to=Math.min(target.length,idx+3);return target.slice(from,to).map((w,k)=>from+k===idx?'['+w+']':w).join(' ');};
+    const why=meaning?' Ý của câu mẫu: “'+meaning+'”.':'';
+    function missingNote(ev) {
+      const w=ev.w,prev=target[ev.i-1]||'',next=target[ev.i+1]||'';
+      if(w==='to'){
+        if(DET.has(next)||PRON.has(next)||/^(everyone|someone|anyone|them|team|client|manager)$/.test(next))return 'Giới từ “to” nối hành động với người hoặc đích đến ('+(prev?prev+' ':'')+'to '+next+'). Thiếu “to”, câu mất đối tượng nhận hành động và nghe thiếu cấu trúc.';
+        let note='“to” đứng trước động từ nguyên mẫu'+(next?' “'+next+'”':'')+' (to + V) và mang nghĩa “để/nhằm/việc”. Thiếu “to”, '+(prev&&next?'“'+prev+'” và “'+next+'” bị dính nhau':'cấu trúc bị đứt')+', câu sai ngữ pháp hoặc đổi nghĩa.';
+        if(prev==='just'&&next)note+=' Ví dụ: “just to '+next+'” = “chỉ để '+next+'” (nói nhẹ, nêu mục đích); “just '+next+'” nghe như lời bảo “cứ '+next+' đi”.';
+        else if(/^(going|want|need|have|has|had|used|able|try|trying|like|love|hope|plan|wait|ready)$/.test(prev))note+=' “'+prev+' to” là cụm đi cùng nhau, không tách “to” ra được.';
+        return note;
+      }
+      if(w==='going'&&next==='to')return '“be going to + động từ” diễn tả dự định hoặc việc sắp làm. Thiếu “going to”, câu mất nghĩa tương lai/dự định và còn thiếu động từ chính.';
+      if(w==='a'||w==='an')return 'Mạo từ “'+w+'” đứng trước danh từ đếm được số ít chưa xác định. Thiếu mạo từ làm cụm kém tự nhiên hoặc sai cấu trúc.';
+      if(w==='the')return '“the” chỉ một đối tượng người nói và người nghe đều biết là cái nào. Thiếu “the” thì đối tượng thành chung chung. Âm “the” rất nhẹ nên máy cũng hay bỏ sót.';
+      if(NEG.has(w))return 'Phủ định “'+w+'” đổi nghĩa ngược lại. Thiếu nó, câu thành khẳng định, ý hoàn toàn khác.';
+      if(BE.has(w))return '“'+w+'” nối chủ ngữ với phần mô tả và cho biết thì'+(/ing$/.test(next)?' (be + V-ing: hành động đang diễn ra)':'')+'. Thiếu động từ be, câu không đủ cấu trúc.';
+      if(AUX.has(w))return '“'+w+'” là trợ động từ giúp tạo câu hỏi, phủ định hoặc thì hoàn thành. Thiếu nó, câu mất cấu trúc hoặc mất thì (“đã làm xong”).';
+      if(MODAL[w])return '“'+w+'” biểu thị '+MODAL[w]+'. Thiếu hoặc đổi modal làm đổi mức lịch sự và độ chắc chắn.';
+      if(PRON.has(w)||/^(my|your|our|their|his|her|its)$/.test(w))return 'Thiếu “'+w+'”: tiếng Anh cần chủ ngữ hoặc từ sở hữu rõ để biết ai làm, của ai. Thiếu hoặc đổi ngôi sẽ đổi người thực hiện hay người sở hữu.';
+      if(WH.has(w))return 'Từ hỏi “'+w+'” xác định thông tin đang hỏi. Thiếu hoặc đổi sẽ hỏi sang điều khác hoặc câu mất tính câu hỏi.';
+      if(CONJ[w])return '“'+w+'” dùng để '+CONJ[w]+'. Thiếu nó, hai phần câu bị dính nhau và mối quan hệ giữa chúng không rõ.';
+      if(SOFT[w])return '“'+w+'” '+SOFT[w]+'. Thiếu nó, câu vẫn còn ý chính nhưng giọng điệu đổi.'+(w==='just'?' Với “just”, người nói thường đang xin phép, nói nhẹ nhàng hoặc xác nhận nhanh.':'');
+      if(PREP[w])return 'Giới từ “'+w+'” cho biết '+PREP[w]+'. Thiếu nó, cụm bị đứt quãng, câu kém tự nhiên hoặc đổi nghĩa.';
+      if(PARTICLE.has(w)&&prev)return '“'+w+'” đi với “'+prev+'” tạo nghĩa riêng (“'+prev+' '+w+'”). Thiếu hoặc đổi tiểu từ sẽ thành nghĩa khác.';
+      if(/^(this|that|these|those)$/.test(w))return '“'+w+'” chỉ đúng đối tượng đang nói tới. Thiếu nó, người nghe không biết nói về cái nào.';
+      if(prev&&(DET.has(prev)||/^(little|bit|more|very|so)$/.test(prev)))return '“'+w+'” là từ chính sau “'+prev+'”: nó nói rõ đối tượng hoặc mức độ đang bàn tới. Thiếu thì cụm “'+prev+'…” bị hụt và câu mất ý cụ thể.'+why;
+      if(prev==='to')return '“'+w+'” là động từ nguyên mẫu sau “to”: nó nói rõ hành động. Thiếu thì “to” đứng lơ lửng và câu mất ý chính.'+why;
+      if(prev&&(MODAL[prev]||PRON.has(prev)||AUX.has(prev)||BE.has(prev)))return '“'+w+'” là từ chính đứng sau “'+prev+'” (thường là hành động hoặc nội dung chính). Thiếu thì câu có chủ ngữ nhưng hụt ý chính.'+why;
+      return '“'+w+'” là từ mang nghĩa chính trong cụm này; thiếu thì câu mất đúng ý đó.'+why;
+    }
+    function extraNote(ev) {
+      const w=ev.w;
+      if(FILLER.has(w))return '“'+w+'” là từ đệm. Nói chuyện thật thì không sao, nhưng không thuộc câu mẫu; bỏ đi để câu gọn.';
+      return 'Câu mẫu không có “'+w+'”. Thêm từ này có thể đổi ý, hoặc chỉ là máy nghe thừa. Nếu anh chủ ý thêm, hãy đối chiếu lại nghĩa câu mẫu.'+why;
+    }
+    function substitutionNote(want, said) {
+      if(strip(want)===strip(said)||strip(want)===said||strip(said)===want)return 'Khác dạng từ: câu mẫu dùng “'+want+'”, bản nhận dạng là “'+said+'”. Đổi dạng từ là đổi ngữ pháp (số ít/nhiều, thì, -ing, so sánh hay trạng từ) và có thể đổi nghĩa.';
+      if(PREP[want]&&PREP[said])return 'Giới từ khác nhau: “'+want+'” '+PREP[want]+'; “'+said+'” '+PREP[said]+'. Dùng sai giới từ thường làm cụm không tự nhiên hoặc đổi nghĩa.';
+      if(MODAL[want]&&MODAL[said])return 'Khác sắc thái: “'+want+'” '+MODAL[want]+'; “'+said+'” '+MODAL[said]+'.';
+      if(DET.has(want)&&DET.has(said))return 'Khác từ xác định: “'+want+'” và “'+said+'” chỉ đối tượng khác nhau (xác định/chưa xác định, của ai, cái nào).';
+      if(PRON.has(want)&&PRON.has(said))return 'Đổi chủ thể hoặc đối tượng: “'+want+'” khác “'+said+'”, nên người làm hoặc người nhận hành động đổi theo.';
+      if(BE.has(want)&&BE.has(said))return '“'+want+'” và “'+said+'” khác ngôi hoặc thì. Chọn dạng be đúng với chủ ngữ và thời điểm.';
+      if(WH.has(want)&&WH.has(said))return 'Từ hỏi khác nhau: “'+want+'” và “'+said+'” hỏi hai loại thông tin khác nhau.';
+      if(CONJ[want]&&CONJ[said])return 'Từ nối khác nhau: “'+want+'” '+CONJ[want]+'; “'+said+'” '+CONJ[said]+'.';
+      if(want.length>=3&&said.length>=3&&dist(want,said)<=2)return 'Có thể đọc nhầm âm hoặc máy nghe nhầm “'+want+'” thành “'+said+'”. Hai từ khác nghĩa; hãy nghe mẫu rồi đọc chậm, tách rõ âm đầu và âm cuối.'+why;
+      return 'Câu mẫu dùng “'+want+'” thay vì “'+said+'”. Hai từ khác nghĩa nên ý câu đổi.'+why;
+    }
+    const issues=[];
+    for(let k=0;k<live.length&&issues.length<6;k++){
+      const ev=live[k],nx=live[k+1];
+      if(nx&&nx.t!==ev.t){
+        const m=ev.t==='m'?ev:nx,e=ev.t==='e'?ev:nx;
+        issues.push({kind:'swap',label:'Nói “'+e.w+'”, câu mẫu là “'+m.w+'”',context:'Trong câu mẫu: “'+snippet(m.i)+'”',detail:substitutionNote(m.w,e.w)});k++;continue;
+      }
+      if(ev.t==='m')issues.push({kind:'missing',label:'Thiếu “'+ev.w+'”',context:'Trong câu mẫu: “'+snippet(ev.i)+'”',detail:missingNote(ev)});
+      else issues.push({kind:'extra',label:'Thừa “'+ev.w+'”',context:'',detail:extraNote(ev)});
+    }
+    return issues;
   }
   function speechComparison(id) {
     const expected=shown(byId.get(id))?.en||'';
-    const result=speechMatch(expected,ui.transcript);
-    return `<div class="speech-match"><div class="speech-match-head"><b>Khớp chữ với câu mẫu</b><strong>${result.score}%</strong></div><div class="speech-match-track" role="progressbar" aria-valuenow="${result.score}" aria-valuemin="0" aria-valuemax="100" aria-label="Mức khớp chữ với câu mẫu"><span style="width:${result.score}%"></span></div><p>Câu mẫu: “${esc(expected)}”</p><div class="speech-meaning"><b>${esc(result.meaningTitle)}</b><p>${esc(result.meaningDetail)}</p></div><ul>${result.tips.map(tip=>`<li>${esc(tip)}</li>`).join('')}</ul><small>Tỷ lệ dựa trên từ và thứ tự máy nhận dạng, không chấm phát âm. Nhận xét ý nghĩa chỉ là gợi ý theo bản nhận dạng, không phải chấm ngữ nghĩa chắc chắn.</small></div>`;
+    const result=speechMatch(expected,ui.transcript,shown(byId.get(id))?.vi||'');
+    return `<div class="speech-match"><div class="speech-match-head"><b>Khớp chữ với câu mẫu</b><strong>${result.score}%</strong></div><div class="speech-match-track" role="progressbar" aria-valuenow="${result.score}" aria-valuemin="0" aria-valuemax="100" aria-label="Mức khớp chữ với câu mẫu"><span style="width:${result.score}%"></span></div><p>Câu mẫu: “${esc(expected)}”</p><div class="speech-meaning"><b>${esc(result.meaningTitle)}</b><p>${esc(result.meaningDetail)}</p></div>${result.issues.length?`<div class="speech-gaps"><b>Chỗ cần bổ sung hoặc sửa</b><ol>${result.issues.map(x=>`<li><strong>${esc(x.label)}</strong>${x.context?` <span>${esc(x.context)}</span>`:''}<p>${esc(x.detail)}</p></li>`).join('')}</ol><small>Nếu anh chắc đã nói từ đó, có thể máy nhận dạng sót (nhất là các từ nhẹ như to, the, a); hãy thử nói rõ và chậm hơn.</small></div>`:''}<ul>${result.tips.map(tip=>`<li>${esc(tip)}</li>`).join('')}</ul><small>Tỷ lệ dựa trên từ và thứ tự máy nhận dạng, không chấm phát âm. Nhận xét ý nghĩa chỉ là gợi ý theo bản nhận dạng, không phải chấm ngữ nghĩa chắc chắn.</small></div>`;
   }
   function speechFeedback(id) {
     if(ui.speakingId!==id)return '';
