@@ -65,6 +65,9 @@ body{font-family:var(--sans);line-height:1.5}
 .speech-match-track span{display:block;height:100%;border-radius:inherit;background:var(--coral)}
 .speech-meaning{margin:12px 0;padding:12px 14px;border-left:3px solid var(--olive);border-radius:0 10px 10px 0;background:#f8faf5}
 .speech-meaning b{font-size:14px}.speech-meaning p{margin:5px 0 0}
+.speech-gaps{margin:12px 0;padding:12px 14px;border-left:3px solid var(--coral);border-radius:0 10px 10px 0;background:#fff6f3}
+.speech-gaps b{font-size:14px}.speech-gaps ol{margin:8px 0 0;padding-left:20px}.speech-gaps li{margin:9px 0;overflow-wrap:anywhere}
+.speech-gaps li>span{display:block;margin-top:2px;color:var(--muted);font-size:12.5px}.speech-gaps li p{margin:4px 0 0}
 .speech-match ul{margin:8px 0 0;padding-left:19px}.speech-match li{margin:5px 0;overflow-wrap:anywhere}
 
 .practice-actions{flex-wrap:wrap}
