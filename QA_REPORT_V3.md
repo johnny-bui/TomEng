@@ -1,5 +1,7 @@
 # TomEng V3.4.1 — QA report P0 Issue #9
 
+> **Lưu ý:** báo cáo này là snapshot QA của bản `3.4.1` (Issue #9, 11/11/2026). App hiện tại là `3.6.3` (thêm cloud sync, speaking feedback, v.v.); xem [README.md](README.md) cho trạng thái hiện hành. Các số cache/version bên dưới là tại thời điểm đó.
+
 Ngày lập: 11/11/2026
 
 Issues: [#7 — Adaptive Scenario Learning](https://github.com/johnny-bui/TomEng/issues/7), [#9 — Actual session review snapshot](https://github.com/johnny-bui/TomEng/issues/9)

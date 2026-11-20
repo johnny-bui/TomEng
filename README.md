@@ -1,6 +1,6 @@
-# TomEng V3.4.1 — sổ tay luyện phản xạ tiếng Anh
+# TomEng 3.6.3 — sổ tay luyện phản xạ tiếng Anh
 
-TomEng là ứng dụng tĩnh, lưu tiến độ trên thiết bị. Nội dung tập trung vào tiếng Anh dùng được trong đời sống, họp, UI/UX, BA, Developer và giao tiếp công việc. Không cần tài khoản hoặc API AI trả phí.
+TomEng là PWA tĩnh (GitHub Pages), lưu tiến độ trên thiết bị (localStorage) và có thể đồng bộ cloud tuỳ chọn giữa các thiết bị. Nội dung tập trung vào tiếng Anh dùng được trong đời sống, họp, UI/UX, BA, Developer và giao tiếp công việc. Học offline không cần tài khoản hay API AI trả phí; tài khoản chỉ cần khi bật đồng bộ cloud.
 
 ## Nội dung và buổi học
 
@@ -14,10 +14,16 @@ TomEng là ứng dụng tĩnh, lưu tiến độ trên thiết bị. Nội dung 
 ## Các chế độ
 
 - Everyday English, Workplace English và Mixed Learning.
-- Listening Drill phát audio trước rồi mới mở transcript; Speaking Practice dùng nhận dạng giọng nói tùy trình duyệt, chỉ hiển thị transcript tham khảo, không chấm phát âm.
+- Listening Drill phát audio trước rồi mới mở transcript; Speaking Practice dùng nhận dạng giọng nói của trình duyệt (Web Speech API), so transcript với câu mẫu, hiển thị % khớp văn bản và gợi ý sửa (ví dụ thiếu mạo từ, trợ động từ). Đây là so khớp văn bản theo kết quả nhận dạng của trình duyệt, không phải chấm phát âm; kết quả phụ thuộc trình duyệt/thiết bị (đặc biệt Safari iPhone).
 - TTS dùng giọng có sẵn trên thiết bị ở tốc độ 0.8× hoặc 1×.
 - Library tìm theo câu, bản dịch, tình huống, mẫu câu và mẹo nhớ. Rescue Mode có thể tìm mọi cụm theo tình huống.
 - PWA lưu shell và snapshot migration để mở lại khi offline; backup/restore nằm trong ứng dụng.
+
+## Đồng bộ cloud (tuỳ chọn)
+
+- Frontend: `sync-config.js` (endpoint công khai), `auth-session.js` (chuẩn hoá session Neon Auth), `sync-merge.js` (gộp state an toàn), `cloud-sync.js` (UI + vòng đồng bộ), `sync.css`.
+- Backend: `sync-api/` — Neon Function, chỉ nhận JWT EdDSA của tài khoản owner đã verify; lưu state schema 7 theo revision, xung đột trả `409` để client gộp và thử lại. Xem [sync-api/README.md](sync-api/README.md) cho biến môi trường (cấu hình trong Neon, không commit).
+- localStorage luôn là bản offline; đồng bộ chạy sau khi lưu nếu đang đăng nhập. Hiện chỉ một email owner được phép đồng bộ.
 
 ## Chạy local
 
@@ -38,11 +44,21 @@ Tải backup JSON định kỳ. Nếu không ghi được backup trước migrat
 ## Kiểm thử
 
 ```bash
-node --check app.js && node --check sw.js
-node tests/engine.test.cjs
+node --check app.js && node --check sw.js && node --check cloud-sync.js && node --check auth-session.js && node --check sync-merge.js && node --check sync-api/index.mjs
+node tests/engine.test.cjs        # chậm: ~2–3 phút
+node tests/auth-session.test.cjs
+node tests/sync-merge.test.cjs
 node tests/pwa.test.cjs
 python3 tests/content.test.py
 python3 content/native-v3/QA_CONTENT.py
+npm ci --prefix sync-api && npm --prefix sync-api run bundle
 ```
 
 Content QA tự động kiểm tra ID, coverage, role NEW/REUSE, scenario structure và mapping. Đây không phải xác nhận rằng biên tập viên bản ngữ đã duyệt toàn bộ 1.200 câu; xem [QA_REPORT_V3.md](QA_REPORT_V3.md) để biết giới hạn và bằng chứng.
+
+## Phát hành (checklist)
+
+1. Tăng `APP_VERSION` trong `app.js`, cache `tomeng-vNN-native` trong `sw.js`, query `?v=` và `sw.js?v=NN-native` trong `index.html`/SHELL cùng lúc (xem [APP_VERSIONING.md](APP_VERSIONING.md)).
+2. Cập nhật `tests/pwa.test.cjs` (version, danh sách cache cũ bị xoá).
+3. Chạy toàn bộ bộ kiểm thử ở trên; CI GitHub Actions phải PASS trước khi merge vào `main` (merge = deploy GitHub Pages).
+4. Báo rõ trạng thái: local / committed / pushed / deployed / đã kiểm trên site live.

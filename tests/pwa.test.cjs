@@ -20,7 +20,7 @@ const sandbox = {
   },
   caches: {
     open: async () => cache,
-    keys: async () => ['tomeng-v11-native', 'tomeng-v12-native', 'tomeng-v13-native', 'tomeng-v14-native', 'tomeng-v15-native', 'tomeng-v16-native', 'tomeng-v17-native', 'tomeng-v18-native', 'tomeng-v19-native', 'tomeng-v20-native', 'tomeng-v21-native', 'tomeng-v22-native', 'tomeng-v23-native', 'tomeng-v24-native'],
+    keys: async () => ['tomeng-v11-native', 'tomeng-v12-native', 'tomeng-v13-native', 'tomeng-v14-native', 'tomeng-v15-native', 'tomeng-v16-native', 'tomeng-v17-native', 'tomeng-v18-native', 'tomeng-v19-native', 'tomeng-v20-native', 'tomeng-v21-native', 'tomeng-v22-native', 'tomeng-v23-native', 'tomeng-v24-native', 'tomeng-v33-native'],
     delete: async key => { deleted.push(key); return true; },
     match: async () => null
   },
@@ -29,30 +29,32 @@ const sandbox = {
   Response: { error: () => ({ error: true }) }
 };
 vm.runInNewContext(source, sandbox);
-assert.match(source, /const CACHE = 'tomeng-v33-native'/, 'updated worker creates a new cache version');
+assert.match(source, /const CACHE = 'tomeng-v34-native'/, 'updated worker creates a new cache version');
 
 (async () => {
   let installPromise;
   handlers.install({ waitUntil: promise => { installPromise = promise; } });
   await installPromise;
   assert.ok(skipped, 'install activates the updated worker without waiting for an old tab');
-  assert.ok(cacheShell.includes('./legacy-lesson-plan-v3.js?v=3.6.2'));
-  assert.ok(cacheShell.includes('./legacy-lesson-plan-v3_1.js?v=3.6.2'));
-  assert.ok(cacheShell.includes('./legacy-lesson-plan-v3_2.js?v=3.6.2'));
-  assert.ok(cacheShell.includes('./legacy-lesson-plan-v3_3.js?v=3.6.2'));
-  assert.ok(cacheShell.includes('./app.js?v=3.6.2'));
-  assert.ok(cacheShell.includes('./sync-merge.js?v=3.6.2'));
-  assert.ok(cacheShell.includes('./auth-session.js?v=3.6.2'));
-  assert.ok(cacheShell.includes('./cloud-sync.js?v=3.6.2'));
+  assert.ok(cacheShell.includes('./legacy-lesson-plan-v3.js?v=3.6.3'));
+  assert.ok(cacheShell.includes('./legacy-lesson-plan-v3_1.js?v=3.6.3'));
+  assert.ok(cacheShell.includes('./legacy-lesson-plan-v3_2.js?v=3.6.3'));
+  assert.ok(cacheShell.includes('./legacy-lesson-plan-v3_3.js?v=3.6.3'));
+  assert.ok(cacheShell.includes('./app.js?v=3.6.3'));
+  assert.ok(cacheShell.includes('./icon-maskable-512.png?v=3.6.3'));
+  assert.ok(cacheShell.includes('./favicon-32.png?v=3.6.3'));
+  assert.ok(cacheShell.includes('./sync-merge.js?v=3.6.3'));
+  assert.ok(cacheShell.includes('./auth-session.js?v=3.6.3'));
+  assert.ok(cacheShell.includes('./cloud-sync.js?v=3.6.3'));
 
   let activatePromise;
   handlers.activate({ waitUntil: promise => { activatePromise = promise; } });
   await activatePromise;
-  assert.deepEqual(deleted, ['tomeng-v11-native', 'tomeng-v12-native', 'tomeng-v13-native', 'tomeng-v14-native', 'tomeng-v15-native', 'tomeng-v16-native', 'tomeng-v17-native', 'tomeng-v18-native', 'tomeng-v19-native', 'tomeng-v20-native', 'tomeng-v21-native', 'tomeng-v22-native', 'tomeng-v23-native', 'tomeng-v24-native']);
+  assert.deepEqual(deleted, ['tomeng-v11-native', 'tomeng-v12-native', 'tomeng-v13-native', 'tomeng-v14-native', 'tomeng-v15-native', 'tomeng-v16-native', 'tomeng-v17-native', 'tomeng-v18-native', 'tomeng-v19-native', 'tomeng-v20-native', 'tomeng-v21-native', 'tomeng-v22-native', 'tomeng-v23-native', 'tomeng-v24-native', 'tomeng-v33-native']);
   assert.ok(claimed, 'new worker controls open clients');
 
   const index = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
-  assert.match(index, /sw\.js\?v=33-native/);
+  assert.match(index, /sw\.js\?v=34-native/);
   assert.ok(index.indexOf('legacy-lesson-plan-v3.js') < index.indexOf('app.js'));
   const app = fs.readFileSync(path.join(root, 'app.js'), 'utf8');
   const sync = fs.readFileSync(path.join(root, 'cloud-sync.js'), 'utf8');
