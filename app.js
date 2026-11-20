@@ -8,7 +8,7 @@
   const PREVIOUS_ENGINE_KEY = 'tomeng_reflex_v3';
   const BACKUP_KEY = 'tomeng_native_v3_migration_backup';
   // MAJOR.MINOR.PATCH: major for breaking changes, minor for features, patch for fixes/content.
-  const APP_VERSION = '3.6.2';
+  const APP_VERSION = '3.6.3';
   const CONTENT_VERSION = 'native-v3.4';
   const CURRENT_PLAN_VERSION = 'native-v3.4';
   const LEGACY_PLANS = [window.TOMENG_LEGACY_LESSON_PLAN_V3_3,window.TOMENG_LEGACY_LESSON_PLAN_V3_2,window.TOMENG_LEGACY_LESSON_PLAN_V3_1,window.TOMENG_LEGACY_LESSON_PLAN_V3].filter(Boolean);
@@ -541,7 +541,7 @@
     const content=ui.speechError
       ? `<p>${esc(ui.transcript||'Chưa nhận được câu nói. Anh có thể thử lại.')}</p>`
       : active
-        ? `<b>${ui.speechStopping?'Đang chốt kết quả…':'Đang nghe…'}</b><p>${ui.speechInterim?'Đang nhận: “'+esc(ui.speechInterim)+'”':'Hãy nói câu tiếng Anh.'}</p><small>Nhấn Dừng khi đọc xong.</small>`
+        ? `<b>${ui.speechStopping?'Đang chốt kết quả…':'Đang nghe…'}</b><p>${ui.speechInterim?'Đang nhận: “'+esc(ui.speechInterim)+'”':'Hãy nói câu tiếng Anh.'}</p><small>Nhấn Dừng khi đọc xong. Chỉ lượt nói cuối cùng được dùng để so khớp.</small>`
         : ui.transcript
           ? `<b>Máy nghe anh nói</b><p>“${esc(ui.transcript)}”</p>${speechComparison(id)}`
           : '';
@@ -563,13 +563,13 @@
     const rec=new Speech();rec.lang='en-US';rec.interimResults=true;rec.continuous=true;rec.maxAlternatives=1;
     rec.onresult=event=>{
       if(window._tomengRecognition!==rec)return;
-      let finalText='',interimText='';
-      for(let n=0;n<event.results.length;n++){
+      /* Chỉ giữ lượt nói cuối: bỏ các đoạn trước (kể cả đọc sai) để không cộng dồn vào kết quả. */
+      let lastText='',lastIsFinal=true;
+      for(let n=event.results.length-1;n>=0;n--){
         const result=event.results[n],part=String(result?.[0]?.transcript||'').trim();
-        if(result.isFinal)finalText+=(finalText?' ':'')+part;
-        else interimText+=(interimText?' ':'')+part;
+        if(part){lastText=part;lastIsFinal=!!result.isFinal;break;}
       }
-      ui.speechFinal=finalText.trim();ui.speechInterim=interimText.trim();render();
+      ui.speechFinal=lastText;ui.speechInterim=lastIsFinal?'':lastText;render();
     };
     rec.onerror=event=>{
       if(window._tomengRecognition!==rec)return;
@@ -582,7 +582,7 @@
       const stopped=ui.speechStopping;
       window._tomengRecognition=null;ui.speechStopping=false;
       if(!stopped){ui.speechError=true;ui.transcript='Micro đã tự dừng trước khi anh bấm Dừng. Hãy thử lại.';ui.speechInterim='';render();return;}
-      ui.transcript=[ui.speechFinal,ui.speechInterim].filter(Boolean).join(' ').trim();ui.speechInterim='';
+      ui.transcript=String(ui.speechFinal||'').trim();ui.speechInterim='';
       if(ui.transcript){
         store.speakingPracticed=[...new Set([...store.speakingPracticed,id])];
         const session=store.activeSession;
