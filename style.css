@@ -65,6 +65,13 @@ body{font-family:var(--sans);line-height:1.5}
 .speech-match-track span{display:block;height:100%;border-radius:inherit;background:var(--coral)}
 .speech-meaning{margin:12px 0;padding:12px 14px;border-left:3px solid var(--olive);border-radius:0 10px 10px 0;background:#f8faf5}
 .speech-meaning b{font-size:14px}.speech-meaning p{margin:5px 0 0}
+.speech-verdict{margin:4px 0 12px;padding:14px 16px;border-radius:14px;border:1px solid #d7dcd1;background:#f8faf5}
+.speech-verdict b{display:block;font-size:16px}.speech-verdict p{margin:6px 0 0}.speech-verdict small{margin-top:8px}
+.speech-verdict.tone-ok{border-color:#b9d3b0;background:#eef6ea}.speech-verdict.tone-ok b{color:#3f6b35}
+.speech-verdict.tone-near{border-color:#e7d3a3;background:#fbf5e6}.speech-verdict.tone-near b{color:#7a5a12}
+.speech-verdict.tone-fix{border-color:#f1c8c1;background:#fff0ed}.speech-verdict.tone-fix b{color:#a5402f}
+.speech-gaps.is-slot{border-left-color:#9fb592;background:#f6f8f3}.speech-gaps.is-slot li p{color:var(--muted)}
+.speech-literal{margin-top:12px}.speech-literal summary{cursor:pointer;font-size:14px;color:var(--muted)}.speech-literal summary strong{color:var(--ink)}
 .speech-gaps{margin:12px 0;padding:12px 14px;border-left:3px solid var(--coral);border-radius:0 10px 10px 0;background:#fff6f3}
 .speech-gaps b{font-size:14px}.speech-gaps ol{margin:8px 0 0;padding-left:20px}.speech-gaps li{margin:9px 0;overflow-wrap:anywhere}
 .speech-gaps li>span{display:block;margin-top:2px;color:var(--muted);font-size:12.5px}.speech-gaps li p{margin:4px 0 0}
@@ -252,3 +259,16 @@ body{font-family:var(--sans);line-height:1.5}
   .more-grid .category-card h3{font-size:17px}
   .more-grid .category-card p{font-size:10px}
 }
+
+/* Đã học — ôn chủ động */
+.learned-toolbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin:8px 0 18px}
+.learned-toolbar .filter-row{display:flex;flex-wrap:wrap;gap:8px}.learned-tools{display:flex;flex-wrap:wrap;gap:8px}
+.learned-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px}
+.learned-card{display:flex;flex-direction:column;gap:6px;padding:18px;border:1px solid var(--line,#e3ded3);border-radius:18px;background:#fffdf8}
+.learned-card h3{margin:2px 0;font-size:19px;line-height:1.3}.learned-card .learned-prompt{font-weight:500}
+.learned-vi,.learned-context{margin:0;color:var(--muted);font-size:14px;line-height:1.45}
+.learned-actions{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:auto;padding-top:8px}
+.learned-more{margin:18px auto 0;display:block}
+.quick-stats>.quick-stat-link{all:unset;box-sizing:border-box;cursor:pointer;display:block;background:rgba(255,255,255,.55);border:1px solid var(--line);border-radius:14px;padding:14px}.quick-stats>.quick-stat-link:hover{border-color:var(--coral)}.quick-stat-link:focus-visible{outline:2px solid var(--coral);outline-offset:3px}
+.quick-stat-link span{text-decoration:underline;text-underline-offset:3px}
+@media(max-width:720px){.learned-toolbar{flex-direction:column;align-items:stretch}.learned-grid{grid-template-columns:1fr}}
