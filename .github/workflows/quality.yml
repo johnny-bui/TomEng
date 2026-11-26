@@ -24,6 +24,8 @@ jobs:
         run: node tests/auth-session.test.cjs
       - name: Test cloud sync merge safety
         run: node tests/sync-merge.test.cjs
+      - name: Test ChatGPT speaking analysis contract
+        run: node --test tests/chatgpt-plan.test.mjs
       - name: Build Neon sync function
         run: npm ci --prefix sync-api && npm --prefix sync-api run bundle
       - name: Test PWA shell and cache migration assets

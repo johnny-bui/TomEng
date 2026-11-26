@@ -133,6 +133,21 @@
     }
     return {status:result.status,data};
   }
+  async function requestSpeaking(method='POST', payload=null) {
+    if(!state.user) throw new Error('Đăng nhập TomEng Cloud để gửi câu nói tới worker trên Mac.');
+    if(!navigator.onLine) throw new Error('Đang ngoại tuyến. Phân tích bằng ChatGPT cần kết nối mạng.');
+    const token=await authToken();
+    const base=String(config.apiUrl).replace(/\/+$/,'');
+    const url=method==='GET'?`${base}/speaking-analysis?id=${encodeURIComponent(payload.id)}`:`${base}/speaking-analysis`;
+    const result=await fetch(url,{method,headers:{authorization:`Bearer ${token}`,...(method==='POST'?{'content-type':'application/json'}:{})},body:method==='POST'?JSON.stringify(payload):undefined,cache:'no-store'});
+    let data={};try{data=await result.json();}catch{}
+    if(!result.ok){
+      if(result.status===401)throw new Error('Phiên cloud hết hạn. Đăng nhập lại để phân tích.');
+      if(result.status===429)throw new Error('Có nhiều yêu cầu đang chờ. Hãy thử lại sau.');
+      throw new Error(data.error==='analysis_unavailable'?'Dịch vụ phân tích tạm gián đoạn. Tiến độ học vẫn được giữ.':'Chưa gửi hoặc đọc được phân tích. Hãy thử lại.');
+    }
+    return data.job;
+  }
   function setStatus(status) { state.status=status; updateTrigger(); if(dialog.open) renderDialog(); }
   async function syncNow() {
     if(!state.user||!api)return;
@@ -234,6 +249,7 @@
     finally{state.loading=false;renderDialog();updateTrigger();}
   });
   window.addEventListener('tomeng:local-save',scheduleSync);
+  window.TOMENG_CLOUD_SYNC={requestSpeaking};
   window.addEventListener('online',()=>{if(state.user)syncNow();});
   document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'&&state.user&&state.dirty)syncNow();});
   updateTrigger();
