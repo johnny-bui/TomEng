@@ -29,21 +29,21 @@ const sandbox = {
   Response: { error: () => ({ error: true }) }
 };
 vm.runInNewContext(source, sandbox);
-assert.match(source, /const CACHE = 'tomeng-v36-native'/, 'updated worker creates a new cache version');
+assert.match(source, /const CACHE = 'tomeng-v37-speaking-ai'/, 'updated worker creates a new cache version');
 
 (async () => {
   let installPromise;
   handlers.install({ waitUntil: promise => { installPromise = promise; } });
   await installPromise;
   assert.ok(skipped, 'install activates the updated worker without waiting for an old tab');
-  assert.ok(cacheShell.includes('./legacy-lesson-plan-v3.js?v=3.8.0'));
-  assert.ok(cacheShell.includes('./legacy-lesson-plan-v3_1.js?v=3.8.0'));
-  assert.ok(cacheShell.includes('./legacy-lesson-plan-v3_2.js?v=3.8.0'));
-  assert.ok(cacheShell.includes('./legacy-lesson-plan-v3_3.js?v=3.8.0'));
-  assert.ok(cacheShell.includes('./app.js?v=3.8.0'));
-  assert.ok(cacheShell.includes('./sync-merge.js?v=3.8.0'));
-  assert.ok(cacheShell.includes('./auth-session.js?v=3.8.0'));
-  assert.ok(cacheShell.includes('./cloud-sync.js?v=3.8.0'));
+  assert.ok(cacheShell.includes('./legacy-lesson-plan-v3.js?v=3.9.0'));
+  assert.ok(cacheShell.includes('./legacy-lesson-plan-v3_1.js?v=3.9.0'));
+  assert.ok(cacheShell.includes('./legacy-lesson-plan-v3_2.js?v=3.9.0'));
+  assert.ok(cacheShell.includes('./legacy-lesson-plan-v3_3.js?v=3.9.0'));
+  assert.ok(cacheShell.includes('./app.js?v=3.9.0'));
+  assert.ok(cacheShell.includes('./sync-merge.js?v=3.9.0'));
+  assert.ok(cacheShell.includes('./auth-session.js?v=3.9.0'));
+  assert.ok(cacheShell.includes('./cloud-sync.js?v=3.9.0'));
 
   let activatePromise;
   handlers.activate({ waitUntil: promise => { activatePromise = promise; } });

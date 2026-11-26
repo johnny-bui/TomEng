@@ -92,6 +92,46 @@ async function readRemote(userId) {
   return row ? { state: row.payload, revision: Number(row.revision), updatedAt: row.updated_at } : { state: null, revision: 0, updatedAt: null };
 }
 
+function validSpeakingInput(input) {
+  const phraseId = String(input?.phraseId || '');
+  const transcript = String(input?.transcript || '').trim();
+  const requestKey = String(input?.requestKey || '');
+  const number = Number(phraseId.slice(1));
+  return /^p(?:00[1-9]|0[1-9]\d|[1-9]\d{2}|1[01]\d{2}|1200)$/.test(phraseId) && number >= 1 && number <= 1200 &&
+    transcript.length >= 1 && transcript.length <= 600 &&
+    /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(requestKey)
+    ? { phraseId, transcript, requestKey } : null;
+}
+
+async function speakingRequest(request, userId, origin, url) {
+  if (request.method === 'GET') {
+    const id = url.searchParams.get('id');
+    if (!/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(id || '')) return response({ error: 'invalid_id' }, 400, origin);
+    const rows = await sql`SELECT id, phrase_id, transcript, status, result, error_code, created_at, updated_at
+      FROM public.tomeng_speaking_analysis WHERE id = ${id}::uuid AND user_id = ${userId} LIMIT 1`;
+    return rows[0] ? response({ job: rows[0] }, 200, origin) : response({ error: 'not_found' }, 404, origin);
+  }
+  const raw = await request.text();
+  if (new TextEncoder().encode(raw).byteLength > 2048) return response({ error: 'payload_too_large' }, 413, origin);
+  let input;
+  try { input = validSpeakingInput(JSON.parse(raw)); } catch { /* invalid input */ }
+  if (!input) return response({ error: 'invalid_input' }, 400, origin);
+  const existing = await sql`SELECT id, status FROM public.tomeng_speaking_analysis
+    WHERE user_id = ${userId} AND request_key = ${input.requestKey}::uuid LIMIT 1`;
+  if (existing[0]) return response({ job: existing[0] }, 200, origin);
+  const limits = await sql`SELECT
+    count(*) FILTER (WHERE created_at > now() - interval '1 minute')::int AS recent,
+    count(*) FILTER (WHERE status IN ('pending','running'))::int AS open
+    FROM public.tomeng_speaking_analysis WHERE user_id = ${userId}`;
+  if (limits[0].recent >= 10 || limits[0].open >= 3) return response({ error: 'too_many_requests' }, 429, origin);
+  const rows = await sql`INSERT INTO public.tomeng_speaking_analysis
+    (user_id, request_key, phrase_id, transcript)
+    VALUES (${userId}, ${input.requestKey}::uuid, ${input.phraseId}, ${input.transcript})
+    ON CONFLICT (user_id, request_key) DO UPDATE SET request_key = EXCLUDED.request_key
+    RETURNING id, status`;
+  return response({ job: rows[0] }, 202, origin);
+}
+
 export default {
   async fetch(request) {
     const origin = request.headers.get('origin');
@@ -110,6 +150,13 @@ export default {
     if (auth.forbidden) return response({ error: 'account_not_allowed' }, 403, origin);
 
     const url = new URL(request.url);
+    if (url.pathname === '/speaking-analysis') {
+      try { return await speakingRequest(request, auth.userId, origin, url); }
+      catch (error) {
+        console.error('TomEng speaking request failed:', error?.message || 'unknown error');
+        return response({ error: 'analysis_unavailable' }, 503, origin);
+      }
+    }
     if (!['/', '/sync'].includes(url.pathname)) return response({ error: 'not_found' }, 404, origin);
 
     try {

@@ -8,7 +8,7 @@
   const PREVIOUS_ENGINE_KEY = 'tomeng_reflex_v3';
   const BACKUP_KEY = 'tomeng_native_v3_migration_backup';
   // MAJOR.MINOR.PATCH: major for breaking changes, minor for features, patch for fixes/content.
-  const APP_VERSION = '3.8.0';
+  const APP_VERSION = '3.9.0';
   const CONTENT_VERSION = 'native-v3.4';
   const CURRENT_PLAN_VERSION = 'native-v3.4';
   const LEGACY_PLANS = [window.TOMENG_LEGACY_LESSON_PLAN_V3_3,window.TOMENG_LEGACY_LESSON_PLAN_V3_2,window.TOMENG_LEGACY_LESSON_PLAN_V3_1,window.TOMENG_LEGACY_LESSON_PLAN_V3].filter(Boolean);
@@ -730,6 +730,46 @@
       +list(changed,'is-slot','Anh đã tự đổi nội dung','')
       +`<details class="speech-literal"><summary>Khớp chữ với câu mẫu: <strong>${result.score}%</strong></summary><div class="speech-match-track" role="progressbar" aria-valuenow="${result.score}" aria-valuemin="0" aria-valuemax="100" aria-label="Mức khớp chữ với câu mẫu"><span style="width:${result.score}%"></span></div><p>Câu mẫu: “${esc(expected)}”</p>${result.tips.length?`<ul>${result.tips.map(tip=>`<li>${esc(tip)}</li>`).join('')}</ul>`:''}<small>% chỉ đo độ giống chữ, không phải điểm giao tiếp. Mục tiêu là nói được ý bằng khung câu tự nhiên, không phải thuộc lòng từng chữ.</small></details></div>`;
   }
+  function aiAnalysisPanel(id) {
+    const a=ui.aiAnalysis;
+    if(!a||a.phraseId!==id)return '';
+    if(a.error)return `<div class="speech-ai-result is-error" role="status">${esc(a.error)} <button class="btn" data-action="analysis-retry" data-id="${esc(id)}">Thử lại</button></div>`;
+    if(a.status!=='done'){
+      const waiting=a.errorCode==='needs_login'?'Cần đăng nhập lại gói ChatGPT trên Mac để tiếp tục.':a.errorCode==='plan_limit'?'Gói ChatGPT đang hết hạn mức; job sẽ thử lại sau.':a.status==='running'?'Đang phân tích câu anh nói…':'Đang chờ worker trên Mac…';
+      return `<div class="speech-ai-result" role="status"><b>${waiting}</b><p>Tiến độ học vẫn dùng được. Nếu Mac ngủ, kết quả sẽ có khi Mac hoạt động lại.</p><button class="btn" data-action="analysis-refresh" data-id="${esc(id)}">Kiểm tra kết quả</button></div>`;
+    }
+    const v=a.result||{},labels={usable:'Dùng được trong tình huống',near:'Gần đúng, cần chỉnh',needs_fix:'Cần sửa trước khi dùng',uncertain:'Chưa đủ căn cứ'};
+    const issues=Array.isArray(v.grammarIssues)?v.grammarIssues:[];
+    return `<div class="speech-ai-result" role="status"><div class="speech-ai-heading"><b>ChatGPT · ${esc(labels[v.verdict]||labels.uncertain)}</b><small>Gợi ý theo bản nhận dạng, không chấm phát âm</small></div><p><b>Ý anh nói:</b> ${esc(v.intent)}</p><p><b>Đúng ngữ cảnh?</b> ${esc(v.contextFit)}</p>${issues.length?`<div><b>Chỗ cần sửa</b><ul>${issues.map(x=>`<li><b>${esc(x.spoken)}</b> → ${esc(x.correction)}. ${esc(x.why)}</li>`).join('')}</ul></div>`:''}<p><b>Độ tự nhiên:</b> ${esc(v.naturalness)}</p>${v.revisedSentence?`<p><b>Câu sửa giữ ý anh:</b> ${esc(v.revisedSentence)}</p>`:''}${v.alternative?`<p><b>Cách nói khác:</b> ${esc(v.alternative)}</p>`:''}${v.uncertainty?`<small>${esc(v.uncertainty)}</small>`:''}</div>`;
+  }
+  async function refreshAiAnalysis(id) {
+    const a=ui.aiAnalysis;
+    if(!a||a.phraseId!==id||!a.jobId)return;
+    try{
+      const job=await window.TOMENG_CLOUD_SYNC.requestSpeaking('GET',{id:a.jobId});
+      if(ui.aiAnalysis!==a)return;
+      a.status=job.status;a.errorCode=job.error_code;a.error=job.status==='failed'?'Phân tích chưa hoàn tất. Anh có thể thử lại; tiến độ học không thay đổi.':'';
+      if(job.status==='done')a.result=job.result;
+      render();
+      if(['pending','running'].includes(job.status)&&a.polls++<24)a.timer=setTimeout(()=>refreshAiAnalysis(id),5000);
+    }catch(error){if(ui.aiAnalysis===a){a.error=error?.message||'Chưa đọc được kết quả.';render();}}
+  }
+  async function submitAiAnalysis(id) {
+    const text=String($('#speech-transcript-edit')?.value||ui.transcript||'').trim();
+    if(!text||text.length>600){toast('Câu nói cần từ 1 đến 600 ký tự.');return;}
+    if(!window.TOMENG_CLOUD_SYNC?.requestSpeaking){toast('Dịch vụ phân tích chưa sẵn sàng.');return;}
+    ui.transcript=text;
+    const a={phraseId:id,transcript:text,status:'pending',polls:0,jobId:null,result:null,error:'',errorCode:null};
+    ui.aiAnalysis=a;render();
+    try{
+      const requestKey=window.crypto?.randomUUID?.();
+      if(!requestKey)throw new Error('Trình duyệt chưa hỗ trợ tạo mã yêu cầu an toàn.');
+      const job=await window.TOMENG_CLOUD_SYNC.requestSpeaking('POST',{phraseId:id,transcript:text,requestKey});
+      if(ui.aiAnalysis!==a)return;
+      a.jobId=job.id;a.status=job.status;render();
+      a.timer=setTimeout(()=>refreshAiAnalysis(id),1000);
+    }catch(error){if(ui.aiAnalysis===a){a.error=error?.message||'Chưa gửi được yêu cầu phân tích.';render();}}
+  }
   function speechFeedback(id) {
     if(ui.speakingId!==id)return '';
     const active=!!window._tomengRecognition;
@@ -738,7 +778,7 @@
       : active
         ? `<b>${ui.speechStopping?'Đang chốt kết quả…':'Đang nghe…'}</b><p>${ui.speechInterim?'Đang nhận: “'+esc(ui.speechInterim)+'”':'Hãy nói câu tiếng Anh.'}</p><small>Nhấn Dừng khi đọc xong. Chỉ lượt nói cuối cùng được dùng để so khớp.</small>`
         : ui.transcript
-          ? `<b>Máy nghe anh nói</b><p>“${esc(ui.transcript)}”</p>${speechComparison(id)}`
+          ? `<b>Máy nghe anh nói</b><p>“${esc(ui.transcript)}”</p><label class="speech-transcript-label">Sửa bản nhận dạng nếu máy nghe sai<textarea id="speech-transcript-edit" rows="2" maxlength="600">${esc(ui.aiAnalysis?.phraseId===id?ui.aiAnalysis.transcript:ui.transcript)}</textarea></label><button class="btn btn-dark" data-action="analysis-submit" data-id="${esc(id)}" ${ui.aiAnalysis&&!ui.aiAnalysis.error&&ui.aiAnalysis.status!=='done'?'disabled':''}>Phân tích bằng ChatGPT</button>${aiAnalysisPanel(id)}${speechComparison(id)}`
           : '';
     return content?`<div class="speech-feedback${ui.speechError?' is-error':''}" role="status" aria-live="polite">${content}</div>`:'';
   }
@@ -752,7 +792,7 @@
     if(!byId.has(id))return;
     if(window._tomengRecognition&&ui.speakingId===id){stopSpeech(id);return;}
     const Speech=window.SpeechRecognition||window.webkitSpeechRecognition;
-    ui.speakingId=id;ui.transcript='';ui.speechFinal='';ui.speechInterim='';ui.speechStopping=false;ui.speechError=false;
+    ui.aiAnalysis=null;ui.speakingId=id;ui.transcript='';ui.speechFinal='';ui.speechInterim='';ui.speechStopping=false;ui.speechError=false;
     if(!Speech){ui.speechError=true;ui.transcript='Trình duyệt chưa hỗ trợ nhận dạng giọng nói.';render();return;}
     try{window._tomengRecognition?.abort?.();}catch{}
     const rec=new Speech();rec.lang='en-US';rec.interimResults=true;rec.continuous=true;rec.maxAlternatives=1;
@@ -927,6 +967,8 @@
     if(action==='learned-random'){const g=learnedGroups(),list=g[ui.learnedFilter]||g.all;if(list.length)return startLearnedPractice(list[Math.floor(Math.random()*list.length)],list);return;}
     if(action==='practice-random'){const src=ui.practicePool?.length?ui.practicePool.filter(id=>id!==ui.speakingId):PHRASES.map(p=>p.id);ui.speakingId=src.length?src[Math.floor(Math.random()*src.length)]:ui.speakingId;ui.revealed=false;ui.transcript='';render();}
     if(action==='mic')startSpeech(target.dataset.id);
+    if(action==='analysis-submit'||action==='analysis-retry')submitAiAnalysis(target.dataset.id);
+    if(action==='analysis-refresh')refreshAiAnalysis(target.dataset.id);
     if(action==='export'||action==='backup')exportData();
     if(action==='refresh')refreshApp().catch(()=>toast('Chưa kiểm tra được bản mới. Thử lại khi có mạng.'));
     if(action==='rollback-migration')rollbackMigration();
