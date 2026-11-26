@@ -18,4 +18,6 @@ node worker/chatgpt-plan/cli.mjs once   # one queued job
 node worker/chatgpt-plan/cli.mjs start  # continuous worker
 ```
 
-`vn.tomeng.speaking-worker.plist` is a launchd template for keeping the worker running when the Mac is awake. If the Mac is asleep, queued jobs remain pending and the user can refresh the result later. A revoked grant or exhausted plan allowance pauses jobs; it does not erase transcripts or learning progress.
+On macOS, run `zsh worker/chatgpt-plan/install-macos.sh` after building the API dependencies. The installer copies only runtime code and dependencies to `~/Library/Application Support/TomEng/runtime`, then starts the launchd agent. Running a launchd job directly from a Desktop checkout can stall during process startup; the copied runtime has been verified to claim and complete a production job automatically. Run the installer again after worker code changes.
+
+If the Mac is asleep, queued jobs remain pending and the user can refresh the result later. A revoked grant or exhausted plan allowance pauses jobs; it does not erase transcripts or learning progress.
