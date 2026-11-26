@@ -41,6 +41,8 @@ assert.match(fresh.html(),/0 \/ 1200 cụm/,'Home progress begins at zero unique
 assert.equal(fresh.app.appVersion,'3.9.0','single app version source is exposed by runtime');
 assert.equal((fresh.html().match(/data-app-version=\"3\.9\.0\"/g)||[]).length,2,'desktop and compact header labels render the same app version');
 assert.match(fresh.html(),/v3\.9\.0/);
+assert.match(appSource,/Cần đăng nhập lại gói ChatGPT trên Mac/,'speaking jobs explain an expired ChatGPT grant');
+assert.match(appSource,/Gói ChatGPT đang hết hạn mức/,'speaking jobs explain plan limits');
 assert.doesNotMatch(fresh.html(),/undefined/,'version label never renders undefined');
 assert.match(appSource,/navButton\('grammar','bulb'/);
 assert.match(appSource,/navButton\('rescue','lifebuoy'/);

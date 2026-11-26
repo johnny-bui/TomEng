@@ -734,7 +734,10 @@
     const a=ui.aiAnalysis;
     if(!a||a.phraseId!==id)return '';
     if(a.error)return `<div class="speech-ai-result is-error" role="status">${esc(a.error)} <button class="btn" data-action="analysis-retry" data-id="${esc(id)}">Thử lại</button></div>`;
-    if(a.status!=='done')return `<div class="speech-ai-result" role="status"><b>${a.status==='running'?'Đang phân tích câu anh nói…':'Đang chờ worker trên Mac…'}</b><p>Tiến độ học vẫn dùng được. Nếu Mac ngủ, kết quả sẽ có khi Mac hoạt động lại.</p><button class="btn" data-action="analysis-refresh" data-id="${esc(id)}">Kiểm tra kết quả</button></div>`;
+    if(a.status!=='done'){
+      const waiting=a.errorCode==='needs_login'?'Cần đăng nhập lại gói ChatGPT trên Mac để tiếp tục.':a.errorCode==='plan_limit'?'Gói ChatGPT đang hết hạn mức; job sẽ thử lại sau.':a.status==='running'?'Đang phân tích câu anh nói…':'Đang chờ worker trên Mac…';
+      return `<div class="speech-ai-result" role="status"><b>${waiting}</b><p>Tiến độ học vẫn dùng được. Nếu Mac ngủ, kết quả sẽ có khi Mac hoạt động lại.</p><button class="btn" data-action="analysis-refresh" data-id="${esc(id)}">Kiểm tra kết quả</button></div>`;
+    }
     const v=a.result||{},labels={usable:'Dùng được trong tình huống',near:'Gần đúng, cần chỉnh',needs_fix:'Cần sửa trước khi dùng',uncertain:'Chưa đủ căn cứ'};
     const issues=Array.isArray(v.grammarIssues)?v.grammarIssues:[];
     return `<div class="speech-ai-result" role="status"><div class="speech-ai-heading"><b>ChatGPT · ${esc(labels[v.verdict]||labels.uncertain)}</b><small>Gợi ý theo bản nhận dạng, không chấm phát âm</small></div><p><b>Ý anh nói:</b> ${esc(v.intent)}</p><p><b>Đúng ngữ cảnh?</b> ${esc(v.contextFit)}</p>${issues.length?`<div><b>Chỗ cần sửa</b><ul>${issues.map(x=>`<li><b>${esc(x.spoken)}</b> → ${esc(x.correction)}. ${esc(x.why)}</li>`).join('')}</ul></div>`:''}<p><b>Độ tự nhiên:</b> ${esc(v.naturalness)}</p>${v.revisedSentence?`<p><b>Câu sửa giữ ý anh:</b> ${esc(v.revisedSentence)}</p>`:''}${v.alternative?`<p><b>Cách nói khác:</b> ${esc(v.alternative)}</p>`:''}${v.uncertainty?`<small>${esc(v.uncertainty)}</small>`:''}</div>`;
@@ -745,7 +748,7 @@
     try{
       const job=await window.TOMENG_CLOUD_SYNC.requestSpeaking('GET',{id:a.jobId});
       if(ui.aiAnalysis!==a)return;
-      a.status=job.status;a.error=job.status==='failed'?'Phân tích chưa hoàn tất. Anh có thể thử lại; tiến độ học không thay đổi.':'';
+      a.status=job.status;a.errorCode=job.error_code;a.error=job.status==='failed'?'Phân tích chưa hoàn tất. Anh có thể thử lại; tiến độ học không thay đổi.':'';
       if(job.status==='done')a.result=job.result;
       render();
       if(['pending','running'].includes(job.status)&&a.polls++<24)a.timer=setTimeout(()=>refreshAiAnalysis(id),5000);
@@ -756,7 +759,7 @@
     if(!text||text.length>600){toast('Câu nói cần từ 1 đến 600 ký tự.');return;}
     if(!window.TOMENG_CLOUD_SYNC?.requestSpeaking){toast('Dịch vụ phân tích chưa sẵn sàng.');return;}
     ui.transcript=text;
-    const a={phraseId:id,transcript:text,status:'pending',polls:0,jobId:null,result:null,error:''};
+    const a={phraseId:id,transcript:text,status:'pending',polls:0,jobId:null,result:null,error:'',errorCode:null};
     ui.aiAnalysis=a;render();
     try{
       const requestKey=window.crypto?.randomUUID?.();
