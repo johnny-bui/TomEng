@@ -100,6 +100,16 @@ body{font-family:var(--sans);line-height:1.5}
 .backup-box .btn,.note-tools .btn{margin:5px 8px 0 0}
 .right-panel .note-tools{display:grid;gap:6px;margin-top:22px}
 .right-panel .note-tools .btn{width:100%}
+.mobile-streak{display:none}
+.streak-summary{display:flex;align-items:center;gap:10px;margin:0 0 16px}
+.streak-summary strong{font:400 42px/1 var(--serif);color:var(--coral)}
+.streak-summary span{font-size:12px;font-weight:700;line-height:1.35}
+.streak-summary small{display:block;color:var(--muted);font-size:11px;font-weight:400;margin-top:3px}
+.day.completed{background:#e9eee3;color:#446f51}
+.day.today:not(.completed){outline:1px solid var(--coral);outline-offset:-1px;color:var(--coral)}
+.day i{display:block;height:12px;font-size:11px;font-style:normal;font-weight:700;line-height:12px}
+.streak-message{color:var(--muted);font-size:11px;line-height:1.5;margin:14px 0 0}
+@media(max-width:1160px){.mobile-streak{display:block;margin:0 0 25px}.mobile-streak .schedule{background:#fbfaf6;border:1px solid var(--line);border-radius:18px;padding:20px}}
 .collection-row{min-width:0}
 .empty{grid-column:1/-1}
 /* Review queue */
